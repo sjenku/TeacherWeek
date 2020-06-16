@@ -67,8 +67,6 @@ class HomeLowerContainerView:CustomView {
     
     override func setupView() {
         backgroundColor = UIColor.MyTheme.lightBG
-        addGroupView.centerContainer.backgroundColor = .darkGray
-        addGroupView.rightContainer.backgroundColor = .blue
         
         upperHalfStackView.addArrangedSubview(addStudentView)
         upperHalfStackView.addArrangedSubview(addGroupView)
@@ -90,58 +88,45 @@ class HomeLowerContainerView:CustomView {
 
 class HomeAddView:UIView {
     
-    enum StudentOrGroup:String {
-        case student = "Students"
-        case group = "Groups"
-    }
-    
-    let leftContainer:UIView = {
+   private let leftContainer:UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let centerContainer:UIView = {
+   private let centerContainer:UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .clear
         return view
     }()
     
-    let rightContainer:UIView = {
+   private let rightContainer:UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        view.backgroundColor = .clear
         return view
     }()
     
-    let stackView:UIStackView = {
+   private let stackView:UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.distribution = .fillEqually
         return sv
     }()
     
-    var kind:StudentOrGroup?
+   private var padding:CGFloat  {
+        if let height = UIApplication.shared.keyWindow?.screen.bounds.height {
+           return CGFloat(height / 23)
+        }
+        return 0
+    }
+    
     
     init(frame: CGRect,kind:StudentOrGroup) {
         super.init(frame: frame)
         
-        self.kind = kind
+        setupView(kind: kind)
         
-        setupView()
-        
-        switch kind {
-        case .student:
-            imageView.image = UIImage(named: "person")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = UIColor.MyTheme.lightBlue
-            imageViewTitle.textColor = UIColor.MyTheme.lightBlue
-            imageViewTitle.text = StudentOrGroup.student.rawValue
-        case .group:
-            imageView.image = UIImage(named: "person.and.person")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = UIColor.MyTheme.lightGreen
-            imageViewTitle.textColor = UIColor.MyTheme.lightGreen
-            imageViewTitle.text = StudentOrGroup.group.rawValue
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -149,9 +134,26 @@ class HomeAddView:UIView {
     }
     
     
-     func setupView() {
+   private func handleKind(_ kind:StudentOrGroup) {
+        switch kind {
+        case .student:
+            imageView.image = UIImage(named: "person")?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = UIColor.MyTheme.lightBlue
+            imageViewTitle.textColor = UIColor.MyTheme.lightBlue
+            imageViewTitle.text = StudentOrGroup.student.rawValue
+            counterLabel.textColor = UIColor.MyTheme.lightBlue
+        case .group:
+            imageView.image = UIImage(named: "person.and.person")?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = UIColor.MyTheme.lightGreen
+            imageViewTitle.textColor = UIColor.MyTheme.lightGreen
+            imageViewTitle.text = StudentOrGroup.group.rawValue
+            counterLabel.textColor = UIColor.MyTheme.lightGreen
+        }
+    }
+    
+    
+    private func setupView(kind:StudentOrGroup) {
         //add to views to stuck
-        setupLeftContainer()
         stackView.addArrangedSubview(leftContainer)
         stackView.addArrangedSubview(centerContainer)
         stackView.addArrangedSubview(rightContainer)
@@ -161,37 +163,87 @@ class HomeAddView:UIView {
         addConstraintsWithFormat(format: "H:|[v0]|", views: stackView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: stackView)
         
+        
+        //additional setups
+        setupCenterContainer()
+        setupLeftContainer()
+        setupRightContainer()
+        
+        
+        //handle if it's student or group view
+        handleKind(kind)
     }
     
-    let imageView:UIImageView = {
+   private let imageView:UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         return iv
     }()
     
-    let imageViewTitle:UILabel = {
+   private let imageViewTitle:UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         return label
     }()
     
-    var padding:CGFloat  {
-        if let height = UIApplication.shared.keyWindow?.screen.bounds.height {
-           return CGFloat(height / 23)
-        }
-        return 0
+    
+   private func setupLeftContainer() {
+        
+    //font
+    imageViewTitle.font = UIFont.systemFont(ofSize: padding / 1.75)
+    
+    
+    //layout
+    leftContainer.addSubview(imageView)
+    leftContainer.addSubview(imageViewTitle)
+    
+    leftContainer.addConstraintsWithFormat(format: "H:|-\(padding)-[v0]-\(padding)-|", views: imageView)
+    leftContainer.addConstraintsWithFormat(format: "H:|[v0]|", views: imageViewTitle)
+    leftContainer.addConstraintsWithFormat(format: "V:|-\(padding)-[v0(\(padding))]-2-[v1]-\(padding)-|", views: imageView,imageViewTitle)
+    
+    
     }
     
-    func setupLeftContainer() {
+   private let counterLabel:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "0"
+        return label
+    }()
+    
+   private func setupCenterContainer() {
         
-        leftContainer.addSubview(imageView)
-        leftContainer.addSubview(imageViewTitle)
+        //Font
+          counterLabel.font = UIFont.systemFont(ofSize: padding,weight: .semibold)
         
-        print("Padding:\(padding)")
-        leftContainer.addConstraintsWithFormat(format: "H:|-\(padding)-[v0]-\(padding)-|", views: imageView)
-        leftContainer.addConstraintsWithFormat(format: "H:|[v0]|", views: imageViewTitle)
-        leftContainer.addConstraintsWithFormat(format: "V:|-\(padding)-[v0(\(padding))][v1]-\(padding)-|", views: imageView,imageViewTitle)
+        //Layout
+        centerContainer.addSubview(counterLabel)
+        centerContainer.addConstraint(NSLayoutConstraint(item: counterLabel, attribute: .centerX, relatedBy: .equal, toItem: centerContainer, attribute: .centerX, multiplier: 1, constant: 0))
+        centerContainer.addConstraint(NSLayoutConstraint(item: counterLabel, attribute: .centerY, relatedBy: .equal, toItem: centerContainer, attribute: .centerY, multiplier: 1, constant: 0))
+        
+    }
+    
+    
+    private let addButton:RoundButtonWithIcon = {
+        let button = RoundButtonWithIcon(frame:.zero, kind: StudentOrGroup.student)
+        return button
+    }()
+    
+    private func setupRightContainer() {
+         print("Padding:\(padding)")
+
+        
+        //Layout
+        rightContainer.addSubview(addButton)
+        
+        rightContainer.addConstraintsWithFormat(format: "H:[v0(\(padding * 2))]", views: addButton)
+        rightContainer.addConstraintsWithFormat(format: "V:|-\(padding/1.1)-[v0(\(padding * 2))]", views: addButton)
+
+        rightContainer.addConstraint(NSLayoutConstraint(item: addButton, attribute: .centerX, relatedBy: .equal, toItem: rightContainer, attribute: .centerX, multiplier: 1, constant: 0))
+//        rightContainer.addConstraint(NSLayoutConstraint(item: addButton, attribute: .centerY, relatedBy: .equal, toItem: rightContainer, attribute: .centerY, multiplier: 1, constant: 0))
         
     }
     

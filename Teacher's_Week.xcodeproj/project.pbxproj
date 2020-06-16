@@ -15,6 +15,8 @@
 		BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12520A2497BF79006F264B /* HomeViewController.swift */; };
 		BE12520D2497C2F8006F264B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12520C2497C2F8006F264B /* Views.swift */; };
 		BE12520F2497CD4A006F264B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12520E2497CD4A006F264B /* HomeView.swift */; };
+		BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */; };
+		BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252142498BF3A006F264B /* StudentOrGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BE12520A2497BF79006F264B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BE12520C2497C2F8006F264B /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		BE12520E2497CD4A006F264B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonWithIcon.swift; sourceTree = "<group>"; };
+		BE1252142498BF3A006F264B /* StudentOrGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				BE12520E2497CD4A006F264B /* HomeView.swift */,
+				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -84,6 +89,7 @@
 		BE1251FB24969DA3006F264B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE1252142498BF3A006F264B /* StudentOrGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
+				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
+				BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE12520D2497C2F8006F264B /* Views.swift in Sources */,
