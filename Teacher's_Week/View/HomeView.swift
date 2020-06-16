@@ -137,14 +137,14 @@ class HomeAddView:UIView {
    private func handleKind(_ kind:StudentOrGroup) {
         switch kind {
         case .student:
-            imageView.image = UIImage(named: "person")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = UIColor.MyTheme.lightBlue
+            imageView.image = UIImage(named: "personBlue")?.withRenderingMode(.alwaysOriginal)
+//            imageView.tintColor = UIColor.MyTheme.lightBlue
             imageViewTitle.textColor = UIColor.MyTheme.lightBlue
             imageViewTitle.text = StudentOrGroup.student.rawValue
             counterLabel.textColor = UIColor.MyTheme.lightBlue
         case .group:
-            imageView.image = UIImage(named: "person.and.person")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = UIColor.MyTheme.lightGreen
+            imageView.image = UIImage(named: "group.green")?.withRenderingMode(.alwaysOriginal)
+//            imageView.tintColor = UIColor.MyTheme.lightGreen
             imageViewTitle.textColor = UIColor.MyTheme.lightGreen
             imageViewTitle.text = StudentOrGroup.group.rawValue
             counterLabel.textColor = UIColor.MyTheme.lightGreen
