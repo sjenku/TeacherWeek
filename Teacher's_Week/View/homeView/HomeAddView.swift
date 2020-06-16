@@ -38,6 +38,12 @@ class HomeAddView:UIView {
         return sv
     }()
     
+    private let line:UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
    private var padding:CGFloat  {
         if let height = UIApplication.shared.keyWindow?.screen.bounds.height {
            return CGFloat(height / 23)
@@ -89,9 +95,13 @@ class HomeAddView:UIView {
         stackView.addArrangedSubview(rightContainer)
         addSubview(stackView)
         
+        //addLine
+        addSubview(line)
+        
         //constraints
         addConstraintsWithFormat(format: "H:|[v0]|", views: stackView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: stackView)
+        addConstraintsWithFormat(format: "H:|-\(padding / 2)-[v0]-\(padding / 2)-|", views: line)
+        addConstraintsWithFormat(format: "V:|[v0][v1(0.5)]|", views: stackView,line)
         
         
         //additional setups

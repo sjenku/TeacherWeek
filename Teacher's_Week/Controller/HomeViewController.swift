@@ -13,6 +13,7 @@ import UIKit
 
 class HomeViewController:UIViewController {
     
+    var homeView:HomeView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,14 @@ class HomeViewController:UIViewController {
         
         
         let heightTabBar = tabBarController?.tabBar.frame.height ?? 0
-        view.addSubview(HomeView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - heightTabBar)))
+        homeView = HomeView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - heightTabBar))
+        view.addSubview(homeView!)
+        
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
     
 }

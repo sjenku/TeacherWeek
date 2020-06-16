@@ -11,12 +11,8 @@ import UIKit
 
 class HomeView:CustomView {
     
-    let upperContainer:UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        return view
-    }()
-    var lowerContainer:HomeLowerContainerView = HomeLowerContainerView()
+    let upperContainer:HomeUpperConteinerView = HomeUpperConteinerView()
+    let lowerContainer:HomeLowerContainerView = HomeLowerContainerView()
     
     
     override func setupView () {
@@ -31,8 +27,8 @@ class HomeView:CustomView {
         addSubview(upperContainer)
         addSubview(lowerContainer)
         
-        addConstraintsWithFormat(format: "H:|[v0]|", views: upperContainer)
-        addConstraintsWithFormat(format: "V:|[v0(\(heightUpperC))]-\(padding)-[v1(\(heightLowerC))]", views: upperContainer,lowerContainer)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: upperContainer)
+        addConstraintsWithFormat(format: "V:|[v0(\(heightUpperC))]-\(padding * 1.5)-[v1(\(heightLowerC))]", views: upperContainer,lowerContainer)
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: lowerContainer)
         
     }

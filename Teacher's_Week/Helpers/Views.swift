@@ -25,6 +25,8 @@ extension UIView {
 }
 
 
+
+
 class CustomView:UIView {
     
     override init(frame: CGRect) {
@@ -32,9 +34,9 @@ class CustomView:UIView {
         
         setupView()
     }
+   
     
     func setupView() {
-        
     }
     
     required init?(coder: NSCoder) {

@@ -19,6 +19,8 @@
 		BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252142498BF3A006F264B /* StudentOrGroup.swift */; };
 		BE1252172499290F006F264B /* HomeAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252162499290F006F264B /* HomeAddView.swift */; };
 		BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521824993F60006F264B /* HomeLowerContainerView.swift */; };
+		BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */; };
+		BE12521E2499784C006F264B /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521D2499784C006F264B /* data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		BE1252142498BF3A006F264B /* StudentOrGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroup.swift; sourceTree = "<group>"; };
 		BE1252162499290F006F264B /* HomeAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddView.swift; sourceTree = "<group>"; };
 		BE12521824993F60006F264B /* HomeLowerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLowerContainerView.swift; sourceTree = "<group>"; };
+		BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUpperConteinerView.swift; sourceTree = "<group>"; };
+		BE12521D2499784C006F264B /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1252142498BF3A006F264B /* StudentOrGroup.swift */,
+				BE12521D2499784C006F264B /* data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
 				BE1252162499290F006F264B /* HomeAddView.swift */,
 				BE12521824993F60006F264B /* HomeLowerContainerView.swift */,
+				BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */,
 			);
 			path = homeView;
 			sourceTree = "<group>";
@@ -205,10 +211,12 @@
 			files = (
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
+				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */,
+				BE12521E2499784C006F264B /* data.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
 				BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
@@ -359,7 +367,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "v.Teacher-s-Week";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -378,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "v.Teacher-s-Week";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
