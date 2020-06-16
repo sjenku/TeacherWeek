@@ -16,6 +16,19 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
     
+    static func rgb(red:CGFloat,green:CGFloat,blue:CGFloat,alpha:CGFloat) -> UIColor {
+           return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+       }
+    
+    var highlight:UIColor {
+        get {
+            var redValue: CGFloat{ return CIColor(color: self).red }
+            var greenValue: CGFloat{ return CIColor(color: self).green }
+            var blueValue: CGFloat{ return CIColor(color: self).blue }
+            return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 0.3)
+        }
+    }
+    
     struct MyTheme {
         static let darkBG  = UIColor.rgb(red: 31, green: 37, blue: 50)
         static let lightBG = UIColor.rgb(red: 40, green: 48, blue: 66)

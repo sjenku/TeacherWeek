@@ -66,16 +66,18 @@ class HomeAddView:UIView {
             imageViewTitle.text = StudentOrGroup.student.rawValue
             counterLabel.textColor = UIColor.MyTheme.lightBlue
             addButton.btImageView.image = UIImage(named: "studentAdd")?.withRenderingMode(.alwaysOriginal)
-            addButton.isHighlightedColor = UIColor.MyTheme.lightBlue
+            addButton.isHighlightedColor = UIColor.MyTheme.lightBlue.highlight
             addButton.btImageView.contentMode = .scaleAspectFit
+            addButton.shadowColor = UIColor.MyTheme.lightBlue
         case .group:
             imageView.image = UIImage(named: "groupGreen")?.withRenderingMode(.alwaysOriginal)
             imageViewTitle.textColor = UIColor.MyTheme.lightGreen
             imageViewTitle.text = StudentOrGroup.group.rawValue
             counterLabel.textColor = UIColor.MyTheme.lightGreen
             addButton.btImageView.image = UIImage(named: "groupAdd")?.withRenderingMode(.alwaysOriginal)
-            addButton.isHighlightedColor = UIColor.MyTheme.lightGreen
+            addButton.isHighlightedColor = UIColor.MyTheme.lightGreen.highlight
             addButton.btImageView.contentMode = .scaleToFill
+            addButton.shadowColor = UIColor.MyTheme.lightGreen
         }
     }
     
@@ -133,13 +135,18 @@ class HomeAddView:UIView {
     
     }
     
-   private let counterLabel:UILabel = {
+    private let counterLabel:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.text = "0"
         return label
+    }()
+    
+    private let addButton:RoundButtonWithIcon = {
+        let button = RoundButtonWithIcon(frame:.zero)
+        return button
     }()
     
    private func setupCenterContainer() {
@@ -154,11 +161,6 @@ class HomeAddView:UIView {
         
     }
     
-    
-    private let addButton:RoundButtonWithIcon = {
-        let button = RoundButtonWithIcon(frame:.zero)
-        return button
-    }()
     
     private func setupRightContainer() {
          print("Padding:\(padding)")

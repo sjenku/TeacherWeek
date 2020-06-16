@@ -18,6 +18,12 @@ class RoundButtonWithIcon:UIButton {
         return iv
     }()
     
+    var shadowColor:UIColor?  {
+        willSet {
+            layer.shadowColor = newValue?.cgColor
+        }
+    }
+    
     var isHighlightedColor:UIColor = {
         return UIColor.white
     }()
@@ -40,6 +46,7 @@ class RoundButtonWithIcon:UIButton {
         set {
             if newValue {
                 backgroundColor = isHighlightedColor
+                btImageView.tintColor = UIColor.white
             }
             else {
                 backgroundColor = UIColor.MyTheme.darkBG
@@ -64,14 +71,16 @@ class RoundButtonWithIcon:UIButton {
     }
     
     private func setLayer() {
-           layer.cornerRadius = frame.width / 2
-           let factor = layer.cornerRadius
-           layer.shadowColor = UIColor.MyTheme.lightGreen.cgColor
-           layer.shadowRadius = factor / 4
-           layer.masksToBounds = false
-           layer.shadowOpacity = 0.4
-           layer.shadowOffset = CGSize(width: 0, height: 0)
-       }
+        layer.cornerRadius = frame.width / 2
+        let factor = layer.cornerRadius
+        
+        if shadowColor != nil {
+        layer.shadowRadius = factor / 4
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

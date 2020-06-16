@@ -18,6 +18,7 @@
 		BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */; };
 		BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252142498BF3A006F264B /* StudentOrGroup.swift */; };
 		BE1252172499290F006F264B /* HomeAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252162499290F006F264B /* HomeAddView.swift */; };
+		BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521824993F60006F264B /* HomeLowerContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonWithIcon.swift; sourceTree = "<group>"; };
 		BE1252142498BF3A006F264B /* StudentOrGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroup.swift; sourceTree = "<group>"; };
 		BE1252162499290F006F264B /* HomeAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddView.swift; sourceTree = "<group>"; };
+		BE12521824993F60006F264B /* HomeLowerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLowerContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +84,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BE12520E2497CD4A006F264B /* HomeView.swift */,
-				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
-				BE1252162499290F006F264B /* HomeAddView.swift */,
+				BE12521A24993FBE006F264B /* homeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +120,17 @@
 			children = (
 			);
 			path = External_Classes;
+			sourceTree = "<group>";
+		};
+		BE12521A24993FBE006F264B /* homeView */ = {
+			isa = PBXGroup;
+			children = (
+				BE12520E2497CD4A006F264B /* HomeView.swift */,
+				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
+				BE1252162499290F006F264B /* HomeAddView.swift */,
+				BE12521824993F60006F264B /* HomeLowerContainerView.swift */,
+			);
+			path = homeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
+				BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE12520D2497C2F8006F264B /* Views.swift in Sources */,
 			);
