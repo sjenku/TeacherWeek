@@ -23,6 +23,7 @@
 		BE12521E2499784C006F264B /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521D2499784C006F264B /* data.swift */; };
 		BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125224249A07AC006F264B /* ChooseFromListViewController.swift */; };
 		BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125226249A5E3F006F264B /* ChooseLabelView.swift */; };
+		BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BE12521D2499784C006F264B /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
 		BE125224249A07AC006F264B /* ChooseFromListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListViewController.swift; sourceTree = "<group>"; };
 		BE125226249A5E3F006F264B /* ChooseLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelView.swift; sourceTree = "<group>"; };
+		BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelDoneBTView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
+				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
 			);
 			path = chooseView;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */,
+				BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */,
 				BE12520D2497C2F8006F264B /* Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

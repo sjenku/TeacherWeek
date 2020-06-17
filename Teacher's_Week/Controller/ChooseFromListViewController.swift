@@ -13,11 +13,7 @@ class ChooseFromListViewController:UIViewController{
     
     
     
-   private let upperContainer:UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
+   private let labelView:CustomView = ChooseLabelView()
     
     
    private let centerContainer:UIView = {
@@ -26,11 +22,7 @@ class ChooseFromListViewController:UIViewController{
         return view
     }()
     
-   private let lowerContainer:UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        return view
-    }()
+   private let lowerContainer:UIView = ChooseLabelDoneBTView()
     
     
     private let searchController:UISearchController = {
@@ -57,7 +49,7 @@ class ChooseFromListViewController:UIViewController{
     
         setupNavigationController()
 
-        view.addSubview(upperContainer)
+        view.addSubview(labelView)
         view.addSubview(centerContainer)
         view.addSubview(lowerContainer)
         
@@ -70,14 +62,25 @@ class ChooseFromListViewController:UIViewController{
         let searchHeight = searchController.searchBar.frame.height
         let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
         let heightWithOut_nav_search_tabbar = view.frame.height - navHeight - searchHeight - tabBarHeight
-        let padding:CGFloat = 16
         
-        let upperContainerHeight = (heightWithOut_nav_search_tabbar - 2 * padding) * 1 / 5
+        let upperViewHeight = ((heightWithOut_nav_search_tabbar) * 1.5 / 5) / 2
+        let lowerViewHeight = upperViewHeight * 1.2
         
-        view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: upperContainer)
+        //Horizontal and Height
+        view.addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: labelView)
+        view.addConstraintsWithFormat(format: "V:[v0(\(upperViewHeight))]", views: labelView)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: centerContainer)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: lowerContainer)
-        view.addConstraintsWithFormat(format: "V:|-16-[v0(\(upperContainerHeight))][v1][v2(\(upperContainerHeight))]-16-|", views: upperContainer,centerContainer,lowerContainer)
+        view.addConstraintsWithFormat(format: "V:[v0(\(lowerViewHeight))]", views: lowerContainer)
+    
+        //Vertical
+        NSLayoutConstraint.activate([
+            labelView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            centerContainer.topAnchor.constraint(equalTo: labelView.bottomAnchor),
+            lowerContainer.topAnchor.constraint(equalTo: centerContainer.bottomAnchor),
+            lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ])
+
     }
     
     
