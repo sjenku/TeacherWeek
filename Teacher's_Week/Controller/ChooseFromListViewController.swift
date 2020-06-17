@@ -16,12 +16,13 @@ class ChooseFromListViewController:UIViewController{
    private let labelView:CustomView = ChooseLabelView()
     
     
-   private let centerContainer:UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        return view
-    }()
-    
+//   private let centerContainer:UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .yellow
+//        return view
+//    }()
+//
+   private let centerContainer:UICollectionView = ChooseCollectionListView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
    private let lowerContainer:UIView = ChooseLabelDoneBTView()
     
     

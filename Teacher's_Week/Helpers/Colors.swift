@@ -38,5 +38,6 @@ extension UIColor {
         static let darkGreen = UIColor.rgb(red: 100, green: 212, blue: 0)
         static let yellowSchedule = UIColor.rgb(red: 247, green: 181, blue: 0)
         static let barsColor = UIColor.rgb(red: 22, green: 23, blue: 24)
+        static let cellColor = UIColor.rgb(red: 58, green: 58, blue: 60)
     }
 }

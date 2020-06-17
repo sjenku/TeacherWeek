@@ -24,6 +24,7 @@
 		BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125224249A07AC006F264B /* ChooseFromListViewController.swift */; };
 		BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125226249A5E3F006F264B /* ChooseLabelView.swift */; };
 		BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */; };
+		BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12522A249AB014006F264B /* ChooseCollectionListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		BE125224249A07AC006F264B /* ChooseFromListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListViewController.swift; sourceTree = "<group>"; };
 		BE125226249A5E3F006F264B /* ChooseLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelView.swift; sourceTree = "<group>"; };
 		BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelDoneBTView.swift; sourceTree = "<group>"; };
+		BE12522A249AB014006F264B /* ChooseCollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
 				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
+				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
 			);
 			path = chooseView;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
+				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */,
