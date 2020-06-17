@@ -13,6 +13,34 @@ class ChooseFromListViewController:UIViewController{
     
     
     
+   private let upperContainer:UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+    
+    
+   private let centerContainer:UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+    
+   private let lowerContainer:UIView = {
+        let view = UIView()
+        view.backgroundColor = .green
+        return view
+    }()
+    
+    
+    private let searchController:UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchBar.tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        return sc
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +49,37 @@ class ChooseFromListViewController:UIViewController{
         
     }
     
+    
 
-    func setupView() {
+   private func setupView() {
         
         view.backgroundColor = UIColor.MyTheme.darkBG
+    
         setupNavigationController()
+
+        view.addSubview(upperContainer)
+        view.addSubview(centerContainer)
+        view.addSubview(lowerContainer)
         
-        let tabBarHeight = tabBarController?.tabBar.frame.height
-        let navHeight = navigationController?.navigationBar.frame.height
-        let searchHeight = searchController.searchBar.frame.height
-           
-        
-        
+        setConstraints()
     }
     
-    let searchController:UISearchController = {
-        let sc = UISearchController(searchResultsController: nil)
-        sc.searchBar.tintColor = .white
-         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        return sc
-    }()
+    
+    private func setConstraints() {
+        let navHeight = navigationController?.navigationBar.frame.height ?? 0
+        let searchHeight = searchController.searchBar.frame.height
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        let heightWithOut_nav_search_tabbar = view.frame.height - navHeight - searchHeight - tabBarHeight
+        let padding:CGFloat = 16
+        
+        let upperContainerHeight = (heightWithOut_nav_search_tabbar - 2 * padding) * 1 / 5
+        
+        view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: upperContainer)
+        view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: centerContainer)
+        view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: lowerContainer)
+        view.addConstraintsWithFormat(format: "V:|-16-[v0(\(upperContainerHeight))][v1][v2(\(upperContainerHeight))]-16-|", views: upperContainer,centerContainer,lowerContainer)
+    }
+    
     
     private func setupNavigationController() {
         
