@@ -21,6 +21,7 @@
 		BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521824993F60006F264B /* HomeLowerContainerView.swift */; };
 		BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */; };
 		BE12521E2499784C006F264B /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521D2499784C006F264B /* data.swift */; };
+		BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125224249A07AC006F264B /* ChooseFromListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BE12521824993F60006F264B /* HomeLowerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLowerContainerView.swift; sourceTree = "<group>"; };
 		BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUpperConteinerView.swift; sourceTree = "<group>"; };
 		BE12521D2499784C006F264B /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		BE125224249A07AC006F264B /* ChooseFromListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFromListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE125221249A05F5006F264B /* chooseView */,
 				BE12521A24993FBE006F264B /* homeView */,
 			);
 			path = View;
@@ -107,6 +110,7 @@
 			children = (
 				BE1251EA24969745006F264B /* AppTabBarController.swift */,
 				BE12520A2497BF79006F264B /* HomeViewController.swift */,
+				BE125224249A07AC006F264B /* ChooseFromListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,6 +141,13 @@
 				BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */,
 			);
 			path = homeView;
+			sourceTree = "<group>";
+		};
+		BE125221249A05F5006F264B /* chooseView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = chooseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +231,7 @@
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
 				BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
+				BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */,
 				BE12520D2497C2F8006F264B /* Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

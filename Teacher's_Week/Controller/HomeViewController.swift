@@ -28,11 +28,8 @@ class HomeViewController:UIViewController {
         homeView = HomeView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - heightTabBar))
         view.addSubview(homeView!)
         
-        setNeedsStatusBarAppearanceUpdate()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
     
+  
 }
