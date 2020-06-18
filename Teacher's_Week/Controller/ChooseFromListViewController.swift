@@ -12,20 +12,10 @@ import UIKit
 class ChooseFromListViewController:UIViewController{
     
     
-    
-   private let labelView:CustomView = ChooseLabelView()
-    
-    
-//   private let centerContainer:UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .yellow
-//        return view
-//    }()
-//
-   private let centerContainer:UICollectionView = ChooseCollectionListView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-   private let lowerContainer:UIView = ChooseLabelDoneBTView()
-    
-    
+    //MARK: - Views
+    private let labelView:CustomView = ChooseLabelView()
+    private let centerContainer:UICollectionView = ChooseCollectionListView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let lowerContainer:UIView = ChooseLabelDoneBTView()
     private let searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white
@@ -43,7 +33,7 @@ class ChooseFromListViewController:UIViewController{
     }
     
     
-
+   //MARK: - Functions Related To View
    private func setupView() {
         
         view.backgroundColor = UIColor.MyTheme.darkBG
@@ -57,37 +47,26 @@ class ChooseFromListViewController:UIViewController{
         setConstraints()
     }
     
-    
     private func setConstraints() {
-        let navHeight = navigationController?.navigationBar.frame.height ?? 0
-        let searchHeight = searchController.searchBar.frame.height
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        let heightWithOut_nav_search_tabbar = view.frame.height - navHeight - searchHeight - tabBarHeight
-        
-        let upperViewHeight = ((heightWithOut_nav_search_tabbar) * 1.5 / 5) / 2
-        let lowerViewHeight = upperViewHeight * 1.2
-        
+
         //Horizontal and Height
         view.addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: labelView)
-        view.addConstraintsWithFormat(format: "V:[v0(\(upperViewHeight))]", views: labelView)
+        view.addConstraintsWithFormat(format: "V:|-[v0][v1]-4-[v2]-4-|", views: labelView,centerContainer,lowerContainer)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: centerContainer)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: lowerContainer)
-        view.addConstraintsWithFormat(format: "V:[v0(\(lowerViewHeight))]", views: lowerContainer)
     
-        //Vertical
-        NSLayoutConstraint.activate([
-            labelView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            centerContainer.topAnchor.constraint(equalTo: labelView.bottomAnchor),
-            lowerContainer.topAnchor.constraint(equalTo: centerContainer.bottomAnchor),
-            lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
+        //labelView height
+        view.addConstraint(NSLayoutConstraint(item: labelView, attribute: .height, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .height, multiplier: 1/8, constant: 0))
+        //lowerContainerView height
+        view.addConstraint(NSLayoutConstraint(item: lowerContainer, attribute: .height, relatedBy: .equal, toItem: labelView, attribute: .height, multiplier: 1, constant: 0))
+        
 
     }
     
     
     private func setupNavigationController() {
         
-        //searchBar
+        //to not mess the searchBar
         self.definesPresentationContext = true
         
         //navigation

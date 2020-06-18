@@ -13,12 +13,12 @@ class ChooseLabelDoneBTView:CustomView {
     
     let doneButton:UIButton = {
         let bt = UIButton(type: .system)
-        bt.backgroundColor = UIColor.MyTheme.darkGreen.highlight
+        bt.backgroundColor = UIColor.MyTheme.lightGreen.highlight
         bt.layer.cornerRadius = 10
         bt.setTitle("Done", for: .normal)
         bt.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         bt.titleLabel?.adjustsFontSizeToFitWidth = true
-        bt.tintColor = UIColor.MyTheme.darkGreen
+        bt.tintColor = UIColor.MyTheme.lightGreen
         bt.translatesAutoresizingMaskIntoConstraints = false
         return bt
     }()

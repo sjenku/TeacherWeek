@@ -26,12 +26,16 @@ class ChooseCollectionListView: UICollectionView,UICollectionViewDataSource,UICo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.MyTheme.cellColor
+        if indexPath.item % 2 == 0 {
+           cell.backgroundColor = UIColor.MyTheme.cellColor
+        } else {
+            cell.backgroundColor = UIColor.MyTheme.lightBlue
+        }
         return cell
     }
     
