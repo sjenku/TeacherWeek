@@ -26,6 +26,7 @@
 		BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */; };
 		BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12522A249AB014006F264B /* ChooseCollectionListView.swift */; };
 		BE12524F249CD204006F264B /* ChooseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */; };
+		BE125252249D338C006F264B /* ChooseCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125251249D338C006F264B /* ChooseCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelDoneBTView.swift; sourceTree = "<group>"; };
 		BE12522A249AB014006F264B /* ChooseCollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionListView.swift; sourceTree = "<group>"; };
 		BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE125251249D338C006F264B /* ChooseCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,12 +156,21 @@
 		BE125221249A05F5006F264B /* chooseView */ = {
 			isa = PBXGroup;
 			children = (
+				BE125250249D31DD006F264B /* collectionListView */,
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
 				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
-				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
-				BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */,
 			);
 			path = chooseView;
+			sourceTree = "<group>";
+		};
+		BE125250249D31DD006F264B /* collectionListView */ = {
+			isa = PBXGroup;
+			children = (
+				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
+				BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */,
+				BE125251249D338C006F264B /* ChooseCollectionHeaderView.swift */,
+			);
+			path = collectionListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
+				BE125252249D338C006F264B /* ChooseCollectionHeaderView.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,

@@ -17,10 +17,12 @@ class ChooseLabelDoneBTView:CustomView {
         bt.layer.cornerRadius = 5
         bt.backgroundColor = UIColor.MyTheme.darkGreen
         bt.setTitle("Done", for: .normal)
-        bt.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        bt.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         bt.titleLabel?.adjustsFontSizeToFitWidth = true
-        bt.tintColor = UIColor.MyTheme.lightGreen.withAlphaComponent(0.7)
+        bt.tintColor = UIColor.MyTheme.titleGreen
         bt.translatesAutoresizingMaskIntoConstraints = false
+        bt.layer.shadowOpacity = 0.4
+        bt.layer.shadowOffset = .zero
         
         return bt
     }()

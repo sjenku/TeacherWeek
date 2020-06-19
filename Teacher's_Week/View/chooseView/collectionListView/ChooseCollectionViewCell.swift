@@ -10,23 +10,40 @@ import UIKit
 
 class ChooseCollectionViewCell: CustomCollectionViewCell {
     
-    let personNameLabel:UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
-        label.text = "Student Name"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        return label
-    }()
+    //MARK: - Views
     
-    let checkMarkIcon:UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "checkmark")?.withRenderingMode(.alwaysTemplate)
-        iv.tintColor = UIColor.MyTheme.lightBlue
-        iv.isHidden = true
-        iv.contentMode = .scaleAspectFit
-        return iv
-    }()
+    let personNameLabel:UILabel = {
+          let label = UILabel()
+          label.adjustsFontSizeToFitWidth = true
+          label.textColor = .white
+          label.text = "Student Name"
+          label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+          return label
+      }()
+      
+      let checkMarkIcon:UIImageView = {
+          let iv = UIImageView()
+          iv.image = UIImage(named: "checkmark")?.withRenderingMode(.alwaysTemplate)
+          iv.tintColor = UIColor.MyTheme.lightBlue
+          iv.isHidden = true
+          iv.contentMode = .scaleAspectFit
+          return iv
+      }()
+    
+     //MARK: - Private Properties
+     
+     var isChecked:Bool {
+         get {
+             return !checkMarkIcon.isHidden
+         }
+         set {
+             checkMarkIcon.isHidden = !newValue
+         }
+     }
+ 
+    
+    //MARK: - Overrides
+    
     
     
     override var isHighlighted: Bool {
@@ -39,19 +56,7 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
             }
         }
     }
-  
     
-    var isChecked:Bool {
-        get {
-            return !checkMarkIcon.isHidden
-        }
-        set {
-            checkMarkIcon.isHidden = !newValue
-        }
-    }
-    
-    
-  
     
     override func setupView() {
         
@@ -66,4 +71,6 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
         
         
     }
+
+    
 }

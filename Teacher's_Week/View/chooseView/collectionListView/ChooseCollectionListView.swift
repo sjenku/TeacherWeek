@@ -11,6 +11,26 @@ import UIKit
 class ChooseCollectionListView: UIView {
     
     
+ //MARK: - PrivateProperties
+    private let cellId = "cellId"
+    private let headerId = "headerId"
+    private var contacts:[Character:[Student]] = [
+        "A":[Student(name: "April Levin"),Student(name: "Arnold Shvartsneger")],
+        "B":[Student(name: "Bob Marli"),Student(name: "Bon Jovi"),Student(name: "Ben Gurion")],
+        "C":[Student(name: "Chris Brawn")],
+        "M":[Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
+    ]
+    lazy var letters: [Character] = {
+        var l = [Character]()
+        l = self.contacts.map { (name) -> Character in
+            return name.key
+        }
+        l.sort()
+        return l
+    }()
+
+
+    
  //MARK:- Overrides Methods
     
     override init(frame: CGRect) {
@@ -18,6 +38,7 @@ class ChooseCollectionListView: UIView {
         
         setView()
         collectionView.register(ChooseCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ChooseCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
     required init?(coder: NSCoder) {
@@ -27,22 +48,22 @@ class ChooseCollectionListView: UIView {
     
  //MARK:- Views And Methods Related To Views
     
-    private let cellId = "cellId"
-    private var students:[Student] = [
-         Student(name: "Jennifer Lopez"),
-         Student(name:"Mark Tzugenberg"),
-         Student(name: "Tomas Adison"),
-         Student(name: "April Levin"),
-         Student(name: "Messi"),
-         Student(name: "Arnold Shvartsneger")
-    ]
     
+//
+//    private var students:[Student] = [
+//         Student(name: "Jennifer Lopez"),
+//         Student(name:"Mark Tzugenberg"),
+//         Student(name: "Tomas Adison"),
+//         Student(name: "April Levin"),
+//         Student(name: "Messi"),
+//         Student(name: "Arnold Shvartsneger")
+//    ]
+//
     lazy var collectionView:UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.cornerRadius = 15
-        collectionView.delaysContentTouches = false
         collectionView.backgroundColor = UIColor.MyTheme.lightBG
         return collectionView
     }()
@@ -63,6 +84,9 @@ class ChooseCollectionListView: UIView {
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+        
+        
+        
     }
     
 }
@@ -72,15 +96,31 @@ class ChooseCollectionListView: UIView {
 
 extension ChooseCollectionListView:UICollectionViewDataSource {
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print(letters.count)
+        return letters.count
+       }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return students.count
+        let students = contacts[letters[section]]
+        return students?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChooseCollectionViewCell
-        cell.personNameLabel.text = students[indexPath.item].name
-        cell.isChecked = students[indexPath.item].checked
+        let students =  contacts[letters[indexPath.section]]
+        let student = students?[indexPath.item]
+        cell.personNameLabel.text = student?.name ?? ""
+        cell.isChecked = student?.checked ?? false
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {return UICollectionReusableView()}
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ChooseCollectionHeaderView
+        header.char = letters[indexPath.section]
+        return header
     }
 
 }
@@ -98,6 +138,9 @@ extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
         return 1
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 30)
+    }
 }
 
 
@@ -106,9 +149,7 @@ extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
 extension ChooseCollectionListView:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        students[indexPath.item].checked = !students[indexPath.item].checked
-//        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.purple
+        contacts[letters[indexPath.section]]![indexPath.item].checked = !contacts[letters[indexPath.section]]![indexPath.item].checked
         
         collectionView.reloadData()
         

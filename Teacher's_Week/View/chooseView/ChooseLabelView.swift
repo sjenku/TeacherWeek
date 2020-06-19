@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class ChooseLabelView:CustomView {
     
     private let labelView:UILabel = {
