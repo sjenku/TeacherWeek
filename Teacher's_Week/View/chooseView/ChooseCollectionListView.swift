@@ -10,29 +10,8 @@ import UIKit
 
 class ChooseCollectionListView: UIView {
     
-    private let cellId = "cellId"
     
-    private let tempararyStudentsName:[String] = ["Jennifer Lopez","Mark Tzugenberg","Tomas Adison","April Levin","Messi","Arnold Shvartsneger" ]
-    
-    
-    
-    let shadowView:UIView = {
-        let view = UIView()
-        view.layer.shadowOpacity = 0.5
-        view.layer.masksToBounds = false
-        view.layer.shadowRadius = 4
-        view.layer.shadowOffset = .zero
-        return view
-    }()
-    
-    lazy var collectionView:UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.MyTheme.lightBG
-        return collectionView
-    }()
-    
+ //MARK:- Overrides Methods
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,29 +20,47 @@ class ChooseCollectionListView: UIView {
         collectionView.register(ChooseCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    
-    private func setView() {
-        backgroundColor = UIColor.MyTheme.lightBG
-        addSubview(shadowView)
-        shadowView.addSubview(collectionView)
-        addConstraintsWithFormat(format: "H:|[v0]|", views: shadowView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: shadowView)
-        addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
-    }
-    
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
+ //MARK:- Views And Methods Related To Views
+    
+    private let cellId = "cellId"
+    private let tempararyStudentsName:[String] = ["Jennifer Lopez","Mark Tzugenberg","Tomas Adison","April Levin","Messi","Arnold Shvartsneger" ]
+    
+    lazy var collectionView:UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.layer.cornerRadius = 15
+        collectionView.backgroundColor = UIColor.MyTheme.lightBG
+        return collectionView
+    }()
+    
+    private func setView() {
+        
+        //background
+        backgroundColor = UIColor.MyTheme.lightBG
+        
+        //layer
+        layer.shadowOpacity = 0.5
+        layer.cornerRadius = 15
+        layer.masksToBounds = false
+        layer.shadowRadius = 4
+        layer.shadowOffset = .zero
+        
+        //subViews
+        addSubview(collectionView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+    }
+    
 }
 
 
-
-
+//MARK:- UICollectionViewDataSource
 
 extension ChooseCollectionListView:UICollectionViewDataSource {
 
@@ -79,6 +76,8 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
 
 }
 
+
+//MARK:- UICollectionViewDelegateFlowLayout
 
 extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
 
