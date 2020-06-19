@@ -13,13 +13,15 @@ class ChooseLabelDoneBTView:CustomView {
     
     let doneButton:UIButton = {
         let bt = UIButton(type: .system)
-        bt.backgroundColor = UIColor.MyTheme.lightGreen.highlight
-        bt.layer.cornerRadius = 10
+        
+        bt.layer.cornerRadius = 5
+        bt.backgroundColor = UIColor.MyTheme.darkGreen
         bt.setTitle("Done", for: .normal)
-        bt.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        bt.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .light)
         bt.titleLabel?.adjustsFontSizeToFitWidth = true
-        bt.tintColor = UIColor.MyTheme.lightGreen
+        bt.tintColor = UIColor.MyTheme.lightGreen.withAlphaComponent(0.7)
         bt.translatesAutoresizingMaskIntoConstraints = false
+        
         return bt
     }()
     
@@ -30,10 +32,10 @@ class ChooseLabelDoneBTView:CustomView {
         
         addSubview(doneButton)
         addConstraint(NSLayoutConstraint(item: doneButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
-        addConstraint(NSLayoutConstraint(item: doneButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.5, constant: 0))
+        addConstraint(NSLayoutConstraint(item: doneButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.45, constant: 0))
         addConstraint(NSLayoutConstraint(item: doneButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: doneButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
     }
     
-    
+
 }

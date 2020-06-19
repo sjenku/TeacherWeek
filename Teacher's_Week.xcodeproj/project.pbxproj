@@ -25,6 +25,7 @@
 		BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125226249A5E3F006F264B /* ChooseLabelView.swift */; };
 		BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */; };
 		BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12522A249AB014006F264B /* ChooseCollectionListView.swift */; };
+		BE12524F249CD204006F264B /* ChooseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BE125226249A5E3F006F264B /* ChooseLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelView.swift; sourceTree = "<group>"; };
 		BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLabelDoneBTView.swift; sourceTree = "<group>"; };
 		BE12522A249AB014006F264B /* ChooseCollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionListView.swift; sourceTree = "<group>"; };
+		BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
 				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
 				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
+				BE12524E249CD203006F264B /* ChooseCollectionViewCell.swift */,
 			);
 			path = chooseView;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE125225249A07AC006F264B /* ChooseFromListViewController.swift in Sources */,
+				BE12524F249CD204006F264B /* ChooseCollectionViewCell.swift in Sources */,
 				BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */,
 				BE12520D2497C2F8006F264B /* Views.swift in Sources */,
 			);
