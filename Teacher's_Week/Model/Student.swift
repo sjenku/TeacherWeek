@@ -1,5 +1,5 @@
 //
-//  data.swift
+//  Student.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 17/06/2020.
@@ -7,5 +7,15 @@
 //
 
 import Foundation
+
+struct Student {
+    
+    init(name:String) {
+        self.name = name
+    }
+    
+    var name:String = ""
+    var checked:Bool = false
+}
 
 

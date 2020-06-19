@@ -28,13 +28,21 @@ class ChooseCollectionListView: UIView {
  //MARK:- Views And Methods Related To Views
     
     private let cellId = "cellId"
-    private let tempararyStudentsName:[String] = ["Jennifer Lopez","Mark Tzugenberg","Tomas Adison","April Levin","Messi","Arnold Shvartsneger" ]
+    private var students:[Student] = [
+         Student(name: "Jennifer Lopez"),
+         Student(name:"Mark Tzugenberg"),
+         Student(name: "Tomas Adison"),
+         Student(name: "April Levin"),
+         Student(name: "Messi"),
+         Student(name: "Arnold Shvartsneger")
+    ]
     
     lazy var collectionView:UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.cornerRadius = 15
+        collectionView.delaysContentTouches = false
         collectionView.backgroundColor = UIColor.MyTheme.lightBG
         return collectionView
     }()
@@ -65,12 +73,13 @@ class ChooseCollectionListView: UIView {
 extension ChooseCollectionListView:UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tempararyStudentsName.count
+        return students.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChooseCollectionViewCell
-        cell.personNameLabel.text = tempararyStudentsName[indexPath.item]
+        cell.personNameLabel.text = students[indexPath.item].name
+        cell.isChecked = students[indexPath.item].checked
         return cell
     }
 
@@ -89,6 +98,22 @@ extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
         return 1
     }
 
+}
+
+
+//MARK:- UICollectionViewDelegate
+
+extension ChooseCollectionListView:UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        students[indexPath.item].checked = !students[indexPath.item].checked
+//        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.purple
+        
+        collectionView.reloadData()
+        
+    }
+    
 }
 
 
