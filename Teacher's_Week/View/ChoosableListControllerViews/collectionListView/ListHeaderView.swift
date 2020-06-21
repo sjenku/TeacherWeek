@@ -1,5 +1,5 @@
 //
-//  ChooseCollectionHeaderView.swift
+//  ListHeaderView.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 19/06/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseCollectionHeaderView: UICollectionReusableView {
+class ListHeaderView: UICollectionReusableView {
         
     
     let labelView:UILabel = {

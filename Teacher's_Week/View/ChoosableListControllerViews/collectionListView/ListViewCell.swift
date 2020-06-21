@@ -1,5 +1,5 @@
 //
-//  ChooseCollectionViewCell.swift
+//  ListViewCell.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 19/06/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseCollectionViewCell: CustomCollectionViewCell {
+class ListViewCell: CustomCollectionViewCell {
     
     //MARK: - Views
     

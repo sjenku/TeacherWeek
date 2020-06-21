@@ -1,5 +1,5 @@
 //
-//  ChooseCollectionViewListDemo.swift
+//  ListCollectionView.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 21/06/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseCollectionViewListDemo: UIView {
+class ListCollectionView: UIView {
     
     
  //MARK: - PrivateProperties
@@ -24,8 +24,8 @@ class ChooseCollectionViewListDemo: UIView {
         super.init(frame: frame)
         
         setView()
-        collectionView.register(CollectionViewCellSubtitle.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(ChooseCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(ListCellSubtitle.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ListHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         sectionsInfo = info
         
     }
@@ -74,7 +74,7 @@ class ChooseCollectionViewListDemo: UIView {
 
 //MARK:- UICollectionViewDataSource
 
-extension ChooseCollectionViewListDemo:UICollectionViewDataSource {
+extension ListCollectionView:UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sectionsInfo?.count ?? 0
@@ -85,7 +85,7 @@ extension ChooseCollectionViewListDemo:UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CollectionViewCellSubtitle
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListCellSubtitle
         let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
         cell.title.text = cellInfo?.title
         cell.isAccessoryShown = cellInfo?.isAccessory ?? false
@@ -95,7 +95,7 @@ extension ChooseCollectionViewListDemo:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {return UICollectionReusableView()}
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ChooseCollectionHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ListHeaderView
         header.labelView.text = sectionsInfo?[indexPath.section].headerTitle
         return header
     }
@@ -105,7 +105,7 @@ extension ChooseCollectionViewListDemo:UICollectionViewDataSource {
 
 //MARK:- UICollectionViewDelegateFlowLayout
 
-extension ChooseCollectionViewListDemo:UICollectionViewDelegateFlowLayout {
+extension ListCollectionView:UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 60)
@@ -123,7 +123,7 @@ extension ChooseCollectionViewListDemo:UICollectionViewDelegateFlowLayout {
 
 //MARK:- UICollectionViewDelegate
 
-extension ChooseCollectionViewListDemo:UICollectionViewDelegate {
+extension ListCollectionView:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

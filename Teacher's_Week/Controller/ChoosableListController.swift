@@ -1,5 +1,5 @@
 //
-//  ChooseFromListViewController.swift
+//  ChoosableListController.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 17/06/2020.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ChooseFromListViewController:UIViewController{
+class ChoosableListController:UIViewController{
     
     
     //MARK: - Overrides
@@ -25,9 +25,9 @@ class ChooseFromListViewController:UIViewController{
     //MARK: - Views
     
     private let labelView:CustomView = ChooseLabelView()
-    private let personsListCollectionView:ChooseCollectionViewListDemo =  {
+    private let personsListCollectionView:ListCollectionView =  {
         let sectionsInfo = Contacts.getSectionsInfo()
-        return ChooseCollectionViewListDemo(frame: .zero, info: sectionsInfo)
+        return ListCollectionView(frame: .zero, info: sectionsInfo)
     }()
     
     private let doneButtonView:UIView = ChooseLabelDoneBTView()

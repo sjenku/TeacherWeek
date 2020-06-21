@@ -37,8 +37,8 @@ class ChooseCollectionListView: UIView {
         super.init(frame: frame)
         
         setView()
-        collectionView.register(ChooseCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(ChooseCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(ListViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ListHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
     required init?(coder: NSCoder) {
@@ -107,7 +107,7 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChooseCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
         let students =  contacts[letters[indexPath.section]]
         let student = students?[indexPath.item]
         cell.title.text = student?.name ?? ""
@@ -118,7 +118,7 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {return UICollectionReusableView()}
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ChooseCollectionHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ListHeaderView
         header.labelView.text = String(letters[indexPath.section])
         return header
     }
