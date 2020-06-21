@@ -11,27 +11,22 @@ import UIKit
 class ChooseCollectionHeaderView: UICollectionReusableView {
         
     
-    let charLabel:UILabel = {
+    let labelView:UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .lightGray
+        label.text = ""
         return label
     }()
     
-    var char:Character? {
-        willSet {
-            guard let safeChar = newValue else {return}
-            charLabel.text = String(safeChar)
-        }
-    }
-    
+
     override init(frame: CGRect) {
         super.init(frame:frame)
         
         backgroundColor = UIColor.MyTheme.headerColor
-        addSubview(charLabel)
-        addConstraintsWithFormat(format: "H:|-16-[v0]|", views: charLabel)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: charLabel)
+        addSubview(labelView)
+        addConstraintsWithFormat(format: "H:|-16-[v0]|", views: labelView)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: labelView)
         
     }
     

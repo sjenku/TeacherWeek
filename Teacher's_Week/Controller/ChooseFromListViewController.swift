@@ -25,7 +25,11 @@ class ChooseFromListViewController:UIViewController{
     //MARK: - Views
     
     private let labelView:CustomView = ChooseLabelView()
-    private let personsListCollectionView:ChooseCollectionListView = ChooseCollectionListView()
+    private let personsListCollectionView:ChooseCollectionViewListDemo =  {
+        let sectionsInfo = Contacts.getSectionsInfo()
+        return ChooseCollectionViewListDemo(frame: .zero, info: sectionsInfo)
+    }()
+    
     private let doneButtonView:UIView = ChooseLabelDoneBTView()
     private let searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)

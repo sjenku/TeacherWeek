@@ -12,7 +12,7 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
     
     //MARK: - Views
     
-    let personNameLabel:UILabel = {
+    let title:UILabel = {
           let label = UILabel()
           label.adjustsFontSizeToFitWidth = true
           label.textColor = .white
@@ -21,7 +21,7 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
           return label
       }()
       
-      let checkMarkIcon:UIImageView = {
+      let accessory:UIImageView = {
           let iv = UIImageView()
           iv.image = UIImage(named: "checkmark")?.withRenderingMode(.alwaysTemplate)
           iv.tintColor = UIColor.MyTheme.lightBlue
@@ -32,12 +32,12 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
     
      //MARK: - Private Properties
      
-     var isChecked:Bool {
+     var isAccessoryShown:Bool {
          get {
-             return !checkMarkIcon.isHidden
+             return !accessory.isHidden
          }
          set {
-             checkMarkIcon.isHidden = !newValue
+             accessory.isHidden = !newValue
          }
      }
  
@@ -61,13 +61,13 @@ class ChooseCollectionViewCell: CustomCollectionViewCell {
     override func setupView() {
         
         backgroundColor = UIColor.MyTheme.cellColor
-        addSubview(personNameLabel)
-        addSubview(checkMarkIcon)
+        addSubview(title)
+        addSubview(accessory)
         
-        addConstraintsWithFormat(format:"H:|-16-[v0][v1]-16-|", views:personNameLabel,checkMarkIcon)
-        addConstraintsWithFormat(format:"V:|[v0]|", views: personNameLabel)
-        addConstraintsWithFormat(format:"V:|-12-[v0]-12-|", views: checkMarkIcon)
-        addConstraint(NSLayoutConstraint(item: checkMarkIcon, attribute: .width, relatedBy: .equal, toItem: checkMarkIcon, attribute: .height, multiplier: 1, constant: 0))
+        addConstraintsWithFormat(format:"H:|-16-[v0][v1]-16-|", views:title,accessory)
+        addConstraintsWithFormat(format:"V:|[v0]|", views: title)
+        addConstraintsWithFormat(format:"V:|-12-[v0]-12-|", views: accessory)
+        addConstraint(NSLayoutConstraint(item: accessory, attribute: .width, relatedBy: .equal, toItem: accessory, attribute: .height, multiplier: 1, constant: 0))
         
         
     }

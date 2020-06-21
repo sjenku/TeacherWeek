@@ -1,45 +1,35 @@
 //
-//  ChooseCollectionListView.swift
+//  ChooseCollectionViewListDemo.swift
 //  Teacher's_Week
 //
-//  Created by jenia kushnarenko on 17/06/2020.
+//  Created by jenia kushnarenko on 21/06/2020.
 //  Copyright © 2020 jenia kushnarenko. All rights reserved.
 //
 
 import UIKit
 
-class ChooseCollectionListView: UIView {
+class ChooseCollectionViewListDemo: UIView {
     
     
  //MARK: - PrivateProperties
     private let cellId = "cellId"
     private let headerId = "headerId"
-    private var contacts:[Character:[Student]] = [
-        "A":[Student(name: "April Levin"),Student(name: "Arnold Shvartsneger")],
-        "B":[Student(name: "Bob Marli"),Student(name: "Bon Jovi"),Student(name: "Ben Gurion")],
-        "C":[Student(name: "Chris Brawn")],
-        "M":[Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
-    ]
-    lazy var letters: [Character] = {
-        var l = [Character]()
-        l = self.contacts.map { (name) -> Character in
-            return name.key
-        }
-        l.sort()
-        return l
-    }()
 
-
+    
+    var sectionsInfo:[SectionInfo]?
     
  //MARK:- Overrides Methods
     
-    override init(frame: CGRect) {
+    init(frame:CGRect,info:[SectionInfo]? = nil) {
         super.init(frame: frame)
         
         setView()
-        collectionView.register(ChooseCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(CollectionViewCellSubtitle.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(ChooseCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        sectionsInfo = info
+        
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -49,16 +39,6 @@ class ChooseCollectionListView: UIView {
  //MARK:- Views And Methods Related To Views
     
     
-//
-//    private var students:[Student] = [
-//         Student(name: "Jennifer Lopez"),
-//         Student(name:"Mark Tzugenberg"),
-//         Student(name: "Tomas Adison"),
-//         Student(name: "April Levin"),
-//         Student(name: "Messi"),
-//         Student(name: "Arnold Shvartsneger")
-//    ]
-//
     lazy var collectionView:UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
@@ -94,24 +74,21 @@ class ChooseCollectionListView: UIView {
 
 //MARK:- UICollectionViewDataSource
 
-extension ChooseCollectionListView:UICollectionViewDataSource {
+extension ChooseCollectionViewListDemo:UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(letters.count)
-        return letters.count
+        return sectionsInfo?.count ?? 0
        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let students = contacts[letters[section]]
-        return students?.count ?? 0
+        return sectionsInfo?[section].cellsInfo.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChooseCollectionViewCell
-        let students =  contacts[letters[indexPath.section]]
-        let student = students?[indexPath.item]
-        cell.personNameLabel.text = student?.name ?? ""
-        cell.isChecked = student?.checked ?? false
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CollectionViewCellSubtitle
+        let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+        cell.title.text = cellInfo?.title
+        cell.isAccessoryShown = cellInfo?.isAccessory ?? false
         return cell
     }
     
@@ -119,7 +96,7 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {return UICollectionReusableView()}
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ChooseCollectionHeaderView
-        header.char = letters[indexPath.section]
+        header.labelView.text = sectionsInfo?[indexPath.section].headerTitle
         return header
     }
 
@@ -128,10 +105,10 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
 
 //MARK:- UICollectionViewDelegateFlowLayout
 
-extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
+extension ChooseCollectionViewListDemo:UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 45)
+        return CGSize(width: collectionView.frame.width, height: 60)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -146,11 +123,14 @@ extension ChooseCollectionListView:UICollectionViewDelegateFlowLayout {
 
 //MARK:- UICollectionViewDelegate
 
-extension ChooseCollectionListView:UICollectionViewDelegate {
+extension ChooseCollectionViewListDemo:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        contacts[letters[indexPath.section]]![indexPath.item].checked = !contacts[letters[indexPath.section]]![indexPath.item].checked
         
+        guard let _ = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
+        
+        sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory! 
+
         collectionView.reloadData()
         
     }
