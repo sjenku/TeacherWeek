@@ -12,13 +12,27 @@ import UIKit
 class ChoosableListController:UIViewController{
     
     
-    //MARK: - Overrides
+    //MARK: - Properties
+    var navTitle:String = ""
     
+    
+    
+    //MARK: - Init
+    init(navigationTitle:String) {
+        navTitle = navigationTitle
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        
     }
     
     
@@ -26,7 +40,7 @@ class ChoosableListController:UIViewController{
     
     private let labelView:CustomView = ChooseLabelView()
     private let personsListCollectionView:ListCollectionView =  {
-        let sectionsInfo = Contacts.getSectionsInfo()
+        let sectionsInfo = ContactsManager.getSectionsInfo()
         return ListCollectionView(frame: .zero, info: sectionsInfo)
     }()
     
@@ -77,7 +91,7 @@ class ChoosableListController:UIViewController{
         self.definesPresentationContext = true
         
         //navigation
-        self.navigationItem.title = "Contacts"
+        self.navigationItem.title = navTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false

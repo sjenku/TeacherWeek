@@ -11,11 +11,11 @@ import Foundation
 
 
 
-struct Contacts:CollectionListData {
+struct ContactsManager:CollectionListData {
     
     static func getSectionsInfo() -> [SectionInfo] {
         
-        let contacts = Contacts.getContacts()  //[Character:[Student]
+        let contacts = ContactsManager.getContacts()  //[Character:[Student]
             //sectionInfo
             let sectionsInfo:[SectionInfo] = {
                 let sections = contacts.map { (contactsPerKey) -> SectionInfo in

@@ -12,8 +12,7 @@ class AppTabBarController: UITabBarController {
     
     //MARK: - Views
     private let homeViewController:HomeViewController = HomeViewController()
-    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController())
-    
+    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
     
     //MARK: - Overrides Methods
     override func viewDidLoad() {

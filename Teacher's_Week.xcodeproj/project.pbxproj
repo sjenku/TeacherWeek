@@ -16,7 +16,6 @@
 		BE12520D2497C2F8006F264B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12520C2497C2F8006F264B /* Views.swift */; };
 		BE12520F2497CD4A006F264B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12520E2497CD4A006F264B /* HomeView.swift */; };
 		BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */; };
-		BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252142498BF3A006F264B /* StudentOrGroup.swift */; };
 		BE1252172499290F006F264B /* HomeAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1252162499290F006F264B /* HomeAddView.swift */; };
 		BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521824993F60006F264B /* HomeLowerContainerView.swift */; };
 		BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */; };
@@ -28,10 +27,14 @@
 		BE12524F249CD204006F264B /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12524E249CD203006F264B /* ListViewCell.swift */; };
 		BE125252249D338C006F264B /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125251249D338C006F264B /* ListHeaderView.swift */; };
 		BE125254249F873B006F264B /* ListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125253249F873B006F264B /* ListCollectionView.swift */; };
-		BE125256249F8B92006F264B /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125255249F8B92006F264B /* Contacts.swift */; };
-		BE125259249F8D6D006F264B /* CellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125258249F8D6D006F264B /* CellInfo.swift */; };
+		BE125256249F8B92006F264B /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125255249F8B92006F264B /* ContactsManager.swift */; };
+		BE125259249F8D6D006F264B /* CellSectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125258249F8D6D006F264B /* CellSectionInfo.swift */; };
 		BE12525B249FD0C7006F264B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525A249FD0C6006F264B /* Protocols.swift */; };
-		BE12525E249FD3A4006F264B /* ListCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525D249FD3A4006F264B /* ListCellSubtitle.swift */; };
+		BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */; };
+		BE12526024A0BE65006F264B /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525F24A0BE65006F264B /* CustomListView.swift */; };
+		BE12526324A0E5D4006F264B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526224A0E5D4006F264B /* Enums.swift */; };
+		BE12526524A0E644006F264B /* StudentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526424A0E644006F264B /* StudentsManager.swift */; };
+		BE12526824A0EC4E006F264B /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526724A0EC4E006F264B /* NewGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +49,6 @@
 		BE12520C2497C2F8006F264B /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		BE12520E2497CD4A006F264B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonWithIcon.swift; sourceTree = "<group>"; };
-		BE1252142498BF3A006F264B /* StudentOrGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroup.swift; sourceTree = "<group>"; };
 		BE1252162499290F006F264B /* HomeAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddView.swift; sourceTree = "<group>"; };
 		BE12521824993F60006F264B /* HomeLowerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLowerContainerView.swift; sourceTree = "<group>"; };
 		BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUpperConteinerView.swift; sourceTree = "<group>"; };
@@ -58,10 +60,14 @@
 		BE12524E249CD203006F264B /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		BE125251249D338C006F264B /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
 		BE125253249F873B006F264B /* ListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionView.swift; sourceTree = "<group>"; };
-		BE125255249F8B92006F264B /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
-		BE125258249F8D6D006F264B /* CellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInfo.swift; sourceTree = "<group>"; };
+		BE125255249F8B92006F264B /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
+		BE125258249F8D6D006F264B /* CellSectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSectionInfo.swift; sourceTree = "<group>"; };
 		BE12525A249FD0C6006F264B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		BE12525D249FD3A4006F264B /* ListCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellSubtitle.swift; sourceTree = "<group>"; };
+		BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCellSubtitle.swift; sourceTree = "<group>"; };
+		BE12525F24A0BE65006F264B /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
+		BE12526224A0E5D4006F264B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		BE12526424A0E644006F264B /* StudentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsManager.swift; sourceTree = "<group>"; };
+		BE12526724A0EC4E006F264B /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +117,9 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE12526624A0EBCC006F264B /* NewGroupViews */,
 				BE125221249A05F5006F264B /* ChoosableListControllerViews */,
-				BE12521A24993FBE006F264B /* homeView */,
+				BE12521A24993FBE006F264B /* HomeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,10 +127,10 @@
 		BE1251FB24969DA3006F264B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BE125257249F8D47006F264B /* Cellinfo */,
-				BE1252142498BF3A006F264B /* StudentOrGroup.swift */,
+				BE125258249F8D6D006F264B /* CellSectionInfo.swift */,
 				BE12521D2499784C006F264B /* Student.swift */,
-				BE125255249F8B92006F264B /* Contacts.swift */,
+				BE125255249F8B92006F264B /* ContactsManager.swift */,
+				BE12526424A0E644006F264B /* StudentsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 				BE1251EA24969745006F264B /* AppTabBarController.swift */,
 				BE12520A2497BF79006F264B /* HomeViewController.swift */,
 				BE125224249A07AC006F264B /* ChoosableListController.swift */,
+				BE12526724A0EC4E006F264B /* NewGroupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,9 +149,10 @@
 		BE1251FD24969DDD006F264B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BE12526124A0D71B006F264B /* CustomViews */,
 				BE1251FE24969DF4006F264B /* Colors.swift */,
-				BE12520C2497C2F8006F264B /* Views.swift */,
 				BE12525A249FD0C6006F264B /* Protocols.swift */,
+				BE12526224A0E5D4006F264B /* Enums.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -155,7 +164,7 @@
 			path = External_Classes;
 			sourceTree = "<group>";
 		};
-		BE12521A24993FBE006F264B /* homeView */ = {
+		BE12521A24993FBE006F264B /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				BE12520E2497CD4A006F264B /* HomeView.swift */,
@@ -164,36 +173,28 @@
 				BE12521824993F60006F264B /* HomeLowerContainerView.swift */,
 				BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */,
 			);
-			path = homeView;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		BE125221249A05F5006F264B /* ChoosableListControllerViews */ = {
 			isa = PBXGroup;
 			children = (
-				BE125250249D31DD006F264B /* collectionListView */,
+				BE125250249D31DD006F264B /* CollectionListView */,
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
 				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
 			);
 			path = ChoosableListControllerViews;
 			sourceTree = "<group>";
 		};
-		BE125250249D31DD006F264B /* collectionListView */ = {
+		BE125250249D31DD006F264B /* CollectionListView */ = {
 			isa = PBXGroup;
 			children = (
 				BE12524E249CD203006F264B /* ListViewCell.swift */,
 				BE125251249D338C006F264B /* ListHeaderView.swift */,
 				BE125253249F873B006F264B /* ListCollectionView.swift */,
-				BE12525D249FD3A4006F264B /* ListCellSubtitle.swift */,
+				BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */,
 			);
-			path = collectionListView;
-			sourceTree = "<group>";
-		};
-		BE125257249F8D47006F264B /* Cellinfo */ = {
-			isa = PBXGroup;
-			children = (
-				BE125258249F8D6D006F264B /* CellInfo.swift */,
-			);
-			path = Cellinfo;
+			path = CollectionListView;
 			sourceTree = "<group>";
 		};
 		BE12525C249FD2C0006F264B /* Tmp */ = {
@@ -202,6 +203,22 @@
 				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
 			);
 			path = Tmp;
+			sourceTree = "<group>";
+		};
+		BE12526124A0D71B006F264B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				BE12520C2497C2F8006F264B /* Views.swift */,
+				BE12525F24A0BE65006F264B /* CustomListView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		BE12526624A0EBCC006F264B /* NewGroupViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewGroupViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,22 +291,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE125259249F8D6D006F264B /* CellInfo.swift in Sources */,
+				BE125259249F8D6D006F264B /* CellSectionInfo.swift in Sources */,
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
+				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE12525B249FD0C7006F264B /* Protocols.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
-				BE125256249F8B92006F264B /* Contacts.swift in Sources */,
+				BE125256249F8B92006F264B /* ContactsManager.swift in Sources */,
 				BE125252249D338C006F264B /* ListHeaderView.swift in Sources */,
-				BE12525E249FD3A4006F264B /* ListCellSubtitle.swift in Sources */,
+				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
-				BE1252152498BF3A006F264B /* StudentOrGroup.swift in Sources */,
 				BE12521E2499784C006F264B /* Student.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
+				BE12526824A0EC4E006F264B /* NewGroupViewController.swift in Sources */,
+				BE12526024A0BE65006F264B /* CustomListView.swift in Sources */,
 				BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */,
+				BE12526524A0E644006F264B /* StudentsManager.swift in Sources */,
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,

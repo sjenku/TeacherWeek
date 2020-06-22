@@ -1,5 +1,5 @@
 //
-//  ListCellSubtitle.swift
+//  ListViewCellSubtitle.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 21/06/2020.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ListCellSubtitle:ListViewCell {
+class ListViewCellSubtitle:ListViewCell {
     
     
     let subTitle:UILabel = {
