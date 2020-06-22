@@ -14,6 +14,14 @@ class AppTabBarController: UITabBarController {
     private let homeViewController:HomeViewController = HomeViewController()
     private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
     
+    private let newGroupCollectionVC:CustomNavigationController = {
+        let vc = NewGroupCollectionVC(collectionViewLayout: UICollectionViewFlowLayout())
+        let navVC = CustomNavigationController(rootViewController: vc)
+        navVC.setupNavigationWithStyle(style: .small, title: "New Group")
+        return navVC
+    }()
+
+    
     //MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +36,17 @@ class AppTabBarController: UITabBarController {
     
     private func setTabBarController() {
         //Controllers
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = .blue
         let vc4 = UIViewController()
         vc4.view.backgroundColor = .green
         
         //TabBar-Items
         homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "house"), tag: 1)
         chooseFromListController.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 2)
-        vc3.tabBarItem = UITabBarItem(title: "Student", image: UIImage(named: "person"), tag: 3)
+        newGroupCollectionVC.tabBarItem = UITabBarItem(title: "Student", image: UIImage(named: "person"), tag: 3)
         vc4.tabBarItem = UITabBarItem(title: "Group", image: UIImage(named: "personAndPerson"), tag: 4)
         
         
-        viewControllers = [homeViewController,chooseFromListController,vc3,vc4]
+        viewControllers = [homeViewController,chooseFromListController,newGroupCollectionVC,vc4]
         setViewControllers(viewControllers, animated: true)
         
         //Design
