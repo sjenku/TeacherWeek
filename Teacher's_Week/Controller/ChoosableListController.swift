@@ -84,7 +84,7 @@ class ChoosableListController:UIViewController{
 
     }
     
-    
+  //TODO:Use Custom NavigationController Instead Of This Method Inside
     private func setupNavigationController() {
         
         //to not mess the searchBar

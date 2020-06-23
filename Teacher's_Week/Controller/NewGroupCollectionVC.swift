@@ -11,22 +11,32 @@ import UIKit
 
 class NewGroupCollectionVC:UICollectionViewController {
     
+    //MARK: - Properties
+    
+   private let upperCellId = "upperCellId"
+   private let lowerCellId = "lowerCellId"
     
     
-    let upperCellId = "upperCellId"
-    let lowerCellId = "lowerCellId"
+    //MARK: - Init
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout:layout)
         
-        collectionView.backgroundColor = UIColor.MyTheme.darkBG
-        collectionView.register(NewGroupLowerCell.self, forCellWithReuseIdentifier: lowerCellId)
-        collectionView.register(NewGroupUpperCell.self, forCellWithReuseIdentifier: upperCellId)
+     setupCollectionView()
 
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+//MARK: - Private Functions
+    private func setupCollectionView() {
+        collectionView.backgroundColor = UIColor.MyTheme.darkBG
+        collectionView.register(NewGroupLowerCell.self, forCellWithReuseIdentifier: lowerCellId)
+        collectionView.register(NewGroupUpperCell.self, forCellWithReuseIdentifier: upperCellId)
+        collectionView.delaysContentTouches = false
     }
     
     
