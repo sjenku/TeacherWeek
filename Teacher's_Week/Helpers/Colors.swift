@@ -41,5 +41,7 @@ extension UIColor {
         static let barsColor = UIColor.rgb(red: 22, green: 23, blue: 24)
         static let cellColor = UIColor.rgb(red: 58, green: 58, blue: 60)
         static let headerColor = UIColor.rgb(red: 31, green: 34, blue: 40)
+        static let textFieldColor = UIColor.rgb(red: 209, green: 209, blue: 214)
+        static let addStundentButtonColor = UIColor.rgb(red: 39, green: 73, blue: 109)
     }
 }

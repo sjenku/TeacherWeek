@@ -38,6 +38,7 @@
 		BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526924A103FE006F264B /* NewGroupLowerCell.swift */; };
 		BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */; };
 		BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526D24A14046006F264B /* CustomNavigationController.swift */; };
+		BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		BE12526924A103FE006F264B /* NewGroupLowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerCell.swift; sourceTree = "<group>"; };
 		BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperCell.swift; sourceTree = "<group>"; };
 		BE12526D24A14046006F264B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithImgTitle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				BE12520E2497CD4A006F264B /* HomeView.swift */,
-				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
 				BE1252162499290F006F264B /* HomeAddView.swift */,
 				BE12521824993F60006F264B /* HomeLowerContainerView.swift */,
 				BE12521B24995EA5006F264B /* HomeUpperConteinerView.swift */,
@@ -217,6 +218,8 @@
 			children = (
 				BE12520C2497C2F8006F264B /* Views.swift */,
 				BE12525F24A0BE65006F264B /* CustomListView.swift */,
+				BE1252122498BEB0006F264B /* RoundButtonWithIcon.swift */,
+				BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE12525B249FD0C7006F264B /* Protocols.swift in Sources */,
+				BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
 				BE125256249F8B92006F264B /* ContactsManager.swift in Sources */,

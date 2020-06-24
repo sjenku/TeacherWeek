@@ -61,7 +61,7 @@ class NewGroupCollectionVC:UICollectionViewController {
 extension NewGroupCollectionVC:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height * 0.6)
+        return indexPath.item == 0 ? CGSize(width: collectionView.frame.width, height: 300):CGSize(width: collectionView.frame.width, height: collectionView.frame.height * 0.6)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
