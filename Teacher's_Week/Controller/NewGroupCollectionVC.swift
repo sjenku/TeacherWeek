@@ -9,63 +9,46 @@
 import UIKit
 
 
-class NewGroupCollectionVC:UICollectionViewController {
+class NewGroupCollectionVC:UIViewController {
     
-    //MARK: - Properties
+    //MARK: - Views
+    let lowerContainer:NewGroupLowerContrainerView = {
+        let view = NewGroupLowerContrainerView()
+        return view
+    }()
     
-   private let upperCellId = "upperCellId"
-   private let lowerCellId = "lowerCellId"
+    
+    let upperContainer:UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
     
     
-    //MARK: - Init
+    //MARK: - Override
     
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout:layout)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-     setupCollectionView()
+        view.backgroundColor = UIColor.MyTheme.darkBG
+        setSubview()
+        setConstriants()
+    }
+    
 
+    //MARK: - Private Functions
+    
+    private func setSubview() {
+        view.addSubview(upperContainer)
+        view.addSubview(lowerContainer)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-//MARK: - Private Functions
-    private func setupCollectionView() {
-        collectionView.backgroundColor = UIColor.MyTheme.darkBG
-        collectionView.register(NewGroupLowerCell.self, forCellWithReuseIdentifier: lowerCellId)
-        collectionView.register(NewGroupUpperCell.self, forCellWithReuseIdentifier: upperCellId)
-        collectionView.delaysContentTouches = false
-    }
-    
-    
-//MARK: - UICollectionViewDataSource
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    private func setConstriants() {
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: upperContainer)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: lowerContainer)
+        view.addConstraintsWithFormat(format: "V:|[v0][v1]", views: upperContainer,lowerContainer)
+        view.addConstraint(NSLayoutConstraint(item: lowerContainer, attribute: .height, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .height, multiplier: 0.4, constant: 0))
+        lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
         
-       let cell = indexPath.item == 0 ? collectionView.dequeueReusableCell(withReuseIdentifier: upperCellId, for: indexPath) :
-        collectionView.dequeueReusableCell(withReuseIdentifier: lowerCellId, for: indexPath)
-        
-        return cell
     }
-    
-}
-
-//MARK: - UICollectionViewDelegateFlowLayout
-
-extension NewGroupCollectionVC:UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return indexPath.item == 0 ? CGSize(width: collectionView.frame.width, height: 300):CGSize(width: collectionView.frame.width, height: collectionView.frame.height * 0.6)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
 }

@@ -39,6 +39,9 @@
 		BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */; };
 		BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526D24A14046006F264B /* CustomNavigationController.swift */; };
 		BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */; };
+		BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */; };
+		BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */; };
+		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperCell.swift; sourceTree = "<group>"; };
 		BE12526D24A14046006F264B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithImgTitle.swift; sourceTree = "<group>"; };
+		BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerContrainerView.swift; sourceTree = "<group>"; };
+		BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperContrainerView.swift; sourceTree = "<group>"; };
+		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 				BE12521D2499784C006F264B /* Student.swift */,
 				BE125255249F8B92006F264B /* ContactsManager.swift */,
 				BE12526424A0E644006F264B /* StudentsManager.swift */,
+				BE870EC924AB9005005E8B23 /* Configurations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +215,8 @@
 		BE12525C249FD2C0006F264B /* Tmp */ = {
 			isa = PBXGroup;
 			children = (
+				BE12526924A103FE006F264B /* NewGroupLowerCell.swift */,
+				BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */,
 				BE12522A249AB014006F264B /* ChooseCollectionListView.swift */,
 			);
 			path = Tmp;
@@ -227,8 +236,8 @@
 		BE12526624A0EBCC006F264B /* NewGroupViews */ = {
 			isa = PBXGroup;
 			children = (
-				BE12526924A103FE006F264B /* NewGroupLowerCell.swift */,
-				BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */,
+				BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */,
+				BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */,
 			);
 			path = NewGroupViews;
 			sourceTree = "<group>";
@@ -308,6 +317,7 @@
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE12525B249FD0C7006F264B /* Protocols.swift in Sources */,
+				BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */,
 				BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
@@ -316,6 +326,7 @@
 				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
+				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */,
 				BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */,
@@ -329,6 +340,7 @@
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,
+				BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */,
 				BE125225249A07AC006F264B /* ChoosableListController.swift in Sources */,
 				BE12524F249CD204006F264B /* ListViewCell.swift in Sources */,
 				BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */,

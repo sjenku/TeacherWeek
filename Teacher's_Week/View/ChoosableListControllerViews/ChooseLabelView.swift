@@ -32,6 +32,9 @@ class ChooseLabelView:CustomView {
         addConstraintsWithFormat(format: "V:|-16-[v0]-16-|", views: labelView)
         
     }
+    
+    
+   
 }
 
 

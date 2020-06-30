@@ -70,17 +70,18 @@ class ChoosableListController:UIViewController{
         setConstraints()
     }
     
+ 
     private func setConstraints() {
 
-        //Horizontal and Height
+        //Horizontal and Vertical
         view.addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: labelView)
-        view.addConstraintsWithFormat(format: "V:|-[v0][v1]-[v2(==v0)]-|", views: labelView,personsListCollectionView,doneButtonView)
+        view.addConstraintsWithFormat(format: "V:|-[v0][v1]-[v2(==v0)]", views: labelView,personsListCollectionView,doneButtonView)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: personsListCollectionView)
         view.addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: doneButtonView)
-    
-        //centerContainer
-        view.addConstraint(NSLayoutConstraint(item: personsListCollectionView, attribute: .height, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .height, multiplier: 0.6, constant: 0))
         
+        //labelView Height
+        labelView.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1).isActive = true
+        doneButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
 
     }
     

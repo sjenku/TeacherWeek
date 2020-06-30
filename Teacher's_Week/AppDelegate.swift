@@ -18,7 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        DeviceConfigurations.windowHeight = window?.frame.height ?? 0
+        
         window?.makeKeyAndVisible()
+        print("Hello World")
         window?.rootViewController = AppTabBarController()
         
         return true

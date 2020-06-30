@@ -15,9 +15,9 @@ class AppTabBarController: UITabBarController {
     private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
     
     private let newGroupCollectionVC:CustomNavigationController = {
-        let vc = NewGroupCollectionVC(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = NewGroupCollectionVC()
         let navVC = CustomNavigationController(rootViewController: vc)
-        navVC.setupNavigationWithStyle(style: .small, title: "New Group")
+        navVC.setupNavigationWithStyle(style: .large, title: "New Group")
         return navVC
     }()
 
