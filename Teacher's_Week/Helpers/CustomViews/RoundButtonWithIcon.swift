@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+//MARK: - RoundButton
 
 class RoundButton:UIButton {
     
@@ -47,6 +47,7 @@ class RoundButtonWithIcon:UIView {
     
     let btImageView:UIImageView = {
         let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -147,7 +148,7 @@ class RoundButtonWithIcon:UIView {
     }
     
     private func setLayer() {
-        circleButton.layer.cornerRadius = frame.width / 2
+        circleButton.layer.cornerRadius = circleButton.frame.width / 2
         let factor = circleButton.layer.cornerRadius
         
         if shadowColor != nil {

@@ -33,9 +33,10 @@ class NewGroupUpperContrainerView:CustomView {
         let image = UIImage(named: "studentAdd")?.withRenderingMode(.alwaysTemplate)
 
         button.btImageView.image = image
-        button.btImageView.tintColor = .green
+        button.btImageView.tintColor = UIColor.MyTheme.shadowGreen
         button.btImageView.contentMode = .scaleAspectFit
-        button.shadowColor = .purple
+        button.shadowColor = UIColor.MyTheme.shadowGreen
+        button.isHighlightedColor = UIColor.MyTheme.shadowGreen.highlight
 
         return button
     }()
@@ -43,12 +44,13 @@ class NewGroupUpperContrainerView:CustomView {
 
     let deleteButton:RoundButtonWithIcon = {
            let button = RoundButtonWithIcon()
-           let image = UIImage(named: "studentAdd")?.withRenderingMode(.alwaysTemplate)
+           let image = UIImage(named: "student.delete")?.withRenderingMode(.alwaysTemplate)
 
            button.btImageView.image = image
            button.btImageView.tintColor = .red
            button.btImageView.contentMode = .scaleAspectFit
-           button.shadowColor = .systemPink
+           button.shadowColor = .red
+           button.isHighlightedColor = UIColor.red.highlight
 
            return button
        }()
@@ -91,8 +93,8 @@ class NewGroupUpperContrainerView:CustomView {
         textField.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.05),
         
         stackView.widthAnchor.constraint(equalTo: self.widthAnchor,multiplier: 0.75,constant: 0),
-        stackView.topAnchor.constraint(equalTo: textField.bottomAnchor,constant: 8),
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -8),
+        stackView.topAnchor.constraint(equalTo: textField.bottomAnchor,constant: 24),
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -24),
         stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ]
         
