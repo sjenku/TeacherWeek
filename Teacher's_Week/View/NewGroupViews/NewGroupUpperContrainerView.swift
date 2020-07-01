@@ -65,10 +65,32 @@ class NewGroupUpperContrainerView:CustomView {
         return sv
         }()
     
+    let groupImageIcon:UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.image = UIImage(named: "groupGreen")?.withRenderingMode(.alwaysTemplate)
+        iv.tintColor = UIColor.MyTheme.lightBlue
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    let title:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Group Name"
+        label.textAlignment = .center
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: DeviceConfigurations.windowHeight / 40, weight: .light)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
     override func setupView() {
         backgroundColor = UIColor.MyTheme.darkBG
         addSubview(textField)
         addSubview(stackView)
+        addSubview(groupImageIcon)
+        addSubview(title)
         setConstraints()
         handleKeyboard()
     }
@@ -95,7 +117,18 @@ class NewGroupUpperContrainerView:CustomView {
         stackView.widthAnchor.constraint(equalTo: self.widthAnchor,multiplier: 0.75,constant: 0),
         stackView.topAnchor.constraint(equalTo: textField.bottomAnchor,constant: 24),
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -24),
-        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        
+        groupImageIcon.topAnchor.constraint(equalTo: self.topAnchor,constant: DeviceConfigurations.windowHeight / 14),
+        groupImageIcon.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+        groupImageIcon.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+        groupImageIcon.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight / 12),
+        
+        title.topAnchor.constraint(equalTo: groupImageIcon.bottomAnchor,constant: 8),
+        title.leadingAnchor.constraint(equalTo: groupImageIcon.leadingAnchor),
+        title.trailingAnchor.constraint(equalTo: groupImageIcon.trailingAnchor),
+        title.bottomAnchor.constraint(equalTo: textField.topAnchor,constant: -DeviceConfigurations.windowHeight / 62)
+        
         ]
         
         constraints.forEach { (constraint) in

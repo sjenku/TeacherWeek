@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "groupGreen-2.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "groupGreen.pdf",
+      "filename" : "groupGreen-3.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "groupGreen-4.pdf",
       "scale" : "3x"
     }
   ],

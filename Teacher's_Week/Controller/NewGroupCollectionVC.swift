@@ -45,7 +45,7 @@ class NewGroupCollectionVC:UIViewController {
     private func setConstriants() {
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: upperContainer)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: lowerContainer)
-        view.addConstraintsWithFormat(format: "V:|[v0][v1]", views: upperContainer,lowerContainer)
+        view.addConstraintsWithFormat(format: "V:|-[v0][v1]", views: upperContainer,lowerContainer)
         lowerContainer.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.2 + 16).isActive = true
         
         
