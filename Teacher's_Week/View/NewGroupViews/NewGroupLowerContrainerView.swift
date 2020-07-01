@@ -21,8 +21,8 @@ class NewGroupLowerContrainerView:CustomView {
         layout.scrollDirection = .horizontal
         
         let collectionV = UICollectionView(frame:.zero,collectionViewLayout:layout)
-        collectionV.backgroundColor = .brown
-        collectionV.register(UICollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
+        collectionV.backgroundColor = UIColor.MyTheme.darkBG
+        collectionV.register(NewGroupStudentCell.self, forCellWithReuseIdentifier: self.cellId)
         collectionV.register(DumbHeader.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: self.headerId)
         collectionV.delegate = self
         collectionV.dataSource = self
@@ -73,7 +73,7 @@ class NewGroupLowerContrainerView:CustomView {
 
 extension NewGroupLowerContrainerView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 8
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -82,7 +82,6 @@ extension NewGroupLowerContrainerView:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .red
         return cell
     }
     
@@ -108,25 +107,21 @@ extension NewGroupLowerContrainerView:UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: - UICollectionViewDelegate
 
-
-class NewGroupStudentCell:CustomCollectionViewCell {
-    
-    
-    
-}
-
-
-class DumbHeader:UICollectionReusableView {
-    
-    override init(frame: CGRect) {
-        super.init(frame:frame)
-        
-        backgroundColor = .cyan
+extension NewGroupLowerContrainerView:UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+          if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
+             collectionView.deselectItem(at: indexPath, animated: true)
+             return false
+         }
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+         return true
     }
+    
 }
+

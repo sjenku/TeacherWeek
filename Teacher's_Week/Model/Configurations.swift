@@ -12,5 +12,6 @@ import CoreGraphics
 struct DeviceConfigurations {
     
    static var windowHeight:CGFloat = 0
+   static var windowWidth:CGFloat = 0
     
 }

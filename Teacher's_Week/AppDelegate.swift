@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         DeviceConfigurations.windowHeight = window?.frame.height ?? 0
+        DeviceConfigurations.windowWidth = window?.frame.width ?? 0
         
         window?.makeKeyAndVisible()
         print("Hello World")

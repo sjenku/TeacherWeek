@@ -18,9 +18,8 @@ class NewGroupCollectionVC:UIViewController {
     }()
     
     
-    let upperContainer:UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
+    let upperContainer:NewGroupUpperContrainerView = {
+        let view = NewGroupUpperContrainerView()
         return view
     }()
     
@@ -47,7 +46,9 @@ class NewGroupCollectionVC:UIViewController {
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: upperContainer)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: lowerContainer)
         view.addConstraintsWithFormat(format: "V:|[v0][v1]", views: upperContainer,lowerContainer)
-        view.addConstraint(NSLayoutConstraint(item: lowerContainer, attribute: .height, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .height, multiplier: 0.4, constant: 0))
+        lowerContainer.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.2 + 16).isActive = true
+        
+        
         lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
         
     }
