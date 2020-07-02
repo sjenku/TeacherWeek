@@ -25,36 +25,3 @@ extension UIView {
 }
 
 
-class CustomCollectionViewCell:UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame:frame)
-        
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder:coder)
-        
-        setupView()
-    }
-    
-    func setupView() {
-    }
-}
-
-class CustomView:UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame:frame)
-        
-        setupView()
-    }
-   
-    
-    func setupView() {
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}

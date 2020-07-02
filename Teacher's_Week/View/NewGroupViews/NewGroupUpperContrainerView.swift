@@ -13,20 +13,12 @@ import UIKit
 
 class NewGroupUpperContrainerView:CustomView {
     
-    
-    lazy var textField:UITextField = {
-          let tv = UITextField()
-          tv.backgroundColor = UIColor.MyTheme.textFieldColor
-          tv.placeholder = "Your Group Name"
-          tv.adjustsFontSizeToFitWidth = true
-          tv.textAlignment = .center
-          tv.layer.cornerRadius = 10
-          tv.delegate = self
-          tv.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-          tv.textColor = UIColor.darkGray
-          tv.translatesAutoresizingMaskIntoConstraints = false
-          return tv
-      }()
+
+    let textField:CustomTextField = {
+        let tf = CustomTextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
     
     let addButton:RoundButtonWithIcon = {
         let button = RoundButtonWithIcon()
@@ -139,12 +131,3 @@ class NewGroupUpperContrainerView:CustomView {
     
 }
 
-
-
-extension NewGroupUpperContrainerView:UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-    }
-    
-}
