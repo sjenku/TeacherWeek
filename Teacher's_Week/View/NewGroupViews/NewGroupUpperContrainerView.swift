@@ -13,8 +13,9 @@ import UIKit
 
 class NewGroupUpperContrainerView:CustomView {
     
+    //MARK: - Views
 
-    let textField:CustomTextField = {
+    lazy var textField:CustomTextField = {
         let tf = CustomTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -77,6 +78,7 @@ class NewGroupUpperContrainerView:CustomView {
         return label
     }()
     
+    //MARK: - Overrides
     override func setupView() {
         backgroundColor = UIColor.MyTheme.darkBG
         addSubview(textField)
@@ -87,6 +89,8 @@ class NewGroupUpperContrainerView:CustomView {
         handleKeyboard()
     }
     
+    //MARK: - KeyBoard
+    
     private func handleKeyboard() {
           let tap = UITapGestureRecognizer(target: self, action: #selector(endKeyBoardEditing))
           addGestureRecognizer(tap)
@@ -96,7 +100,8 @@ class NewGroupUpperContrainerView:CustomView {
           endEditing(true)
       }
       
-
+    //MARK: - Constraints
+    
     
     private func setConstraints() {
         

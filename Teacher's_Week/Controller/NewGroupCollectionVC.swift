@@ -53,3 +53,4 @@ class NewGroupCollectionVC:UIViewController {
         
     }
 }
+

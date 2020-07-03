@@ -13,18 +13,31 @@ import UIKit
 class CustomTextField:CustomView {
     
     lazy var textField:UITextField = {
-            let tv = UITextField()
-            tv.backgroundColor = UIColor.MyTheme.textFieldColor
-            tv.placeholder = "Your Group Name"
-            tv.adjustsFontSizeToFitWidth = true
-            tv.textAlignment = .center
-            tv.layer.cornerRadius = 10
-            tv.delegate = self
-            tv.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            tv.textColor = UIColor.darkGray
-            tv.translatesAutoresizingMaskIntoConstraints = false
-            return tv
-        }()
+        let tv = UITextField()
+        tv.backgroundColor = UIColor.MyTheme.textFieldColor
+        tv.adjustsFontSizeToFitWidth = true
+        tv.textAlignment = .center
+        tv.delegate = self
+        tv.layer.cornerRadius = 10
+        tv.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        tv.textColor = UIColor.darkGray
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+    
+    var placeHolder:String = "" {
+        willSet {
+            textField.placeholder = newValue
+        }
+    }
+    
+    override var tag: Int {
+        willSet {
+            textField.tag = newValue
+        }
+    }
+    
+    static weak var currentActive:UITextField?
     
     override func setupView() {
         super.setupView()
@@ -37,11 +50,15 @@ class CustomTextField:CustomView {
     
 }
 
+
+//MARK: - UITextFieldDelegate
 extension CustomTextField:UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-       }
+        textField.resignFirstResponder()
+    }
     
-    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        CustomTextField.currentActive = textField
+        return true
+    }
 }
