@@ -27,6 +27,13 @@ class AppTabBarController: UITabBarController {
         navVC.setupNavigationWithStyle(style: .large, title: "New Student")
         return navVC
     }()
+    
+    private let tmpStudentInfoVC:CustomNavigationController = {
+        let vc = StudentInfoVC()
+        let navVC = CustomNavigationController(rootViewController: vc)
+        navVC.setupNavigationWithStyle(style: .large, title: "Student Info")
+        return navVC
+    }()
 
     
     //MARK: - Overrides Methods
@@ -47,10 +54,10 @@ class AppTabBarController: UITabBarController {
         homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "house"), tag: 1)
         chooseFromListController.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 2)
         newGroupCollectionVC.tabBarItem = UITabBarItem(title: "Student", image: UIImage(named: "person"), tag: 3)
-        newStudentCollectionVC.tabBarItem = UITabBarItem(title: "Group", image: UIImage(named: "personAndPerson"), tag: 4)
+        tmpStudentInfoVC.tabBarItem = UITabBarItem(title: "Group", image: UIImage(named: "personAndPerson"), tag: 4)
         
         
-        viewControllers = [homeViewController,chooseFromListController,newGroupCollectionVC,newStudentCollectionVC]
+        viewControllers = [homeViewController,chooseFromListController,newGroupCollectionVC,tmpStudentInfoVC]
         setViewControllers(viewControllers, animated: true)
         
         //Design

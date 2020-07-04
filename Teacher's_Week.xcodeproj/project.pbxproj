@@ -49,6 +49,8 @@
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
+		BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */; };
+		BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */; };
 		BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupStudentCell.swift; sourceTree = "<group>"; };
 		BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCharHeader.swift; sourceTree = "<group>"; };
+		BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoVC.swift; sourceTree = "<group>"; };
+		BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadTitleAndSubTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE956C1324B0B68B0028C69A /* StudentInfo */,
 				BE26F91924ADC51B00664510 /* NewStudentViews */,
 				BE12526624A0EBCC006F264B /* NewGroupViews */,
 				BE125221249A05F5006F264B /* ChoosableListControllerViews */,
@@ -175,6 +180,7 @@
 				BE125224249A07AC006F264B /* ChoosableListController.swift */,
 				BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */,
 				BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */,
+				BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +287,14 @@
 			path = NewStudentViews;
 			sourceTree = "<group>";
 		};
+		BE956C1324B0B68B0028C69A /* StudentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */,
+			);
+			path = StudentInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +390,7 @@
 				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
+				BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */,
 				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */,
@@ -391,6 +406,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
+				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,
 				BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */,
 				BE125225249A07AC006F264B /* ChoosableListController.swift in Sources */,
