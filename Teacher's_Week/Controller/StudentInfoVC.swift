@@ -19,14 +19,43 @@ class StudentInfoVC:UIViewController {
           return iv
       }()
     
-    let viewtmp:UIView = {
-        let v = UIView()
-        v.backgroundColor = .blue
+    let firstNameInfo:HeadTitleAndSubTitleView = {
+        let v = HeadTitleAndSubTitleView()
+        v.headTitle.text = "First Name"
+        v.subTitle.text = "Jhon"
         return v
     }()
     
+    let lastNameInfo:HeadTitleAndSubTitleView = {
+        let v = HeadTitleAndSubTitleView()
+        v.headTitle.text = "Last Name"
+        v.subTitle.text = "Smith"
+        return v
+    }()
+    
+    let phoneNumberInfo:HeadTitleAndSubTitleView = {
+        let v = HeadTitleAndSubTitleView()
+        v.headTitle.text = "Phone Number"
+        v.subTitle.text = "054-12345678"
+        return v
+    }()
+    
+    let eMailInfo:HeadTitleAndSubTitleView = {
+        let v = HeadTitleAndSubTitleView()
+        v.headTitle.text = "Email"
+        v.subTitle.text = "abc@gdm.com"
+        return v
+    }()
+    
+    
+    
+    
+    
     lazy var stackView:UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.viewtmp])
+        [unowned self] in
+        let sv = UIStackView(arrangedSubviews: [self.firstNameInfo,self.lastNameInfo,self.phoneNumberInfo,self.eMailInfo])
+        sv.distribution = .fillEqually
+        sv.axis = .vertical
         sv.backgroundColor = .blue
         return sv
     }()
