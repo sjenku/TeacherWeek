@@ -51,6 +51,7 @@
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
 		BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */; };
 		BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */; };
+		BE956C1724B0ECE60028C69A /* GroupInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */; };
 		BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCharHeader.swift; sourceTree = "<group>"; };
 		BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoVC.swift; sourceTree = "<group>"; };
 		BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadTitleAndSubTitleView.swift; sourceTree = "<group>"; };
+		BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */,
 				BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */,
 				BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */,
+				BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				BE125225249A07AC006F264B /* ChoosableListController.swift in Sources */,
 				BE12524F249CD204006F264B /* ListViewCell.swift in Sources */,
 				BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */,
+				BE956C1724B0ECE60028C69A /* GroupInfoVC.swift in Sources */,
 				BE12520D2497C2F8006F264B /* ExtensionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

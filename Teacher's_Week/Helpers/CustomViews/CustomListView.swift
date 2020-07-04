@@ -18,7 +18,7 @@ class CustomListView: UIView {
     private var cellHeight:CGFloat = 0
     private var style:CellStyle?
     
-    var sectionsInfo:[SectionInfo]?
+    private var sectionsInfo:[SectionInfo]?
     
 //MARK:- Overrides Methods
     
