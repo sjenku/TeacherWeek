@@ -63,7 +63,7 @@ class StudentInfoVC:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstraints()
     }
