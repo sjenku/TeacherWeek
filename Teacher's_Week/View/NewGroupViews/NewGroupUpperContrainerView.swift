@@ -17,6 +17,7 @@ class NewGroupUpperContrainerView:CustomView {
 
     lazy var textField:CustomTextField = {
         let tf = CustomTextField()
+        tf.placeHolder = "Type Here"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()

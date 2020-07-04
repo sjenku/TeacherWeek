@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class CustomTextField:CustomView {
     
     lazy var textField:UITextField = {
@@ -37,7 +36,7 @@ class CustomTextField:CustomView {
         }
     }
     
-    static weak var currentActive:UITextField?
+//    static weak var currentActive:UITextField?
     
     override func setupView() {
         super.setupView()
@@ -46,19 +45,24 @@ class CustomTextField:CustomView {
         backgroundColor = .clear
         addConstraintsWithFormat(format: "H:|[v0]|", views: textField)
         addConstraintsWithFormat(format: "V:|[v0]|", views: textField)
+        
     }
+    
+ 
     
 }
 
 
-//MARK: - UITextFieldDelegate
+
+
+////MARK: - UITextFieldDelegate
 extension CustomTextField:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        CustomTextField.currentActive = textField
-        return true
-    }
 }
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        CustomTextField.currentActive = textField
+//        return true
+//    }
+//}

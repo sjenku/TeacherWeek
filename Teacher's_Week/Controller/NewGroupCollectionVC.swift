@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 
 class NewGroupCollectionVC:UIViewController {
     
@@ -32,6 +32,7 @@ class NewGroupCollectionVC:UIViewController {
         view.backgroundColor = UIColor.MyTheme.darkBG
         setSubview()
         setConstriants()
+
     }
     
 
@@ -52,5 +53,12 @@ class NewGroupCollectionVC:UIViewController {
         lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
         
     }
+    
+    
+    
+
+    
 }
+
+
 
