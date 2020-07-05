@@ -1,5 +1,5 @@
 //
-//  RectButtonWithTitle.swift
+//  RectButtonWithTitleView.swift
 //  Teacher's_Week
 //
 //  Created by jenia kushnarenko on 05/07/2020.
@@ -8,16 +8,29 @@
 
 import UIKit
 
-class RectButtonWithTitle:CustomView {
+class RectButtonWithTitleView:CustomView {
     
-    let doneButton:UIButton = {
+    init(title:String,backgroundColor:UIColor,tintColor:UIColor) {
+        super.init(frame: .zero)
+        
+        button.backgroundColor = backgroundColor
+        button.setTitle(title, for: .normal)
+        button.tintColor = tintColor
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let button:UIButton = {
         let bt = UIButton(type: .system)
         
-        bt.backgroundColor = UIColor.MyTheme.darkGreen
-        bt.setTitle("Done", for: .normal)
+//        bt.backgroundColor = UIColor.MyTheme.darkGreen
+//        bt.setTitle("Done", for: .normal)
         bt.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         bt.titleLabel?.adjustsFontSizeToFitWidth = true
-        bt.tintColor = UIColor.MyTheme.titleGreen
+//        bt.tintColor = UIColor.MyTheme.titleGreen
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.layer.shadowOpacity = 0.4
         bt.layer.cornerRadius = 5
@@ -26,11 +39,13 @@ class RectButtonWithTitle:CustomView {
         return bt
     }()
     
+
+    
     override func setupView() {
           super.setupView()
           
-          backgroundColor = UIColor.MyTheme.darkBG
-          addSubview(doneButton)
+          backgroundColor = UIColor.clear
+          addSubview(button)
           setConstraints()
       }
     

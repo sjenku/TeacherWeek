@@ -52,7 +52,7 @@ class ChoosableListController:UIViewController{
         return ListCollectionView(frame: .zero, info: sectionsInfo,style: nil)
     }()
     
-    private let doneButtonView:UIView = ChooseLabelDoneBTView()
+    private let doneButtonView:UIView = ChooseLabelDoneBTView(title: "Done", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
     private let searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white

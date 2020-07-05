@@ -20,7 +20,7 @@ class NewGroupLowerCell:CustomCollectionViewCell {
     }()
     
     let doneButton:ChooseLabelDoneBTView = {
-        let bt = ChooseLabelDoneBTView()
+        let bt = ChooseLabelDoneBTView(title:"Done",backgroundColor:UIColor.MyTheme.darkGreen,tintColor:UIColor.MyTheme.titleGreen)
         return bt
     }()
     

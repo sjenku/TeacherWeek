@@ -31,7 +31,7 @@ class NewGroupLowerContrainerView:CustomView {
 
     
     private let doneButton:ChooseLabelDoneBTView = {
-        let button = ChooseLabelDoneBTView()
+        let button = ChooseLabelDoneBTView(title:"Done",backgroundColor:UIColor.MyTheme.darkGreen,tintColor:UIColor.MyTheme.titleGreen)
         return button
     }()
     

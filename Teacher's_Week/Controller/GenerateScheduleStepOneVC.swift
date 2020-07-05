@@ -13,8 +13,8 @@ import UIKit
 class GenerateScheduleStepOneVC:UIViewController {
     
     
-    let buttonsContainer:UIView = {
-        let view = UIView()
+    let buttonsContainer:GenerateStepOneButtonsContainer = {
+        let view = GenerateStepOneButtonsContainer()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.MyTheme.lightBG
         return view
