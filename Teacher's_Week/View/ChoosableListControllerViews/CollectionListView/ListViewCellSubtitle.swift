@@ -31,7 +31,7 @@ class ListViewCellSubtitle:ListViewCell {
         addConstraintsWithFormat(format: "H:|-16-[v0][v1]-16-|", views: title,accessory)
         addConstraintsWithFormat(format: "H:|-16-[v0]", views: subTitle)
         addConstraintsWithFormat(format: "V:|[v0][v1]-8-|", views: title,subTitle)
-        addConstraintsWithFormat(format: "V:|-12-[v0]-12-|", views: accessory)
+        addConstraintsWithFormat(format: "V:|-19.5-[v0]-19.5-|", views: accessory)
         //TODO
         
         //Width Accessory
