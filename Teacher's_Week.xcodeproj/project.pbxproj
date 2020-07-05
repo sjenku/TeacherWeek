@@ -42,6 +42,8 @@
 		BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */; };
 		BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */; };
 		BE17D9B524B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */; };
+		BE17D9B824B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9B724B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift */; };
+		BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */; };
 		BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */; };
 		BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91424ADC1DD00664510 /* CustomView.swift */; };
 		BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */; };
@@ -95,6 +97,8 @@
 		BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerContrainerView.swift; sourceTree = "<group>"; };
 		BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperContrainerView.swift; sourceTree = "<group>"; };
 		BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScheduleStepOneVC.swift; sourceTree = "<group>"; };
+		BE17D9B724B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStepOneButtonsContainer.swift; sourceTree = "<group>"; };
+		BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithTitle.swift; sourceTree = "<group>"; };
 		BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE26F91424ADC1DD00664510 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentCollectionVC.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			children = (
 				BE125250249D31DD006F264B /* CollectionListView */,
 				BE125226249A5E3F006F264B /* ChooseLabelView.swift */,
+				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
 			);
 			path = ChoosableListControllerViews;
 			sourceTree = "<group>";
@@ -264,8 +269,8 @@
 				BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */,
 				BE26F91424ADC1DD00664510 /* CustomView.swift */,
 				BE125253249F873B006F264B /* ListCollectionView.swift */,
-				BE125228249A6306006F264B /* ChooseLabelDoneBTView.swift */,
 				BE26F91C24ADDBDB00664510 /* CustomTextField.swift */,
+				BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 		BE17D9B624B1E7DF00F20AEF /* GenerateScheduleStepOneViews */ = {
 			isa = PBXGroup;
 			children = (
+				BE17D9B724B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift */,
 			);
 			path = GenerateScheduleStepOneViews;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
+				BE17D9B824B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift in Sources */,
 				BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */,
 				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
@@ -424,6 +431,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
+				BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */,
 				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,
 				BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */,
