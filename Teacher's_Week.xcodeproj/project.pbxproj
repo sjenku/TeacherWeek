@@ -41,6 +41,7 @@
 		BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */; };
 		BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */; };
 		BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */; };
+		BE17D9B524B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */; };
 		BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */; };
 		BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91424ADC1DD00664510 /* CustomView.swift */; };
 		BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */; };
@@ -93,6 +94,7 @@
 		BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithImgTitle.swift; sourceTree = "<group>"; };
 		BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerContrainerView.swift; sourceTree = "<group>"; };
 		BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperContrainerView.swift; sourceTree = "<group>"; };
+		BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScheduleStepOneVC.swift; sourceTree = "<group>"; };
 		BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE26F91424ADC1DD00664510 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentCollectionVC.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE17D9B624B1E7DF00F20AEF /* GenerateScheduleStepOneViews */,
 				BE956C1324B0B68B0028C69A /* StudentInfo */,
 				BE26F91924ADC51B00664510 /* NewStudentViews */,
 				BE12526624A0EBCC006F264B /* NewGroupViews */,
@@ -187,6 +190,7 @@
 				BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */,
 				BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */,
 				BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */,
+				BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,6 +279,13 @@
 				BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */,
 			);
 			path = NewGroupViews;
+			sourceTree = "<group>";
+		};
+		BE17D9B624B1E7DF00F20AEF /* GenerateScheduleStepOneViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GenerateScheduleStepOneViews;
 			sourceTree = "<group>";
 		};
 		BE26F91824ADC36E00664510 /* CustomControllers */ = {
@@ -419,6 +430,7 @@
 				BE125225249A07AC006F264B /* ChoosableListController.swift in Sources */,
 				BE12524F249CD204006F264B /* ListViewCell.swift in Sources */,
 				BE125229249A6306006F264B /* ChooseLabelDoneBTView.swift in Sources */,
+				BE17D9B524B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift in Sources */,
 				BE956C1724B0ECE60028C69A /* GroupInfoVC.swift in Sources */,
 				BE12520D2497C2F8006F264B /* ExtensionView.swift in Sources */,
 			);

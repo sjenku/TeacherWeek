@@ -29,10 +29,9 @@ class AppTabBarController: UITabBarController {
     }()
     
     private let tmpVC:CustomNavigationController = {
-        let info:[SectionInfo] = ContactsManager.getSectionsInfo()
-        let vc = ListCollectionViewController(info: info, style: .subtitle)
+        let vc = GenerateScheduleStepOneVC()
         let navVC = CustomNavigationController(rootViewController: vc)
-        navVC.setupNavigationWithStyle(style: .large, title: "Student Info")
+        navVC.setupNavigationWithStyle(style: .small, title: "Step 1/2")
         return navVC
     }()
 
