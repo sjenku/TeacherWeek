@@ -29,7 +29,8 @@ class AppTabBarController: UITabBarController {
     }()
     
     private let tmpVC:CustomNavigationController = {
-        let vc = GroupInfoVC()
+        let info:[SectionInfo] = ContactsManager.getSectionsInfo()
+        let vc = ListCollectionViewController(info: info, style: .subtitle)
         let navVC = CustomNavigationController(rootViewController: vc)
         navVC.setupNavigationWithStyle(style: .large, title: "Student Info")
         return navVC

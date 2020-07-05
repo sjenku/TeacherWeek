@@ -23,7 +23,7 @@ struct ContactsManager:CollectionListData {
                     let headerTitle = contactsPerKey.key
                     
                     let cellsInfo:[CellInfo] = contactsPerKey.value.map { (contactsInKey) -> CellInfo in
-                        let cellInfo = CellInfo(title:contactsInKey.name, subtitle: nil,isAccessory:contactsInKey.checked)
+                        let cellInfo = CellInfo(title:contactsInKey.name, subtitle: "subtitle",isAccessory:contactsInKey.checked)
                         return cellInfo
                     }
                     

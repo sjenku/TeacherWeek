@@ -22,17 +22,18 @@ class CustomListView: UIView {
     
 //MARK:- Overrides Methods
     
-    init(frame:CGRect,info:[SectionInfo]? = nil,style:CellStyle = CellStyle.title) {
+    init(frame:CGRect,info:[SectionInfo]?,style:CellStyle?) {
         super.init(frame: frame)
         
         //View
-        setView(style: style)
+        let safeStyle:CellStyle = style ?? .title
+        setView(style: safeStyle)
     
         //SetProperties In Class
-        self.style = style
+        self.style = safeStyle
         
         //Register
-        switch style {
+        switch safeStyle {
           case .title:
             collectionView.register(ListViewCell.self, forCellWithReuseIdentifier: cellId)
           case .subtitle:

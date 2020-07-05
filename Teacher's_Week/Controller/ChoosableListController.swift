@@ -49,7 +49,7 @@ class ChoosableListController:UIViewController{
     private let labelView:CustomView = ChooseLabelView()
     private let personsListCollectionView:ListCollectionView =  {
         let sectionsInfo = ContactsManager.getSectionsInfo()
-        return ListCollectionView(frame: .zero, info: sectionsInfo)
+        return ListCollectionView(frame: .zero, info: sectionsInfo,style: nil)
     }()
     
     private let doneButtonView:UIView = ChooseLabelDoneBTView()
