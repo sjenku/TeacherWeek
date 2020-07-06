@@ -82,7 +82,7 @@ class HomeAddView:UIView {
             counterLabel.textColor = UIColor.MyTheme.lightGreen
             addButton.btImageView.image = UIImage(named: "groupAdd")?.withRenderingMode(.alwaysOriginal)
             addButton.isHighlightedColor = UIColor.MyTheme.lightGreen.highlight
-            addButton.btImageView.contentMode = .scaleToFill
+            addButton.btImageView.contentMode = .scaleAspectFit
             addButton.shadowColor = UIColor.MyTheme.lightGreen
         }
     }
