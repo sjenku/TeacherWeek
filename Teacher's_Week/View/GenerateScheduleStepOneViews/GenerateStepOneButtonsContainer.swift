@@ -56,7 +56,7 @@ class GenerateStepOneButtonsContainer:CustomView {
     }()
     
     lazy var addStudentGroupButtonsSV:UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.addButtonGroup,self.addButtonStudent])
+        let stackView = UIStackView(arrangedSubviews: [self.addButtonStudent,self.addButtonGroup])
         stackView.axis = .vertical
         stackView.spacing = 24
         stackView.distribution = .fillEqually
