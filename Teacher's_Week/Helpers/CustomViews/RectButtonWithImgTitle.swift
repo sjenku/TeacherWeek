@@ -23,7 +23,7 @@ class RectButtonWithImgTitle:UIButton {
     let btTitle:UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: DeviceConfigurations.windowHeight / 40, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -90,11 +90,12 @@ class RectButtonWithImgTitle:UIButton {
         
     }
     
+    let pedding = DeviceConfigurations.windowHeight / 30
     private func setConstriants() {
         addConstraintsWithFormat(format: "H:|-[v0]-|", views: btImageView)
         addConstraintsWithFormat(format: "H:|-[v0]-|", views: btTitle)
-        addConstraintsWithFormat(format: "V:|-24-[v0][v1]-16-|", views: btImageView,btTitle)
-        addConstraint(NSLayoutConstraint(item: btImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/2, constant: 0))
+        addConstraintsWithFormat(format: "V:|-\(pedding)-[v0]-4-[v1]-\(pedding - 4)-|", views: btImageView,btTitle)
+        addConstraint(NSLayoutConstraint(item: btTitle, attribute: .height, relatedBy: .equal, toItem: btImageView, attribute: .height, multiplier: 1/3, constant: 0))
     }
     
     private func setLayer() {

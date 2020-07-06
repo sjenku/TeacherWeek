@@ -10,24 +10,28 @@ import UIKit
 
 
 
-class GenerateStepOneInfoView:CustomView {
-    
-    override func setupView() {
-        super.setupView()
-        
-        backgroundColor = UIColor.MyTheme.lightBG
-    }
-    
-}
 
 class GenerateStepOneInfoContainer : CustomView {
     
     
     
-    let view:GenerateStepOneInfoView = {
+    let view1:GenerateStepOneInfoView = {
         let v = GenerateStepOneInfoView()
+        v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
+    
+    let middleLine:UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    let view2:GenerateStepOneInfoView = {
+           let v = GenerateStepOneInfoView()
+           return v
+       }()
     
     
     let shadowView:UIView = {
@@ -44,7 +48,7 @@ class GenerateStepOneInfoContainer : CustomView {
     
     private lazy var infoStack:UIStackView = {
         [unowned self] in
-        let stackView = UIStackView(arrangedSubviews: [self.view,self.view])
+        let stackView = UIStackView(arrangedSubviews: [self.view1,self.view2])
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +61,7 @@ class GenerateStepOneInfoContainer : CustomView {
         backgroundColor = UIColor.clear
         setSubviews()
         setConstraints()
+
         
     }
     
@@ -65,6 +70,7 @@ class GenerateStepOneInfoContainer : CustomView {
     private func setSubviews() {
         shadowView.addSubview(infoStack)
         addSubview(shadowView)
+        view1.addSubview(middleLine)
     }
     
     private func setConstraints() {
@@ -77,7 +83,13 @@ class GenerateStepOneInfoContainer : CustomView {
             infoStack.topAnchor.constraint(equalTo: shadowView.topAnchor),
             infoStack.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
             infoStack.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor),
-            infoStack.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor)
+            infoStack.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor),
+            
+            
+            middleLine.trailingAnchor.constraint(equalTo: view1.trailingAnchor),
+            middleLine.widthAnchor.constraint(equalToConstant: 0.5),
+            middleLine.centerYAnchor.constraint(equalTo: view1.centerYAnchor),
+            middleLine.heightAnchor.constraint(equalTo: view1.heightAnchor, multiplier: 0.5)
             
         ]
         

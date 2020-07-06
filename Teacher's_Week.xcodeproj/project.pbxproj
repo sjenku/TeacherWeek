@@ -46,6 +46,7 @@
 		BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */; };
 		BE17D9BC24B1ED4800F20AEF /* GenerateSOTitleBTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9BB24B1ED4800F20AEF /* GenerateSOTitleBTView.swift */; };
 		BE17D9BE24B3759B00F20AEF /* GenerateStepOneInfoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9BD24B3759B00F20AEF /* GenerateStepOneInfoContainer.swift */; };
+		BE17D9C024B3B4B700F20AEF /* GenerateStepOneInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9BF24B3B4B700F20AEF /* GenerateStepOneInfoView.swift */; };
 		BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */; };
 		BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91424ADC1DD00664510 /* CustomView.swift */; };
 		BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */; };
@@ -103,6 +104,7 @@
 		BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithTitle.swift; sourceTree = "<group>"; };
 		BE17D9BB24B1ED4800F20AEF /* GenerateSOTitleBTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSOTitleBTView.swift; sourceTree = "<group>"; };
 		BE17D9BD24B3759B00F20AEF /* GenerateStepOneInfoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStepOneInfoContainer.swift; sourceTree = "<group>"; };
+		BE17D9BF24B3B4B700F20AEF /* GenerateStepOneInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStepOneInfoView.swift; sourceTree = "<group>"; };
 		BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE26F91424ADC1DD00664510 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentCollectionVC.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				BE17D9B724B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift */,
 				BE17D9BB24B1ED4800F20AEF /* GenerateSOTitleBTView.swift */,
 				BE17D9BD24B3759B00F20AEF /* GenerateStepOneInfoContainer.swift */,
+				BE17D9BF24B3B4B700F20AEF /* GenerateStepOneInfoView.swift */,
 			);
 			path = GenerateScheduleStepOneViews;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */,
 				BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */,
 				BE12521E2499784C006F264B /* Student.swift in Sources */,
+				BE17D9C024B3B4B700F20AEF /* GenerateStepOneInfoView.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
 				BE12526824A0EC4E006F264B /* NewGroupCollectionVC.swift in Sources */,
 				BE12526024A0BE65006F264B /* CustomListView.swift in Sources */,

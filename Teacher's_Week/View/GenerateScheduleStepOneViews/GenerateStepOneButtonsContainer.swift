@@ -95,7 +95,7 @@ class GenerateStepOneButtonsContainer:CustomView {
         resetNextButtonsSV.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1),
             
         line.bottomAnchor.constraint(equalTo: resetNextButtonsSV.topAnchor,constant: -8),
-        line.heightAnchor.constraint(equalToConstant: 1),
+        line.heightAnchor.constraint(equalToConstant: 0.5),
         
         addStudentGroupButtonsSV.topAnchor.constraint(equalTo: self.topAnchor,constant: 24),
         addStudentGroupButtonsSV.bottomAnchor.constraint(equalTo: line.topAnchor,constant: -24)
