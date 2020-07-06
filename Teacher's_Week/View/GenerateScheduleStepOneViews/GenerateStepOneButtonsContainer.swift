@@ -21,16 +21,28 @@ class GenerateStepOneButtonsContainer:CustomView {
            return button
     }()
     
-    let addButtonStudent:UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
+    let addButtonStudent:RectButtonWithImgTitle = {
+        let button = RectButtonWithImgTitle()
+        button.backgroundColor = UIColor.MyTheme.darkBG
+        button.notHighlightedColor = UIColor.MyTheme.darkBG
+        button.highlightedColor = UIColor.MyTheme.lightBlue.highlight
+        button.btImageView.image = UIImage(named: "studentAdd")?.withRenderingMode(.alwaysOriginal)
+        button.btTitle.text = "Add Student To Schedule"
+        button.btTitle.textAlignment = .center
+        button.btTitle.textColor = UIColor.MyTheme.lightBlue
+        return button
     }()
     
-    let addButtonGroup:UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        return view
+    let addButtonGroup:RectButtonWithImgTitle = {
+       let button = RectButtonWithImgTitle()
+        button.backgroundColor = UIColor.MyTheme.darkBG
+        button.notHighlightedColor = UIColor.MyTheme.darkBG
+        button.highlightedColor = UIColor.MyTheme.lightGreen.highlight
+        button.btImageView.image = UIImage(named: "groupAdd")?.withRenderingMode(.alwaysOriginal)
+        button.btTitle.text = "Add Group To Schedule"
+        button.btTitle.textAlignment = .center
+        button.btTitle.textColor = UIColor.MyTheme.lightGreen
+        return button
     }()
     
     lazy var resetNextButtonsSV:UIStackView = {

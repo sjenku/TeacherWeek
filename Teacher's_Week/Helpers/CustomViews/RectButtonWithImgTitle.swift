@@ -93,8 +93,8 @@ class RectButtonWithImgTitle:UIButton {
     private func setConstriants() {
         addConstraintsWithFormat(format: "H:|-[v0]-|", views: btImageView)
         addConstraintsWithFormat(format: "H:|-[v0]-|", views: btTitle)
-        addConstraintsWithFormat(format: "V:|-12-[v0][v1]-|", views: btImageView,btTitle)
-        addConstraint(NSLayoutConstraint(item: btTitle, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/4, constant: 0))
+        addConstraintsWithFormat(format: "V:|-24-[v0][v1]-16-|", views: btImageView,btTitle)
+        addConstraint(NSLayoutConstraint(item: btImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/2, constant: 0))
     }
     
     private func setLayer() {
