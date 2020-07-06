@@ -21,6 +21,17 @@ class GenerateStepOneButtonsContainer:CustomView {
            return button
     }()
     
+    let addButtonStudent:UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+    
+    let addButtonGroup:UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
     
     lazy var resetNextButtonsSV:UIStackView = {
         [unowned self] in
@@ -30,6 +41,20 @@ class GenerateStepOneButtonsContainer:CustomView {
         stackView.spacing = 16
         stackView.axis = .horizontal
         return stackView
+    }()
+    
+    lazy var addStudentGroupButtonsSV:UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.addButtonGroup,self.addButtonStudent])
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    let line:UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
     }()
     
     override func setupView() {
@@ -42,15 +67,27 @@ class GenerateStepOneButtonsContainer:CustomView {
     
     private func setSubviews() {
         addSubview(resetNextButtonsSV)
+        addSubview(line)
+        addSubview(addStudentGroupButtonsSV)
     }
     
     private func setConstraints() {
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: resetNextButtonsSV)
+        addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: resetNextButtonsSV)
+        addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: line)
+        addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: addStudentGroupButtonsSV)
+        
         
         
         let additionalConstraints = [
-        resetNextButtonsSV.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -16),
-        resetNextButtonsSV.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1)
+        resetNextButtonsSV.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -8),
+        resetNextButtonsSV.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1),
+            
+        line.bottomAnchor.constraint(equalTo: resetNextButtonsSV.topAnchor,constant: -8),
+        line.heightAnchor.constraint(equalToConstant: 1),
+        
+        addStudentGroupButtonsSV.topAnchor.constraint(equalTo: self.topAnchor,constant: 24),
+        addStudentGroupButtonsSV.bottomAnchor.constraint(equalTo: line.topAnchor,constant: -24)
+        
         ]
         
         additionalConstraints.forEach { (constraint) in
