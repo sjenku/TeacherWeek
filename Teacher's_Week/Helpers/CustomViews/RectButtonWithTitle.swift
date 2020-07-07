@@ -25,12 +25,9 @@ class RectButtonWithTitleView:CustomView {
     
     let button:UIButton = {
         let bt = UIButton(type: .system)
-        
-//        bt.backgroundColor = UIColor.MyTheme.darkGreen
-//        bt.setTitle("Done", for: .normal)
+
         bt.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         bt.titleLabel?.adjustsFontSizeToFitWidth = true
-//        bt.tintColor = UIColor.MyTheme.titleGreen
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.layer.shadowOpacity = 0.4
         bt.layer.cornerRadius = 5

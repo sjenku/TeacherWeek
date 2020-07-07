@@ -13,12 +13,21 @@ import UIKit
 class GenerateScheduleStepOneVC:UIViewController {
     
     
-    let buttonsContainer:GenerateStepOneButtonsContainer = {
+    private lazy var buttonsContainer:GenerateStepOneButtonsContainer = {
         let view = GenerateStepOneButtonsContainer()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.nextButton.button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         view.backgroundColor = UIColor.MyTheme.lightBG
         return view
     }()
+    
+
+    @objc private func handleNextButton() {
+        let vc = GenerateScheduleStepTwoVC()
+        vc.title = "Step 2/2"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     let infoContainer:GenerateStepOneInfoContainer = {
         let view = GenerateStepOneInfoContainer()
@@ -31,6 +40,8 @@ class GenerateScheduleStepOneVC:UIViewController {
         view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstriants()
+        
+      
         
     }
     
