@@ -10,25 +10,11 @@ import UIKit
 
 
 class GenerateScheduleStepTwoVC:UIViewController {
-    
-    let previousButton:GenerateSOTitleBTView = {
-        let button = GenerateSOTitleBTView(title: "Previous", backgroundColor: UIColor.MyTheme.darkBlue, tintColor: UIColor.MyTheme.titleBlue)
-        return button
-    }()
-    
-    let generateButton:GenerateSOTitleBTView = {
-        let button = GenerateSOTitleBTView(title: "Generate", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
-        return button
-    }()
-    
-    lazy var previousGenerateButtonsSV:UIStackView = {
-        [unowned self] in
-        let stackView = UIStackView(arrangedSubviews: [self.previousButton,self.generateButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillEqually
-        stackView.spacing = 16
-        stackView.axis = .horizontal
-        return stackView
+
+    let buttonsContainer:GenerateStepTwoButtonsContainer = {
+        let container = GenerateStepTwoButtonsContainer()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
     }()
     
     override func viewDidLoad() {
@@ -41,15 +27,17 @@ class GenerateScheduleStepTwoVC:UIViewController {
     }
     
     private func setSubviews() {
-        view.addSubview(previousGenerateButtonsSV)
+        view.addSubview(buttonsContainer)
     }
     
     private func setConstraints() {
-        view.addConstraintsWithFormat(format: "H:|-40-[v0]-40-|", views: previousGenerateButtonsSV)
+        view.addConstraintsWithFormat(format: "H:|-40-[v0]-40-|", views: buttonsContainer)
+        
         let additionalConstraints = [
-         previousGenerateButtonsSV.bottomAnchor.constraint(equalTo: (view.safeAreaLayoutGuide.bottomAnchor) ,constant: -8),
-         previousGenerateButtonsSV.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * CGFloat(0.1))
+            buttonsContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8),
+            buttonsContainer.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.2)
         ]
+        
         
         additionalConstraints.forEach { (constraint) in
             constraint.isActive = true
