@@ -20,7 +20,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstraints()
         
