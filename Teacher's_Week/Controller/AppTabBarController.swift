@@ -11,7 +11,7 @@ import UIKit
 class AppTabBarController: UITabBarController {
     
     //MARK: - Views
-    private let homeViewController:HomeViewController = HomeViewController()
+    private let homeViewController = UINavigationController(rootViewController:HomeViewController())
     private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
     
     private let newGroupCollectionVC:CustomNavigationController = {

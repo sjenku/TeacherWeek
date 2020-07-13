@@ -9,7 +9,14 @@
 import UIKit
 
 
+protocol HomeLowerContainerViewDelegate :class {
+    func addScheduleButtonPressed()
+}
+
 class HomeLowerContainerView:CustomView {
+    
+   //MARK: - Properties
+   weak var delegate:HomeLowerContainerViewDelegate?
     
    private let upperHalfStackView:UIStackView = {
         let sv = UIStackView()
@@ -24,8 +31,9 @@ class HomeLowerContainerView:CustomView {
         return view
     }()
     
-   private let addScheduleButton:RoundButtonWithIcon = {
+   private lazy var addScheduleButton:RoundButtonWithIcon = {
         let bt = RoundButtonWithIcon()
+        bt.circleButton.addTarget(self, action: #selector(handleAddScheduleButton), for: .touchUpInside)
         return bt
     }()
     
@@ -39,6 +47,13 @@ class HomeLowerContainerView:CustomView {
         return sv
     }()
     
+    //MARK: - OBJC private Functions
+    
+    @objc private func handleAddScheduleButton() {
+        delegate?.addScheduleButtonPressed()
+      }
+    
+   //MARK: - Override Functions
     override func setupView() {
         backgroundColor = UIColor.MyTheme.lightBG
         
@@ -61,6 +76,7 @@ class HomeLowerContainerView:CustomView {
 
     }
     
+    //MARK: - Private Functions
    private func setLowerHalfView() {
         //properties
         lowerHalfView.addSubview(addScheduleButton)
