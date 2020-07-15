@@ -30,15 +30,23 @@ class ScrollVC:UIViewController {
     let label:UILabel = {
         let l = UILabel()
         l.text = "Hello World"
+        l.textColor = .white
         l.textAlignment = .center
         l.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
         return l
     }()
     
+    let headIcon:UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "circle.person")?.withRenderingMode(.alwaysOriginal))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv   
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = UIColor.MyTheme.darkBG
         
         setSubviews()
         setConstraints()
@@ -46,12 +54,25 @@ class ScrollVC:UIViewController {
     
     private func setSubviews() {
         scrollView.addSubview(contentView)
-        contentView.addSubview(label)
+        
+        contentView.addSubview(headIcon)
+        
         view.addSubview(scrollView)
     }
     
     private func setConstraints() {
-        label.center = contentView.center
+       
+        view.addConstraintsWithFormat(format: "H:|-[v0]-|", views: headIcon)
+        
+        let additionalConstraints = [
+            headIcon.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 50),
+            headIcon.heightAnchor.constraint(equalToConstant: 100)
+        ]
+        
+        additionalConstraints.forEach { (constraint) in
+            constraint.isActive = true
+        }
+        
     }
     
 }
