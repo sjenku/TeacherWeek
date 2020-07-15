@@ -31,6 +31,7 @@ extension UIColor {
     
     struct MyTheme {
         static let darkBG  = UIColor.rgb(red: 31, green: 37, blue: 50)
+        static let extraDarkBG = UIColor.rgb(red: 23, green: 31, blue: 46)
         static let lightBG = UIColor.rgb(red: 40, green: 48, blue: 66)
         static let lightBlue = UIColor.rgb(red: 50, green: 197, blue: 255)
         static let darkBlue = UIColor.rgb(red: 39, green: 73, blue: 109)

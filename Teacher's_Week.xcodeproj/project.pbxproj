@@ -50,6 +50,7 @@
 		BE17D9C224B4B3C900F20AEF /* GenerateScheduleStepTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9C124B4B3C900F20AEF /* GenerateScheduleStepTwoVC.swift */; };
 		BE17D9C524B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9C424B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift */; };
 		BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9C624BC61B700F20AEF /* ScrollVC.swift */; };
+		BE17D9CA24BF636600F20AEF /* StepperWithCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17D9C924BF636600F20AEF /* StepperWithCounter.swift */; };
 		BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */; };
 		BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91424ADC1DD00664510 /* CustomView.swift */; };
 		BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */; };
@@ -111,6 +112,7 @@
 		BE17D9C124B4B3C900F20AEF /* GenerateScheduleStepTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScheduleStepTwoVC.swift; sourceTree = "<group>"; };
 		BE17D9C424B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenerateStepTwoButtonsContainer.swift; path = "Teacher's_Week/View/GenerateScheduleStepOneViews/GenerateStepTwoButtonsContainer.swift"; sourceTree = SOURCE_ROOT; };
 		BE17D9C624BC61B700F20AEF /* ScrollVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVC.swift; sourceTree = "<group>"; };
+		BE17D9C924BF636600F20AEF /* StepperWithCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperWithCounter.swift; sourceTree = "<group>"; };
 		BE26F91224ADC1BA00664510 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE26F91424ADC1DD00664510 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentCollectionVC.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE17D9C824BF62E700F20AEF /* ScrollVCViews */,
 				BE17D9C324B4C0F900F20AEF /* GenerateScheudleStepTwoViews */,
 				BE17D9B624B1E7DF00F20AEF /* GenerateScheduleStepOneViews */,
 				BE956C1324B0B68B0028C69A /* StudentInfo */,
@@ -320,6 +323,14 @@
 			path = GenerateScheudleStepTwoViews;
 			sourceTree = "<group>";
 		};
+		BE17D9C824BF62E700F20AEF /* ScrollVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				BE17D9C924BF636600F20AEF /* StepperWithCounter.swift */,
+			);
+			path = ScrollVCViews;
+			sourceTree = "<group>";
+		};
 		BE26F91824ADC36E00664510 /* CustomControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +449,7 @@
 				BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */,
 				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
 				BE12522B249AB014006F264B /* ChooseCollectionListView.swift in Sources */,
+				BE17D9CA24BF636600F20AEF /* StepperWithCounter.swift in Sources */,
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE17D9B824B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift in Sources */,
 				BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */,
