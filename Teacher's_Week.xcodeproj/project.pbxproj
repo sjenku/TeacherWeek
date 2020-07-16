@@ -66,6 +66,7 @@
 		BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */; };
 		BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448324C05660001FABCC /* LessonDurationView.swift */; };
 		BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */; };
+		BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 		BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoVC.swift; sourceTree = "<group>"; };
 		BEF8448324C05660001FABCC /* LessonDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDurationView.swift; sourceTree = "<group>"; };
 		BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVCTitleLabel.swift; sourceTree = "<group>"; };
+		BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndSwitchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 				BE17D9C924BF636600F20AEF /* StepperWithCounter.swift */,
 				BEF8448324C05660001FABCC /* LessonDurationView.swift */,
 				BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */,
+				BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */,
 			);
 			path = ScrollVCViews;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */,
 				BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */,
 				BE17D9C524B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift in Sources */,
+				BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */,
 				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
 				BE17D9BC24B1ED4800F20AEF /* GenerateSOTitleBTView.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,

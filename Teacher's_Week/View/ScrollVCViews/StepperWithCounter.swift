@@ -11,6 +11,9 @@ import UIKit
 
 class StepperWithCounter:CustomView {
     
+    
+    //MARK: - Properties
+    
     private let line:UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -47,6 +50,24 @@ class StepperWithCounter:CustomView {
     
    private let padding:CGFloat = 36
     
+    
+    //MARK: - Public Methods
+    
+    func setSubviewsEnable(_ enable:Bool) {
+        switch enable {
+        case true:
+            stepper.isEnabled = true
+            counter.text = String(Int(stepper.value))
+            squareContainer.backgroundColor = UIColor.MyTheme.extraDarkBG
+        default:
+            stepper.isEnabled = false
+            counter.text = "-"
+            squareContainer.backgroundColor = .lightGray
+        }
+    }
+    
+    //MARK: - Overrides
+    
     override func setupView() {
         super.setupView()
         
@@ -56,10 +77,14 @@ class StepperWithCounter:CustomView {
         
         
     }
+   
+    //MARK: - OBJC Private Methods
     
     @objc private func handleStepperValueChanged() {
         counter.text = String(Int(stepper.value))
     }
+    
+    //MARK: - Private Methods
     
     private func setSubviews() {
         addSubview(line)

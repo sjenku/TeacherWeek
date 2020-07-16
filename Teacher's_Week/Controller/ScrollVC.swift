@@ -11,6 +11,8 @@ import UIKit
 
 class ScrollVC:UIViewController {
     
+    //MARK: - Properties
+    
    private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
     
    private lazy var scrollView:UIScrollView = {
@@ -65,6 +67,25 @@ class ScrollVC:UIViewController {
         return view
     }()
     
+    private let needBreaksSwitcher:TitleAndSwitchView = {
+        let view = TitleAndSwitchView()
+        return view
+    }()
+    
+    private let maxNumberOfLessonsWithoutBreaksTitle:ScrollVCTitleLabel = {
+        let label = ScrollVCTitleLabel(text: "maximum number of\n lessons without breaks")
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let maxNumOfLessonsWithoutBreaksStepper:StepperWithCounter = {
+        let stepperView = StepperWithCounter()
+        stepperView.setSubviewsEnable(false)
+        return stepperView
+    }()
+    
+    //MARK: - Override Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,6 +95,7 @@ class ScrollVC:UIViewController {
         setConstraints()
     }
     
+    //MARK: - Private Methods
     private func setSubviews() {
         scrollView.addSubview(contentView)
         
@@ -83,18 +105,23 @@ class ScrollVC:UIViewController {
         contentView.addSubview(numberOfLessonsStepper)
         contentView.addSubview(lessonDurationTitle)
         contentView.addSubview(lessonDurationView)
+        contentView.addSubview(needBreaksSwitcher)
+        contentView.addSubview(maxNumberOfLessonsWithoutBreaksTitle)
+        contentView.addSubview(maxNumOfLessonsWithoutBreaksStepper)
         
         view.addSubview(scrollView)
     }
     
     private func setConstraints() {
        
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: headIcon)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: headTitle)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: numberOfLessonsTitle)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: numberOfLessonsStepper)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: lessonDurationTitle)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: lessonDurationView)
+        
+       let views = [headIcon,headTitle,numberOfLessonsTitle,
+                    numberOfLessonsStepper,lessonDurationTitle,
+                    lessonDurationView,needBreaksSwitcher,
+                    maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper]
+        
+        views.forEach {view.addConstraintsWithFormat(format: "H:|[v0]|", views: $0)}
+        
         
         let additionalConstraints = [
             headIcon.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 50),
@@ -109,8 +136,15 @@ class ScrollVC:UIViewController {
             lessonDurationTitle.topAnchor.constraint(equalTo: numberOfLessonsStepper.bottomAnchor,constant: 2),
             
             lessonDurationView.topAnchor.constraint(equalTo: lessonDurationTitle.bottomAnchor,constant: 6),
-            lessonDurationView.heightAnchor.constraint(equalToConstant: 185)
+            lessonDurationView.heightAnchor.constraint(equalToConstant: 185),
             
+            needBreaksSwitcher.topAnchor.constraint(equalTo: lessonDurationView.bottomAnchor,constant: 2),
+            needBreaksSwitcher.heightAnchor.constraint(equalToConstant: 45),
+            
+            maxNumberOfLessonsWithoutBreaksTitle.topAnchor.constraint(equalTo: needBreaksSwitcher.bottomAnchor,constant: 12),
+            
+            maxNumOfLessonsWithoutBreaksStepper.topAnchor.constraint(equalTo: maxNumberOfLessonsWithoutBreaksTitle.bottomAnchor,constant: 12),
+            maxNumOfLessonsWithoutBreaksStepper.heightAnchor.constraint(equalToConstant: 125)
         ]
         
         additionalConstraints.forEach { (constraint) in
@@ -118,5 +152,6 @@ class ScrollVC:UIViewController {
         }
         
     }
+    
     
 }
