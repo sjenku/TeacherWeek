@@ -13,21 +13,21 @@ class ScrollVC:UIViewController {
     
    private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
     
-    lazy var scrollView:UIScrollView = {
+   private lazy var scrollView:UIScrollView = {
         [unowned self] in
         let sv = UIScrollView(frame: self.view.frame)
         sv.contentSize = self.contentSize
         return sv
     }()
     
-    lazy var contentView:UIView = {
+   private lazy var contentView:UIView = {
         [unowned self] in
         let view = UIView(frame: .zero)
         view.frame.size = self.contentSize
         return view
     }()
     
-    let headTitle:UILabel = {
+   private let headTitle:UILabel = {
         let l = UILabel()
         l.text = "Adam Ambroson"
         l.textColor = .white
@@ -36,14 +36,14 @@ class ScrollVC:UIViewController {
         return l
     }()
     
-    let headIcon:UIImageView = {
+   private let headIcon:UIImageView = {
         let iv = UIImageView(image: UIImage(named: "circle.person")?.withRenderingMode(.alwaysOriginal))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         return iv   
     }()
     
-    let numberOfLessonsTitle:UILabel = {
+   private let numberOfLessonsTitle:UILabel = {
         let l = UILabel()
         l.text = "Number Of Lessons Need"
         l.textColor = .white
@@ -52,8 +52,16 @@ class ScrollVC:UIViewController {
         return l
     }()
     
-    let numberOfLessonsStepper:StepperWithCounter = {
+   private let numberOfLessonsStepper:StepperWithCounter = {
         let view = StepperWithCounter()
+        return view
+    }()
+    
+    private let lessonDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration Of Each Lesson")
+ 
+    
+    private let lessonDurationView:LessonDurationView = {
+        let view = LessonDurationView()
         return view
     }()
     
@@ -73,6 +81,8 @@ class ScrollVC:UIViewController {
         contentView.addSubview(headTitle)
         contentView.addSubview(numberOfLessonsTitle)
         contentView.addSubview(numberOfLessonsStepper)
+        contentView.addSubview(lessonDurationTitle)
+        contentView.addSubview(lessonDurationView)
         
         view.addSubview(scrollView)
     }
@@ -83,6 +93,8 @@ class ScrollVC:UIViewController {
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: headTitle)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: numberOfLessonsTitle)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: numberOfLessonsStepper)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: lessonDurationTitle)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: lessonDurationView)
         
         let additionalConstraints = [
             headIcon.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 50),
@@ -92,7 +104,12 @@ class ScrollVC:UIViewController {
             numberOfLessonsTitle.topAnchor.constraint(equalTo: headTitle.bottomAnchor,constant: 26),
             
             numberOfLessonsStepper.topAnchor.constraint(equalTo: numberOfLessonsTitle.bottomAnchor,constant: 6),
-            numberOfLessonsStepper.heightAnchor.constraint(equalToConstant: 125)
+            numberOfLessonsStepper.heightAnchor.constraint(equalToConstant: 125),
+            
+            lessonDurationTitle.topAnchor.constraint(equalTo: numberOfLessonsStepper.bottomAnchor,constant: 2),
+            
+            lessonDurationView.topAnchor.constraint(equalTo: lessonDurationTitle.bottomAnchor,constant: 6),
+            lessonDurationView.heightAnchor.constraint(equalToConstant: 185)
             
         ]
         
