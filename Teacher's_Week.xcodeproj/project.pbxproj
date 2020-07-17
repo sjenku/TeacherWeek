@@ -67,6 +67,7 @@
 		BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448324C05660001FABCC /* LessonDurationView.swift */; };
 		BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */; };
 		BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */; };
+		BEF8448A24C1D577001FABCC /* ManageListLessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448924C1D577001FABCC /* ManageListLessonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		BEF8448324C05660001FABCC /* LessonDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDurationView.swift; sourceTree = "<group>"; };
 		BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVCTitleLabel.swift; sourceTree = "<group>"; };
 		BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndSwitchView.swift; sourceTree = "<group>"; };
+		BEF8448924C1D577001FABCC /* ManageListLessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListLessonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +338,7 @@
 				BEF8448324C05660001FABCC /* LessonDurationView.swift */,
 				BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */,
 				BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */,
+				BEF8448924C1D577001FABCC /* ManageListLessonsView.swift */,
 			);
 			path = ScrollVCViews;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				BE17D9B824B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift in Sources */,
 				BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */,
 				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
+				BEF8448A24C1D577001FABCC /* ManageListLessonsView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */,
 				BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */,

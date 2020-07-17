@@ -93,7 +93,6 @@ class GenerateStepTwoButtonsContainer:CustomView {
             
             switchController.trailingAnchor.constraint(equalTo: switchContainer.trailingAnchor,constant: -8),
             switchController.centerYAnchor.constraint(equalTo: switchContainer.centerYAnchor),
-//            switchController.heightAnchor.constraint(equalTo: switchContainer.heightAnchor, multiplier: 0.5),
             
             label.centerYAnchor.constraint(equalTo: switchContainer.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: switchContainer.leadingAnchor,constant: 8),

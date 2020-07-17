@@ -17,8 +17,9 @@ class ScrollVC:UIViewController {
     
    private lazy var scrollView:UIScrollView = {
         [unowned self] in
-        let sv = UIScrollView(frame: self.view.frame)
+        let sv = UIScrollView(frame: .zero)
         sv.contentSize = self.contentSize
+        sv.delaysContentTouches = false
         return sv
     }()
     
@@ -101,6 +102,11 @@ class ScrollVC:UIViewController {
         return label
     }()
     
+    private let manageListLessonsView:ManageListLessonsView = {
+        let view = ManageListLessonsView()
+        return view
+    }()
+    
     //MARK: - Override Methods
     
     override func viewDidLoad() {
@@ -119,7 +125,7 @@ class ScrollVC:UIViewController {
         let contentViews = [
         headIcon,headTitle,numberOfLessonsTitle,numberOfLessonsStepper,lessonDurationTitle,lessonDurationView,
         needBreaksSwitcher,maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
-        paymentPerLessonTitle,paymentPerLessonView,availableAtTitle
+        paymentPerLessonTitle,paymentPerLessonView,availableAtTitle,manageListLessonsView
         ]
         
         contentViews.forEach { contentView.addSubview($0) }
@@ -130,17 +136,20 @@ class ScrollVC:UIViewController {
     private func setConstraints() {
        
         
-       let views = [headIcon,headTitle,numberOfLessonsTitle,
+        let views = [scrollView,headIcon,headTitle,numberOfLessonsTitle,
                     numberOfLessonsStepper,lessonDurationTitle,
                     lessonDurationView,needBreaksSwitcher,
                     maxNumberOfLessonsWithoutBreaksTitle,
                     maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
-                    paymentPerLessonView,availableAtTitle]
+                    paymentPerLessonView,availableAtTitle,manageListLessonsView]
         
         views.forEach {view.addConstraintsWithFormat(format: "H:|[v0]|", views: $0)}
         
         
         let additionalConstraints = [
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
             headIcon.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 50),
             headIcon.heightAnchor.constraint(equalToConstant: 100),
             
@@ -168,7 +177,10 @@ class ScrollVC:UIViewController {
             paymentPerLessonView.topAnchor.constraint(equalTo: paymentPerLessonTitle.bottomAnchor,constant: 6),
             paymentPerLessonView.heightAnchor.constraint(equalToConstant: 125),
             
-            availableAtTitle.topAnchor.constraint(equalTo: paymentPerLessonView.bottomAnchor,constant: 12)
+            availableAtTitle.topAnchor.constraint(equalTo: paymentPerLessonView.bottomAnchor,constant: 12),
+            
+            manageListLessonsView.topAnchor.constraint(equalTo: availableAtTitle.bottomAnchor,constant: 6),
+            manageListLessonsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ]
         
