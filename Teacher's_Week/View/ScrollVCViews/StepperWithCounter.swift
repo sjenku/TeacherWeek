@@ -37,13 +37,23 @@ class StepperWithCounter:CustomView {
         return label
     }()
     
+    private let dollarSign:UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 36, weight: .semibold)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = ""
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var stepper:UIStepper = {
         [unowned self] in
         let stepper = UIStepper()
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.setDecrementImage(stepper.decrementImage(for: .normal), for: .normal)
         stepper.setIncrementImage(stepper.incrementImage(for: .normal), for: .normal)
-        stepper.addTarget(self, action: #selector(handleStepperValueChanged), for: .touchUpInside)
+        stepper.addTarget(self, action: #selector(handleStepperValueChanged), for: .valueChanged)
         stepper.tintColor = .white
         return stepper
     }()
@@ -62,8 +72,13 @@ class StepperWithCounter:CustomView {
         default:
             stepper.isEnabled = false
             counter.text = "-"
-            squareContainer.backgroundColor = .lightGray
+            squareContainer.backgroundColor = .darkGray
         }
+    }
+    
+    
+    func showDollarSign(_ show:Bool) {
+        dollarSign.text = show ? "$" : ""
     }
     
     //MARK: - Overrides
@@ -90,6 +105,7 @@ class StepperWithCounter:CustomView {
         addSubview(line)
         addSubview(squareContainer)
         addSubview(stepper)
+        addSubview(dollarSign)
         
         squareContainer.addSubview(counter)
     }
@@ -111,7 +127,10 @@ class StepperWithCounter:CustomView {
             stepper.leadingAnchor.constraint(equalTo: self.centerXAnchor,constant: padding),
             
             counter.centerXAnchor.constraint(equalTo: squareContainer.centerXAnchor),
-            counter.centerYAnchor.constraint(equalTo: squareContainer.centerYAnchor)
+            counter.centerYAnchor.constraint(equalTo: squareContainer.centerYAnchor),
+            
+            dollarSign.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            dollarSign.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
         ]
         

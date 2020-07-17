@@ -47,7 +47,7 @@ class ScrollVC:UIViewController {
     
    private let numberOfLessonsTitle:UILabel = {
         let l = UILabel()
-        l.text = "Number Of Lessons Need"
+        l.text = "Number of lessons need"
         l.textColor = .white
         l.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         l.textAlignment = .center
@@ -59,7 +59,7 @@ class ScrollVC:UIViewController {
         return view
     }()
     
-    private let lessonDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration Of Each Lesson")
+    private let lessonDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration of each lesson")
  
     
     private let lessonDurationView:LessonDurationView = {
@@ -73,7 +73,7 @@ class ScrollVC:UIViewController {
     }()
     
     private let maxNumberOfLessonsWithoutBreaksTitle:ScrollVCTitleLabel = {
-        let label = ScrollVCTitleLabel(text: "maximum number of\n lessons without breaks")
+        let label = ScrollVCTitleLabel(text: "Maximum number of\n lessons without breaks")
         label.numberOfLines = 0
         return label
     }()
@@ -82,6 +82,23 @@ class ScrollVC:UIViewController {
         let stepperView = StepperWithCounter()
         stepperView.setSubviewsEnable(false)
         return stepperView
+    }()
+    
+    private let paymentPerLessonTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text: "Payment per lesson")
+    
+    private let paymentPerLessonView:StepperWithCounter = {
+        let stepperView = StepperWithCounter()
+        stepperView.showDollarSign(true)
+        return stepperView
+    }()
+    
+    private let availableAtTitle:UILabel = {
+        let label = UILabel()
+        label.text = "Available at"
+        label.textColor = UIColor.MyTheme.lightBlue
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
+        return label
     }()
     
     //MARK: - Override Methods
@@ -99,15 +116,13 @@ class ScrollVC:UIViewController {
     private func setSubviews() {
         scrollView.addSubview(contentView)
         
-        contentView.addSubview(headIcon)
-        contentView.addSubview(headTitle)
-        contentView.addSubview(numberOfLessonsTitle)
-        contentView.addSubview(numberOfLessonsStepper)
-        contentView.addSubview(lessonDurationTitle)
-        contentView.addSubview(lessonDurationView)
-        contentView.addSubview(needBreaksSwitcher)
-        contentView.addSubview(maxNumberOfLessonsWithoutBreaksTitle)
-        contentView.addSubview(maxNumOfLessonsWithoutBreaksStepper)
+        let contentViews = [
+        headIcon,headTitle,numberOfLessonsTitle,numberOfLessonsStepper,lessonDurationTitle,lessonDurationView,
+        needBreaksSwitcher,maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
+        paymentPerLessonTitle,paymentPerLessonView,availableAtTitle
+        ]
+        
+        contentViews.forEach { contentView.addSubview($0) }
         
         view.addSubview(scrollView)
     }
@@ -118,7 +133,9 @@ class ScrollVC:UIViewController {
        let views = [headIcon,headTitle,numberOfLessonsTitle,
                     numberOfLessonsStepper,lessonDurationTitle,
                     lessonDurationView,needBreaksSwitcher,
-                    maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper]
+                    maxNumberOfLessonsWithoutBreaksTitle,
+                    maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
+                    paymentPerLessonView,availableAtTitle]
         
         views.forEach {view.addConstraintsWithFormat(format: "H:|[v0]|", views: $0)}
         
@@ -144,7 +161,15 @@ class ScrollVC:UIViewController {
             maxNumberOfLessonsWithoutBreaksTitle.topAnchor.constraint(equalTo: needBreaksSwitcher.bottomAnchor,constant: 12),
             
             maxNumOfLessonsWithoutBreaksStepper.topAnchor.constraint(equalTo: maxNumberOfLessonsWithoutBreaksTitle.bottomAnchor,constant: 12),
-            maxNumOfLessonsWithoutBreaksStepper.heightAnchor.constraint(equalToConstant: 125)
+            maxNumOfLessonsWithoutBreaksStepper.heightAnchor.constraint(equalToConstant: 125),
+            
+            paymentPerLessonTitle.topAnchor.constraint(equalTo: maxNumOfLessonsWithoutBreaksStepper.bottomAnchor,constant: 12),
+            
+            paymentPerLessonView.topAnchor.constraint(equalTo: paymentPerLessonTitle.bottomAnchor,constant: 6),
+            paymentPerLessonView.heightAnchor.constraint(equalToConstant: 125),
+            
+            availableAtTitle.topAnchor.constraint(equalTo: paymentPerLessonView.bottomAnchor,constant: 12)
+            
         ]
         
         additionalConstraints.forEach { (constraint) in
