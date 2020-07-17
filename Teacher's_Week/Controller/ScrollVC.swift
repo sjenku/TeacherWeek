@@ -151,7 +151,7 @@ class ScrollVC:UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             headIcon.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 50),
-            headIcon.heightAnchor.constraint(equalToConstant: 100),
+            headIcon.heightAnchor.constraint(equalToConstant: 60),
             
             headTitle.topAnchor.constraint(equalTo: headIcon.bottomAnchor,constant: 4),
             numberOfLessonsTitle.topAnchor.constraint(equalTo: headTitle.bottomAnchor,constant: 26),
