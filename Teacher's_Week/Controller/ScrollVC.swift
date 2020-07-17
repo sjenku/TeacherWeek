@@ -102,10 +102,16 @@ class ScrollVC:UIViewController {
         return label
     }()
     
-    private let manageListLessonsView:ManageListLessonsView = {
+    private lazy var manageListLessonsView:ManageListLessonsView = {
         let view = ManageListLessonsView()
+        view.addButton.button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside) //TODO:Fix so many dependicies                                                                                                      // addbutton->button and so on
         return view
     }()
+    
+    @objc func addButtonPressed() {
+        let vc = TimePickerVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     //MARK: - Override Methods
     

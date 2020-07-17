@@ -12,7 +12,7 @@ import UIKit
 
 class ManageListLessonsView:CustomView {
     
-    private let addButton:GenerateSOTitleBTView = {
+    let addButton:GenerateSOTitleBTView = {
         let button = GenerateSOTitleBTView(title: "Add", backgroundColor: UIColor.MyTheme.darkBlue, tintColor: UIColor.MyTheme.titleBlue)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

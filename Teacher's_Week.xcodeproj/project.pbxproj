@@ -68,6 +68,7 @@
 		BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */; };
 		BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */; };
 		BEF8448A24C1D577001FABCC /* ManageListLessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448924C1D577001FABCC /* ManageListLessonsView.swift */; };
+		BEF8448C24C2067C001FABCC /* TimePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448B24C2067C001FABCC /* TimePickerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVCTitleLabel.swift; sourceTree = "<group>"; };
 		BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndSwitchView.swift; sourceTree = "<group>"; };
 		BEF8448924C1D577001FABCC /* ManageListLessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListLessonsView.swift; sourceTree = "<group>"; };
+		BEF8448B24C2067C001FABCC /* TimePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				BE17D9B424B1E33B00F20AEF /* GenerateScheduleStepOneVC.swift */,
 				BE17D9C124B4B3C900F20AEF /* GenerateScheduleStepTwoVC.swift */,
 				BE17D9C624BC61B700F20AEF /* ScrollVC.swift */,
+				BEF8448B24C2067C001FABCC /* TimePickerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */,
 				BE1252172499290F006F264B /* HomeAddView.swift in Sources */,
 				BE125256249F8B92006F264B /* ContactsManager.swift in Sources */,
+				BEF8448C24C2067C001FABCC /* TimePickerVC.swift in Sources */,
 				BE125252249D338C006F264B /* ListHeaderView.swift in Sources */,
 				BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */,
 				BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */,
