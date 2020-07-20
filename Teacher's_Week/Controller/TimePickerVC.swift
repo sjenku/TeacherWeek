@@ -9,9 +9,26 @@
 import UIKit
 
 
+enum TimePickerVCStyle {
+    case dayStyle,hourAndMinutesStyle
+}
 
 class TimePickerVC:UIViewController {
     
+    //MARK: - Initialization
+    init(style:TimePickerVCStyle) {
+        super.init(nibName: nil, bundle: nil)
+
+        setPickerViewWithStyle(style)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
+    }
+    
+    
+    //MARK: - Properties
+
     private let daysArray = [
     "Sunday","Monday","Thuersday","Wednsday","Thuesday","Friday","Suaterday"
     ]
@@ -48,12 +65,31 @@ class TimePickerVC:UIViewController {
         return iv
     }()
     
-    private lazy var pickerView:UIPickerView = {
+    private let containerForPickerView:UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private var pickerView:UIView?
+    
+    private lazy var dayPickerView:UIPickerView = {
         let view = UIPickerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
         return view
     }()
+    
+    private let datePickerView:UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.datePickerMode = .time
+        picker.setValue(UIColor.white, forKey: "textColor")
+        
+        return picker
+    }()
+    
+    //MARK: - Overrides Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +101,20 @@ class TimePickerVC:UIViewController {
         
     }
     
+    
+    //MARK: - Private Functions
+    
+    private func setPickerViewWithStyle(_ style:TimePickerVCStyle) {
+        pickerView = style == .dayStyle ? dayPickerView : datePickerView
+    }
+    
     private func setSubviews() {
+        
+        containerForPickerView.addSubview(pickerView!)
         
         view.addSubview(header)
         view.addSubview(nextButton)
-        view.addSubview(pickerView)
+        view.addSubview(containerForPickerView)
         view.addSubview(arrowPointingRight)
         view.addSubview(arrowPointingLeft)
         
@@ -79,19 +124,19 @@ class TimePickerVC:UIViewController {
         
         view.addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: header)
         view.addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: nextButton)
-        view.addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: pickerView)
+        view.addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: containerForPickerView)
         view.addConstraintsWithFormat(format: "H:|-24-[v0]", views: arrowPointingRight)
         view.addConstraintsWithFormat(format: "H:[v0]-24-|", views: arrowPointingLeft)
         
         let additionalConstraints = [
-            header.bottomAnchor.constraint(equalTo: pickerView.topAnchor,constant: 8),
+            header.bottomAnchor.constraint(equalTo: containerForPickerView.topAnchor,constant: 8),
             
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -16),
             nextButton.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1),
             
-            pickerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            pickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pickerView.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight / 2),
+            containerForPickerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            containerForPickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerForPickerView.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight / 2),
             
             arrowPointingRight.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             arrowPointingRight.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight / 12),
@@ -99,7 +144,12 @@ class TimePickerVC:UIViewController {
             
             arrowPointingLeft.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             arrowPointingLeft.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight / 12),
-            arrowPointingLeft.widthAnchor.constraint(equalTo: arrowPointingRight.heightAnchor)
+            arrowPointingLeft.widthAnchor.constraint(equalTo: arrowPointingRight.heightAnchor),
+            
+            pickerView!.topAnchor.constraint(equalTo: containerForPickerView.topAnchor),
+            pickerView!.leadingAnchor.constraint(equalTo: containerForPickerView.leadingAnchor),
+            pickerView!.bottomAnchor.constraint(equalTo: containerForPickerView.bottomAnchor),
+            pickerView!.trailingAnchor.constraint(equalTo: containerForPickerView.trailingAnchor)
         ]
         
         additionalConstraints.forEach {$0.isActive = true}
