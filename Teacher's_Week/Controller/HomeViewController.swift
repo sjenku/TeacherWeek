@@ -13,6 +13,8 @@ import UIKit
 
 class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
     
+
+    
     func addScheduleButtonPressed() {
         let vc = ScrollVC()
         navigationController?.pushViewController(vc, animated: true)
@@ -20,20 +22,26 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
     
     func addStudentButtonPressed() {
         let info = ContactsManager.getSectionsInfo()
-        let vc = ListCollectionViewController(info: info, style: .title)
+        let vc = ListCollectionViewController(info: info,cellStyle: .title,navStyle: .largeSearch,navTitle: "Students")
         navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     var homeView:HomeView?
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         setupView()
     }
     
     
-    func setupView () {
+   private func setupView () {
         
         
         let heightTabBar = tabBarController?.tabBar.frame.height ?? 0
@@ -43,6 +51,5 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
         
     }
     
-    
-  
+
 }

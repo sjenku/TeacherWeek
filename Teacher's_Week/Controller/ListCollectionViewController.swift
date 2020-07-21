@@ -12,9 +12,12 @@ import UIKit
 class ListCollectionViewController:UIViewController {
     
     
+    //MARK: - Properties
     
     private var info:[SectionInfo]?
     private var cellStyle:CellStyle?
+    private var navStyle:NavigationControllerStyle?
+    private var navTitle:String = ""
     
     lazy var listView:CustomListView = {
          let info:[SectionInfo] = ContactsManager.getSectionsInfo()
@@ -23,13 +26,16 @@ class ListCollectionViewController:UIViewController {
          return view
      }()
      
+    //MARK: - Initialazation
     
-    
-    init(info:[SectionInfo]?,style:CellStyle?) {
+    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle? = nil,navTitle:String = "") {
         super.init(nibName: nil, bundle: nil)
         
         self.info = info
-        self.cellStyle = style
+        self.cellStyle = cellStyle
+        self.navStyle = navStyle
+        self.navTitle = navTitle
+        
         
     }
     
@@ -37,12 +43,24 @@ class ListCollectionViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setSubviews()
         setConstraints()
+        setNavigationController()
         
+    }
+    
+    //MARK: - Private Methods
+    
+    private func setNavigationController() {
+        guard let nav = navigationController as? CustomNavigationController else {return}
+        guard let navigationStyle = self.navStyle else {return}
+        nav.setupNavigationWithStyle(style: navigationStyle, title: self.navTitle)
+        nav.navigationBar.isHidden = false
     }
     
     private func setSubviews() {
