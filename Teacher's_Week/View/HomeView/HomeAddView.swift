@@ -12,6 +12,9 @@ import UIKit
 
 class HomeAddView:UIView {
     
+    
+    //MARK: - Properties
+    
    private let leftContainer:UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -52,6 +55,36 @@ class HomeAddView:UIView {
     }
     
     
+    private let counterLabel:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "0"
+        return label
+    }()
+    
+    let addButton:RoundButtonWithIcon = {
+        let button = RoundButtonWithIcon(frame:.zero)
+        return button
+    }()
+    
+    private let imageView:UIImageView = {
+          let iv = UIImageView()
+          iv.contentMode = .scaleAspectFit
+          return iv
+      }()
+      
+     private let imageViewTitle:UILabel = {
+          let label = UILabel()
+          label.adjustsFontSizeToFitWidth = true
+          label.textAlignment = .center
+          return label
+      }()
+      
+    
+    //MARK: - Initialzation
+    
     init(frame: CGRect,kind:StudentOrGroup) {
         super.init(frame: frame)
         
@@ -63,6 +96,9 @@ class HomeAddView:UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
+    //MARK: - Private Methods
     
    private func handleKind(_ kind:StudentOrGroup) {
         switch kind {
@@ -114,19 +150,6 @@ class HomeAddView:UIView {
         handleKind(kind)
     }
     
-   private let imageView:UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        return iv
-    }()
-    
-   private let imageViewTitle:UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.textAlignment = .center
-        return label
-    }()
-    
     
    private func setupLeftContainer() {
         
@@ -145,19 +168,6 @@ class HomeAddView:UIView {
     
     }
     
-    private let counterLabel:UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "0"
-        return label
-    }()
-    
-    private let addButton:RoundButtonWithIcon = {
-        let button = RoundButtonWithIcon(frame:.zero)
-        return button
-    }()
     
    private func setupCenterContainer() {
         

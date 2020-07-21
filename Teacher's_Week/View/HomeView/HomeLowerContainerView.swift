@@ -11,6 +11,7 @@ import UIKit
 
 protocol HomeLowerContainerViewDelegate :class {
     func addScheduleButtonPressed()
+    func addStudentButtonPressed()
 }
 
 class HomeLowerContainerView:CustomView {
@@ -37,7 +38,12 @@ class HomeLowerContainerView:CustomView {
         return bt
     }()
     
-   private let addStudentView:HomeAddView = HomeAddView(frame: .zero, kind: .student)
+    private lazy var addStudentView:HomeAddView = {
+        let view =  HomeAddView(frame: .zero, kind: .student)  //TODO:refactor for better implementation
+        view.addButton.circleButton.addTarget(self, action: #selector(handleAddStudentButton), for: .touchUpInside)
+        return view
+    }()
+    
    private let addGroupView:HomeAddView = HomeAddView(frame: .zero, kind: .group)
     
    private let mainStackView:UIStackView = {
@@ -52,6 +58,10 @@ class HomeLowerContainerView:CustomView {
     @objc private func handleAddScheduleButton() {
         delegate?.addScheduleButtonPressed()
       }
+    
+    @objc private func handleAddStudentButton() {
+          delegate?.addStudentButtonPressed()
+        }
     
    //MARK: - Override Functions
     override func setupView() {

@@ -18,6 +18,11 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func addStudentButtonPressed() {
+        let info = ContactsManager.getSectionsInfo()
+        let vc = ListCollectionViewController(info: info, style: .title)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     var homeView:HomeView?
 
