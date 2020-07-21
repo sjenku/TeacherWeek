@@ -50,8 +50,12 @@ class ListCollectionViewController:UIViewController {
         
         setSubviews()
         setConstraints()
-        setNavigationController()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationController()
     }
     
     //MARK: - Private Methods

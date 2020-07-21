@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DeviceConfigurations.windowHeight = window?.frame.height ?? 0
         DeviceConfigurations.windowWidth = window?.frame.width ?? 0
         
+        window?.backgroundColor = UIColor.MyTheme.darkBG
         window?.makeKeyAndVisible()
         window?.rootViewController = AppTabBarController()
         

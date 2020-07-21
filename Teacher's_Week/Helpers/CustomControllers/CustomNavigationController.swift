@@ -59,6 +59,7 @@ class CustomNavigationController:UINavigationController {
         if style == .large || style == .largeSearch {
             navigationBar.prefersLargeTitles = true
         }
+        
     }
     
     private func setConfigurations() {
