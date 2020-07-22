@@ -23,7 +23,7 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
     func addStudentButtonPressed() {
         let info = ContactsManager.getSectionsInfo()
         let vc = ListCollectionViewController(info: info, cellStyle: .title)
-        vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .done)
+        vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .add)
         
         navigationController?.pushViewController(vc, animated: true)
         

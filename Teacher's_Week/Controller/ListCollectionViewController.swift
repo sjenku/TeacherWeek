@@ -54,7 +54,12 @@ class ListCollectionViewController:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        
+        if let nav = navigationController as? CustomNavigationController {
+            nav.navBarButtonsDelegate = self
+            nav.navigationBar.isHidden = false
+        }
+        
     }
     
     //MARK: - Private Methods
@@ -93,4 +98,20 @@ class ListCollectionViewController:UIViewController {
         self.withRightBarButton = withRightButton
         self.rightBarButtonStyle = rightButtonStyle
     }
+}
+
+//MARK: - Extension
+extension ListCollectionViewController:NavigationBarButtonsDelegate {
+    
+    func handleBarButtonPressed(barButtonType: NavigationControllerRightButtonStyle) {
+        switch barButtonType {
+        case .add:
+            print("add")
+        case .edit:
+            print("Edit")
+        case .done:
+            print("done")
+        }
+    }
+    
 }

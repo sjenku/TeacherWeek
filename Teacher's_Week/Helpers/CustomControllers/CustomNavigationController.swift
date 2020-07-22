@@ -23,6 +23,10 @@ enum NavigationControllerRightButtonStyle {
     case edit
 }
 
+protocol NavigationBarButtonsDelegate:class {
+    func handleBarButtonPressed(barButtonType:NavigationControllerRightButtonStyle)
+}
+
 class CustomNavigationController:UINavigationController {
   
     //MARK: - Initialazation
@@ -43,6 +47,9 @@ class CustomNavigationController:UINavigationController {
     
     
     //MARK: - Properties
+    
+    weak var navBarButtonsDelegate:NavigationBarButtonsDelegate?
+    
     lazy var searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white
@@ -80,15 +87,18 @@ class CustomNavigationController:UINavigationController {
     //MARK: - OBJC private Methods
     
     @objc private func handleBarButtonAdd() {
-        print("Pressed Bar Button Add")
+        guard let barButtonDelegate = navBarButtonsDelegate else {return}
+        barButtonDelegate.handleBarButtonPressed(barButtonType: .add)
     }
     
     @objc private func handleBarButtonDone() {
-         print("Pressed Bar Button Done")
+        guard let barButtonDelegate = navBarButtonsDelegate else {return}
+        barButtonDelegate.handleBarButtonPressed(barButtonType: .done)
     }
     
     @objc private func handleBarButtonEdit() {
-          print("Pressed Bar Button Edit")
+        guard let barButtonDelegate = navBarButtonsDelegate else {return}
+        barButtonDelegate.handleBarButtonPressed(barButtonType: .edit)
      }
     
     //MARK: - Private Methods
