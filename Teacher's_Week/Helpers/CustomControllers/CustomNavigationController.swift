@@ -8,6 +8,8 @@
 
 import UIKit
 
+//MARK: - Enums
+
 enum NavigationControllerStyle {
     case small
     case smallSearch
@@ -15,10 +17,15 @@ enum NavigationControllerStyle {
     case largeSearch
 }
 
-
+enum NavigationControllerRightButtonStyle {
+    case add
+    case done
+    case edit
+}
 
 class CustomNavigationController:UINavigationController {
-    
+  
+    //MARK: - Initialazation
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         
@@ -35,6 +42,7 @@ class CustomNavigationController:UINavigationController {
     }
     
     
+    //MARK: - Properties
     lazy var searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white
@@ -42,7 +50,8 @@ class CustomNavigationController:UINavigationController {
         return sc
     }()
     
-    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String) {
+    //MARK: - Public Methods
+    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done) {
         
         //Set title
        topViewController?.navigationItem.title = title
@@ -60,7 +69,42 @@ class CustomNavigationController:UINavigationController {
             navigationBar.prefersLargeTitles = true
         }
         
+        //In Case NavigationBar Have Right Button
+        if withRightButton {
+            
+          let rightBarButton = createBarButtonItemWithStyle(rightButtonStyle)
+            topViewController?.navigationItem.rightBarButtonItem = rightBarButton
+        }
     }
+    
+    //MARK: - OBJC private Methods
+    
+    @objc private func handleBarButtonAdd() {
+        print("Pressed Bar Button Add")
+    }
+    
+    @objc private func handleBarButtonDone() {
+         print("Pressed Bar Button Done")
+    }
+    
+    @objc private func handleBarButtonEdit() {
+          print("Pressed Bar Button Edit")
+     }
+    
+    //MARK: - Private Methods
+    private func createBarButtonItemWithStyle(_ style:NavigationControllerRightButtonStyle)->UIBarButtonItem {
+        var barButton:UIBarButtonItem?
+        switch style {
+          case .add:
+            barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleBarButtonAdd))
+          case .done:
+            barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleBarButtonDone))
+          case .edit:
+            barButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleBarButtonEdit))
+        }
+        return barButton!
+    }
+    
     
     private func setConfigurations() {
         //For All Cases Configurations

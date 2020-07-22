@@ -18,6 +18,8 @@ class ListCollectionViewController:UIViewController {
     private var cellStyle:CellStyle?
     private var navStyle:NavigationControllerStyle?
     private var navTitle:String = ""
+    private var withRightBarButton:Bool = false
+    private var rightBarButtonStyle:NavigationControllerRightButtonStyle = .done
     
     lazy var listView:CustomListView = {
          let info:[SectionInfo] = ContactsManager.getSectionsInfo()
@@ -28,13 +30,15 @@ class ListCollectionViewController:UIViewController {
      
     //MARK: - Initialazation
     
-    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle? = nil,navTitle:String = "") {
+    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle? = nil,navTitle:String = "",withRightBarButton:Bool = false,rightBarButtonStyle:NavigationControllerRightButtonStyle = .done) {
         super.init(nibName: nil, bundle: nil)
         
         self.info = info
         self.cellStyle = cellStyle
         self.navStyle = navStyle
         self.navTitle = navTitle
+        self.withRightBarButton = withRightBarButton
+        self.rightBarButtonStyle = rightBarButtonStyle
         
         
     }
@@ -63,7 +67,7 @@ class ListCollectionViewController:UIViewController {
     private func setNavigationController() {
         guard let nav = navigationController as? CustomNavigationController else {return}
         guard let navigationStyle = self.navStyle else {return}
-        nav.setupNavigationWithStyle(style: navigationStyle, title: self.navTitle)
+        nav.setupNavigationWithStyle(style: navigationStyle, title: self.navTitle,withRightButton: self.withRightBarButton,rightButtonStyle: self.rightBarButtonStyle)
         nav.navigationBar.isHidden = false
     }
     
