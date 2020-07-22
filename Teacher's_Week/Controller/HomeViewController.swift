@@ -22,8 +22,11 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
     
     func addStudentButtonPressed() {
         let info = ContactsManager.getSectionsInfo()
-        let vc = ListCollectionViewController(info: info, cellStyle: .title, navStyle: .largeSearch, navTitle: "Students", withRightBarButton: true,rightBarButtonStyle: .done)
+        let vc = ListCollectionViewController(info: info, cellStyle: .title)
+        vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .done)
+        
         navigationController?.pushViewController(vc, animated: true)
+        
         
     }
     
@@ -46,8 +49,16 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
         
         let heightTabBar = tabBarController?.tabBar.frame.height ?? 0
         homeView = HomeView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - heightTabBar))
-        homeView?.lowerContainer.delegate = self
+           homeView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(homeView!)
+         [
+            homeView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeView?.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            homeView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            homeView?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ].forEach {$0?.isActive = true}
+         
+        homeView?.lowerContainer.delegate = self
         
     }
     

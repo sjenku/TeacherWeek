@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class ListCollectionViewController:UIViewController {
     
     
@@ -30,17 +31,10 @@ class ListCollectionViewController:UIViewController {
      
     //MARK: - Initialazation
     
-    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle? = nil,navTitle:String = "",withRightBarButton:Bool = false,rightBarButtonStyle:NavigationControllerRightButtonStyle = .done) {
+    init(info:[SectionInfo]?,cellStyle:CellStyle?) {
         super.init(nibName: nil, bundle: nil)
-        
         self.info = info
         self.cellStyle = cellStyle
-        self.navStyle = navStyle
-        self.navTitle = navTitle
-        self.withRightBarButton = withRightBarButton
-        self.rightBarButtonStyle = rightBarButtonStyle
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +46,7 @@ class ListCollectionViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationControllerAppearnce()
         setSubviews()
         setConstraints()
         
@@ -59,17 +54,10 @@ class ListCollectionViewController:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationController()
+        navigationController?.navigationBar.isHidden = false
     }
     
     //MARK: - Private Methods
-    
-    private func setNavigationController() {
-        guard let nav = navigationController as? CustomNavigationController else {return}
-        guard let navigationStyle = self.navStyle else {return}
-        nav.setupNavigationWithStyle(style: navigationStyle, title: self.navTitle,withRightButton: self.withRightBarButton,rightButtonStyle: self.rightBarButtonStyle)
-        nav.navigationBar.isHidden = false
-    }
     
     private func setSubviews() {
         view.addSubview(listView)
@@ -90,4 +78,19 @@ class ListCollectionViewController:UIViewController {
         }
     }
     
+    private func setNavigationControllerAppearnce() {
+        
+        guard let nav = navigationController as? CustomNavigationController else {return}
+        guard let safeNavStyle = navStyle else {return}
+        
+        nav.setupNavigationWithStyle(style: safeNavStyle, title: self.navTitle, withRightButton: self.withRightBarButton, rightButtonStyle: self.rightBarButtonStyle)
+    }
+    
+    //MARK: - Public Methods
+    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done) {
+        self.navStyle = style
+        self.navTitle = title
+        self.withRightBarButton = withRightButton
+        self.rightBarButtonStyle = rightButtonStyle
+    }
 }
