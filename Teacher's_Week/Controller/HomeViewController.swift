@@ -11,24 +11,8 @@ import UIKit
 
 
 
-class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
+class HomeViewController:UIViewController{
     
-
-    
-    func addScheduleButtonPressed() {
-        let vc = ScrollVC()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func addStudentButtonPressed() {
-        let info = ContactsManager.getSectionsInfo()
-        let vc = ListCollectionViewController(info: info, cellStyle: .title)
-        vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .add)
-        
-        navigationController?.pushViewController(vc, animated: true)
-        
-        
-    }
     
     var homeView:HomeView?
 
@@ -63,4 +47,26 @@ class HomeViewController:UIViewController,HomeLowerContainerViewDelegate {
     }
     
 
+}
+
+//MARK: - Extension HomeLowerContainerViewDelegate
+
+extension HomeViewController:HomeLowerContainerViewDelegate {
+    func addScheduleButtonPressed() {
+         let vc = ScrollVC()
+         navigationController?.pushViewController(vc, animated: true)
+     }
+     
+     func addStudentButtonPressed() {
+         let info = ContactsManager.getSectionsInfo()
+         let vc = ListCollectionViewController(info: info, cellStyle: .title)
+         let navRightBarButtonAction = {
+            print("Hello")
+        }
+        
+         vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: navRightBarButtonAction)
+         
+         navigationController?.pushViewController(vc, animated: true)
+         
+     }
 }

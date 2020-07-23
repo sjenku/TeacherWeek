@@ -21,6 +21,7 @@ class ListCollectionViewController:UIViewController {
     private var navTitle:String = ""
     private var withRightBarButton:Bool = false
     private var rightBarButtonStyle:NavigationControllerRightButtonStyle = .done
+    private var rightBarButtonAction:()->() = {}
     
     lazy var listView:CustomListView = {
          let info:[SectionInfo] = ContactsManager.getSectionsInfo()
@@ -92,26 +93,21 @@ class ListCollectionViewController:UIViewController {
     }
     
     //MARK: - Public Methods
-    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done) {
+    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done,rightButtonAction:@escaping()->()) {
         self.navStyle = style
         self.navTitle = title
         self.withRightBarButton = withRightButton
         self.rightBarButtonStyle = rightButtonStyle
+        self.rightBarButtonAction = rightButtonAction
+        
     }
 }
 
 //MARK: - Extension
 extension ListCollectionViewController:NavigationBarButtonsDelegate {
     
-    func handleBarButtonPressed(barButtonType: NavigationControllerRightButtonStyle) {
-        switch barButtonType {
-        case .add:
-            print("add")
-        case .edit:
-            print("Edit")
-        case .done:
-            print("done")
-        }
+    func handleBarButtonPressed() {
+       rightBarButtonAction()
     }
     
 }

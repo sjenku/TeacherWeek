@@ -24,7 +24,7 @@ enum NavigationControllerRightButtonStyle {
 }
 
 protocol NavigationBarButtonsDelegate:class {
-    func handleBarButtonPressed(barButtonType:NavigationControllerRightButtonStyle)
+    func handleBarButtonPressed()
 }
 
 class CustomNavigationController:UINavigationController {
@@ -86,31 +86,21 @@ class CustomNavigationController:UINavigationController {
     
     //MARK: - OBJC private Methods
     
-    @objc private func handleBarButtonAdd() {
+    @objc private func handleBarButton() {
         guard let barButtonDelegate = navBarButtonsDelegate else {return}
-        barButtonDelegate.handleBarButtonPressed(barButtonType: .add)
+        barButtonDelegate.handleBarButtonPressed()
     }
-    
-    @objc private func handleBarButtonDone() {
-        guard let barButtonDelegate = navBarButtonsDelegate else {return}
-        barButtonDelegate.handleBarButtonPressed(barButtonType: .done)
-    }
-    
-    @objc private func handleBarButtonEdit() {
-        guard let barButtonDelegate = navBarButtonsDelegate else {return}
-        barButtonDelegate.handleBarButtonPressed(barButtonType: .edit)
-     }
     
     //MARK: - Private Methods
     private func createBarButtonItemWithStyle(_ style:NavigationControllerRightButtonStyle)->UIBarButtonItem {
         var barButton:UIBarButtonItem?
         switch style {
           case .add:
-            barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleBarButtonAdd))
+            barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleBarButton))
           case .done:
-            barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleBarButtonDone))
+            barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleBarButton))
           case .edit:
-            barButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleBarButtonEdit))
+            barButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleBarButton))
         }
         return barButton!
     }
