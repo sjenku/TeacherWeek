@@ -17,12 +17,6 @@ enum NavigationControllerStyle {
     case largeSearch
 }
 
-enum NavigationControllerRightButtonStyle {
-    case add
-    case done
-    case edit
-}
-
 protocol NavigationBarButtonsDelegate:class {
     func handleBarButtonPressed()
 }
@@ -58,7 +52,7 @@ class CustomNavigationController:UINavigationController {
     }()
     
     //MARK: - Public Methods
-    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done) {
+    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done) {
         
         //Set title
        topViewController?.navigationItem.title = title
@@ -92,17 +86,11 @@ class CustomNavigationController:UINavigationController {
     }
     
     //MARK: - Private Methods
-    private func createBarButtonItemWithStyle(_ style:NavigationControllerRightButtonStyle)->UIBarButtonItem {
-        var barButton:UIBarButtonItem?
-        switch style {
-          case .add:
-            barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleBarButton))
-          case .done:
-            barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleBarButton))
-          case .edit:
-            barButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleBarButton))
-        }
-        return barButton!
+    private func createBarButtonItemWithStyle(_ style:UIBarButtonItem.SystemItem)->UIBarButtonItem {
+
+        let barButton = UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(handleBarButton))
+
+        return barButton
     }
     
     

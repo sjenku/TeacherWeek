@@ -20,7 +20,7 @@ class ListCollectionViewController:UIViewController {
     private var navStyle:NavigationControllerStyle?
     private var navTitle:String = ""
     private var withRightBarButton:Bool = false
-    private var rightBarButtonStyle:NavigationControllerRightButtonStyle = .done
+    private var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
     private var rightBarButtonAction:()->() = {}
     
     lazy var listView:CustomListView = {
@@ -93,7 +93,7 @@ class ListCollectionViewController:UIViewController {
     }
     
     //MARK: - Public Methods
-    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:NavigationControllerRightButtonStyle = .done,rightButtonAction:@escaping()->()) {
+    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done,rightButtonAction:@escaping()->()) {
         self.navStyle = style
         self.navTitle = title
         self.withRightBarButton = withRightButton

@@ -61,7 +61,22 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
          let info = ContactsManager.getSectionsInfo()
          let vc = ListCollectionViewController(info: info, cellStyle: .title)
          let navRightBarButtonAction = {
-            print("Hello")
+            
+            let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
+                print("Import From Contacts Pressed")
+            }
+            let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
+                print("Create New Student Pressed")
+            }
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        
+            [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
+                actionController.addAction(action)
+            }
+            self.present(actionController, animated: true, completion: nil)
         }
         
          vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: navRightBarButtonAction)
