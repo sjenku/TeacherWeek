@@ -23,6 +23,15 @@ class ListCollectionViewController:UIViewController {
     private var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
     private var rightBarButtonAction:()->() = {}
     
+    lazy var searchController:UISearchController = {
+        [unowned self] in
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchBar.tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        sc.searchResultsUpdater = self
+        return sc
+    }()
+    
     lazy var listView:CustomListView = {
          let info:[SectionInfo] = ContactsManager.getSectionsInfo()
          let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
@@ -48,6 +57,7 @@ class ListCollectionViewController:UIViewController {
         super.viewDidLoad()
         
         setNavigationControllerAppearnce()
+        setupSearchView()
         setSubviews()
         setConstraints()
         
@@ -65,11 +75,16 @@ class ListCollectionViewController:UIViewController {
     
     //MARK: - Private Methods
     
+    private func setupSearchView() {
+      navigationItem.searchController = searchController
+      navigationItem.hidesSearchBarWhenScrolling = false
+      definesPresentationContext = true
+    }
+    
     private func setSubviews() {
         view.addSubview(listView)
     }
 
-       
     private func setConstraints() {
         
        let constraints = [
@@ -103,11 +118,18 @@ class ListCollectionViewController:UIViewController {
     }
 }
 
-//MARK: - Extension
+//MARK: - Extension NavigationBarButtonDelegate
 extension ListCollectionViewController:NavigationBarButtonsDelegate {
     
     func handleBarButtonPressed() {
        rightBarButtonAction()
     }
     
+}
+
+//MARK: - Extension UISearchResultsUpdating
+extension ListCollectionViewController:UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Updating:\(searchController.searchBar.text)")
+    }
 }

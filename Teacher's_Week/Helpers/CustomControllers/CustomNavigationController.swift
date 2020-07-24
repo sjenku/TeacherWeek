@@ -44,13 +44,6 @@ class CustomNavigationController:UINavigationController {
     
     weak var navBarButtonsDelegate:NavigationBarButtonsDelegate?
     
-    lazy var searchController:UISearchController = {
-        let sc = UISearchController(searchResultsController: nil)
-        sc.searchBar.tintColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        return sc
-    }()
-    
     //MARK: - Public Methods
     func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done) {
         
@@ -58,12 +51,12 @@ class CustomNavigationController:UINavigationController {
        topViewController?.navigationItem.title = title
         
         //In Case Search Bar
-        if style == .smallSearch || style == .largeSearch {
-                print("Create Search ")
-                topViewController?.navigationItem.searchController = searchController
-                topViewController?.navigationItem.hidesSearchBarWhenScrolling = false
-                topViewController?.definesPresentationContext = true
-        }
+//        if style == .smallSearch || style == .largeSearch {
+//                print("Create Search ")
+//                topViewController?.navigationItem.searchController = searchController
+//                topViewController?.navigationItem.hidesSearchBarWhenScrolling = false
+//                topViewController?.definesPresentationContext = true
+//        }
         
         //In Case It's Big Large Navigation
         if style == .large || style == .largeSearch {
