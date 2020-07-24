@@ -46,14 +46,13 @@ class CustomNavigationController:UINavigationController {
     func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done) {
         
         //Set title
-       topViewController?.navigationItem.title = title
+//       topViewController?.navigationItem.title = title
+        topViewController?.title = title
         
         
         //In Case It's Big Large Navigation
-        if style == .large  {
-            navigationBar.prefersLargeTitles = true
-        }
-        
+        navigationBar.prefersLargeTitles = style == .large ? true : false
+
         //In Case NavigationBar Have Right Button
         if withRightButton {
             

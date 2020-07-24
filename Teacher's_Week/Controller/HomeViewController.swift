@@ -63,12 +63,18 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
          let navRightBarButtonAction = {
             
             let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            //Import Contacts
             let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
                 print("Import From Contacts Pressed")
             }
+            //Create Student
             let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
-                print("Create New Student Pressed")
+                let vc = NewStudentCollectionVC()
+                guard let nav = self.navigationController as? CustomNavigationController else {return}
+                nav.setupNavigationWithStyle(style: .small, title: "New Student")
+                nav.pushViewController(vc, animated: true)
             }
+            //Cancel
             let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
                 self?.dismiss(animated: true, completion: nil)
             }
