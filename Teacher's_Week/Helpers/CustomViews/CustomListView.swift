@@ -51,8 +51,11 @@ class CustomListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-//MARK: - Private Methods
-    
+//MARK: - Public Methods
+    public func updateInfo(_ info:[SectionInfo]?) {
+        sectionsInfo = info
+        self.collectionView.reloadData()
+    }
     
 //MARK:- Views And Methods Related To Views
     

@@ -36,7 +36,21 @@ struct ContactsManager:CollectionListData {
            return sectionsInfo
         }
     
-    
+    static func filterSectionsInfoByText(sectionsInfo:[SectionInfo],text:String)->[SectionInfo] {//TODO: Move to more appropriate struct then ContactManager
+        var filteredSectionsInfo:[SectionInfo] = []
+        sectionsInfo.forEach { (sectionInfo) in
+            var filteredCells:[CellInfo] = []
+             filteredCells = sectionInfo.cellsInfo.filter { (cellInfo) -> Bool in
+                return cellInfo.title?.contains(text) ?? false
+            }
+            print("filteredCount:\(filteredCells.count)")
+            guard  filteredCells.count != 0 else {return}
+            let headerFilteredSection:String = String(filteredCells[0].title?.first ?? " ") 
+            let filteredSectionInfo = SectionInfo(headerTitle: headerFilteredSection, cellsInfo: filteredCells)
+            filteredSectionsInfo.append(filteredSectionInfo)
+        }
+        return filteredSectionsInfo
+    }
     
     static func getContacts()->[Character:[Student]] {
         

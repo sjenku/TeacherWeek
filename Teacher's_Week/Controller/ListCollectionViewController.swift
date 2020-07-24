@@ -33,8 +33,7 @@ class ListCollectionViewController:UIViewController {
     }()
     
     lazy var listView:CustomListView = {
-         let info:[SectionInfo] = ContactsManager.getSectionsInfo()
-         let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
+        let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
          view.translatesAutoresizingMaskIntoConstraints = false
          return view
      }()
@@ -130,6 +129,14 @@ extension ListCollectionViewController:NavigationBarButtonsDelegate {
 //MARK: - Extension UISearchResultsUpdating
 extension ListCollectionViewController:UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("Updating:\(searchController.searchBar.text)")
+        
+        guard searchController.searchBar.text != "" else {
+            self.listView.updateInfo(ContactsManager.getSectionsInfo())
+            return
+            
+        }
+        
+        let filteredInfo = ContactsManager.filterSectionsInfoByText(sectionsInfo: ContactsManager.getSectionsInfo() , text: searchController.searchBar.text ?? "")
+        self.listView.updateInfo(filteredInfo)
     }
 }
