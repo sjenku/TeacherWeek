@@ -79,7 +79,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             self.present(actionController, animated: true, completion: nil)
         }
         
-         vc.setNavigationControllerProperties(style: .largeSearch, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: navRightBarButtonAction)
+         vc.setNavigationControllerProperties(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: navRightBarButtonAction)
          
          navigationController?.pushViewController(vc, animated: true)
          

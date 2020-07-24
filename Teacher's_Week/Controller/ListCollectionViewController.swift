@@ -28,6 +28,7 @@ class ListCollectionViewController:UIViewController {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        sc.obscuresBackgroundDuringPresentation = false
         sc.searchResultsUpdater = self
         return sc
     }()

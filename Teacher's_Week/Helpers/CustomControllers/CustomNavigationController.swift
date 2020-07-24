@@ -12,9 +12,7 @@ import UIKit
 
 enum NavigationControllerStyle {
     case small
-    case smallSearch
     case large
-    case largeSearch
 }
 
 protocol NavigationBarButtonsDelegate:class {
@@ -50,16 +48,9 @@ class CustomNavigationController:UINavigationController {
         //Set title
        topViewController?.navigationItem.title = title
         
-        //In Case Search Bar
-//        if style == .smallSearch || style == .largeSearch {
-//                print("Create Search ")
-//                topViewController?.navigationItem.searchController = searchController
-//                topViewController?.navigationItem.hidesSearchBarWhenScrolling = false
-//                topViewController?.definesPresentationContext = true
-//        }
         
         //In Case It's Big Large Navigation
-        if style == .large || style == .largeSearch {
+        if style == .large  {
             navigationBar.prefersLargeTitles = true
         }
         
