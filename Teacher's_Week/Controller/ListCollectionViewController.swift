@@ -17,12 +17,12 @@ class ListCollectionViewController:UIViewController {
     
     private var info:[SectionInfo]?
     private var cellStyle:CellStyle?
-    private var navStyle:NavigationControllerStyle?
-    private var navTitle:String = ""
-    private var withRightBarButton:Bool = false
-    private var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
-    private var rightBarButtonActionTarget:Any?
-    private var rightBarButtonAction:Selector?
+//    private var navStyle:NavigationControllerStyle?
+//    private var navTitle:String = ""
+//    private var withRightBarButton:Bool = false
+//    private var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
+//    private var rightBarButtonActionTarget:Any?
+//    private var rightBarButtonAction:Selector?
     
     lazy var searchController:UISearchController = {
         [unowned self] in
@@ -57,7 +57,7 @@ class ListCollectionViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationControllerAppearnce()
+//        setNavigationControllerAppearnce()
         setupSearchView()
         setSubviews()
         setConstraints()
@@ -68,11 +68,7 @@ class ListCollectionViewController:UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
-//        if let nav = navigationController as? CustomNavigationController {
-//            nav.navBarButtonsDelegate = self
-//            nav.navigationBar.isHidden = false
-//        }
-        
+
     }
     
     //MARK: - Private Methods
@@ -101,33 +97,26 @@ class ListCollectionViewController:UIViewController {
         }
     }
     
-    private func setNavigationControllerAppearnce() {
-        
-        guard let safeNavStyle = navStyle else {return}
-        
-        navigationController?.setupNavigationWithStyle(style: safeNavStyle, title: self.navTitle, withRightButton: self.withRightBarButton, rightButtonStyle: self.rightBarButtonStyle,target: rightBarButtonActionTarget,rightButtonAction: self.rightBarButtonAction)
-    }
+//    private func setNavigationControllerAppearnce() {
+//
+//        guard let safeNavStyle = navStyle else {return}
+//
+//        navigationController?.setupNavigationWithStyle(style: safeNavStyle, title: self.navTitle, withRightButton: self.withRightBarButton, rightButtonStyle: self.rightBarButtonStyle,target: rightBarButtonActionTarget,rightButtonAction: self.rightBarButtonAction)
+//    }
     
     //MARK: - Public Methods
-    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done,target:Any? = nil,rightButtonAction:Selector? = nil) {
-        self.navStyle = style
-        self.navTitle = title
-        self.withRightBarButton = withRightButton
-        self.rightBarButtonStyle = rightButtonStyle
-        self.rightBarButtonActionTarget = target
-        self.rightBarButtonAction = rightButtonAction
-        
-    }
+//    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done,target:Any? = nil,rightButtonAction:Selector? = nil) {
+//        self.navStyle = style
+//        self.navTitle = title
+//        self.withRightBarButton = withRightButton
+//        self.rightBarButtonStyle = rightButtonStyle
+//        self.rightBarButtonActionTarget = target
+//        self.rightBarButtonAction = rightButtonAction
+//        
+//    }
 }
 
-//MARK: - Extension NavigationBarButtonDelegate
-//extension ListCollectionViewController:NavigationBarButtonsDelegate {
-//    
-//    func handleBarButtonPressed() {
-//       rightBarButtonAction()
-//    }
-//    
-//}
+
 
 //MARK: - Extension UISearchResultsUpdating
 extension ListCollectionViewController:UISearchResultsUpdating {

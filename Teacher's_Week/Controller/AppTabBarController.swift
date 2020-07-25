@@ -13,31 +13,32 @@ class AppTabBarController: UITabBarController {
     //MARK: - Views
     private let homeViewController:UINavigationController =  {
         let vc = HomeViewController()
-        let navVC = UINavigationController(style:.large, rootViewController: vc, title: "")
+//        let navVC = UINavigationController(style:.large, rootViewController: vc, title: "")
+        let navVC = UINavigationController(rootViewController: vc, isSetConfigurations: true)
         return navVC
     }()
     
     
     private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
     
-    private let newGroupCollectionVC:CustomNavigationController = {
+    private let newGroupCollectionVC:UINavigationController = {
         let vc = NewGroupCollectionVC()
-        let navVC = CustomNavigationController(rootViewController: vc)
-        navVC.setupNavigationWithStyle(style: .large, title: "New Group")
+        let navVC = UINavigationController(rootViewController: vc)
+//        navVC.setupNavigationWithStyle(style: .large, title: "New Group")
         return navVC
     }()
     
-    private let newStudentCollectionVC:CustomNavigationController = {
+    private let newStudentCollectionVC:UINavigationController = {
         let vc = NewStudentCollectionVC()
-        let navVC = CustomNavigationController(rootViewController: vc)
-        navVC.setupNavigationWithStyle(style: .large, title: "New Student")
+        let navVC = UINavigationController(rootViewController: vc)
+//        navVC.setupNavigationWithStyle(style: .large, title: "New Student")
         return navVC
     }()
     
-    private let tmpVC:CustomNavigationController = {
+    private let tmpVC:UINavigationController = {
         let vc = GenerateScheduleStepOneVC()
-        let navVC = CustomNavigationController(rootViewController: vc)
-        navVC.setupNavigationWithStyle(style: .small, title: "Step 1/2")
+        let navVC = UINavigationController(rootViewController: vc)
+//        navVC.setupNavigationWithStyle(style: .small, title: "Step 1/2")
         return navVC
     }()
 

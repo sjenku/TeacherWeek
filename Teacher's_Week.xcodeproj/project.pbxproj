@@ -37,7 +37,6 @@
 		BE12526824A0EC4E006F264B /* NewGroupCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */; };
 		BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526924A103FE006F264B /* NewGroupLowerCell.swift */; };
 		BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */; };
-		BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526D24A14046006F264B /* CustomNavigationController.swift */; };
 		BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */; };
 		BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */; };
 		BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */; };
@@ -105,7 +104,6 @@
 		BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCollectionVC.swift; sourceTree = "<group>"; };
 		BE12526924A103FE006F264B /* NewGroupLowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerCell.swift; sourceTree = "<group>"; };
 		BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperCell.swift; sourceTree = "<group>"; };
-		BE12526D24A14046006F264B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BE12528F24A3739E006F264B /* RectButtonWithImgTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectButtonWithImgTitle.swift; sourceTree = "<group>"; };
 		BE12529124A3BEBE006F264B /* NewGroupLowerContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerContrainerView.swift; sourceTree = "<group>"; };
 		BE12529324A3BED0006F264B /* NewGroupUpperContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperContrainerView.swift; sourceTree = "<group>"; };
@@ -351,7 +349,6 @@
 		BE26F91824ADC36E00664510 /* CustomControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE12526D24A14046006F264B /* CustomNavigationController.swift */,
 				BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */,
 			);
 			path = CustomControllers;
@@ -477,7 +474,6 @@
 				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
 				BEF8448A24C1D577001FABCC /* ManageListLessonsView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
-				BE12526E24A14046006F264B /* CustomNavigationController.swift in Sources */,
 				BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */,
 				BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */,
 				BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */,

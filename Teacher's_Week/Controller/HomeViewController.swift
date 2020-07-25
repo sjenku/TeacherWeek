@@ -62,39 +62,35 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
      func addStudentButtonPressed() {
          let info = ContactsManager.getSectionsInfo()
          let vc = ListCollectionViewController(info: info, cellStyle: .title)
-         let navRightBarButtonAction = {
-            
-            let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            //Import Contacts
-            let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
-                print("Import From Contacts Pressed")
-            }
-            //Create Student
-            let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
-                let vc = NewStudentCollectionVC()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            //Cancel
-            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
-                self?.dismiss(animated: true, completion: nil)
-            }
-        
-            [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
-                actionController.addAction(action)
-            }
-            self.present(actionController, animated: true, completion: nil)
-        }
-        
-//        navigationController?.setupNavigationWithStyle(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
-
-        vc.setNavigationControllerProperties(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,target:self, rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
+        navigationController?.setupNavigationWithStyle(style: .large, forController: vc, title: "Students", withRightButton: true, rightButtonStyle: .add, target: self, rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
         
          navigationController?.pushViewController(vc, animated: true)
          
      }
     
     @objc func handleAddStudentNavBarButtonPressed() {
-        print("Hello World")
+            let navRightBarButtonAction = {
+                
+                let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                //Import Contacts
+                let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
+                    print("Import From Contacts Pressed")
+                }
+                //Create Student
+                let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
+                    let vc = NewStudentCollectionVC()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                //Cancel
+                let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            
+                [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
+                    actionController.addAction(action)
+                }
+                self.present(actionController, animated: true, completion: nil)
+            }
     }
 }
 
