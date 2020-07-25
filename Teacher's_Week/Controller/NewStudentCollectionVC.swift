@@ -79,6 +79,7 @@ class NewStudentCollectionVC:UIViewController {
         view.addSubview(circleStudentIcon)
         view.addSubview(stackView)
         view.addSubview(doneButton)
+        navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
         setConstraints()
 //        handleKeyboard()
     }
@@ -88,6 +89,7 @@ class NewStudentCollectionVC:UIViewController {
         super.viewWillAppear(animated)
         
 //        setNotifications()
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {

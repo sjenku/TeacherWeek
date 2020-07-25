@@ -13,6 +13,13 @@ enum NavigationControllerStyle {
     case large
 }
 
+struct NavProperties {
+         var navTitle:String = ""
+         var withRightBarButton:Bool = false
+         var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
+         var rightBarButtonActionTarget:Any?
+         var rightBarButtonAction:Selector?
+}
 
 extension UINavigationController {
     
@@ -25,18 +32,18 @@ extension UINavigationController {
     
     //MARK: - Public Methods
  
-    func setupNavigationWithStyle(style:NavigationControllerStyle,forController vc:UIViewController?,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done,target:Any? = nil,rightButtonAction:Selector? = nil) {
+    func setupNavigationWithStyle(navProperties:NavProperties,forController vc:UIViewController?) {
 
           //Set title
-          vc?.title = title
+         vc?.title = navProperties.navTitle
 
             //In Case It's Big Large Navigation
-            navigationBar.prefersLargeTitles = style == .large ? true : false
+//        navigationBar.prefersLargeTitles = navProperties.navStyle == .large ? true : false
 
             //In Case NavigationBar Have Right Button
-            if withRightButton {
+        if navProperties.withRightBarButton {
 
-                let rightBarButton = createBarButtonItemWithStyle(style: rightButtonStyle,target: target, selector: rightButtonAction)
+            let rightBarButton = createBarButtonItemWithStyle(style: navProperties.rightBarButtonStyle,target: navProperties.rightBarButtonActionTarget, selector: navProperties.rightBarButtonAction)
                 vc?.navigationItem.rightBarButtonItem = rightBarButton
             }
         }
@@ -53,6 +60,8 @@ extension UINavigationController {
     
     private func setConfigurations() {
         //For All Cases Configurations
+        navigationBar.prefersLargeTitles = true
+        
         if #available(iOS 13.0, *) {
             
             let navBarAppearance = UINavigationBarAppearance()

@@ -61,8 +61,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
     //MARK:Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
          let info = ContactsManager.getSectionsInfo()
-         let vc = ListCollectionViewController(info: info, cellStyle: .title)
-        navigationController?.setupNavigationWithStyle(style: .large, forController: vc, title: "Students", withRightButton: true, rightButtonStyle: .add, target: self, rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
+        let vc = ListCollectionViewController(info: info, cellStyle: .title,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
          navigationController?.pushViewController(vc, animated: true)
          
@@ -78,6 +77,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 //Create Student
                 let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
                     let vc = NewStudentCollectionVC()
+                    vc.title = "New Student"
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 //Cancel

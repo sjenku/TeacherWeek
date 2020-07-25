@@ -17,12 +17,8 @@ class ListCollectionViewController:UIViewController {
     
     private var info:[SectionInfo]?
     private var cellStyle:CellStyle?
-//    private var navStyle:NavigationControllerStyle?
-//    private var navTitle:String = ""
-//    private var withRightBarButton:Bool = false
-//    private var rightBarButtonStyle:UIBarButtonItem.SystemItem = .done
-//    private var rightBarButtonActionTarget:Any?
-//    private var rightBarButtonAction:Selector?
+    private var navProperties:NavProperties?
+    private var navStyle:NavigationControllerStyle? = .small
     
     lazy var searchController:UISearchController = {
         [unowned self] in
@@ -42,10 +38,13 @@ class ListCollectionViewController:UIViewController {
      
     //MARK: - Initialazation
     
-    init(info:[SectionInfo]?,cellStyle:CellStyle?) {
+    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle,navigationProperties:NavProperties?) {
         super.init(nibName: nil, bundle: nil)
         self.info = info
         self.cellStyle = cellStyle
+        self.navProperties = navigationProperties
+       
+        
     }
     
     required init?(coder: NSCoder) {
@@ -57,10 +56,10 @@ class ListCollectionViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setNavigationControllerAppearnce()
         setupSearchView()
         setSubviews()
         setConstraints()
+        setNavigationItem()
         
     }
     
@@ -68,10 +67,17 @@ class ListCollectionViewController:UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
+        guard let unwrappedNavProperties = navProperties else {return}
+        navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)
 
     }
     
     //MARK: - Private Methods
+    
+    private func setNavigationItem() {
+        guard let style = self.navStyle else {return}
+        navigationController?.navigationItem.largeTitleDisplayMode = (style == .large) ? .always : .never
+    }
     
     private func setupSearchView() {
       navigationItem.searchController = searchController
