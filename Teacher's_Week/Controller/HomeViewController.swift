@@ -57,6 +57,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
          navigationController?.pushViewController(vc, animated: true)
      }
      
+    
+    //MARK:Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
          let info = ContactsManager.getSectionsInfo()
          let vc = ListCollectionViewController(info: info, cellStyle: .title)
@@ -70,9 +72,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             //Create Student
             let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
                 let vc = NewStudentCollectionVC()
-                guard let nav = self.navigationController as? CustomNavigationController else {return}
-                nav.setupNavigationWithStyle(style: .small, title: "New Student")
-                nav.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             //Cancel
             let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
@@ -85,9 +85,16 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             self.present(actionController, animated: true, completion: nil)
         }
         
-         vc.setNavigationControllerProperties(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: navRightBarButtonAction)
-         
+//        navigationController?.setupNavigationWithStyle(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
+
+        vc.setNavigationControllerProperties(style: .large, title: "Students", withRightButton: true, rightButtonStyle: .add,target:self, rightButtonAction: #selector(handleAddStudentNavBarButtonPressed))
+        
          navigationController?.pushViewController(vc, animated: true)
          
      }
+    
+    @objc func handleAddStudentNavBarButtonPressed() {
+        print("Hello World")
+    }
 }
+

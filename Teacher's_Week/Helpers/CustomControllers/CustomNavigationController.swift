@@ -15,9 +15,6 @@ enum NavigationControllerStyle {
     case large
 }
 
-protocol NavigationBarButtonsDelegate:class {
-    func handleBarButtonPressed()
-}
 
 class CustomNavigationController:UINavigationController {
   
@@ -40,40 +37,41 @@ class CustomNavigationController:UINavigationController {
     
     //MARK: - Properties
     
-    weak var navBarButtonsDelegate:NavigationBarButtonsDelegate?
+//    weak var navBarButtonsDelegate:NavigationBarButtonsDelegate?
     
     //MARK: - Public Methods
-    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done) {
-        
-        //Set title
-//       topViewController?.navigationItem.title = title
-        topViewController?.title = title
-        
-        
-        //In Case It's Big Large Navigation
-        navigationBar.prefersLargeTitles = style == .large ? true : false
-
-        //In Case NavigationBar Have Right Button
-        if withRightButton {
-            
-          let rightBarButton = createBarButtonItemWithStyle(rightButtonStyle)
-            topViewController?.navigationItem.rightBarButtonItem = rightBarButton
-        }
-    }
-    
+//    func setupNavigationWithStyle(style:NavigationControllerStyle,title:String,withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done) {
+//        
+//        //Set title
+////       topViewController?.navigationItem.title = title
+//        topViewController?.title = title
+//        
+//        
+//        //In Case It's Big Large Navigation
+//        navigationBar.prefersLargeTitles = style == .large ? true : false
+//
+//        //In Case NavigationBar Have Right Button
+//        if withRightButton {
+//            
+//          let rightBarButton = createBarButtonItemWithStyle(rightButtonStyle)
+//            topViewController?.navigationItem.rightBarButtonItem = rightBarButton
+//        }
+//    }
+//    
     //MARK: - OBJC private Methods
     
-    @objc private func handleBarButton() {
-        guard let barButtonDelegate = navBarButtonsDelegate else {return}
-        barButtonDelegate.handleBarButtonPressed()
-    }
+//    @objc private func handleBarButton() {
+//        guard let barButtonDelegate = navBarButtonsDelegate else {return}
+//        barButtonDelegate.handleBarButtonPressed()
+//    }
     
     //MARK: - Private Methods
     private func createBarButtonItemWithStyle(_ style:UIBarButtonItem.SystemItem)->UIBarButtonItem {
 
-        let barButton = UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(handleBarButton))
-
-        return barButton
+//        let barButton = UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(handleBarButton))
+//
+//        return barButton
+        return UIBarButtonItem()
     }
     
     

@@ -56,6 +56,7 @@
 		BE26F91724ADC35E00664510 /* NewStudentCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */; };
 		BE26F91B24ADC57700664510 /* TitleAndTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91A24ADC57700664510 /* TitleAndTextFieldView.swift */; };
 		BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91C24ADDBDB00664510 /* CustomTextField.swift */; };
+		BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */; };
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
@@ -123,6 +124,7 @@
 		BE26F91624ADC35E00664510 /* NewStudentCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentCollectionVC.swift; sourceTree = "<group>"; };
 		BE26F91A24ADC57700664510 /* TitleAndTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndTextFieldView.swift; sourceTree = "<group>"; };
 		BE26F91C24ADDBDB00664510 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupStudentCell.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				BE12526D24A14046006F264B /* CustomNavigationController.swift */,
+				BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */,
 			);
 			path = CustomControllers;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */,
 				BE17D9C524B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift in Sources */,
 				BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */,
+				BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */,
 				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
 				BE17D9BC24B1ED4800F20AEF /* GenerateSOTitleBTView.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,

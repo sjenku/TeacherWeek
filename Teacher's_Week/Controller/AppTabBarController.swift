@@ -11,9 +11,9 @@ import UIKit
 class AppTabBarController: UITabBarController {
     
     //MARK: - Views
-    private let homeViewController:CustomNavigationController =  {
+    private let homeViewController:UINavigationController =  {
         let vc = HomeViewController()
-        let navVC = CustomNavigationController(rootViewController: vc)
+        let navVC = UINavigationController(style:.large, rootViewController: vc, title: "")
         return navVC
     }()
     
