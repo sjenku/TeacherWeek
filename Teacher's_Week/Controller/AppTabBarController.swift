@@ -18,25 +18,25 @@ class AppTabBarController: UITabBarController {
     }()
     
     
-    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"))
+    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"),isSetConfigurations: true)
     
     private let newGroupCollectionVC:UINavigationController = {
         let vc = NewGroupCollectionVC()
-        let navVC = UINavigationController(rootViewController: vc)
+        let navVC = UINavigationController(rootViewController: vc, isSetConfigurations:true)
 //        navVC.setupNavigationWithStyle(style: .large, title: "New Group")
         return navVC
     }()
     
     private let newStudentCollectionVC:UINavigationController = {
         let vc = NewStudentCollectionVC()
-        let navVC = UINavigationController(rootViewController: vc)
+           let navVC = UINavigationController(rootViewController: vc, isSetConfigurations:true)
 //        navVC.setupNavigationWithStyle(style: .large, title: "New Student")
         return navVC
     }()
     
     private let tmpVC:UINavigationController = {
         let vc = GenerateScheduleStepOneVC()
-        let navVC = UINavigationController(rootViewController: vc)
+        let navVC = UINavigationController(rootViewController: vc, isSetConfigurations:true)
 //        navVC.setupNavigationWithStyle(style: .small, title: "Step 1/2")
         return navVC
     }()

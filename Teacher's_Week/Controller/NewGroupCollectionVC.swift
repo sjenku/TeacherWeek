@@ -30,6 +30,7 @@ class NewGroupCollectionVC:UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.MyTheme.darkBG
+        setNavigationBar()
         setSubview()
         setConstriants()
 
@@ -37,6 +38,10 @@ class NewGroupCollectionVC:UIViewController {
     
 
     //MARK: - Private Functions
+    private func setNavigationBar() {
+        title = "New Group"
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+    }
     
     private func setSubview() {
         view.addSubview(upperContainer)

@@ -60,7 +60,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
     
     //MARK:Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
-         let info = ContactsManager.getSectionsInfo()
+//         let info = ContactsManager.getSectionsInfo()
+        let info = DataManager.getStudentsInFormatSectionsInfo()
         let vc = ListCollectionViewController(info: info, cellStyle: .title,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
          navigationController?.pushViewController(vc, animated: true)

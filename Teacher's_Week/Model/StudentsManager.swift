@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+
+struct Student {
+    
+    init(name:String) {
+        self.name = name
+    }
+    
+    var name:String = ""
+    var checked:Bool = false
+}
+
+
