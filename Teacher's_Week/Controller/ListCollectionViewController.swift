@@ -103,23 +103,6 @@ class ListCollectionViewController:UIViewController {
         }
     }
     
-//    private func setNavigationControllerAppearnce() {
-//
-//        guard let safeNavStyle = navStyle else {return}
-//
-//        navigationController?.setupNavigationWithStyle(style: safeNavStyle, title: self.navTitle, withRightButton: self.withRightBarButton, rightButtonStyle: self.rightBarButtonStyle,target: rightBarButtonActionTarget,rightButtonAction: self.rightBarButtonAction)
-//    }
-    
-    //MARK: - Public Methods
-//    public func setNavigationControllerProperties(style:NavigationControllerStyle,title:String = "",withRightButton:Bool = false,rightButtonStyle:UIBarButtonItem.SystemItem = .done,target:Any? = nil,rightButtonAction:Selector? = nil) {
-//        self.navStyle = style
-//        self.navTitle = title
-//        self.withRightBarButton = withRightButton
-//        self.rightBarButtonStyle = rightButtonStyle
-//        self.rightBarButtonActionTarget = target
-//        self.rightBarButtonAction = rightButtonAction
-//        
-//    }
 }
 
 

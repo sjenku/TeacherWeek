@@ -13,7 +13,6 @@ class AppTabBarController: UITabBarController {
     //MARK: - Views
     private let homeViewController:UINavigationController =  {
         let vc = HomeViewController()
-//        let navVC = UINavigationController(style:.large, rootViewController: vc, title: "")
         let navVC = UINavigationController(rootViewController: vc, isSetConfigurations: true)
         return navVC
     }()

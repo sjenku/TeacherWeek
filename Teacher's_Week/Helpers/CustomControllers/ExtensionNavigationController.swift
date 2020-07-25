@@ -37,9 +37,6 @@ extension UINavigationController {
           //Set title
          vc?.title = navProperties.navTitle
 
-            //In Case It's Big Large Navigation
-//        navigationBar.prefersLargeTitles = navProperties.navStyle == .large ? true : false
-
             //In Case NavigationBar Have Right Button
         if navProperties.withRightBarButton {
 
