@@ -11,14 +11,13 @@ import UIKit
 
 class NewStudentCollectionVC:UIViewController {
     
-    
+    //MARK: - Properties
     let doneButton:ChooseLabelDoneBTView = {
         let bt = ChooseLabelDoneBTView(title:"Done",backgroundColor:UIColor.MyTheme.darkGreen,tintColor:UIColor.MyTheme.titleGreen)
+        bt.button.addTarget(self, action: #selector(handleDoneButtonPressed), for: .touchUpInside)
         return bt
     }()
-    
-    
-    
+
     enum textFieldTags:Int {
         case firstNameTag = 1,lastNameTag,phoneNumberTag,eMailTag
     }
@@ -71,6 +70,7 @@ class NewStudentCollectionVC:UIViewController {
         return iv
     }()
 
+    //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,24 +81,21 @@ class NewStudentCollectionVC:UIViewController {
         view.addSubview(doneButton)
         navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
         setConstraints()
-//        handleKeyboard()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        setNotifications()
         navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-//        NotificationCenter.default.removeObserver(self)
     }
     
 
+    //MARK: - Private Methods
     
     private func setConstraints() {
         
@@ -119,75 +116,16 @@ class NewStudentCollectionVC:UIViewController {
             constraint.isActive = true
         }
     }
+    //MARK: - Objc Methods
+    @objc private func handleDoneButtonPressed() {
+        if let safeFirstName = firstName.textField.textField.text,let safeLastName = lastName.textField.textField.text {
+            
+            if (safeFirstName != "") || (safeLastName != "") {
+                 DataManager.addNewStudent(name:safeFirstName + " " +  safeLastName)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
 
-//MARK: - KeyBoard
-    
-//    private func setNotifications() {
-//        //KeyBoard will show
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        //KeyBoard will hide
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//
-//        guard let textField = CustomTextField.currentActive else { return }
-//
-//        if isKeyBoardOverlappingTextField(textField: textField, keyBoardSize: keyboardSize) {
-//            let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-//            print("tabbarHieght = \(tabBarHeight)")
-//                self.view.frame.origin.y = 0 - keyboardSize.height + tabBarHeight
-//
-//
-//        }
-//
-//    }
-//
-//    private func isKeyBoardOverlappingTextField(textField:UITextField,keyBoardSize:CGRect) -> Bool {
-//        var fieldYPositionPlusHeight:CGFloat = 0
-//        let stackViewItemHeight:CGFloat = (stackView.frame.height - (3 * stackView.spacing)) / 4
-//
-//        switch textField.tag {
-//        case textFieldTags.firstNameTag.rawValue:
-//            fieldYPositionPlusHeight = stackView.frame.origin.y + stackViewItemHeight
-//
-//        case textFieldTags.lastNameTag.rawValue:
-//             fieldYPositionPlusHeight = stackView.frame.origin.y + stackView.spacing + stackViewItemHeight * 2
-//
-//        case textFieldTags.phoneNumberTag.rawValue:
-//             fieldYPositionPlusHeight = stackView.frame.origin.y + (stackView.spacing * 2) + stackViewItemHeight * 3
-//
-//        case textFieldTags.eMailTag.rawValue:
-//             fieldYPositionPlusHeight = stackView.frame.origin.y + (stackView.spacing * 3) + stackViewItemHeight * 4
-//
-//        default:
-//            break
-//        }
-//
-//        let keyBoardYPosition = DeviceConfigurations.windowHeight - keyBoardSize.height
-//        return fieldYPositionPlusHeight > keyBoardYPosition
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//      // move back the root view origin to zero
-//      self.view.frame.origin.y = 0
-//    }
-//
-
-    
-    
-    
-//    private func handleKeyboard() {
-//
-//
-//          let tap = UITapGestureRecognizer(target: self, action: #selector(endKeyBoardEditing))
-//        view.addGestureRecognizer(tap)
-//      }
-//
-//      @objc private func endKeyBoardEditing() {
-//        view.endEditing(true)
-//      }
-    
 }
 

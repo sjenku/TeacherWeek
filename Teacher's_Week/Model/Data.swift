@@ -23,6 +23,11 @@ struct DataManager {
 }
 
 extension DataManager {
+    
+    static func addNewStudent(name:String) {
+        students.append(Student(name: name))
+    }
+    
     static func getStudentsInFormatSectionsInfo() -> [SectionInfo] {
         var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []

@@ -66,6 +66,7 @@ class ListCollectionViewController:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
         navigationController?.navigationBar.isHidden = false
         guard let unwrappedNavProperties = navProperties else {return}
         navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)
