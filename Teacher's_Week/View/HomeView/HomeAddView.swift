@@ -55,7 +55,7 @@ class HomeAddView:UIView {
     }
     
     
-    private let counterLabel:UILabel = {
+     let counterLabel:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center

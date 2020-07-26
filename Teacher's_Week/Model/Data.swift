@@ -13,12 +13,15 @@ import Foundation
 
 struct DataManager {
     
+//    static var students:[Student] = [
+//                  Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
+//                  Student(name: "Bob Marli"),
+//                  Student(name: "Bon Jovi"),Student(name: "Ben Gurion"),
+//                  Student(name: "Chris Brawn"),
+//                  Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
     static var students:[Student] = [
-                  Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
-                  Student(name: "Bob Marli"),
-                  Student(name: "Bon Jovi"),Student(name: "Ben Gurion"),
-                  Student(name: "Chris Brawn"),
-                  Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
+                     Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
+                     Student(name: "Bob Marli")]
     
 }
 

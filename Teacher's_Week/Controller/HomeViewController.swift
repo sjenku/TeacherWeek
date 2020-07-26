@@ -20,6 +20,7 @@ class HomeViewController:UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        homeView?.lowerContainer.updateAddStudentViewCounter(number: DataManager.students.count)
     }
     
     override func viewDidLoad() {
@@ -58,9 +59,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
      }
      
     
-    //MARK:Manage ListCollectionViewController For 'add student button' from HomeVC
+//MARK: - Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
-//         let info = ContactsManager.getSectionsInfo()
         let info = DataManager.getStudentsInFormatSectionsInfo()
         let vc = ListCollectionViewController(info: info, cellStyle: .title,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
@@ -75,6 +75,19 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
                     let vc = ChoosableListController()
                     vc.info = ContactsManager.getSectionsInfo()
+                    let doneButtonAction = {
+                        //Add Checked Contacts to Students
+                        let checkedContacts = vc.checkedInFormSectionsInfo
+                        checkedContacts.forEach { (checkedSection) in
+                            checkedSection.cellsInfo.forEach { (cellInfo) in
+                                if let studentName = cellInfo.title {
+                                     DataManager.addNewStudent(name: studentName)
+                                }
+                            }
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    vc.doneButtonAction = doneButtonAction
                     vc.title = "Contacts"
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

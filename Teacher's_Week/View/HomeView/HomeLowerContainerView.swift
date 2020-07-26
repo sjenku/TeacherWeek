@@ -53,6 +53,11 @@ class HomeLowerContainerView:CustomView {
         return sv
     }()
     
+    //MARK: - Public Methods
+    func updateAddStudentViewCounter(number:Int) {
+        addStudentView.counterLabel.text = String(number)
+    }
+    
     //MARK: - OBJC private Functions
     
     @objc private func handleAddScheduleButton() {
@@ -102,7 +107,6 @@ class HomeLowerContainerView:CustomView {
         lowerHalfView.addConstraint(NSLayoutConstraint(item: addScheduleButton, attribute: .centerX, relatedBy: .equal, toItem: lowerHalfView, attribute: .centerX, multiplier: 1, constant: 0))
         lowerHalfView.addConstraint(NSLayoutConstraint(item: addScheduleButton, attribute: .centerY, relatedBy: .equal, toItem: lowerHalfView, attribute: .centerY, multiplier: 1, constant: 0))
     }
-    
-
+       
 }
 

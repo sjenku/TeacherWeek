@@ -12,11 +12,27 @@ import IQKeyboardManagerSwift
 class ChoosableListController:UIViewController{
       
    //MARK: - Properties
-    var info:[SectionInfo] = [] {
-        willSet {
+    var info:[SectionInfo] {
+        set {
             self.personsListCollectionView.updateInfo(newValue)
         }
+        get {
+            self.personsListCollectionView.getCurrentInfoInList()
+        }
     }
+    
+    var checkedInFormSectionsInfo:[SectionInfo] {
+        get {
+            var sectionsInfoFiltered:[SectionInfo] = []
+            info.forEach { (sectionInfo) in
+             let cellsInfoForSectionFiltered = sectionInfo.cellsInfo.filter{$0.isAccessory ?? false}
+                sectionsInfoFiltered.append(SectionInfo(headerTitle: sectionInfo.headerTitle, cellsInfo: cellsInfoForSectionFiltered))
+            }
+            return sectionsInfoFiltered
+        }
+    }
+    
+    var doneButtonAction:(()->Void)?
     
     //MARK: - Overrides
     override func viewDidLoad() {
@@ -42,7 +58,11 @@ class ChoosableListController:UIViewController{
         return ListCollectionView(frame: .zero, info: nil,style: nil)
     }()
     
-    private let doneButtonView:UIView = ChooseLabelDoneBTView(title: "Done", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
+    private let doneButtonView:UIView = {
+     let btView = ChooseLabelDoneBTView(title: "Done", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
+        btView.button.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
+     return btView
+    }()
     private let searchController:UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.tintColor = .white
@@ -51,7 +71,11 @@ class ChoosableListController:UIViewController{
     }()
     
     
-    
+    //MARK: - OBJC Methods
+    @objc private func handleDoneButton() {
+        guard let doneBTAction = doneButtonAction else {return}
+        doneBTAction()
+    }
     
    //MARK: - Private Methods
     private func setNavigationItem() {

@@ -57,6 +57,11 @@ class CustomListView: UIView {
         self.collectionView.reloadData()
     }
     
+    public func getCurrentInfoInList()->[SectionInfo] {
+        guard let _ = sectionsInfo else {return []}
+        return sectionsInfo!
+    }
+    
 //MARK:- Views And Methods Related To Views
     
     
