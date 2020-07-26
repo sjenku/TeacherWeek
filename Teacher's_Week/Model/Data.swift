@@ -25,6 +25,7 @@ struct DataManager {
     
 }
 
+//MARK: - StudentManagment
 extension DataManager {
     
     static func addNewStudent(name:String) {
@@ -40,4 +41,24 @@ extension DataManager {
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         return sectionsInfo
     }
+    
+}
+
+//MARK: - General
+extension DataManager {
+    static func filterSectionsInfoByText(sectionsInfo:[SectionInfo],text:String)->[SectionInfo] {
+         var filteredSectionsInfo:[SectionInfo] = []
+         sectionsInfo.forEach { (sectionInfo) in
+             var filteredCells:[CellInfo] = []
+              filteredCells = sectionInfo.cellsInfo.filter { (cellInfo) -> Bool in
+                 return cellInfo.title?.contains(text) ?? false
+             }
+             print("filteredCount:\(filteredCells.count)")
+             guard  filteredCells.count != 0 else {return}
+             let headerFilteredSection:String = String(filteredCells[0].title?.first ?? " ")
+             let filteredSectionInfo = SectionInfo(headerTitle: headerFilteredSection, cellsInfo: filteredCells)
+             filteredSectionsInfo.append(filteredSectionInfo)
+         }
+         return filteredSectionsInfo
+     }
 }

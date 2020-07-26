@@ -70,7 +70,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
     
     @objc func handleAddStudentNavBarButtonPressed() {
 
-                let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
                 //Import Contacts
                 let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
                     let vc = ChoosableListController()
@@ -105,7 +105,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
                     actionController.addAction(action)
                 }
-                self.present(actionController, animated: true, completion: nil)
+        self.navigationController?.topViewController?.present(actionController, animated: true, completion: nil)
             }
 }
 

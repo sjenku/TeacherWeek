@@ -113,12 +113,13 @@ extension ListCollectionViewController:UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
         guard searchController.searchBar.text != "" else {
-            self.listView.updateInfo(ContactsManager.getSectionsInfo())
+            self.listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
             return
             
         }
         
-        let filteredInfo = ContactsManager.filterSectionsInfoByText(sectionsInfo: ContactsManager.getSectionsInfo() , text: searchController.searchBar.text ?? "")
+        //TODO:Filter from data and not from ContactsManager
+        let filteredInfo = DataManager.filterSectionsInfoByText(sectionsInfo: DataManager.getStudentsInFormatSectionsInfo() , text: searchController.searchBar.text ?? "")
         self.listView.updateInfo(filteredInfo)
     }
 }
