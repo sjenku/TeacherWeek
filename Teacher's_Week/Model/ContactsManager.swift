@@ -7,32 +7,19 @@
 //
 
 import Foundation
+import Contacts
 
 
 
-
-struct ContactsManager:CollectionListData {
+struct ContactsManager {
+    
+    static var contacts:[Student] = []
     
     static func getSectionsInfo() -> [SectionInfo] {
-        
-        let contacts = ContactsManager.getContacts()  //[Character:[Student]
-            //sectionInfo
-            let sectionsInfo:[SectionInfo] = {
-                let sections = contacts.map { (contactsPerKey) -> SectionInfo in
-                    
-                    let headerTitle = contactsPerKey.key
-                    
-                    let cellsInfo:[CellInfo] = contactsPerKey.value.map { (contactsInKey) -> CellInfo in
-                        let cellInfo = CellInfo(title:contactsInKey.name, subtitle: "subtitle",isAccessory:contactsInKey.checked)
-                        return cellInfo
-                    }
-                    
-                    let section = SectionInfo(headerTitle:String(headerTitle),cellsInfo:cellsInfo)
-                    return section
-                }
-                return sections
-            }()
 
+        
+        
+         let sectionsInfo:[SectionInfo] = []
            return sectionsInfo
         }
     
@@ -52,17 +39,65 @@ struct ContactsManager:CollectionListData {
         return filteredSectionsInfo
     }
     
-    static func getContacts()->[Character:[Student]] {
+    
+    static func getContacts() {
         
-              let contacts:[Character:[Student]] = [
-                "A":[Student(name: "April Levin"),Student(name: "Arnold Shvartsneger")],
-                "B":[Student(name: "Bob Marli"),Student(name: "Bon Jovi"),Student(name: "Ben Gurion")],
-                "C":[Student(name: "Chris Brawn")],
-                "M":[Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
-            ]
+        print("Get Contacts")
+        let store = CNContactStore()
         
-        return contacts
+        store.requestAccess(for: .contacts) { (granted, error) in
+            if let err = error {
+                print("Error Access Contacts:\(err.localizedDescription)")
+            }
+            guard granted != false else {
+                print("Go To Settings And Change Access Settings For This App")
+                return
+                
+            }
+            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+            do {
+                try store.enumerateContacts(with: request) { (contact, pointer) in
+                               print("Name:\(contact.givenName)")
+                               print("LastName:\(contact.familyName)")
+                }
+            } catch let err {
+                print("Fetch Error:\(err.localizedDescription)")
+            }
+        }
+        
     }
     
-    
 }
+
+
+//    static func getContacts()->[Character:[Student]] {
+//
+//              let contacts:[Character:[Student]] = [
+//                "A":[Student(name: "April Levin"),Student(name: "Arnold Shvartsneger")],
+//                "B":[Student(name: "Bob Marli"),Student(name: "Bon Jovi"),Student(name: "Ben Gurion")],
+//                "C":[Student(name: "Chris Brawn")],
+//                "M":[Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
+//            ]
+//
+//        return contacts
+//    }
+
+
+//
+//        let contacts = ContactsManager.getContacts()  //[Character:[Student]
+//            //sectionInfo
+//            let sectionsInfo:[SectionInfo] = {
+//                let sections = contacts.map { (contactsPerKey) -> SectionInfo in
+//
+//                    let headerTitle = contactsPerKey.key
+//
+//                    let cellsInfo:[CellInfo] = contactsPerKey.value.map { (contactsInKey) -> CellInfo in
+//                        let cellInfo = CellInfo(title:contactsInKey.name, subtitle: "subtitle",isAccessory:contactsInKey.checked)
+//                        return cellInfo
+//                    }
+//
+//                    let section = SectionInfo(headerTitle:String(headerTitle),cellsInfo:cellsInfo)
+//                    return section
+//                }
+//                return sections
+//            }()

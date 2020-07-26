@@ -73,7 +73,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 //Import Contacts
                 let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
-                    print("Import From Contacts Pressed")
+                    ContactsManager.getContacts()
                 }
                 //Create Student
                 let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in

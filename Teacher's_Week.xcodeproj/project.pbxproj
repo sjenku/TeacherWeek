@@ -29,7 +29,6 @@
 		BE125254249F873B006F264B /* ListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125253249F873B006F264B /* ListCollectionView.swift */; };
 		BE125256249F8B92006F264B /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125255249F8B92006F264B /* ContactsManager.swift */; };
 		BE125259249F8D6D006F264B /* CellSectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE125258249F8D6D006F264B /* CellSectionInfo.swift */; };
-		BE12525B249FD0C7006F264B /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525A249FD0C6006F264B /* Protocols.swift */; };
 		BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */; };
 		BE12526024A0BE65006F264B /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525F24A0BE65006F264B /* CustomListView.swift */; };
 		BE12526324A0E5D4006F264B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526224A0E5D4006F264B /* Enums.swift */; };
@@ -96,7 +95,6 @@
 		BE125253249F873B006F264B /* ListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListCollectionView.swift; path = ../../View/ChoosableListControllerViews/CollectionListView/ListCollectionView.swift; sourceTree = "<group>"; };
 		BE125255249F8B92006F264B /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		BE125258249F8D6D006F264B /* CellSectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSectionInfo.swift; sourceTree = "<group>"; };
-		BE12525A249FD0C6006F264B /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCellSubtitle.swift; sourceTree = "<group>"; };
 		BE12525F24A0BE65006F264B /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
 		BE12526224A0E5D4006F264B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				BE26F91824ADC36E00664510 /* CustomControllers */,
 				BE12526124A0D71B006F264B /* CustomViews */,
 				BE1251FE24969DF4006F264B /* Colors.swift */,
-				BE12525A249FD0C6006F264B /* Protocols.swift */,
 				BE12526224A0E5D4006F264B /* Enums.swift */,
 			);
 			path = Helpers;
@@ -454,7 +451,6 @@
 				BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */,
-				BE12525B249FD0C7006F264B /* Protocols.swift in Sources */,
 				BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */,
 				BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */,
 				BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */,
