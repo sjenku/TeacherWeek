@@ -73,8 +73,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 //Import Contacts
                 let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
-                    ContactsManager.getContacts()
                     let vc = ChoosableListController()
+                    vc.info = ContactsManager.getSectionsInfo()
                     vc.title = "Contacts"
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

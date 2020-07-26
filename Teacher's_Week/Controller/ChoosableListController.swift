@@ -11,6 +11,12 @@ import IQKeyboardManagerSwift
 
 class ChoosableListController:UIViewController{
       
+   //MARK: - Properties
+    var info:[SectionInfo] = [] {
+        willSet {
+            self.personsListCollectionView.updateInfo(newValue)
+        }
+    }
     
     //MARK: - Overrides
     override func viewDidLoad() {
@@ -33,8 +39,7 @@ class ChoosableListController:UIViewController{
     
     private let labelView:CustomView = ChooseLabelView()
     private let personsListCollectionView:ListCollectionView =  {
-        let sectionsInfo = ContactsManager.getSectionsInfo()
-        return ListCollectionView(frame: .zero, info: sectionsInfo,style: nil)
+        return ListCollectionView(frame: .zero, info: nil,style: nil)
     }()
     
     private let doneButtonView:UIView = ChooseLabelDoneBTView(title: "Done", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)

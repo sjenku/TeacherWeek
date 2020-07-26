@@ -13,7 +13,32 @@ import Contacts
 
 struct ContactsManager {
     
-   static private var contacts:[Student] = []
+    static private var contacts:[Student] {
+        get {
+           let store = CNContactStore()
+            var contacts:[Student] = []
+               store.requestAccess(for: .contacts) { (granted, error) in
+                   if let err = error {
+                       print("Error Access Contacts:\(err.localizedDescription)")
+                   }
+                   guard granted != false else {
+                       print("Go To Settings And Change Access Settings For This App")
+                       return
+                       
+                   }
+                   let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+                   do {
+                       try store.enumerateContacts(with: request) { (contact, pointer) in
+                           let fullName = contact.givenName + " " + contact.familyName
+                           contacts.append(Student(name: fullName))   //Add New Contact
+                       }
+                   } catch let err {
+                       print("Fetch Error:\(err.localizedDescription)")
+                   }
+               }
+            return contacts
+        }
+    }
     
     static func getSectionsInfo() -> [SectionInfo] {
         var sectionsInfo:[SectionInfo] = []
@@ -45,33 +70,34 @@ struct ContactsManager {
         return filteredSectionsInfo
     }
     
-    
-    static func getContacts() {
-        
-        print("Get Contacts")
-        let store = CNContactStore()
-        
-        store.requestAccess(for: .contacts) { (granted, error) in
-            if let err = error {
-                print("Error Access Contacts:\(err.localizedDescription)")
-            }
-            guard granted != false else {
-                print("Go To Settings And Change Access Settings For This App")
-                return
-                
-            }
-            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
-            do {
-                try store.enumerateContacts(with: request) { (contact, pointer) in
-                    let fullName = contact.givenName + " " + contact.familyName
-                    contacts.append(Student(name: fullName))   //Add New Contact
-                }
-            } catch let err {
-                print("Fetch Error:\(err.localizedDescription)")
-            }
-        }
-        
-    }
+//
+//    static func getContacts() {
+//
+//        print("Get Contacts")
+//        let store = CNContactStore()
+//
+//        store.requestAccess(for: .contacts) { (granted, error) in
+//            if let err = error {
+//                print("Error Access Contacts:\(err.localizedDescription)")
+//            }
+//            guard granted != false else {
+//                print("Go To Settings And Change Access Settings For This App")
+//                return
+//
+//            }
+//            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+//            contacts.removeAll()
+//            do {
+//                try store.enumerateContacts(with: request) { (contact, pointer) in
+//                    let fullName = contact.givenName + " " + contact.familyName
+//                    contacts.append(Student(name: fullName))   //Add New Contact
+//                }
+//            } catch let err {
+//                print("Fetch Error:\(err.localizedDescription)")
+//            }
+//        }
+//
+//    }
     
 }
 
