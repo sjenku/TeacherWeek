@@ -74,6 +74,9 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 //Import Contacts
                 let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
                     ContactsManager.getContacts()
+                    let vc = ChoosableListController()
+                    vc.title = "Contacts"
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 //Create Student
                 let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in

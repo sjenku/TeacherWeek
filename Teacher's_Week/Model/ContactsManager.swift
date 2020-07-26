@@ -13,13 +13,19 @@ import Contacts
 
 struct ContactsManager {
     
-    static var contacts:[Student] = []
+   static private var contacts:[Student] = []
     
     static func getSectionsInfo() -> [SectionInfo] {
-
+        var sectionsInfo:[SectionInfo] = []
+        var cellsInfo:[CellInfo] = []
+        
+        print("Contacts Total:\(contacts.count)")
+        contacts.forEach { (student) in
+            cellsInfo.append(CellInfo(title: student.name, subtitle: "someAbra", isAccessory: false))
+        }
+        sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         
         
-         let sectionsInfo:[SectionInfo] = []
            return sectionsInfo
         }
     
@@ -57,8 +63,8 @@ struct ContactsManager {
             let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
             do {
                 try store.enumerateContacts(with: request) { (contact, pointer) in
-                               print("Name:\(contact.givenName)")
-                               print("LastName:\(contact.familyName)")
+                    let fullName = contact.givenName + " " + contact.familyName
+                    contacts.append(Student(name: fullName))   //Add New Contact
                 }
             } catch let err {
                 print("Fetch Error:\(err.localizedDescription)")

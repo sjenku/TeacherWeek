@@ -18,7 +18,7 @@ class AppTabBarController: UITabBarController {
     }()
     
     
-    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(navigationTitle:"Students"),isSetConfigurations: true)
+    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(),isSetConfigurations: true)
     
     private let newGroupCollectionVC:UINavigationController = {
         let vc = NewGroupCollectionVC()
