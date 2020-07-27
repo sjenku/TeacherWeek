@@ -64,6 +64,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
         let info = DataManager.getStudentsInFormatSectionsInfo()
         let vc = ListCollectionViewController(info: info, cellStyle: .title,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
+         vc.listView.isSelectable = false
          navigationController?.pushViewController(vc, animated: true)
          
      }

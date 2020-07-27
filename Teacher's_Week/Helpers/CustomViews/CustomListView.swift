@@ -17,9 +17,9 @@ class CustomListView: UIView {
     private let headerId = "headerId"
     private var cellHeight:CGFloat = 0
     private var style:CellStyle?
-    
     private var sectionsInfo:[SectionInfo]?
-    
+//MARK: - Public Properties
+    var isSelectable:Bool = true
 //MARK:- Overrides Methods
     
     init(frame:CGRect,info:[SectionInfo]?,style:CellStyle?) {
@@ -158,6 +158,8 @@ extension CustomListView:UICollectionViewDelegateFlowLayout {
 extension CustomListView:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //If List Propertie Selectable
+        guard isSelectable == true else {return}
         
         //Check if cell have accessory at all
         guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
