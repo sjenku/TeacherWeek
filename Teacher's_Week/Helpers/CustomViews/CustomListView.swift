@@ -157,10 +157,16 @@ extension CustomListView:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let _ = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
-        
+        //Check if cell have accessory at all
+        guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
+      
+        //Update For View
         sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory!
-        
+
+        //Update In Background
+        let checked = !beforeTappedStatus
+        let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
+        DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
         collectionView.reloadData()
         
     }

@@ -13,12 +13,6 @@ import Foundation
 
 struct DataManager {
     
-//    static var students:[Student] = [
-//                  Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
-//                  Student(name: "Bob Marli"),
-//                  Student(name: "Bon Jovi"),Student(name: "Ben Gurion"),
-//                  Student(name: "Chris Brawn"),
-//                  Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
     static var students:[Student] = [
                      Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
                      Student(name: "Bob Marli")]
@@ -40,6 +34,11 @@ extension DataManager {
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         return sectionsInfo
+    }
+    
+    static func updateStudentCheckedStatus(name:String,checked:Bool) {
+        guard let studentIndex = (students.firstIndex{$0.name == name}) else {return}
+        students[studentIndex].checked = checked
     }
     
 }

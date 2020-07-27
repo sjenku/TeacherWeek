@@ -27,6 +27,7 @@ class ListCollectionViewController:UIViewController {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         sc.obscuresBackgroundDuringPresentation = false
         sc.searchResultsUpdater = self
+        sc.delegate = self
         return sc
     }()
     
@@ -118,8 +119,29 @@ extension ListCollectionViewController:UISearchResultsUpdating {
             
         }
         
-        //TODO:Filter from data and not from ContactsManager
         let filteredInfo = DataManager.filterSectionsInfoByText(sectionsInfo: DataManager.getStudentsInFormatSectionsInfo() , text: searchController.searchBar.text ?? "")
         self.listView.updateInfo(filteredInfo)
+        
+        //TODO:Save The Status of check for students
     }
+}
+
+extension ListCollectionViewController:UISearchControllerDelegate {
+    func willDismissSearchController(_ searchController: UISearchController) {
+        //Add Checked Student To Data
+        let contactsInSearchControllerInSections = self.listView.getCurrentInfoInList()
+        var cells:[CellInfo] = []
+        contactsInSearchControllerInSections.forEach { (sectionInfo) in
+            cells.append(contentsOf: sectionInfo.cellsInfo)
+        }
+            //TODO:Create More Efficiant way to find student and update
+            cells.forEach { (cellInfo) in
+               let studentIndex = DataManager.students.firstIndex { (student) -> Bool in
+                    student.name == cellInfo.title
+                }
+                if let index = studentIndex {
+                    DataManager.students[index].checked = cellInfo.isAccessory ?? false
+                }
+            }
+        }
 }
