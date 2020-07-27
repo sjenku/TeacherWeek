@@ -21,7 +21,7 @@ class ChoosableListController:UIViewController{
         }
     }
     
-    var checkedInFormSectionsInfo:[SectionInfo] {
+    var checkedInFormOfSectionsInfo:[SectionInfo] {
         get {
             var sectionsInfoFiltered:[SectionInfo] = []
             info.forEach { (sectionInfo) in

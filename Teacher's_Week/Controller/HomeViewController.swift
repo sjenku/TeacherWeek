@@ -69,43 +69,49 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
      }
     
     @objc func handleAddStudentNavBarButtonPressed() {
-
+        
         let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-                //Import Contacts
-                let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
-                    let vc = ChoosableListController()
-                    vc.info = ContactsManager.getSectionsInfo()
-                    let doneButtonAction = {
-                        //Add Checked Contacts to Students
-                        let checkedContacts = vc.checkedInFormSectionsInfo
-                        checkedContacts.forEach { (checkedSection) in
-                            checkedSection.cellsInfo.forEach { (cellInfo) in
-                                if let studentName = cellInfo.title {
-                                     DataManager.addNewStudent(name: studentName)
-                                }
-                            }
+        //Import Contacts
+        let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
+            let vc = ChoosableListController()
+            let doneButtonAction = {
+                //Add Checked Contacts to Students
+                let checkedContacts = vc.checkedInFormOfSectionsInfo
+                checkedContacts.forEach { (checkedSection) in
+                    checkedSection.cellsInfo.forEach { (cellInfo) in
+                        if let studentName = cellInfo.title {
+                            DataManager.addNewStudent(name: studentName)
                         }
-                        self.navigationController?.popViewController(animated: true)
                     }
-                    vc.doneButtonAction = doneButtonAction
-                    vc.title = "Contacts"
-                    self.navigationController?.pushViewController(vc, animated: true)
                 }
-                //Create Student
-                let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
-                    let vc = NewStudentCollectionVC()
-                    vc.title = "New Student"
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                //Cancel
-                let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
-                    self?.dismiss(animated: true, completion: nil)
-                }
-            
-                [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
-                    actionController.addAction(action)
-                }
-        self.navigationController?.topViewController?.present(actionController, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
+            vc.doneButtonAction = doneButtonAction
+            vc.title = "Contacts"
+            //Bring Contacts After Get Permission From The User
+            DispatchQueue.main.async {
+                ContactsManager.executeFunctionIfContactsGranted {
+                    let info = ContactsManager.getSectionsInfo()
+                    vc.info = info
+                }
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        //Create Student
+        let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
+            let vc = NewStudentCollectionVC()
+            vc.title = "New Student"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        //Cancel
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
+        [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
+            actionController.addAction(action)
+        }
+        self.navigationController?.topViewController?.present(actionController, animated: true, completion: nil)
+    }
 }
 

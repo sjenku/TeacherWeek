@@ -54,7 +54,9 @@ class CustomListView: UIView {
 //MARK: - Public Methods
     public func updateInfo(_ info:[SectionInfo]?) {
         sectionsInfo = info
-        self.collectionView.reloadData()
+        DispatchQueue.main.async {
+           self.collectionView.reloadData()
+        }
     }
     
     public func getCurrentInfoInList()->[SectionInfo] {
