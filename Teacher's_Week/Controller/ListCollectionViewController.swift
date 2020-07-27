@@ -20,14 +20,10 @@ class ListCollectionViewController:UIViewController {
     private var navProperties:NavProperties?
     private var navStyle:NavigationControllerStyle? = .small
     
-    lazy var searchController:UISearchController = {
-        [unowned self] in
-        let sc = UISearchController(searchResultsController: nil)
-        sc.searchBar.tintColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        sc.obscuresBackgroundDuringPresentation = false
-        sc.searchResultsUpdater = self
-        sc.delegate = self
+    private lazy var searchController:CustomSearchController = {
+        [weak self] in
+        let sc = CustomSearchController(searchResultsController: nil)
+        sc.listViewToUpdate = self?.listView
         return sc
     }()
     
@@ -110,43 +106,4 @@ class ListCollectionViewController:UIViewController {
         }
     }
     
-}
-
-
-
-//MARK: - Extension UISearchResultsUpdating
-extension ListCollectionViewController:UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        guard searchController.searchBar.text != "" else {
-            self.listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
-            return
-            
-        }
-        
-        let filteredInfo = DataManager.filterSectionsInfoByText(sectionsInfo: DataManager.getStudentsInFormatSectionsInfo() , text: searchController.searchBar.text ?? "")
-        self.listView.updateInfo(filteredInfo)
-        
-        //TODO:Save The Status of check for students
-    }
-}
-
-extension ListCollectionViewController:UISearchControllerDelegate {
-    func willDismissSearchController(_ searchController: UISearchController) {
-        //Add Checked Student To Data
-        let contactsInSearchControllerInSections = self.listView.getCurrentInfoInList()
-        var cells:[CellInfo] = []
-        contactsInSearchControllerInSections.forEach { (sectionInfo) in
-            cells.append(contentsOf: sectionInfo.cellsInfo)
-        }
-            //TODO:Create More Efficiant way to find student and update
-            cells.forEach { (cellInfo) in
-               let studentIndex = DataManager.students.firstIndex { (student) -> Bool in
-                    student.name == cellInfo.title
-                }
-                if let index = studentIndex {
-                    DataManager.students[index].checked = cellInfo.isAccessory ?? false
-                }
-            }
-        }
 }

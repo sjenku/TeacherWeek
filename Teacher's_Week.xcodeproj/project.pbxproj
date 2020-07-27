@@ -63,6 +63,7 @@
 		BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */; };
 		BE956C1724B0ECE60028C69A /* GroupInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */; };
 		BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */; };
+		BEDF8ADA24CF6A7A004CF0E4 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDF8AD924CF6A7A004CF0E4 /* CustomSearchController.swift */; };
 		BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448324C05660001FABCC /* LessonDurationView.swift */; };
 		BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */; };
 		BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */; };
@@ -128,6 +129,7 @@
 		BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoVC.swift; sourceTree = "<group>"; };
 		BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadTitleAndSubTitleView.swift; sourceTree = "<group>"; };
 		BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoVC.swift; sourceTree = "<group>"; };
+		BEDF8AD924CF6A7A004CF0E4 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		BEF8448324C05660001FABCC /* LessonDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDurationView.swift; sourceTree = "<group>"; };
 		BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVCTitleLabel.swift; sourceTree = "<group>"; };
 		BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndSwitchView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				BE125253249F873B006F264B /* ListCollectionView.swift */,
 				BE26F91C24ADDBDB00664510 /* CustomTextField.swift */,
 				BE17D9B924B1EB2200F20AEF /* RectButtonWithTitle.swift */,
+				BEDF8AD924CF6A7A004CF0E4 /* CustomSearchController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
 				BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */,
 				BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */,
+				BEDF8ADA24CF6A7A004CF0E4 /* CustomSearchController.swift in Sources */,
 				BE26F91324ADC1BA00664510 /* CustomCollectionViewCell.swift in Sources */,
 				BE17D9C024B3B4B700F20AEF /* GenerateStepOneInfoView.swift in Sources */,
 				BE12520F2497CD4A006F264B /* HomeView.swift in Sources */,
