@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 
 
 class ListCollectionViewController:UIViewController {
@@ -67,12 +67,17 @@ class ListCollectionViewController:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        IQKeyboardManager.shared.enable = false
         listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
         navigationController?.navigationBar.isHidden = false
         guard let unwrappedNavProperties = navProperties else {return}
         navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)
 
     }
+       
+       override func viewWillDisappear(_ animated: Bool) {
+           IQKeyboardManager.shared.enable = true
+       }
     
     //MARK: - Private Methods
     
