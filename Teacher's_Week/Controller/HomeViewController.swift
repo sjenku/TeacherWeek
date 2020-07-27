@@ -88,14 +88,25 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             }
             vc.doneButtonAction = doneButtonAction
             vc.title = "Contacts"
-            //Bring Contacts After Get Permission From The User
-            DispatchQueue.main.async {
-                ContactsManager.executeFunctionIfContactsGranted {
-                    let info = ContactsManager.getSectionsInfo()
-                    vc.info = info
+            //Handle Contacts After Get Permission From The User
+            let executeIfGranted = {
+                let info = ContactsManager.getSectionsInfo()
+                vc.info = info
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
-            self.navigationController?.pushViewController(vc, animated: true)
+            let executeIfNotGranted = {
+                let alertController = UIAlertController(title: "Don't Have Permission", message: "Please Go To Settings In Your Phone, And Change Permission For Accessing To Contacts ", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alertController.addAction(cancelAction)
+                DispatchQueue.main.async {
+                     self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            ContactsManager.executeFunctionIfContactsGranted(executeFunctionGranted: executeIfGranted, executeFunctionNotGranted: executeIfNotGranted)
         }
         //Create Student
         let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in

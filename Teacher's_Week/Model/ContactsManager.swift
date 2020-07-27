@@ -17,7 +17,8 @@ struct ContactsManager {
         get {
             let store = CNContactStore()
             var contacts:[Student] = []
-            executeFunctionIfContactsGranted {
+
+            let executeFunctionIfGranted = {
                 let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
                 do {
                     try store.enumerateContacts(with: request) { (contact, pointer) in
@@ -28,20 +29,21 @@ struct ContactsManager {
                     print("Fetch Error:\(err.localizedDescription)")
                 }
             }
+            executeFunctionIfContactsGranted(executeFunctionGranted: executeFunctionIfGranted, executeFunctionNotGranted: {})
             return contacts
         }
     }
     
-    static func executeFunctionIfContactsGranted(executeFunction:@escaping ()->Void) {
+    static func executeFunctionIfContactsGranted(executeFunctionGranted:@escaping ()->Void,executeFunctionNotGranted:@escaping ()->Void) {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, error) in
             if let err = error {
                 print("Error Access Contacts:\(err.localizedDescription)")
             }
-            guard granted != false else {return}
-            executeFunction()
+            granted == true ? executeFunctionGranted() : executeFunctionNotGranted()
         }
     }
+    
     
     static func getSectionsInfo() -> [SectionInfo] {
         var sectionsInfo:[SectionInfo] = []
