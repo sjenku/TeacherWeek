@@ -14,7 +14,7 @@ class NewGroupLowerCell:CustomCollectionViewCell {
     
     
     private let studentList:ListCollectionView = {
-        let info:[SectionInfo] = ContactsManager.getSectionsInfo()
+        let info:[SectionInfo] = ContactsManager.shared.getSectionsInfo()
         let listCollectionView = ListCollectionView(frame:.zero,info:info,style:nil)
         return listCollectionView
     }()

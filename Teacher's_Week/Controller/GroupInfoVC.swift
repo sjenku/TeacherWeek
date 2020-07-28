@@ -22,7 +22,7 @@ class GroupInfoVC:UIViewController {
     
     
     let studentList:ListCollectionView = {
-        let info:[SectionInfo] = ContactsManager.getSectionsInfo()
+        let info:[SectionInfo] = ContactsManager.shared.getSectionsInfo()
         let view = ListCollectionView(frame: .zero, info: info, style: CellStyle.title)
         return view
     }()

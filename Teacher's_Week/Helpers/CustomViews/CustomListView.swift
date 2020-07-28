@@ -20,6 +20,7 @@ class CustomListView: UIView {
     private var sectionsInfo:[SectionInfo]?
 //MARK: - Public Properties
     var isSelectable:Bool = true
+    var searchTo:CustomSearchController.SearchTo?
 //MARK:- Overrides Methods
     
     init(frame:CGRect,info:[SectionInfo]?,style:CellStyle?) {
@@ -113,6 +114,7 @@ extension CustomListView:UICollectionViewDataSource {
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.title.text = cellInfo?.title
             if isSelectable {
+                print("CellInfo\(cellInfo?.isAccessory)")
               cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
             return cell
@@ -174,7 +176,12 @@ extension CustomListView:UICollectionViewDelegate {
         //Update In Background
         let checked = !beforeTappedStatus
         let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
-        DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+    
+        if searchTo == .students {
+             DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+        } else if searchTo == .contacts {
+            ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+        }
         collectionView.reloadData()
         
     }

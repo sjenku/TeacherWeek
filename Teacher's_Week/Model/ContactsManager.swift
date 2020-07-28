@@ -13,28 +13,81 @@ import Contacts
 
 struct ContactsManager {
     
-    static private var contacts:[Student] {
-        get {
-            let store = CNContactStore()
-            var contacts:[Student] = []
-
-            let executeFunctionIfGranted = {
-                let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
-                do {
-                    try store.enumerateContacts(with: request) { (contact, pointer) in
-                        let fullName = contact.givenName + " " + contact.familyName
-                        contacts.append(Student(name: fullName))   //Add New Contact
-                    }
-                } catch let err {
-                    print("Fetch Error:\(err.localizedDescription)")
-                }
-            }
-            executeFunctionIfContactsGranted(executeFunctionGranted: executeFunctionIfGranted, executeFunctionNotGranted: {})
-            return contacts
-        }
-    }
+    static public var contacts:[Student] = []
     
-    static func executeFunctionIfContactsGranted(executeFunctionGranted:@escaping ()->Void,executeFunctionNotGranted:@escaping ()->Void) {
+    static public var shared = ContactsManager()
+    
+    init() {
+        let store = CNContactStore()
+        
+        let executeFunctionIfGranted = {
+            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+            do {
+                try store.enumerateContacts(with: request) { (contact, pointer) in
+                    let fullName = contact.givenName + " " + contact.familyName
+                    ContactsManager.contacts.append(Student(name: fullName))   //Add New Contact
+                }
+            } catch let err {
+                print("Fetch Error:\(err.localizedDescription)")
+            }
+        }
+        self.executeFunctionIfContactsGranted(executeFunctionGranted: executeFunctionIfGranted, executeFunctionNotGranted: {})
+    }
+//        get {
+//            let store = CNContactStore()
+//            var contacts:[Student] = []
+//
+//            let executeFunctionIfGranted = {
+//                let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+//                do {
+//                    try store.enumerateContacts(with: request) { (contact, pointer) in
+//                        let fullName = contact.givenName + " " + contact.familyName
+//                        contacts.append(Student(name: fullName))   //Add New Contact
+//                    }
+//                } catch let err {
+//                    print("Fetch Error:\(err.localizedDescription)")
+//                }
+//            }
+//            executeFunctionIfContactsGranted(executeFunctionGranted: executeFunctionIfGranted, executeFunctionNotGranted: {})
+//            return contacts
+//        }
+//    }
+
+//    static func setContactAt(index:Int,contact:Student) {
+//        contacts[index] = contact
+//    }
+    
+//    static func getContactAt(index:Int)->Student {
+//        return contacts[index]
+//    }
+    
+    
+//    static func getContacts()->[Student] {
+//        let store = CNContactStore()
+//        var resultContacts:[Student] = []
+//
+//        let executeFunctionIfGranted = {
+//            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+//            do {
+//                try store.enumerateContacts(with: request) { (contact, pointer) in
+//                    let fullName = contact.givenName + " " + contact.familyName
+//                    resultContacts.append(Student(name: fullName))   //Add New Contact
+//                }
+//            } catch let err {
+//                print("Fetch Error:\(err.localizedDescription)")
+//            }
+//        }
+//        executeFunctionIfContactsGranted(executeFunctionGranted: executeFunctionIfGranted, executeFunctionNotGranted: {})
+//        self.contacts = resultContacts
+//        return resultContacts
+//    }
+    
+    public func updateContactCheckedStatus(name:String,checked:Bool) {
+        guard let studentIndex = (ContactsManager.contacts.firstIndex{$0.name == name}) else {return}
+        ContactsManager.contacts[studentIndex].checked = checked
+       }
+    
+    public func executeFunctionIfContactsGranted(executeFunctionGranted:@escaping ()->Void,executeFunctionNotGranted:@escaping ()->Void) {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, error) in
             if let err = error {
@@ -45,13 +98,13 @@ struct ContactsManager {
     }
     
     
-    static func getSectionsInfo() -> [SectionInfo] {
+    public func getSectionsInfo() -> [SectionInfo] {
         var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         
-        print("Contacts Total:\(contacts.count)")
-        contacts.forEach { (student) in
-            cellsInfo.append(CellInfo(title: student.name, subtitle: "someAbra", isAccessory: false))
+       
+        ContactsManager.contacts.forEach { (student) in
+            cellsInfo.append(CellInfo(title: student.name, subtitle: "someAbra", isAccessory: student.checked))
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         

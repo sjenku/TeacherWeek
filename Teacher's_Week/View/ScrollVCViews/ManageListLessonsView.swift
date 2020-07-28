@@ -19,7 +19,7 @@ class ManageListLessonsView:CustomView {
     }()
     
     private let listOfLessons:ListCollectionView = {
-        let info = ContactsManager.getSectionsInfo()
+        let info = ContactsManager.shared.getSectionsInfo()
         let list = ListCollectionView(frame:.zero,info:info,style:CellStyle.subtitle)
         list.translatesAutoresizingMaskIntoConstraints = false
        return list

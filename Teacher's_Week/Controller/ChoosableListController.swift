@@ -35,6 +35,7 @@ class ChoosableListController:UIViewController{
     var searchTo:CustomSearchController.SearchTo? {
         willSet {
             searchController.searchTo = newValue
+            personsListCollectionView.searchTo = newValue
         }
     }
     var doneButtonAction:(()->Void)?
@@ -85,6 +86,20 @@ class ChoosableListController:UIViewController{
     }
     
    //MARK: - Private Methods
+//    private func updateListView() {
+//        guard searchTo != nil else {return}
+//        var info:[SectionInfo] = []
+//        switch searchTo {
+//        case .students:
+//            info = DataManager.getStudentsInFormatSectionsInfo()
+//        case .contacts:
+//            info = ContactsManager.getSectionsInfo()
+//        default:
+//            info = []
+//        }
+//        personsListCollectionView.updateInfo([])
+//    }
+    
     private func setNavigationItem() {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
     }

@@ -44,7 +44,7 @@ extension CustomSearchController:UISearchResultsUpdating {
         case .students:
             info = DataManager.getStudentsInFormatSectionsInfo()
         case .contacts:
-            info = ContactsManager.getSectionsInfo()
+            info = ContactsManager.shared.getSectionsInfo()
         default:
             info = []
         }
@@ -70,13 +70,20 @@ extension CustomSearchController:UISearchControllerDelegate {
             cells.append(contentsOf: sectionInfo.cellsInfo)
         }
             //TODO:Create More Efficiant way to find student and update
+        let students:[Student] = searchTo == .students ? DataManager.students : ContactsManager.contacts
             cells.forEach { (cellInfo) in
-               let studentIndex = DataManager.students.firstIndex { (student) -> Bool in
+               let studentIndex = students.firstIndex { (student) -> Bool in
                     student.name == cellInfo.title
                 }
                 if let index = studentIndex {
-                    DataManager.students[index].checked = cellInfo.isAccessory ?? false
+                    if searchTo == .students {
+                       DataManager.students[index].checked = cellInfo.isAccessory ?? false
+                    } else {
+                        ContactsManager.contacts[index].checked = cellInfo.isAccessory ?? false
+                    }
                 }
             }
+           
+             
         }
 }

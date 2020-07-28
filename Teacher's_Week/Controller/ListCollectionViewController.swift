@@ -27,6 +27,13 @@ class ListCollectionViewController:UIViewController {
         return sc
     }()
     
+    var searchTo:CustomSearchController.SearchTo? {
+           willSet {
+               searchController.searchTo = newValue
+               listView.searchTo = newValue
+           }
+       }
+    
     lazy var listView:CustomListView = {
         let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
          view.translatesAutoresizingMaskIntoConstraints = false

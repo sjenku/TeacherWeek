@@ -18,7 +18,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
     }()
     
     let listView:ListCollectionView = {
-        let info:[SectionInfo] = ContactsManager.getSectionsInfo()
+        let info:[SectionInfo] = ContactsManager.shared.getSectionsInfo()
         let view = ListCollectionView(frame:.zero,info:info,style: .title)
         return view
     }()

@@ -65,6 +65,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
         let vc = ListCollectionViewController(info: info, cellStyle: .title,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
          vc.listView.isSelectable = false
+         vc.searchTo = .students
          navigationController?.pushViewController(vc, animated: true)
          
      }
@@ -91,7 +92,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             vc.title = "Contacts"
             //Handle Contacts After Get Permission From The User
             let executeIfGranted = {
-                let info = ContactsManager.getSectionsInfo()
+                let info = ContactsManager.shared.getSectionsInfo()
                 vc.info = info
                 vc.searchTo = .contacts
                 DispatchQueue.main.async {
@@ -108,7 +109,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                      self.present(alertController, animated: true, completion: nil)
                 }
             }
-            ContactsManager.executeFunctionIfContactsGranted(executeFunctionGranted: executeIfGranted, executeFunctionNotGranted: executeIfNotGranted)
+            ContactsManager.shared.executeFunctionIfContactsGranted(executeFunctionGranted: executeIfGranted, executeFunctionNotGranted: executeIfNotGranted)
         }
         //Create Student
         let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
