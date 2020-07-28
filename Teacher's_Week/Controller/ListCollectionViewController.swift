@@ -73,6 +73,8 @@ class ListCollectionViewController:UIViewController {
        
        override func viewWillDisappear(_ animated: Bool) {
            IQKeyboardManager.shared.enable = true
+        
+           
        }
     
     //MARK: - Private Methods
@@ -83,9 +85,14 @@ class ListCollectionViewController:UIViewController {
     }
     
     private func setupSearchView() {
-      navigationItem.searchController = searchController
-      navigationItem.hidesSearchBarWhenScrolling = false
-      definesPresentationContext = true
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.topViewController?.navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    private func unSetupSearchView() {
+      navigationController?.topViewController?.navigationItem.searchController = nil
     }
     
     private func setSubviews() {

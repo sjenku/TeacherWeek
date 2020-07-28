@@ -38,6 +38,7 @@ class ChoosableListController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchView()
         setNavigationItem()
         setupView()
     }
@@ -63,10 +64,11 @@ class ChoosableListController:UIViewController{
         btView.button.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
      return btView
     }()
-    private let searchController:UISearchController = {
-        let sc = UISearchController(searchResultsController: nil)
-        sc.searchBar.tintColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    
+    private lazy var searchController:CustomSearchController = {
+        [weak self] in
+        let sc = CustomSearchController(searchResultsController:nil)
+        sc.listViewToUpdate = self?.personsListCollectionView
         return sc
     }()
     
@@ -81,6 +83,19 @@ class ChoosableListController:UIViewController{
     private func setNavigationItem() {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
+    
+    private func setupSearchView() {
+
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+       navigationItem.searchController = searchController
+       navigationItem.hidesSearchBarWhenScrolling = false
+       definesPresentationContext = true
+     }
+    
+    private func unSetupSearchView() {
+           navigationItem.searchController = nil
+       }
+       
     
    private func setupView() {
         

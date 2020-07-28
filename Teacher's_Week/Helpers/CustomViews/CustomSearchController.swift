@@ -21,7 +21,6 @@ class CustomSearchController:UISearchController {
     
     private func setupSearchController() {
         searchBar.tintColor = UIColor.white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         obscuresBackgroundDuringPresentation = false
         searchResultsUpdater = self
         delegate = self
