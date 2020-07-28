@@ -93,6 +93,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
             let executeIfGranted = {
                 let info = ContactsManager.getSectionsInfo()
                 vc.info = info
+                vc.searchTo = .contacts
                 DispatchQueue.main.async {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

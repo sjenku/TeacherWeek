@@ -112,14 +112,18 @@ extension CustomListView:UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.title.text = cellInfo?.title
-            cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+            if isSelectable {
+              cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitle
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.title.text = cellInfo?.title
             cell.subTitle.text = cellInfo?.subtitle
-            cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+            if isSelectable {
+              cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+            }
             return cell
         }
     }

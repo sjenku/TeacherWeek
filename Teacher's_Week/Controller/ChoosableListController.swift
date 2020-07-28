@@ -32,6 +32,11 @@ class ChoosableListController:UIViewController{
         }
     }
     
+    var searchTo:CustomSearchController.SearchTo? {
+        willSet {
+            searchController.searchTo = newValue
+        }
+    }
     var doneButtonAction:(()->Void)?
     
     //MARK: - Overrides

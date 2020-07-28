@@ -12,7 +12,12 @@ import UIKit
 
 class CustomSearchController:UISearchController {
 
+    enum SearchTo {
+        case students,contacts,groups
+    }
+    
     var listViewToUpdate:CustomListView?
+    var searchTo:SearchTo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +38,23 @@ class CustomSearchController:UISearchController {
 extension CustomSearchController:UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
 
+        var info:[SectionInfo] = []
+        
+        switch searchTo {
+        case .students:
+            info = DataManager.getStudentsInFormatSectionsInfo()
+        case .contacts:
+            info = ContactsManager.getSectionsInfo()
+        default:
+            info = []
+        }
+        
         guard searchController.searchBar.text != "" else {
-            self.listViewToUpdate?.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
+            self.listViewToUpdate?.updateInfo(info)
             return
-
         }
 
-        let filteredInfo = DataManager.filterSectionsInfoByText(sectionsInfo: DataManager.getStudentsInFormatSectionsInfo() , text: searchController.searchBar.text ?? "")
+        let filteredInfo = DataManager.filterSectionsInfoByText(sectionsInfo: info , text: searchController.searchBar.text ?? "")
         self.listViewToUpdate?.updateInfo(filteredInfo)
 
     }
