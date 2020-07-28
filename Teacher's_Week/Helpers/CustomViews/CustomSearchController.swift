@@ -63,27 +63,27 @@ extension CustomSearchController:UISearchResultsUpdating {
 extension CustomSearchController:UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
         //Add Checked Student To Data
-        guard let listView = listViewToUpdate else {return}
-        let contactsInSearchControllerInSections = listView.getCurrentInfoInList()
-        var cells:[CellInfo] = []
-        contactsInSearchControllerInSections.forEach { (sectionInfo) in
-            cells.append(contentsOf: sectionInfo.cellsInfo)
-        }
-            //TODO:Create More Efficiant way to find student and update
-        let students:[Student] = searchTo == .students ? DataManager.students : ContactsManager.contacts
-            cells.forEach { (cellInfo) in
-               let studentIndex = students.firstIndex { (student) -> Bool in
-                    student.name == cellInfo.title
-                }
-                if let index = studentIndex {
-                    if searchTo == .students {
-                       DataManager.students[index].checked = cellInfo.isAccessory ?? false
-                    } else {
-                        ContactsManager.contacts[index].checked = cellInfo.isAccessory ?? false
-                    }
-                }
-            }
-           
-             
+//        guard let listView = listViewToUpdate else {return}
+//        let contactsInSearchControllerInSections = listView.getCurrentInfoInList()
+//        var cells:[CellInfo] = []
+//        contactsInSearchControllerInSections.forEach { (sectionInfo) in
+//            cells.append(contentsOf: sectionInfo.cellsInfo)
+//        }
+//            //TODO:Create More Efficiant way to find student and update
+//        let students:[Student] = searchTo == .students ? DataManager.students : ContactsManager.contacts
+//            cells.forEach { (cellInfo) in
+//               let studentIndex = students.firstIndex { (student) -> Bool in
+//                    student.name == cellInfo.title
+//                }
+//                if let index = studentIndex {
+//                    if searchTo == .students {
+//                       DataManager.students[index].checked = cellInfo.isAccessory ?? false
+//                    } else {
+//                        ContactsManager.contacts[index].checked = cellInfo.isAccessory ?? false
+//                    }
+//                }
+//            }
+//           
+//             
         }
 }

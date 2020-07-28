@@ -108,13 +108,11 @@ extension CustomListView:UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if style == .title {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.title.text = cellInfo?.title
             if isSelectable {
-                print("CellInfo\(cellInfo?.isAccessory)")
               cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
             return cell

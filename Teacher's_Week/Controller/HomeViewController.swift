@@ -86,6 +86,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                         }
                     }
                 }
+                //Reset 'Check' property in all contacts
+                ContactsManager.shared.resetCheckingStatus()
                 self.navigationController?.popViewController(animated: true)
             }
             vc.doneButtonAction = doneButtonAction
