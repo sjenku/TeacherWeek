@@ -91,7 +91,7 @@ class CustomListView: UIView {
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
         //cellHeight
-        cellHeight = style == .title ? 45 : 60
+        cellHeight = style == .title || style == .detailTitle ? 45 : 60
         
         
     }
