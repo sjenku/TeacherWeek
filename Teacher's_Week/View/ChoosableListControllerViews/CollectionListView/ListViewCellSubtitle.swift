@@ -8,6 +8,12 @@
 
 import UIKit
 
+class ListViewCellSubtitleDetail:ListViewCellSubtitle {
+    override func setupView() {
+        super.setupView()
+        accessory.image = UIImage(named: "arrow.right")?.withRenderingMode(.alwaysOriginal)
+    }
+}
 
 class ListViewCellSubtitle:ListViewCell {
     

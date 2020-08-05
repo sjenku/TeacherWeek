@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+class ListViewCellDetail:ListViewCell {
+    override func setupView() {
+        super.setupView()
+        accessory.image = UIImage(named: "arrow.right")?.withRenderingMode(.alwaysOriginal)
+    }
+}
+
 class ListViewCell: CustomCollectionViewCell {
     
     //MARK: - Views

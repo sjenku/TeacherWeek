@@ -35,10 +35,14 @@ class CustomListView: UIView {
         
         //Register
         switch safeStyle {
-          case .title:
+        case .title:
             collectionView.register(ListViewCell.self, forCellWithReuseIdentifier: cellId)
-          case .subtitle:
+        case .subtitle:
             collectionView.register(ListViewCellSubtitle.self, forCellWithReuseIdentifier: cellId)
+        case .detailTitle:
+            collectionView.register(ListViewCellDetail.self, forCellWithReuseIdentifier: cellId)
+        case .detailSubtitle:
+            collectionView.register(ListViewCellSubtitleDetail.self, forCellWithReuseIdentifier: cellId)
         }
         collectionView.register(ListHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
@@ -108,21 +112,39 @@ extension CustomListView:UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if style == .title {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
-            let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
-            cell.title.text = cellInfo?.title
-            if isSelectable {
-              cell.isAccessoryShown = cellInfo?.isAccessory ?? false
-            }
-            return cell
-        } else {
+        switch style {
+        case .subtitle:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitle
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.title.text = cellInfo?.title
             cell.subTitle.text = cellInfo?.subtitle
             if isSelectable {
-              cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+                cell.isAccessoryShown = cellInfo?.isAccessory ?? false
+            }
+            return cell
+        case .detailTitle:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellDetail
+            let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.title.text = cellInfo?.title
+            if isSelectable {
+                cell.isAccessoryShown = true
+            }
+            return cell
+        case .detailSubtitle:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitleDetail
+            let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.title.text = cellInfo?.title
+            cell.subTitle.text = cellInfo?.subtitle
+            if isSelectable {
+                cell.isAccessoryShown = true
+            }
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
+            let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.title.text = cellInfo?.title
+            if isSelectable {
+                cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
             return cell
         }
@@ -165,22 +187,30 @@ extension CustomListView:UICollectionViewDelegate {
         //If List Propertie Selectable
         guard isSelectable == true else {return}
         
-        //Check if cell have accessory at all
-        guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
-      
-        //Update For View
-        sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory!
+        if self.style == .title || self.style == .subtitle {
+            //Check if cell have accessory at all
+                guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
+              
+                //Update For View
+                sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory!
 
-        //Update In Background
-        let checked = !beforeTappedStatus
-        let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
-    
-        if searchTo == .students {
-             DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
-        } else if searchTo == .contacts {
-            ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+                //Update In Background
+                let checked = !beforeTappedStatus
+                let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
+            
+                if searchTo == .students {
+                     DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+                } else if searchTo == .contacts {
+                    ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+                }
+                collectionView.reloadData()
+        } else {  //It's Mean We Have Detail Style
+            
+            //TODO:
+            //1.update in HomeVC the style for ListVC
+            //2.Handle Detail Tap
+            print("Handle Detail Tap")
         }
-        collectionView.reloadData()
         
     }
     

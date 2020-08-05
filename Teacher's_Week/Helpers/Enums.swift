@@ -18,4 +18,6 @@ enum StudentOrGroup:String {
 enum CellStyle {
     case title
     case subtitle
+    case detailTitle
+    case detailSubtitle
 }
