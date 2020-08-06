@@ -9,6 +9,34 @@
 import UIKit
 
 
+protocol SelectableCellActionDelegate {
+   func performSelectionOfCellAction()
+}
+
+
+struct PerformSelectableCellAction:SelectableCellActionDelegate {
+    
+    enum KindOfSelectionActions {
+        case studentDetailPresent,scheduleDetailPresent,updateCheckedStatus
+    }
+    
+    var kind:KindOfSelectionActions?
+    
+    func performSelectionOfCellAction() {
+        switch kind {
+        case .updateCheckedStatus:
+            print("UpdateCheckedStatus")
+        case .studentDetailPresent:
+            print("StudentDetailPresentation")
+        case .scheduleDetailPresent:
+            print("ScheduleDetailPresentation")
+        default:
+            print("Default")
+        }
+      }
+    
+}
+
 class CustomListView: UIView {
     
     
@@ -20,11 +48,12 @@ class CustomListView: UIView {
     private var sectionsInfo:[SectionInfo]?
 //MARK: - Public Properties
     var isSelectable:Bool = true
+    var selectionActionDelegate:SelectableCellActionDelegate?
     var searchTo:CustomSearchController.SearchTo?
 //MARK:- Overrides Methods
     
     init(frame:CGRect,info:[SectionInfo]?,style:CellStyle?) {
-        super.init(frame: frame)
+        super.init(frame:frame)
         
         //View
         let safeStyle:CellStyle = style ?? .title
@@ -50,7 +79,6 @@ class CustomListView: UIView {
         sectionsInfo = info
         
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -206,10 +234,10 @@ extension CustomListView:UICollectionViewDelegate {
                 collectionView.reloadData()
         } else {  //It's Mean We Have Detail Style
             
-            //TODO:
-            //1.update in HomeVC the style for ListVC
-            //2.Handle Detail Tap
             print("Handle Detail Tap")
+            if searchTo == .students {   //cuase it's searchto student,we need to present student detail
+                selectionActionDelegate?.performSelectionOfCellAction()
+            }
         }
         
     }
