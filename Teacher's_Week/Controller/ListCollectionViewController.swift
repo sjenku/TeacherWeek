@@ -35,7 +35,9 @@ class ListCollectionViewController:UIViewController {
        }
     
     lazy var listView:CustomListView = {
-        let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
+        [unowned self] in
+         let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
+         view.selectionActionDelegate = self
          view.translatesAutoresizingMaskIntoConstraints = false
          return view
      }()
@@ -119,5 +121,41 @@ class ListCollectionViewController:UIViewController {
             constraint.isActive = true
         }
     }
+}
+
+//MARK: - Extension SelectableCellActionDelegate
+extension ListCollectionViewController:SelectableCellActionDelegate {
+    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
+        
+        guard let _ = info else {return}
+        guard let beforeTappedStatus = info?[sectionIndex].cellsInfo[rowIndex].isAccessory else {return}
+        
+        if cellStyle == .detailTitle || cellStyle == .detailSubtitle {
+            
+            if searchTo == .students {
+                let vc = StudentInfoVC()
+                navigationController?.setupNavigationWithStyle(navProperties: NavProperties(navTitle: info![sectionIndex].cellsInfo[rowIndex].title ?? "", withRightBarButton: false), forController: vc)
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        } else {  //else handle cases of cellStyle that not detail
+               //Update For View
+               info![sectionIndex].cellsInfo[rowIndex].isAccessory = !info![sectionIndex].cellsInfo[rowIndex].isAccessory!
+               
+               //Update In Background
+               let checked = !beforeTappedStatus
+               let studentName:String = info![sectionIndex].cellsInfo[rowIndex].title ?? ""
+               
+               if searchTo == .students {
+                   DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+               } else if searchTo == .contacts {
+                   ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+               }
+               listView.collectionView.reloadData()
+            
+        }
+    }
+    
+    
     
 }

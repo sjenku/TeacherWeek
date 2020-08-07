@@ -65,7 +65,6 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
         let vc = ListCollectionViewController(info: info, cellStyle: .detailTitle,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
         
          vc.listView.isSelectable = true
-         vc.listView.selectionActionDelegate = PerformSelectableCellAction(kind: .studentDetailPresent)
          vc.searchTo = .students
          navigationController?.pushViewController(vc, animated: true)
          

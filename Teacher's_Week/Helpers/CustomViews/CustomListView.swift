@@ -10,32 +10,33 @@ import UIKit
 
 
 protocol SelectableCellActionDelegate {
-   func performSelectionOfCellAction()
+    func performSelectionOfCellAction(sectionIndex:Int,rowIndex:Int)
 }
 
 
-struct PerformSelectableCellAction:SelectableCellActionDelegate {
-    
-    enum KindOfSelectionActions {
-        case studentDetailPresent,scheduleDetailPresent,updateCheckedStatus
-    }
-    
-    var kind:KindOfSelectionActions?
-    
-    func performSelectionOfCellAction() {
-        switch kind {
-        case .updateCheckedStatus:
-            print("UpdateCheckedStatus")
-        case .studentDetailPresent:
-            print("StudentDetailPresentation")
-        case .scheduleDetailPresent:
-            print("ScheduleDetailPresentation")
-        default:
-            print("Default")
-        }
-      }
-    
-}
+//struct PerformSelectableCellAction:SelectableCellActionDelegate {
+//
+//
+//    enum KindOfSelectionActions {
+//        case studentDetailPresent,scheduleDetailPresent,updateCheckedStatus
+//    }
+//
+//    var kind:KindOfSelectionActions?
+//
+//    func performSelectionOfCellAction(rowIndex: Int) {
+//        switch kind {
+//        case .updateCheckedStatus:
+//            print("UpdateCheckedStatus")
+//        case .studentDetailPresent:
+//            print("StudentDetailPresentation")
+//        case .scheduleDetailPresent:
+//            print("ScheduleDetailPresentation")
+//        default:
+//            print("Default")
+//        }
+//      }
+//
+//}
 
 class CustomListView: UIView {
     
@@ -215,32 +216,29 @@ extension CustomListView:UICollectionViewDelegate {
         //If List Propertie Selectable
         guard isSelectable == true else {return}
         
-        if self.style == .title || self.style == .subtitle {
             //Check if cell have accessory at all
-                guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
-              
-                //Update For View
-                sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory!
-
-                //Update In Background
-                let checked = !beforeTappedStatus
-                let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
-            
-                if searchTo == .students {
-                     DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
-                } else if searchTo == .contacts {
-                    ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
-                }
-                collectionView.reloadData()
-        } else {  //It's Mean We Have Detail Style
-            
-            print("Handle Detail Tap")
-            if searchTo == .students {   //cuase it's searchto student,we need to present student detail
-                selectionActionDelegate?.performSelectionOfCellAction()
-            }
-        }
+//                guard let beforeTappedStatus = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item].isAccessory else {return}
+//
+//                //Update For View
+//                sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory = !sectionsInfo![indexPath.section].cellsInfo[indexPath.item].isAccessory!
+//
+//                //Update In Background
+//                let checked = !beforeTappedStatus
+//                let studentName:String = sectionsInfo![indexPath.section].cellsInfo[indexPath.item].title ?? ""
+//
+//                if searchTo == .students {
+//                     DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+//                } else if searchTo == .contacts {
+//                    ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+//                }
+//                collectionView.reloadData()
+        
+        selectionActionDelegate?.performSelectionOfCellAction(sectionIndex: indexPath.section, rowIndex: indexPath.row)
+        
+          //been here before if statement that checked if it's title or subtitle and else it was mean it's detail
         
     }
+    
     
 }
 
