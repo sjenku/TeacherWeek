@@ -14,6 +14,7 @@ struct CellInfo {
     let title:String?
     let subtitle:String?
     var isAccessory:Bool?
+    var relatedTo:Any?
     
 }
 

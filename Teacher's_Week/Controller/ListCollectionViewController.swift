@@ -137,16 +137,9 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
         if cellStyle == .detailTitle || cellStyle == .detailSubtitle {
             
             if searchTo == .students {
-                let studentInfo = info![sectionIndex].cellsInfo[rowIndex]
-                guard let studentName = studentInfo.title?.split(separator: " ") else {return}
-                let firstName = String(studentName[0])
-                let lastName = studentName.count > 1 ? String(studentName[1]) : ""
-                let vc = StudentInfoVC(firstName: firstName, lastName: lastName, phoneNumber: "123456789", eMail: "geko@geko.com")
+                guard let studentInfo = info![sectionIndex].cellsInfo[rowIndex].relatedTo as? Student else {return}
+                let vc = StudentInfoVC(firstName: studentInfo.firstName, lastName: studentInfo.lastName, phoneNumber: studentInfo.phoneNumber, eMail: studentInfo.eMail)
                 
-                //TODO:1.Create new properties for student struct as phoneNumber and e-mail
-                //2.change propertie name in student's struct to firstName & lastName
-                //3.update info correctly when fatch from Contacts
-                //4.handle update of phoneNumber and e-Mail to StudentInfoVC
                 
                 navigationController?.pushViewController(vc, animated: true)
             }

@@ -118,10 +118,10 @@ class NewStudentCollectionVC:UIViewController {
     }
     //MARK: - Objc Methods
     @objc private func handleDoneButtonPressed() {
-        if let safeFirstName = firstName.textField.textField.text,let safeLastName = lastName.textField.textField.text {
+        if let safeFirstName = firstName.textField.textField.text,let safeLastName = lastName.textField.textField.text,let safePhoneNumber = phoneNumber.textField.textField.text,let safeEmail = eMail.textField.textField.text {
             
-            if (safeFirstName != "") || (safeLastName != "") {
-                 DataManager.addNewStudent(firstName: safeFirstName,lastName: safeLastName)
+            if (safeFirstName != "") || (safeLastName != "") || (safePhoneNumber != "") || (safeEmail != "") {
+                 DataManager.addNewStudent(firstName: safeFirstName,lastName: safeLastName,phoneNumber: safePhoneNumber,eMail: safeEmail)
             }
         }
         navigationController?.popViewController(animated: true)

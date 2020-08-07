@@ -14,8 +14,8 @@ import Foundation
 struct DataManager {
     
     static var students:[Student] = [
-                     Student(firstName: "April Levin"),Student(firstName: "Arnold Shvartsneger"),
-                     Student(firstName: "Bob Marli")]
+        Student(firstName: "April",lastName: "Levin"),Student(firstName: "Arnold",lastName: " Shvartsneger"),
+        Student(firstName: "Bob ",lastName:"Marli")]
     
 }
 
@@ -30,7 +30,7 @@ extension DataManager {
         var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         students.forEach { (student) in
-            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "abraCadabra", isAccessory: student.checked))
+            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "abraCadabra", isAccessory: student.checked,relatedTo:student))
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         return sectionsInfo
