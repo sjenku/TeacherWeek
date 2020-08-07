@@ -121,7 +121,7 @@ class NewStudentCollectionVC:UIViewController {
         if let safeFirstName = firstName.textField.textField.text,let safeLastName = lastName.textField.textField.text {
             
             if (safeFirstName != "") || (safeLastName != "") {
-                 DataManager.addNewStudent(name:safeFirstName + " " +  safeLastName)
+                 DataManager.addNewStudent(firstName: safeFirstName,lastName: safeLastName)
             }
         }
         navigationController?.popViewController(animated: true)

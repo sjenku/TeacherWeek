@@ -11,11 +11,17 @@ import Foundation
 
 struct Student {
     
-    init(name:String) {
-        self.name = name
+    init(firstName:String = "",lastName:String = "" ,phoneNumber:String = "",eMail:String = "") {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.phoneNumber = phoneNumber
+        self.eMail = eMail
     }
     
-    var name:String = ""
+    var firstName:String = ""
+    var lastName:String = ""
+    var eMail:String = ""
+    var phoneNumber:String = ""
     var checked:Bool = false
 }
 

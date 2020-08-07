@@ -15,10 +15,10 @@ class ChooseCollectionListView: UIView {
     private let cellId = "cellId"
     private let headerId = "headerId"
     private var contacts:[Character:[Student]] = [
-        "A":[Student(name: "April Levin"),Student(name: "Arnold Shvartsneger")],
-        "B":[Student(name: "Bob Marli"),Student(name: "Bon Jovi"),Student(name: "Ben Gurion")],
-        "C":[Student(name: "Chris Brawn")],
-        "M":[Student(name: "Mark Tsugenberg"),Student(name: "Messi")]
+        "A":[Student(firstName: "April Levin"),Student(firstName: "Arnold Shvartsneger")],
+        "B":[Student(firstName: "Bob Marli"),Student(firstName: "Bon Jovi"),Student(firstName: "Ben Gurion")],
+        "C":[Student(firstName: "Chris Brawn")],
+        "M":[Student(firstName: "Mark Tsugenberg"),Student(firstName: "Messi")]
     ]
     lazy var letters: [Character] = {
         var l = [Character]()
@@ -110,7 +110,7 @@ extension ChooseCollectionListView:UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
         let students =  contacts[letters[indexPath.section]]
         let student = students?[indexPath.item]
-        cell.title.text = student?.name ?? ""
+        cell.title.text = ((student?.firstName ?? "") + " " + (student?.lastName ?? "")) 
         cell.isAccessoryShown = student?.checked ?? false
         return cell
     }

@@ -24,8 +24,7 @@ struct ContactsManager {
             let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
             do {
                 try store.enumerateContacts(with: request) { (contact, pointer) in
-                    let fullName = contact.givenName + " " + contact.familyName
-                    ContactsManager.contacts.append(Student(name: fullName))   //Add New Contact
+                    ContactsManager.contacts.append(Student(firstName: contact.givenName,lastName: contact.familyName))   //Add New Contact
                 }
             } catch let err {
                 print("Fetch Error:\(err.localizedDescription)")
@@ -36,12 +35,12 @@ struct ContactsManager {
 
     public func resetCheckingStatus() {
         ContactsManager.contacts = ContactsManager.contacts.map({ (contact) -> Student in
-            return Student(name: contact.name)
+            return Student(firstName: contact.firstName,lastName: contact.lastName)
         })
     }
     
-    public func updateContactCheckedStatus(name:String,checked:Bool) {
-        guard let studentIndex = (ContactsManager.contacts.firstIndex{$0.name == name}) else {return}
+    public func updateContactCheckedStatus(firstName:String,lastName:String,checked:Bool) {
+        guard let studentIndex = (ContactsManager.contacts.firstIndex{$0.firstName == firstName && $0.lastName == lastName}) else {return}
         ContactsManager.contacts[studentIndex].checked = checked
        }
     
@@ -62,7 +61,7 @@ struct ContactsManager {
         
        
         ContactsManager.contacts.forEach { (student) in
-            cellsInfo.append(CellInfo(title: student.name, subtitle: "someAbra", isAccessory: student.checked))
+            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "someAbra", isAccessory: student.checked))
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         

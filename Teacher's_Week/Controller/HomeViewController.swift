@@ -82,7 +82,10 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 checkedContacts.forEach { (checkedSection) in
                     checkedSection.cellsInfo.forEach { (cellInfo) in
                         if let studentName = cellInfo.title {
-                            DataManager.addNewStudent(name: studentName)
+                            let name = studentName.split(separator: " ")
+                            let firstName = String(name[0])
+                            let lastName = name.count > 1 ? String(name[1]) : ""
+                            DataManager.addNewStudent(firstName: firstName,lastName: lastName)
                         }
                     }
                 }

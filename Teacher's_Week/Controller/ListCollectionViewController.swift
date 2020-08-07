@@ -15,7 +15,11 @@ class ListCollectionViewController:UIViewController {
     
     //MARK: - Properties
     
-    private var info:[SectionInfo]?
+    private var info:[SectionInfo]? {
+        willSet {
+            listView.updateInfo(newValue)
+        }
+    }
     private var cellStyle:CellStyle?
     private var navProperties:NavProperties?
     private var navStyle:NavigationControllerStyle? = .small
@@ -73,7 +77,7 @@ class ListCollectionViewController:UIViewController {
         super.viewWillAppear(animated)
         
         IQKeyboardManager.shared.enable = false
-        listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
+        info = DataManager.getStudentsInFormatSectionsInfo()
         navigationController?.navigationBar.isHidden = false
         guard let unwrappedNavProperties = navProperties else {return}
         navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)
@@ -138,6 +142,12 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
                 let firstName = String(studentName[0])
                 let lastName = studentName.count > 1 ? String(studentName[1]) : ""
                 let vc = StudentInfoVC(firstName: firstName, lastName: lastName, phoneNumber: "123456789", eMail: "geko@geko.com")
+                
+                //TODO:1.Create new properties for student struct as phoneNumber and e-mail
+                //2.change propertie name in student's struct to firstName & lastName
+                //3.update info correctly when fatch from Contacts
+                //4.handle update of phoneNumber and e-Mail to StudentInfoVC
+                
                 navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -147,12 +157,13 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
                
                //Update In Background
                let checked = !beforeTappedStatus
-               let studentName:String = info![sectionIndex].cellsInfo[rowIndex].title ?? ""
+               let studentName = (info![sectionIndex].cellsInfo[rowIndex].title ?? "").SpliteToTwoStrings()
+               
                
                if searchTo == .students {
-                   DataManager.updateStudentCheckedStatus(name: studentName, checked: checked)
+                DataManager.updateStudentCheckedStatus(firstName: studentName.0, lastName: studentName.1, checked: checked)
                } else if searchTo == .contacts {
-                   ContactsManager.shared.updateContactCheckedStatus(name: studentName,checked: checked)
+                ContactsManager.shared.updateContactCheckedStatus(firstName: studentName.0, lastName: studentName.1, checked: checked)
                }
                listView.collectionView.reloadData()
             

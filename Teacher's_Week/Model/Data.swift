@@ -14,30 +14,30 @@ import Foundation
 struct DataManager {
     
     static var students:[Student] = [
-                     Student(name: "April Levin"),Student(name: "Arnold Shvartsneger"),
-                     Student(name: "Bob Marli")]
+                     Student(firstName: "April Levin"),Student(firstName: "Arnold Shvartsneger"),
+                     Student(firstName: "Bob Marli")]
     
 }
 
 //MARK: - StudentManagment
 extension DataManager {
     
-    static func addNewStudent(name:String) {
-        students.append(Student(name: name))
+    static func addNewStudent(firstName:String,lastName:String = "",phoneNumber:String = "",eMail:String = "") {
+        students.append(Student(firstName: firstName,lastName: lastName,phoneNumber: phoneNumber,eMail: eMail))
     }
     
     static func getStudentsInFormatSectionsInfo() -> [SectionInfo] {
         var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         students.forEach { (student) in
-            cellsInfo.append(CellInfo(title: student.name, subtitle: "abraCadabra", isAccessory: student.checked))
+            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "abraCadabra", isAccessory: student.checked))
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         return sectionsInfo
     }
     
-    static func updateStudentCheckedStatus(name:String,checked:Bool) {
-        guard let studentIndex = (students.firstIndex{$0.name == name}) else {return}
+    static func updateStudentCheckedStatus(firstName:String,lastName:String,checked:Bool) {
+        guard let studentIndex = (students.firstIndex{$0.firstName == firstName && $0.lastName == lastName }) else {return}
         students[studentIndex].checked = checked
     }
     
