@@ -11,7 +11,7 @@ import UIKit
 
 class StudentInfoVC:UIViewController {
     
-    
+    //MARK: - Private Properties
    private let circleStudentIcon:UIImageView = {
           let iv = UIImageView()
           iv.image = UIImage(named: "circle.person")
@@ -22,33 +22,29 @@ class StudentInfoVC:UIViewController {
    private let firstNameInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "First Name"
-        v.subTitle.text = "Jhon"
         return v
     }()
     
    private let lastNameInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Last Name"
-        v.subTitle.text = "Smith"
         return v
     }()
     
    private let phoneNumberInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Phone Number"
-        v.subTitle.text = "054-12345678"
         return v
     }()
     
    private let eMailInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Email"
-        v.subTitle.text = "abc@gdm.com"
         return v
     }()
     
     
-    lazy var stackView:UIStackView = {
+   private lazy var stackView:UIStackView = {
         [unowned self] in
         let sv = UIStackView(arrangedSubviews: [self.firstNameInfo,self.lastNameInfo,self.phoneNumberInfo,self.eMailInfo])
         sv.distribution = .fillEqually
@@ -56,7 +52,20 @@ class StudentInfoVC:UIViewController {
         sv.backgroundColor = .blue
         return sv
     }()
+    //MARK: - Initializetion
+    init(firstName:String?,lastName:String?,phoneNumber:String?,eMail:String?) {
+        super.init(nibName: nil, bundle: nil)
+        firstNameInfo.subTitle.text = firstName ?? ""
+        lastNameInfo.subTitle.text = lastName ?? ""
+        phoneNumberInfo.subTitle.text = phoneNumber ?? ""
+        eMailInfo.subTitle.text = eMail ?? ""
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    //MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +76,7 @@ class StudentInfoVC:UIViewController {
         setNavigationItem()
     }
     
+    //MARK: - Private Methods
     private func setNavigationItem() {
         navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
     }

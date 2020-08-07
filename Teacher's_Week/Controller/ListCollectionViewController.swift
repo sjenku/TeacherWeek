@@ -133,7 +133,11 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
         if cellStyle == .detailTitle || cellStyle == .detailSubtitle {
             
             if searchTo == .students {
-                let vc = StudentInfoVC()
+                let studentInfo = info![sectionIndex].cellsInfo[rowIndex]
+                guard let studentName = studentInfo.title?.split(separator: " ") else {return}
+                let firstName = String(studentName[0])
+                let lastName = studentName.count > 1 ? String(studentName[1]) : ""
+                let vc = StudentInfoVC(firstName: firstName, lastName: lastName, phoneNumber: "123456789", eMail: "geko@geko.com")
                 navigationController?.pushViewController(vc, animated: true)
             }
             
