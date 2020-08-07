@@ -12,43 +12,40 @@ import UIKit
 class StudentInfoVC:UIViewController {
     
     
-    let circleStudentIcon:UIImageView = {
+   private let circleStudentIcon:UIImageView = {
           let iv = UIImageView()
           iv.image = UIImage(named: "circle.person")
           iv.contentMode = .scaleAspectFit
           return iv
       }()
     
-    let firstNameInfo:HeadTitleAndSubTitleView = {
+   private let firstNameInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "First Name"
         v.subTitle.text = "Jhon"
         return v
     }()
     
-    let lastNameInfo:HeadTitleAndSubTitleView = {
+   private let lastNameInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Last Name"
         v.subTitle.text = "Smith"
         return v
     }()
     
-    let phoneNumberInfo:HeadTitleAndSubTitleView = {
+   private let phoneNumberInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Phone Number"
         v.subTitle.text = "054-12345678"
         return v
     }()
     
-    let eMailInfo:HeadTitleAndSubTitleView = {
+   private let eMailInfo:HeadTitleAndSubTitleView = {
         let v = HeadTitleAndSubTitleView()
         v.headTitle.text = "Email"
         v.subTitle.text = "abc@gdm.com"
         return v
     }()
-    
-    
-    
     
     
     lazy var stackView:UIStackView = {
@@ -60,14 +57,19 @@ class StudentInfoVC:UIViewController {
         return sv
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstraints()
+        setNavigationItem()
     }
     
+    private func setNavigationItem() {
+        navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
+    }
     
     private func setSubviews() {
         view.addSubview(circleStudentIcon)

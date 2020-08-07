@@ -134,7 +134,6 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
             
             if searchTo == .students {
                 let vc = StudentInfoVC()
-                navigationController?.setupNavigationWithStyle(navProperties: NavProperties(navTitle: info![sectionIndex].cellsInfo[rowIndex].title ?? "", withRightBarButton: false), forController: vc)
                 navigationController?.pushViewController(vc, animated: true)
             }
             
