@@ -57,7 +57,11 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
          let vc = ScrollVC()
          navigationController?.pushViewController(vc, animated: true)
      }
-     
+
+ //MARK: - Manage ListCollectionViewController For 'add Group Button' that exist in HomeVC
+    func addGroupButtonPressed() {
+        print("Group Button Pressed")
+    }
     
 //MARK: - Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
