@@ -32,7 +32,6 @@
 		BE12525E249FD3A4006F264B /* ListViewCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */; };
 		BE12526024A0BE65006F264B /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12525F24A0BE65006F264B /* CustomListView.swift */; };
 		BE12526324A0E5D4006F264B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526224A0E5D4006F264B /* Enums.swift */; };
-		BE12526524A0E644006F264B /* StudentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526424A0E644006F264B /* StudentsManager.swift */; };
 		BE12526824A0EC4E006F264B /* NewGroupCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */; };
 		BE12526A24A103FE006F264B /* NewGroupLowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526924A103FE006F264B /* NewGroupLowerCell.swift */; };
 		BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */; };
@@ -100,7 +99,6 @@
 		BE12525D249FD3A4006F264B /* ListViewCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCellSubtitle.swift; sourceTree = "<group>"; };
 		BE12525F24A0BE65006F264B /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
 		BE12526224A0E5D4006F264B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		BE12526424A0E644006F264B /* StudentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsManager.swift; sourceTree = "<group>"; };
 		BE12526724A0EC4E006F264B /* NewGroupCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCollectionVC.swift; sourceTree = "<group>"; };
 		BE12526924A103FE006F264B /* NewGroupLowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupLowerCell.swift; sourceTree = "<group>"; };
 		BE12526B24A104C8006F264B /* NewGroupUpperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupUpperCell.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				BE125258249F8D6D006F264B /* CellSectionInfo.swift */,
 				BE125255249F8B92006F264B /* ContactsManager.swift */,
-				BE12526424A0E644006F264B /* StudentsManager.swift */,
 				BE870EC924AB9005005E8B23 /* Configurations.swift */,
 				BE01B80B24CCC93C00F69D3A /* Data.swift */,
 			);
@@ -486,7 +483,6 @@
 				BE12526824A0EC4E006F264B /* NewGroupCollectionVC.swift in Sources */,
 				BE12526024A0BE65006F264B /* CustomListView.swift in Sources */,
 				BE12521924993F60006F264B /* HomeLowerContainerView.swift in Sources */,
-				BE12526524A0E644006F264B /* StudentsManager.swift in Sources */,
 				BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */,
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,

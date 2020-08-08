@@ -77,7 +77,7 @@ class ListCollectionViewController:UIViewController {
         super.viewWillAppear(animated)
         
         IQKeyboardManager.shared.enable = false
-        info = DataManager.getStudentsInFormatSectionsInfo()
+        info = searchTo == .students ? DataManager.getStudentsInFormatSectionsInfo() : DataManager.getGroupsInFormatSectionInfo()
         navigationController?.navigationBar.isHidden = false
         guard let unwrappedNavProperties = navProperties else {return}
         navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)

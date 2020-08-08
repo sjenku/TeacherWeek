@@ -45,7 +45,9 @@ extension CustomSearchController:UISearchResultsUpdating {
             info = DataManager.getStudentsInFormatSectionsInfo()
         case .contacts:
             info = ContactsManager.shared.getSectionsInfo()
-        default:
+        case .groups:
+            info = DataManager.getGroupsInFormatSectionInfo()
+        case .none:
             info = []
         }
         
