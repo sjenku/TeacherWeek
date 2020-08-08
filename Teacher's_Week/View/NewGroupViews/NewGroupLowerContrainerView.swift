@@ -39,7 +39,11 @@ class NewGroupLowerContrainerView:CustomView {
     
     private let headerId:String = "headerId"
     private let cellId:String = "cellId"
-    
+    var info:[Student] = [] {
+        willSet {
+            collectionView.reloadData()
+        }
+    }
     
     //MARK: - Overrides
     
@@ -73,15 +77,16 @@ class NewGroupLowerContrainerView:CustomView {
 
 extension NewGroupLowerContrainerView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return info.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! NewGroupStudentCell
+        cell.fullNameTitle.text = info[indexPath.row].firstName + " " + info[indexPath.row].lastName
         return cell
     }
     
