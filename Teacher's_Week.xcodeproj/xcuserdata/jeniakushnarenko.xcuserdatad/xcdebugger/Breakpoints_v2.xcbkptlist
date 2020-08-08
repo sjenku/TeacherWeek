@@ -3,4 +3,70 @@
    uuid = "E1CFEB4F-507C-45C8-BFCA-7D35BA3B9CDF"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DE314C2-2A9A-4A63-ACCC-3903A0CB0C41"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Model/Data.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "updateStudentCheckedStatus(firstName:lastName:checked:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Model/Data.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "updateStudentCheckedStatus(firstName:lastName:checked:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC - e3380982ffa86adf"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Teacher_s_Week.DataManager.updateStudentCheckedStatus(firstName: Swift.String, lastName: Swift.String, checked: Swift.Bool) -&gt; ()"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Model/Data.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC - 88674905a08a05bc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Teacher_s_Week.Student) -&gt; Swift.Bool in static Teacher_s_Week.DataManager.updateStudentCheckedStatus(firstName: Swift.String, lastName: Swift.String, checked: Swift.Bool) -&gt; ()"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Model/Data.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "166">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

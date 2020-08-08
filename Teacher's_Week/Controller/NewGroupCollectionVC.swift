@@ -59,15 +59,12 @@ class NewGroupCollectionVC:UIViewController {
                     self.group.students.append(student)
                 }
             }
-            //Reset 'Check' property in all contacts
-//            ContactsManager.shared.resetCheckingStatus()
-            
-            //TODO:Fix->Reset Students Check Status
             self.navigationController?.popViewController(animated: true)
         }
         vc.doneButtonAction = doneButtonAction
         vc.info = DataManager.getStudentsInFormatSectionsInfo()
-        vc.title = "Contacts"
+        vc.title = "Students"
+        vc.searchTo = .students
         navigationController?.pushViewController(vc, animated: true)
         
     }

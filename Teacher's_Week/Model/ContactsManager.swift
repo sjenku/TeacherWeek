@@ -40,7 +40,7 @@ struct ContactsManager {
     }
     
     public func updateContactCheckedStatus(firstName:String,lastName:String,checked:Bool) {
-        guard let studentIndex = (ContactsManager.contacts.firstIndex{$0.firstName == firstName && $0.lastName == lastName}) else {return}
+        guard let studentIndex = (ContactsManager.contacts.firstIndex{$0.firstName.trimmingCharacters(in: .whitespaces) == firstName && $0.lastName.trimmingCharacters(in: .whitespaces) == lastName}) else {return}
         ContactsManager.contacts[studentIndex].checked = checked
        }
     

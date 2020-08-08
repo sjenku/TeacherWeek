@@ -82,7 +82,7 @@ extension DataManager {
     }
     
     static func updateStudentCheckedStatus(firstName:String,lastName:String,checked:Bool) {
-        guard let studentIndex = (students.firstIndex{$0.firstName == firstName && $0.lastName == lastName }) else {return}
+        guard let studentIndex = (students.firstIndex{$0.firstName.trimmingCharacters(in: .whitespaces) == firstName && $0.lastName.trimmingCharacters(in: .whitespaces) == lastName }) else {return}
         students[studentIndex].checked = checked
     }
     
