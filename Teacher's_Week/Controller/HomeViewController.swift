@@ -81,12 +81,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
                 let checkedContacts = vc.checkedInFormOfSectionsInfo
                 checkedContacts.forEach { (checkedSection) in
                     checkedSection.cellsInfo.forEach { (cellInfo) in
-                        if let studentName = cellInfo.title {
-                            let name = studentName.split(separator: " ")
-                            let firstName = String(name[0])
-                            let lastName = name.count > 1 ? String(name[1]) : ""
-                            DataManager.addNewStudent(firstName: firstName,lastName: lastName)
-                        }
+                        guard let contact = cellInfo.relatedTo as? Student else {return}
+                        DataManager.addNewStudent(firstName: contact.firstName,lastName: contact.lastName,phoneNumber: contact.phoneNumber,eMail: contact.eMail)
                     }
                 }
                 //Reset 'Check' property in all contacts

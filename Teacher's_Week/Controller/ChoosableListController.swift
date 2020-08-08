@@ -61,8 +61,12 @@ class ChoosableListController:UIViewController{
     //MARK: - Views
     
     private let labelView:CustomView = ChooseLabelView()
-    private let personsListCollectionView:ListCollectionView =  {
-        return ListCollectionView(frame: .zero, info: nil,style: nil)
+    private lazy var personsListCollectionView:ListCollectionView =  {
+        [unowned self] in
+        let listView = ListCollectionView(frame: .zero, info: nil,style: nil)
+        listView.isSelectable = true
+        listView.selectionActionDelegate = self
+        return listView
     }()
     
     private let doneButtonView:UIView = {
@@ -127,6 +131,32 @@ class ChoosableListController:UIViewController{
         labelView.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.1).isActive = true
         doneButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
 
+    }
+    
+    
+}
+
+extension ChoosableListController:SelectableCellActionDelegate {
+    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
+        print("Selected In ChooseableView position:\(sectionIndex),\(rowIndex)")
+        
+        //      Check if cell have accessory at all
+        guard let beforeTappedStatus = info[sectionIndex].cellsInfo[rowIndex].isAccessory else {return}
+        
+        //Update For View
+        info[sectionIndex].cellsInfo[rowIndex].isAccessory = !info[sectionIndex].cellsInfo[rowIndex].isAccessory!
+        
+        //Update In Background
+        let checked = !beforeTappedStatus
+        let studentName = (info[sectionIndex].cellsInfo[rowIndex].title ?? "").SpliteToTwoStrings()
+        
+        if searchTo == .students {
+            DataManager.updateStudentCheckedStatus(firstName: studentName.0, lastName: studentName.1, checked: checked)
+        } else if searchTo == .contacts {
+            ContactsManager.shared.updateContactCheckedStatus(firstName: studentName.0, lastName: studentName.1, checked: checked)
+        }
+        personsListCollectionView.collectionView.reloadData()
+        
     }
     
     

@@ -21,10 +21,10 @@ struct ContactsManager {
         let store = CNContactStore()
         
         let executeFunctionIfGranted = {
-            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey] as [CNKeyDescriptor])
+            let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey,CNContactPhoneNumbersKey,CNContactEmailAddressesKey] as [CNKeyDescriptor])
             do {
                 try store.enumerateContacts(with: request) { (contact, pointer) in
-                    ContactsManager.contacts.append(Student(firstName: contact.givenName,lastName: contact.familyName))   //Add New Contact
+                    ContactsManager.contacts.append(Student(firstName: contact.givenName,lastName: contact.familyName,phoneNumber: contact.phoneNumbers[0].value.stringValue,eMail: contact.emailAddresses.first?.value as String? ?? ""))   //Add New Contact
                 }
             } catch let err {
                 print("Fetch Error:\(err.localizedDescription)")
@@ -61,7 +61,7 @@ struct ContactsManager {
         
        
         ContactsManager.contacts.forEach { (student) in
-            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "someAbra", isAccessory: student.checked))
+            cellsInfo.append(CellInfo(title: student.firstName + " " + student.lastName, subtitle: "someAbra", isAccessory: student.checked,relatedTo: student))
         }
         sectionsInfo.append(SectionInfo(headerTitle: "A", cellsInfo: cellsInfo))
         
