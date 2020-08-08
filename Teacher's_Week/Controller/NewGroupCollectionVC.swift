@@ -11,6 +11,14 @@ import IQKeyboardManagerSwift
 
 class NewGroupCollectionVC:UIViewController {
     
+    
+    //MARK: - Properties
+    var group:Group = Group() {
+        didSet {
+            lowerContainer.info = group.students
+        }
+    }
+    
     //MARK: - Views
     let lowerContainer:NewGroupLowerContrainerView = {
         let view = NewGroupLowerContrainerView()
@@ -18,8 +26,9 @@ class NewGroupCollectionVC:UIViewController {
     }()
     
     
-    let upperContainer:NewGroupUpperContrainerView = {
+    lazy var upperContainer:NewGroupUpperContrainerView = {
         let view = NewGroupUpperContrainerView()
+        view.addButton.circleButton.addTarget(self, action: #selector(handleAddStudentPressed), for: .touchUpInside)
         return view
     }()
     
@@ -37,7 +46,32 @@ class NewGroupCollectionVC:UIViewController {
 
     }
     
-
+//MARK: - OBJC Methods
+    @objc func handleAddStudentPressed() {
+        print("Add Student Pressed") //TODO:Complete
+        let vc = ChoosableListController()
+        let doneButtonAction = {
+            //Add Checked Contacts to Students
+            let checkedContacts = vc.checkedInFormOfSectionsInfo
+            checkedContacts.forEach { (checkedSection) in
+                checkedSection.cellsInfo.forEach { (cellInfo) in
+                    guard let student = cellInfo.relatedTo as? Student else {return}
+                    self.group.students.append(student)
+                }
+            }
+            //Reset 'Check' property in all contacts
+//            ContactsManager.shared.resetCheckingStatus()
+            
+            //TODO:Fix->Reset Students Check Status
+            self.navigationController?.popViewController(animated: true)
+        }
+        vc.doneButtonAction = doneButtonAction
+        vc.info = DataManager.getStudentsInFormatSectionsInfo()
+        vc.title = "Contacts"
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     //MARK: - Private Functions
     private func setNavigationBar() {
         title = "New Group"

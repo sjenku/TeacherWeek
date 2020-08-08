@@ -35,7 +35,7 @@ struct ContactsManager {
 
     public func resetCheckingStatus() {
         ContactsManager.contacts = ContactsManager.contacts.map({ (contact) -> Student in
-            return Student(firstName: contact.firstName,lastName: contact.lastName)
+            return Student(firstName: contact.firstName,lastName: contact.lastName,phoneNumber: contact.phoneNumber,eMail: contact.eMail)
         })
     }
     

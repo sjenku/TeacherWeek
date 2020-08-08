@@ -40,7 +40,7 @@ class NewGroupLowerContrainerView:CustomView {
     private let headerId:String = "headerId"
     private let cellId:String = "cellId"
     var info:[Student] = [] {
-        willSet {
+        didSet {
             collectionView.reloadData()
         }
     }
