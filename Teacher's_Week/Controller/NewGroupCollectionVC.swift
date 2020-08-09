@@ -22,6 +22,7 @@ class NewGroupCollectionVC:UIViewController {
     //MARK: - Views
     let lowerContainer:NewGroupLowerContrainerView = {
         let view = NewGroupLowerContrainerView()
+        view.doneButton.button.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
         return view
     }()
     
@@ -76,6 +77,25 @@ class NewGroupCollectionVC:UIViewController {
         guard let selectedIndex = selectedIndexs.first else {return}
         
         group.students.remove(at: selectedIndex.row)
+    }
+    
+    @objc func handleDoneButton() {
+        guard let groupName = upperContainer.textField.textField.text else {return}
+        
+        guard groupName != "" else {  //Check If Group Name Exist
+            alertWithMessage(message: "You need to make sure that the group have a name")
+            return
+        }
+        
+        guard group.students.count != 0 else { //Check If Group That Will Be Created Have at least one student
+            alertWithMessage(message: "The group should have at least one student")
+           return
+        }
+      
+        group.groupName = groupName
+        DataManager.groups.append(group)
+        navigationController?.popViewController(animated: true)
+        
     }
     
     //MARK: - Private Functions

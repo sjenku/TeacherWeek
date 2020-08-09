@@ -56,6 +56,7 @@
 		BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */; };
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
+		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
@@ -124,6 +125,7 @@
 		BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		BE6A238624DF0CFC001CE76B /* ListOfBags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBags.swift; sourceTree = "<group>"; };
+		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupStudentCell.swift; sourceTree = "<group>"; };
 		BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCharHeader.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			children = (
 				BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */,
 				BEC024E724DD811900FEF23A /* ExtensionString.swift */,
+				BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */,
 			);
 			path = CustomControllers;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				BE26F91B24ADC57700664510 /* TitleAndTextFieldView.swift in Sources */,
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
 				BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */,
+				BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */,
 				BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */,
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */,
