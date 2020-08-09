@@ -63,6 +63,10 @@ class HomeLowerContainerView:CustomView {
         addStudentView.counterLabel.text = String(number)
     }
     
+    func updateAddGroupViewCounter(number:Int) {
+        addGroupView.counterLabel.text = String(number)
+    }
+    
     //MARK: - OBJC private Functions
     @objc private func handleAddGroupButton() {
         delegate?.addGroupButtonPressed()

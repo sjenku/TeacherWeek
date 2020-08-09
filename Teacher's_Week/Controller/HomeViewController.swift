@@ -21,6 +21,7 @@ class HomeViewController:UIViewController{
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         homeView?.lowerContainer.updateAddStudentViewCounter(number: DataManager.students.count)
+        homeView?.lowerContainer.updateAddGroupViewCounter(number: DataManager.groups.count)
     }
     
     override func viewDidLoad() {
