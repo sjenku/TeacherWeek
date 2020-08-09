@@ -11,6 +11,15 @@ import UIKit
 
 class GroupInfoVC:UIViewController {
     
+    var group:Group = Group() {
+        didSet {
+            let cellsInfo:[CellInfo] = group.students.map {
+                return CellInfo(title: $0.firstName + " " + $0.lastName, subtitle: "", isAccessory: nil, relatedTo: $0)
+            }
+            let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
+            studentList.updateInfo([sectionInfo])
+        }
+    }
     
     let groupIconView:UIImageView = {
         let iv = UIImageView()
@@ -22,8 +31,7 @@ class GroupInfoVC:UIViewController {
     
     
     let studentList:ListCollectionView = {
-        let info:[SectionInfo] = ContactsManager.shared.getSectionsInfo()
-        let view = ListCollectionView(frame: .zero, info: info, style: CellStyle.title)
+        let view = ListCollectionView(frame: .zero, info: nil, style: CellStyle.title)
         return view
     }()
     
@@ -46,11 +54,15 @@ class GroupInfoVC:UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.MyTheme.darkBG
+        setNavigationItem()
         setSubviews()
         setConstraints()
         
     }
     
+    private func setNavigationItem() {
+        navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
+    }
     
     private func setConstraints() {
         view.addConstraintsWithFormat(format: "H:|-[v0]-|", views: groupIconView)

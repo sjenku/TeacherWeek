@@ -56,7 +56,7 @@ extension DataManager {
         let cellsInfo:[CellInfo] = groups.map { (group) -> CellInfo in
             let numOfStudentsInGroup = group.students.count
             let subTitle = numOfStudentsInGroup > 1 ? "\(numOfStudentsInGroup) Students" : numOfStudentsInGroup == 0 ? "No Students" : "1 Student"
-            let cellInfo = CellInfo(title: group.groupName, subtitle: subTitle, isAccessory: nil, relatedTo: group)
+            let cellInfo = CellInfo(title: group.groupName, subtitle: subTitle, isAccessory: false, relatedTo: group)
             return cellInfo
         }
        let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)

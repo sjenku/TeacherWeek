@@ -139,8 +139,12 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
             if searchTo == .students {
                 guard let studentInfo = info![sectionIndex].cellsInfo[rowIndex].relatedTo as? Student else {return}
                 let vc = StudentInfoVC(firstName: studentInfo.firstName, lastName: studentInfo.lastName, phoneNumber: studentInfo.phoneNumber, eMail: studentInfo.eMail)
+                navigationController?.pushViewController(vc, animated: true)
                 
-                
+            } else if searchTo == .groups {
+                let vc = GroupInfoVC()
+                let chosenGroup:Group = DataManager.groups[rowIndex]
+                vc.group = chosenGroup
                 navigationController?.pushViewController(vc, animated: true)
             }
             

@@ -7,81 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8DE314C2-2A9A-4A63-ACCC-3903A0CB0C41"
+            uuid = "DA189286-22F1-4D91-A83E-3DF457C21198"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Model/Data.swift"
+            filePath = "Teacher&apos;s_Week/Controller/ListCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "updateStudentCheckedStatus(firstName:lastName:checked:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "performSelectionOfCellAction(sectionIndex:rowIndex:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC"
+            uuid = "BAA8EE95-F365-435E-BEE8-0947278A8217"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Model/Data.swift"
+            filePath = "Teacher&apos;s_Week/Controller/GroupInfoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "updateStudentCheckedStatus(firstName:lastName:checked:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC - e3380982ffa86adf"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Teacher_s_Week.DataManager.updateStudentCheckedStatus(firstName: Swift.String, lastName: Swift.String, checked: Swift.Bool) -&gt; ()"
-                  moduleName = "Teacher&apos;s_Week"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Model/Data.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "123">
-               </Location>
-               <Location
-                  uuid = "5232EEB4-B296-453A-8803-604BB4D6B4FC - 88674905a08a05bc"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Teacher_s_Week.Student) -&gt; Swift.Bool in static Teacher_s_Week.DataManager.updateStudentCheckedStatus(firstName: Swift.String, lastName: Swift.String, checked: Swift.Bool) -&gt; ()"
-                  moduleName = "Teacher&apos;s_Week"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Model/Data.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "166">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E8DB056B-DDE6-4221-9767-449FD1830FB8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Controller/NewGroupCollectionVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "handleDeletePressed()"
-            landmarkType = "7">
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "group"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
