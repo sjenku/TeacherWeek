@@ -14,11 +14,12 @@ import Foundation
 
 struct Student {
     
-    init(firstName:String = "",lastName:String = "" ,phoneNumber:String = "",eMail:String = "") {
+    init(firstName:String = "",lastName:String = "" ,phoneNumber:String = "",eMail:String = "",checked:Bool = false) {
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber
         self.eMail = eMail
+        self.checked = checked
     }
     
     var firstName:String = ""
@@ -84,6 +85,12 @@ extension DataManager {
     static func updateStudentCheckedStatus(firstName:String,lastName:String,checked:Bool) {
         guard let studentIndex = (students.firstIndex{$0.firstName.trimmingCharacters(in: .whitespaces) == firstName && $0.lastName.trimmingCharacters(in: .whitespaces) == lastName }) else {return}
         students[studentIndex].checked = checked
+    }
+    
+    static func resetStudentsCheckedStatus() {
+        DataManager.students =  students.map({ (student) -> Student in
+            Student(firstName: student.firstName, lastName: student.lastName, phoneNumber: student.phoneNumber, eMail: student.eMail,checked: false)
+        })
     }
     
 }

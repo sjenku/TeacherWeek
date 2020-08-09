@@ -59,6 +59,8 @@ class NewGroupCollectionVC:UIViewController {
                     self.group.students.append(student)
                 }
             }
+            
+            DataManager.resetStudentsCheckedStatus()
             self.navigationController?.popViewController(animated: true)
         }
         vc.doneButtonAction = doneButtonAction
