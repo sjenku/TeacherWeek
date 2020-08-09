@@ -41,7 +41,7 @@ extension UINavigationController {
         if navProperties.withRightBarButton {
 
             let rightBarButton = createBarButtonItemWithStyle(style: navProperties.rightBarButtonStyle,target: navProperties.rightBarButtonActionTarget, selector: navProperties.rightBarButtonAction)
-                vc?.navigationItem.rightBarButtonItem = rightBarButton
+            vc?.navigationItem.rightBarButtonItem = rightBarButton
             }
         }
     

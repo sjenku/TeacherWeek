@@ -11,17 +11,20 @@ import UIKit
 
 class GroupInfoVC:UIViewController {
     
+    //MARK: - Properties
+    
     var group:Group = Group() {
         didSet {
             let cellsInfo:[CellInfo] = group.students.map {
                 return CellInfo(title: $0.firstName + " " + $0.lastName, subtitle: "", isAccessory: nil, relatedTo: $0)
             }
             let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
+            groupName.text = group.groupName
             studentList.updateInfo([sectionInfo])
         }
     }
     
-    let groupIconView:UIImageView = {
+   private let groupIconView:UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "groupGreen")?.withRenderingMode(.alwaysTemplate)
         iv.tintColor = UIColor.MyTheme.lightBlue
@@ -30,25 +33,26 @@ class GroupInfoVC:UIViewController {
     }()
     
     
-    let studentList:ListCollectionView = {
+   private let studentList:ListCollectionView = {
         let view = ListCollectionView(frame: .zero, info: nil, style: CellStyle.title)
         return view
     }()
     
     
     //TODO:Create extension to UILabel for repeating configurations
-    let groupName:UILabel = {
+   private let groupName:UILabel = {
           let label = UILabel()
           label.translatesAutoresizingMaskIntoConstraints = false
           label.adjustsFontSizeToFitWidth = true
-          label.text = "Tigers"
+          label.text = ""
           label.textAlignment = .center
           label.textColor = .white
           label.font = UIFont.systemFont(ofSize: DeviceConfigurations.windowHeight / 28)
           return label
       }()
     
-
+    
+    //MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +64,11 @@ class GroupInfoVC:UIViewController {
         
     }
     
+    //MARK: - Private Methods
+    
     private func setNavigationItem() {
         navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleEditBarButton))
     }
     
     private func setConstraints() {
@@ -94,5 +101,17 @@ class GroupInfoVC:UIViewController {
         view.addSubview(studentList)
     }
     
+    
+    //MARK: - OBJC Methods
+    @objc func handleEditBarButton() {
+        print("Pressed Edit")
+        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDoneBarButton))
+        
+    }
+    
+    @objc func handleDoneBarButton() {
+        print("Pressed Done")
+        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleEditBarButton))
+    }
     
 }
