@@ -29,6 +29,7 @@ class NewGroupCollectionVC:UIViewController {
     lazy var upperContainer:NewGroupUpperContrainerView = {
         let view = NewGroupUpperContrainerView()
         view.addButton.circleButton.addTarget(self, action: #selector(handleAddStudentPressed), for: .touchUpInside)
+        view.deleteButton.circleButton.addTarget(self, action: #selector(handleDeletePressed), for: .touchUpInside)
         return view
     }()
     
@@ -68,7 +69,13 @@ class NewGroupCollectionVC:UIViewController {
         vc.title = "Students"
         vc.searchTo = .students
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func handleDeletePressed() {
+        guard let selectedIndexs = lowerContainer.collectionView.indexPathsForSelectedItems else {return}
+        guard let selectedIndex = selectedIndexs.first else {return}
         
+        group.students.remove(at: selectedIndex.row)
     }
     
     //MARK: - Private Functions
