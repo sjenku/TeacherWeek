@@ -58,6 +58,7 @@
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
 		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
+		BE6A238E24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */; };
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
@@ -127,6 +128,7 @@
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		BE6A238624DF0CFC001CE76B /* ListOfBags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBags.swift; sourceTree = "<group>"; };
 		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
+		BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroupListCollectionVC.swift; sourceTree = "<group>"; };
 		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupStudentCell.swift; sourceTree = "<group>"; };
 		BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCharHeader.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				BE17D9C124B4B3C900F20AEF /* GenerateScheduleStepTwoVC.swift */,
 				BE17D9C624BC61B700F20AEF /* ScrollVC.swift */,
 				BEF8448B24C2067C001FABCC /* TimePickerVC.swift */,
+				BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE125259249F8D6D006F264B /* CellSectionInfo.swift in Sources */,
+				BE6A238E24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift in Sources */,
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
 				BE26F91B24ADC57700664510 /* TitleAndTextFieldView.swift in Sources */,
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,

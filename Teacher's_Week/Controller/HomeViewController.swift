@@ -74,72 +74,8 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
     
 //MARK: - Manage ListCollectionViewController For 'add student button' from HomeVC
      func addStudentButtonPressed() {
-        let info = DataManager.getStudentsInFormatSectionsInfo()
-        let vc = ListCollectionViewController(info: info, cellStyle: .detailTitle,navStyle: .large, navigationProperties:NavProperties(navTitle: "Students", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddStudentNavBarButtonPressed)))
-        
-         vc.listView.isSelectable = true
-         vc.searchTo = .students
+         let vc = StudentOrGroupListCollectionVC(kind: .student)
          navigationController?.pushViewController(vc, animated: true)
-         
      }
-    
-    @objc func handleAddStudentNavBarButtonPressed() {
-        
-        let actionController:UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        //Import Contacts
-        let actionImportContacts = UIAlertAction(title: "Import From Contacts", style: .default) { (action) in
-            let vc = ChoosableListController()
-            let doneButtonAction = {
-                //Add Checked Contacts to Students
-                let checkedContacts = vc.checkedInFormOfSectionsInfo
-                checkedContacts.forEach { (checkedSection) in
-                    checkedSection.cellsInfo.forEach { (cellInfo) in
-                        guard let contact = cellInfo.relatedTo as? Student else {return}
-                        DataManager.addNewStudent(firstName: contact.firstName,lastName: contact.lastName,phoneNumber: contact.phoneNumber,eMail: contact.eMail)
-                    }
-                }
-                //Reset 'Check' property in all contacts
-                ContactsManager.shared.resetCheckingStatus()
-                self.navigationController?.popViewController(animated: true)
-            }
-            vc.doneButtonAction = doneButtonAction
-            vc.title = "Contacts"
-            //Handle Contacts After Get Permission From The User
-            let executeIfGranted = {
-                let info = ContactsManager.shared.getSectionsInfo()
-                vc.info = info
-                vc.searchTo = .contacts
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-            let executeIfNotGranted = {
-                let alertController = UIAlertController(title: "Don't Have Permission", message: "Please Go To Settings In Your Phone, And Change Permission For Accessing To Contacts ", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                alertController.addAction(cancelAction)
-                DispatchQueue.main.async {
-                     self.present(alertController, animated: true, completion: nil)
-                }
-            }
-            ContactsManager.shared.executeFunctionIfContactsGranted(executeFunctionGranted: executeIfGranted, executeFunctionNotGranted: executeIfNotGranted)
-        }
-        //Create Student
-        let actionCreateNew = UIAlertAction(title: "Create New Student", style: .default) { (action) in
-            let vc = NewStudentCollectionVC()
-            vc.title = "New Student"
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        //Cancel
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) {[weak self] (action) in
-            self?.dismiss(animated: true, completion: nil)
-        }
-        
-        [actionImportContacts,actionCreateNew,actionCancel].forEach { (action) in
-            actionController.addAction(action)
-        }
-        self.navigationController?.topViewController?.present(actionController, animated: true, completion: nil)
-    }
 }
 
