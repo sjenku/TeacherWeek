@@ -11,9 +11,19 @@ import UIKit
 
 
 
-class NewGroupStudentCell:CustomCollectionViewCell {
+class NewGroupStudentCell:UICollectionViewCell {
     
-    
+    override init(frame: CGRect) {
+         super.init(frame:frame)
+         
+         setupView()
+     }
+     
+     required init?(coder: NSCoder) {
+         super.init(coder:coder)
+         
+         setupView()
+     }
     
     let profileIconView:UIImageView = {
         let iv = UIImageView()
@@ -35,8 +45,7 @@ class NewGroupStudentCell:CustomCollectionViewCell {
         return label
     }()
     
-    override func setupView() {
-        super.setupView()
+     func setupView() {
         
         backgroundColor = UIColor.MyTheme.lightBG
         
