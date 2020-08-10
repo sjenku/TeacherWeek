@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 
 
-class CustomCollectionViewCell:UICollectionViewCell {
+class CustomCollectionViewCell:SwipeCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame:frame)
         

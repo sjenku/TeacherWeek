@@ -57,6 +57,7 @@
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
+		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
@@ -146,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */,
 				BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +396,7 @@
 			name = "Teacher's_Week";
 			packageProductDependencies = (
 				BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */,
+				BE6A238B24E10374001CE76B /* SwipeCellKit */,
 			);
 			productName = "Teacher's_Week";
 			productReference = BE1251E324969745006F264B /* Teacher's_Week.app */;
@@ -425,6 +428,7 @@
 			mainGroup = BE1251DA24969745006F264B;
 			packageReferences = (
 				BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = BE1251E424969745006F264B /* Products */;
 			projectDirPath = "";
@@ -706,6 +710,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -717,6 +729,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BE6A238B24E10374001CE76B /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
+		};
 		BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

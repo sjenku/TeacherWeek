@@ -7,12 +7,15 @@
 //
 
 import UIKit
-
+import SwipeCellKit
 
 protocol SelectableCellActionDelegate {
     func performSelectionOfCellAction(sectionIndex:Int,rowIndex:Int)
 }
 
+protocol DeletionCellActionDelegate {
+    func performDeletionCompletionCellAction(indexPath:IndexPath)
+}
 
 class CustomListView: UIView {
     
@@ -26,6 +29,7 @@ class CustomListView: UIView {
 //MARK: - Public Properties
     var isSelectable:Bool = true
     var selectionActionDelegate:SelectableCellActionDelegate?
+    var deletionCompletionActionDelegate:DeletionCellActionDelegate?
     var searchTo:CustomSearchController.SearchTo?
 //MARK:- Overrides Methods
     
@@ -121,6 +125,7 @@ extension CustomListView:UICollectionViewDataSource {
         case .subtitle:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitle
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.delegate = self
             cell.title.text = cellInfo?.title
             cell.subTitle.text = cellInfo?.subtitle
             if isSelectable {
@@ -130,6 +135,7 @@ extension CustomListView:UICollectionViewDataSource {
         case .detailTitle:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellDetail
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.delegate = self
             cell.title.text = cellInfo?.title
             if isSelectable {
                 cell.isAccessoryShown = true
@@ -138,6 +144,7 @@ extension CustomListView:UICollectionViewDataSource {
         case .detailSubtitle:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitleDetail
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.delegate = self
             cell.title.text = cellInfo?.title
             cell.subTitle.text = cellInfo?.subtitle
             if isSelectable {
@@ -147,6 +154,7 @@ extension CustomListView:UICollectionViewDataSource {
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
+            cell.delegate = self
             cell.title.text = cellInfo?.title
             if isSelectable {
                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
@@ -196,6 +204,23 @@ extension CustomListView:UICollectionViewDelegate {
         
     }
     
+}
+
+//MARK: -
+
+extension CustomListView:SwipeCollectionViewCellDelegate {
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
+            self?.deletionCompletionActionDelegate?.performDeletionCompletionCellAction(indexPath: indexPath)
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+
+        return [deleteAction]
+    }
     
 }
 
