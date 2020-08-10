@@ -159,6 +159,7 @@ extension CustomListView:UICollectionViewDataSource {
             if isSelectable {
                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
+            print("cells width begining:\(frame.width)")
             return cell
         }
     }
@@ -211,7 +212,8 @@ extension CustomListView:UICollectionViewDelegate {
 extension CustomListView:SwipeCollectionViewCellDelegate {
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
-
+        
+        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
             self?.deletionCompletionActionDelegate?.performDeletionCompletionCellAction(indexPath: indexPath)
         }

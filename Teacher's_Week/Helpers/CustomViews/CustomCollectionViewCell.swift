@@ -24,6 +24,6 @@ class CustomCollectionViewCell:SwipeCollectionViewCell {
         setupView()
     }
     
-    func setupView() {
-    }
+        func setupView() {
+        }
 }

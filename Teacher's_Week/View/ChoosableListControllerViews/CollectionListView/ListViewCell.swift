@@ -69,12 +69,15 @@ class ListViewCell: CustomCollectionViewCell {
     override func setupView() {
         
         backgroundColor = UIColor.MyTheme.cellColor
-        addSubview(title)
-        addSubview(accessory)
+        contentView.addSubview(title)
+        contentView.addSubview(accessory)
         
-        addConstraintsWithFormat(format:"H:|-16-[v0][v1]-16-|", views:title,accessory)
+//        addConstraintsWithFormat(format:"H:|-16-[v0][v1]-16-|", views:title,accessory)
         addConstraintsWithFormat(format:"V:|[v0]|", views: title)
         addConstraintsWithFormat(format:"V:|-12-[v0]-12-|", views: accessory)
+        addConstraint(NSLayoutConstraint(item: title, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 16))
+        addConstraint(NSLayoutConstraint(item: accessory, attribute: .leading, relatedBy: .equal, toItem: title, attribute: .trailing, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: accessory, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: -16))
         addConstraint(NSLayoutConstraint(item: accessory, attribute: .width, relatedBy: .equal, toItem: accessory, attribute: .height, multiplier: 1, constant: 0))
         
         
