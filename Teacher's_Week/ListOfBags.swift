@@ -10,8 +10,7 @@ import Foundation
 
 
 //1.when search for student and press for detail...it's give wrong student detail
-//2.NewGroupVC the collectionView not slides
-//3.contacts not moved all contacts that avaiable
+//2.contacts not moved all contacts that avaiable
 
 
 

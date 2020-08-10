@@ -51,6 +51,7 @@ class ChoosableListController:UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         IQKeyboardManager.shared.enable = false
+        print("Number of Contacts:\(ContactsManager.contacts.count)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

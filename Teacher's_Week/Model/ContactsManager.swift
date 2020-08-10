@@ -24,7 +24,7 @@ struct ContactsManager {
             let request = CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey,CNContactFamilyNameKey,CNContactPhoneNumbersKey,CNContactEmailAddressesKey] as [CNKeyDescriptor])
             do {
                 try store.enumerateContacts(with: request) { (contact, pointer) in
-                    ContactsManager.contacts.append(Student(firstName: contact.givenName,lastName: contact.familyName,phoneNumber: contact.phoneNumbers[0].value.stringValue,eMail: contact.emailAddresses.first?.value as String? ?? ""))   //Add New Contact
+                    ContactsManager.contacts.append(Student(firstName: contact.givenName,lastName: contact.familyName,phoneNumber: contact.phoneNumbers.first?.value.stringValue ?? "",eMail: contact.emailAddresses.first?.value as String? ?? ""))   //Add New Contact
                 }
             } catch let err {
                 print("Fetch Error:\(err.localizedDescription)")
