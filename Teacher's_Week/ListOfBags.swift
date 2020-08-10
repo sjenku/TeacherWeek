@@ -10,8 +10,6 @@ import Foundation
 
 
 //1.when search for student and press for detail...it's give wrong student detail
-//2.contacts not moved all contacts that avaiable
-
 
 
 //TODO:
