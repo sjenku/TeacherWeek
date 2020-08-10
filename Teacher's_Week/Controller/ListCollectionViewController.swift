@@ -42,6 +42,7 @@ class ListCollectionViewController:UIViewController {
         [unowned self] in
          let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
          view.selectionActionDelegate = self
+         view.deletionCompletionActionDelegate = self
          view.translatesAutoresizingMaskIntoConstraints = false
          return view
      }()
@@ -166,7 +167,22 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
             
         }
     }
-    
+}
+
+//MARK: - DeletionCellActionDelegate
+extension ListCollectionViewController:DeletionCellActionDelegate {
+    func performDeletionCompletionCellAction(indexPath: IndexPath) {
+        switch searchTo {
+        case .students:
+           DataManager.students.remove(at: indexPath.row)
+           listView.updateInfo(DataManager.getStudentsInFormatSectionsInfo())
+        case .groups:
+           DataManager.groups.remove(at: indexPath.row)
+           listView.updateInfo(DataManager.getGroupsInFormatSectionInfo())
+        default:
+            break
+        }
+    }
     
     
 }

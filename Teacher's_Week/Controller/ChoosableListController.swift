@@ -65,6 +65,7 @@ class ChoosableListController:UIViewController{
         [unowned self] in
         let listView = ListCollectionView(frame: .zero, info: nil,style: nil)
         listView.isSelectable = true
+        listView.isSwipeble = false
         listView.selectionActionDelegate = self
         return listView
     }()

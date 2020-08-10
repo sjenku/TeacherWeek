@@ -28,6 +28,7 @@ class CustomListView: UIView {
     private var sectionsInfo:[SectionInfo]?
 //MARK: - Public Properties
     var isSelectable:Bool = true
+    var isSwipeble:Bool = true
     var selectionActionDelegate:SelectableCellActionDelegate?
     var deletionCompletionActionDelegate:DeletionCellActionDelegate?
     var searchTo:CustomSearchController.SearchTo?
@@ -159,7 +160,6 @@ extension CustomListView:UICollectionViewDataSource {
             if isSelectable {
                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
-            print("cells width begining:\(frame.width)")
             return cell
         }
     }
@@ -211,6 +211,7 @@ extension CustomListView:UICollectionViewDelegate {
 
 extension CustomListView:SwipeCollectionViewCellDelegate {
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard isSwipeble else {return nil}
         guard orientation == .right else { return nil }
         
         
