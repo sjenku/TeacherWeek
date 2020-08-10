@@ -16,7 +16,7 @@ class GroupInfoVC:UIViewController {
     var group:Group = Group() {
         didSet {
             let cellsInfo:[CellInfo] = group.students.map {
-                return CellInfo(title: $0.firstName + " " + $0.lastName, subtitle: "", isAccessory: nil, relatedTo: $0)
+                return CellInfo(title: $0.firstName + " " + $0.lastName, subtitle: "", isAccessory: $0.checked, relatedTo: $0)
             }
             let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
             groupName.text = group.groupName
@@ -68,7 +68,6 @@ class GroupInfoVC:UIViewController {
     
     private func setNavigationItem() {
         navigationController?.topViewController?.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleEditBarButton))
     }
     
     private func setConstraints() {
@@ -100,18 +99,4 @@ class GroupInfoVC:UIViewController {
         view.addSubview(groupName)
         view.addSubview(studentList)
     }
-    
-    
-    //MARK: - OBJC Methods
-    @objc func handleEditBarButton() {
-        print("Pressed Edit")
-        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDoneBarButton))
-        
-    }
-    
-    @objc func handleDoneBarButton() {
-        print("Pressed Done")
-        navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(handleEditBarButton))
-    }
-    
 }
