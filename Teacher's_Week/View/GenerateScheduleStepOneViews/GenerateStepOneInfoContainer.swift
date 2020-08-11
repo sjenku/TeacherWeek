@@ -15,7 +15,7 @@ class GenerateStepOneInfoContainer : CustomView {
     
     
     
-    let view1:GenerateStepOneInfoView = {
+    let studentsInfoView:GenerateStepOneInfoView = {
         let v = GenerateStepOneInfoView()
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -28,7 +28,7 @@ class GenerateStepOneInfoContainer : CustomView {
         return view
     }()
     
-    let view2:GenerateStepOneInfoView = {
+    let groupsInfoView:GenerateStepOneInfoView = {
            let v = GenerateStepOneInfoView()
            return v
        }()
@@ -48,7 +48,7 @@ class GenerateStepOneInfoContainer : CustomView {
     
     private lazy var infoStack:UIStackView = {
         [unowned self] in
-        let stackView = UIStackView(arrangedSubviews: [self.view1,self.view2])
+        let stackView = UIStackView(arrangedSubviews: [self.studentsInfoView,self.groupsInfoView])
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class GenerateStepOneInfoContainer : CustomView {
     private func setSubviews() {
         shadowView.addSubview(infoStack)
         addSubview(shadowView)
-        view1.addSubview(middleLine)
+        studentsInfoView.addSubview(middleLine)
     }
     
     private func setConstraints() {
@@ -86,10 +86,10 @@ class GenerateStepOneInfoContainer : CustomView {
             infoStack.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor),
             
             
-            middleLine.trailingAnchor.constraint(equalTo: view1.trailingAnchor),
+            middleLine.trailingAnchor.constraint(equalTo: studentsInfoView.trailingAnchor),
             middleLine.widthAnchor.constraint(equalToConstant: 0.5),
-            middleLine.centerYAnchor.constraint(equalTo: view1.centerYAnchor),
-            middleLine.heightAnchor.constraint(equalTo: view1.heightAnchor, multiplier: 0.5)
+            middleLine.centerYAnchor.constraint(equalTo: studentsInfoView.centerYAnchor),
+            middleLine.heightAnchor.constraint(equalTo: studentsInfoView.heightAnchor, multiplier: 0.5)
             
         ]
         

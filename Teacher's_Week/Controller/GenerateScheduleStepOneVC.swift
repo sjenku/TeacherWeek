@@ -37,11 +37,11 @@ class GenerateScheduleStepOneVC:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Step 1/2"
         view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstriants()
-        
-      
+        setInfo()
         
     }
     
@@ -49,6 +49,12 @@ class GenerateScheduleStepOneVC:UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    //MARK: - Private Methods
+    private func setInfo() {
+        infoContainer.studentsInfoView.numberLabel.text = String(ScheduleManager.students.count)
+        infoContainer.groupsInfoView.numberLabel.text = String(ScheduleManager.groups.count)
     }
     
     private func setSubviews() {

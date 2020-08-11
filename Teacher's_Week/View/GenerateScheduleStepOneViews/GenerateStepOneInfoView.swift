@@ -54,8 +54,8 @@ class GenerateStepOneInfoView:CustomView {
         
         addConstraintsWithFormat(format: "H:|-16-[v0]-8-|", views: numberLabel)
         addConstraintsWithFormat(format: "H:|-16-[v0]-8-|", views: textLabel)
-        addConstraintsWithFormat(format: "V:|-\(padding)-[v0]-\(padding)-[v1]-\(padding)-|", views: numberLabel,textLabel)
-        
+        addConstraintsWithFormat(format: "V:[v0]-\(padding)-[v1]-\(padding)-|", views: numberLabel,textLabel)
+        numberLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,constant: padding + 8).isActive = true
         numberLabel.heightAnchor.constraint(equalTo: textLabel.heightAnchor, multiplier: 1.5).isActive = true
         
     }
