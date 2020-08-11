@@ -60,15 +60,7 @@ extension HomeViewController:HomeLowerContainerViewDelegate {
 
  //MARK: - Manage ListCollectionViewController For 'add Group Button' that exist in HomeVC
     func addGroupButtonPressed() {
-        let info = DataManager.getGroupsInFormatSectionInfo()
-        let vc = ListCollectionViewController(info: info, cellStyle: .detailSubtitle, navStyle: .large, navigationProperties: NavProperties(navTitle: "Groups", withRightBarButton: true, rightBarButtonStyle: .add, rightBarButtonActionTarget: self, rightBarButtonAction: #selector(handleAddGroupNavBarButtonPressed)))
-        vc.listView.isSelectable = true
-        vc.searchTo = .groups
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func handleAddGroupNavBarButtonPressed() {
-        let vc = NewGroupCollectionVC()
+        let vc = StudentOrGroupListCollectionVC(kind: .group)
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -44,12 +44,17 @@ class StudentOrGroupListCollectionVC:ListCollectionViewController {
         case .student:
             handleAddStudentNavBarButtonPressed()
         case .group:
-            print("Group")
+            handleAddGroupNavBarButtonPressed()
         case .none:
             print("None")
         }
     }
     
+    
+    private func handleAddGroupNavBarButtonPressed() {
+          let vc = NewGroupCollectionVC()
+          navigationController?.pushViewController(vc, animated: true)
+    }
     
    private func handleAddStudentNavBarButtonPressed() {
         

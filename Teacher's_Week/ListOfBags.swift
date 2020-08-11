@@ -10,7 +10,7 @@ import Foundation
 
 
 //1.when search for student and press for detail...it's give wrong student detail
-
+//2.in groupInfo the swipe delete action not working
 
 //TODO:
 //for later

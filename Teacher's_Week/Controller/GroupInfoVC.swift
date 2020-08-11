@@ -33,8 +33,9 @@ class GroupInfoVC:UIViewController {
     }()
     
     
-   private let studentList:ListCollectionView = {
+   private lazy var studentList:ListCollectionView = {
         let view = ListCollectionView(frame: .zero, info: nil, style: CellStyle.title)
+        view.deletionCompletionActionDelegate = self
         return view
     }()
     
@@ -99,4 +100,23 @@ class GroupInfoVC:UIViewController {
         view.addSubview(groupName)
         view.addSubview(studentList)
     }
+}
+
+
+extension GroupInfoVC:DeletionCellActionDelegate {
+    func performDeletionCompletionCellAction(indexPath: IndexPath) {
+        //Find The Current Group From Data
+        let groupIndex = DataManager.groups.firstIndex { (groupFromData) -> Bool in
+            self.group.groupName == groupFromData.groupName
+        }
+        //Unwrap index in case it find group
+        guard let safeGroupIndex = groupIndex else {return}
+        //delete the student from group in view
+        group.students.remove(at: indexPath.row)
+        //delete the student from group in data
+        DataManager.groups[safeGroupIndex].students.remove(at: indexPath.row)
+        
+    }
+    
+    
 }
