@@ -45,6 +45,12 @@ class GenerateScheduleStepOneVC:UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    
     private func setSubviews() {
         view.addSubview(buttonsContainer)
         view.addSubview(infoContainer)

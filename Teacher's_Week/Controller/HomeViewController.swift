@@ -54,7 +54,7 @@ class HomeViewController:UIViewController{
 
 extension HomeViewController:HomeLowerContainerViewDelegate {
     func addScheduleButtonPressed() {
-         let vc = ScrollVC()
+         let vc = GenerateScheduleStepOneVC()
          navigationController?.pushViewController(vc, animated: true)
      }
 
