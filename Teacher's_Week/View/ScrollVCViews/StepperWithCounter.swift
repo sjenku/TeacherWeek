@@ -11,6 +11,12 @@ import UIKit
 
 class StepperWithCounter:CustomView {
     
+    //MARK: - Computed Properties
+    var currentValue:Int {
+        get {
+            Int(stepper.value)
+        }
+    }
     
     //MARK: - Properties
     

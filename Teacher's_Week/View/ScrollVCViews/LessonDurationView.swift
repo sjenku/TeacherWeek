@@ -11,6 +11,12 @@ import UIKit
 
 class LessonDurationView:CustomView {
     
+    var currentValue:Int {
+        get {
+            return Int(slider.value * 180)
+        }
+    }
+    
     private let line:UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray

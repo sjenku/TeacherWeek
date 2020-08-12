@@ -27,12 +27,14 @@ struct Student {
     var eMail:String = ""
     var phoneNumber:String = ""
     var checked:Bool = false
+    var scheduleRequements:ScrollVCData? = nil
 }
 
 
 struct Group {
     var groupName:String = ""
     var students:[Student] = []
+    var scheduleRequements:ScrollVCData? = nil
 }
 
 

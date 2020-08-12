@@ -11,6 +11,10 @@ import UIKit
 
 class TitleAndSwitchView:CustomView {
     
+    var currentValue:Bool {
+        return switchController.isOn ? true : false
+    }
+    
     private let switchController:UISwitch = {
            let switchC = UISwitch()
            switchC.tintColor = .lightGray

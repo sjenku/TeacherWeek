@@ -139,7 +139,7 @@ class ScrollVC:UIViewController {
     
     @objc func doneButtonPressed() {
         print("Done Button Pressed ScrollVC")
-        delegate?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: 0, durationOfEachLessonMin: 0, needBreaks: false, maxNumOfLessonsWithoutBreaks: 0, paymentPerLesson: 0, avaiablesAt: []))
+        delegate?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: 0, paymentPerLesson: 0, avaiablesAt: []))
     }
     
     //MARK: - Override Methods

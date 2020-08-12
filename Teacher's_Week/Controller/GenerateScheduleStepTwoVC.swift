@@ -48,6 +48,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
     }()
     
     var state:StudentOrGroup?
+    var selectedIndex:IndexPath?
     
     //MARK: - Overrides
     
@@ -112,6 +113,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
 
 extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
     func performSelectionOfCellAction(indexPath:IndexPath) {
+        selectedIndex = indexPath
        let vc = ScrollVC()
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
@@ -122,6 +124,15 @@ extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
 
 extension GenerateScheduleStepTwoVC:DataSourceScrollVC {
     func scrollVC(data: ScrollVCData) {
-        print("Got Data From ScrollVC data=> \(data)")
+        guard let _ = selectedIndex else {return}
+        switch state {
+        case .student:
+            ScheduleManager.students[selectedIndex!.row].scheduleRequements = data
+        case .group:
+            ScheduleManager.groups[selectedIndex!.row].scheduleRequements = data
+        case .none:
+            print("None state in GenerateScheduleStepTwoVC")
+        }
+        selectedIndex = nil
     }
 }
