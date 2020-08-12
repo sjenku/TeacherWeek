@@ -11,19 +11,19 @@ import UIKit
 
 class GenerateScheduleStepTwoVC:UIViewController {
 
-    let buttonsContainer:GenerateStepTwoButtonsContainer = {
+   private let buttonsContainer:GenerateStepTwoButtonsContainer = {
         let container = GenerateStepTwoButtonsContainer()
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
     
-    let listView:ListCollectionView = {
-        let info:[SectionInfo] = ContactsManager.shared.getSectionsInfo()
-        let view = ListCollectionView(frame:.zero,info:info,style: .title)
+   private lazy var listView:ListCollectionView = {
+        let view = ListCollectionView(frame:.zero,info:nil,style: .title)
+        view.selectionActionDelegate = self
         return view
     }()
     
-    let segmentView:UISegmentedControl = {
+   private lazy var segmentView:UISegmentedControl = {
         let segment = UISegmentedControl()
         segment.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20),NSAttributedString.Key.foregroundColor : UIColor.white], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.MyTheme.darkBG], for: .selected)
@@ -31,11 +31,12 @@ class GenerateScheduleStepTwoVC:UIViewController {
         segment.insertSegment(withTitle: "Students", at: 0, animated: true)
         segment.insertSegment(withTitle: "Groups", at: 1, animated: true)
         segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(handleSegmentValueChanged), for: .valueChanged)
         
         return segment
     }()
     
-    let instructionsView:UITextView = {
+   private let instructionsView:UITextView = {
         let view = UITextView()
         view.text = "1.add requiments for each student/group\n\n2.press on \"Generate\" button,and 'Teacher's Week' will make all the calculations for you"
         view.font = UIFont.systemFont(ofSize: DeviceConfigurations.windowHeight / 50)
@@ -46,13 +47,28 @@ class GenerateScheduleStepTwoVC:UIViewController {
         return view
     }()
     
+    //MARK: - Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.MyTheme.darkBG
+        setInfoDependingOnSegmentIndex()
         setSubviews()
         setConstraints()
         
+    }
+    
+    //MARK: - OBJC Methods
+    @objc private func handleSegmentValueChanged() {
+        setInfoDependingOnSegmentIndex()
+    }
+    
+    //MARK: - Private Methods
+    
+    private func setInfoDependingOnSegmentIndex() {
+        let sectionsInfo:[SectionInfo] = segmentView.selectedSegmentIndex == 0 ? ScheduleManager.sectionInfoFor(.student) : ScheduleManager.sectionInfoFor(.group)
+        listView.updateInfo(sectionsInfo)
     }
     
     private func setSubviews() {
@@ -88,4 +104,13 @@ class GenerateScheduleStepTwoVC:UIViewController {
             constraint.isActive = true
         }
     }
+}
+
+
+extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
+    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
+        print("Selected:\(sectionIndex),rowIndex:\(rowIndex)")
+    }
+    
+    
 }

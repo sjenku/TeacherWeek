@@ -26,4 +26,21 @@ class ScheduleManager {
         }
     }
     
+    static func sectionInfoFor(_ value:StudentOrGroup)->[SectionInfo] {
+        var cellsInfo:[CellInfo] = []
+        switch value {
+        case .student:
+            cellsInfo = students.map({ (student) -> CellInfo in
+                CellInfo(title: student.firstName + " " + student.lastName, subtitle: "", isAccessory: student.checked, relatedTo: student)
+            })
+        case .group:
+            cellsInfo = groups.map({ (group) -> CellInfo in
+                CellInfo(title: group.groupName, subtitle: String(group.students.count), isAccessory: false, relatedTo: group)
+            })
+        }
+        
+        let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
+        return [sectionInfo]
+    }
+    
 }

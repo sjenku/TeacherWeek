@@ -24,7 +24,14 @@ class GenerateScheduleStepOneVC:UIViewController {
         return view
     }()
     
+   private let infoContainer:GenerateStepOneInfoContainer = {
+          let view = GenerateStepOneInfoContainer()
+          return view
+      }()
+    
 
+    //MARK: - OBJC Methods
+    
     @objc private func handleNextButton() {
         let vc = GenerateScheduleStepTwoVC()
         vc.title = "Step 2/2"
@@ -54,13 +61,27 @@ class GenerateScheduleStepOneVC:UIViewController {
     }
     
     @objc private func handleAddGroupBT() {
-           ScheduleManager.groups.append(Group(groupName: "lala", students: []))
+          let vc = ChoosableListController()
+          let doneButtonAction = {
+              //Add Checked Contacts to Students
+              let checkedContacts = vc.checkedInFormOfSectionsInfo
+              checkedContacts.forEach { (checkedSection) in
+                  checkedSection.cellsInfo.forEach { (cellInfo) in
+                      guard let group = cellInfo.relatedTo as? Group else {return}
+                      ScheduleManager.groups.append(group)
+                  }
+              }
+              //Reset 'Check' property in all contacts
+              self.navigationController?.popViewController(animated: true)
+          }
+          vc.doneButtonAction = doneButtonAction
+          vc.title = "Groups"
+          vc.info = DataManager.getGroupsInFormatSectionInfo()
+          vc.searchTo = .groups
+          navigationController?.pushViewController(vc, animated: true)
        }
     
-    let infoContainer:GenerateStepOneInfoContainer = {
-        let view = GenerateStepOneInfoContainer()
-        return view
-    }()
+  
     
     //MARK: - Overrides
     
