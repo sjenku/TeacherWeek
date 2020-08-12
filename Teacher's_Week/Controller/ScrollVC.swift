@@ -8,30 +8,19 @@
 
 import UIKit
 
-struct ScrollVCData {
-    let numberOfLessonsNeed:Int
-    let durationOfEachLessonMin:Int
-    let needBreaks:Bool
-    let maxNumOfLessonsWithoutBreaks:Int
-    let paymentPerLesson:Int
-    let avaiablesAt:[AvaiableAt]
-}
-
-struct AvaiableAt {
-    let day:Days
-    let from:Date
-    let to:Date
-}
-
 protocol DataSourceScrollVC:class {
     func scrollVC(data:ScrollVCData)
+}
+
+protocol SwitchControllerDelegate:class {
+    func switchController(isOn:Bool)
 }
 
 class ScrollVC:UIViewController {
     
     //MARK: - Properties
    
-   weak var delegate:DataSourceScrollVC?
+   weak var delegateDataSource:DataSourceScrollVC?
     
    private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
     
@@ -88,8 +77,9 @@ class ScrollVC:UIViewController {
         return view
     }()
     
-    private let needBreaksSwitcher:TitleAndSwitchView = {
+    private lazy var needBreaksSwitcher:TitleAndSwitchView = {
         let view = TitleAndSwitchView()
+        view.delegate = self
         return view
     }()
     
@@ -138,8 +128,8 @@ class ScrollVC:UIViewController {
     }
     
     @objc func doneButtonPressed() {
-        print("Done Button Pressed ScrollVC")
-        delegate?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: 0, paymentPerLesson: 0, avaiablesAt: []))
+        delegateDataSource?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: maxNumOfLessonsWithoutBreaksStepper.currentValue, paymentPerLesson: paymentPerLessonView.currentValue, avaiablesAt: []))
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Override Methods
@@ -226,4 +216,15 @@ class ScrollVC:UIViewController {
     }
     
     
+    deinit {
+        print("Deinit ScrollVC")
+    }
+    
+}
+
+//MARK: - SwitchControllerDelegate
+extension ScrollVC:SwitchControllerDelegate {
+    func switchController(isOn: Bool) {
+        maxNumOfLessonsWithoutBreaksStepper.setSubviewsEnable(isOn)
+    }
 }

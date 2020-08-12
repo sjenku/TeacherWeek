@@ -15,13 +15,20 @@ class TitleAndSwitchView:CustomView {
         return switchController.isOn ? true : false
     }
     
+    weak var delegate:SwitchControllerDelegate?
+    
     private let switchController:UISwitch = {
            let switchC = UISwitch()
            switchC.tintColor = .lightGray
            switchC.onTintColor = UIColor.MyTheme.lightGreen
            switchC.translatesAutoresizingMaskIntoConstraints = false
+           switchC.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
            return switchC
        }()
+    
+    @objc private func handleSwitchAction() {
+        delegate?.switchController(isOn: switchController.isOn)
+    }
     
     private let title:ScrollVCTitleLabel = ScrollVCTitleLabel(text: "need breaks?")
     

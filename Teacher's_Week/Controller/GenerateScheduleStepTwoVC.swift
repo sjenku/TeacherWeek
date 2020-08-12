@@ -115,7 +115,7 @@ extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
     func performSelectionOfCellAction(indexPath:IndexPath) {
         selectedIndex = indexPath
        let vc = ScrollVC()
-        vc.delegate = self
+        vc.delegateDataSource = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -124,6 +124,7 @@ extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
 
 extension GenerateScheduleStepTwoVC:DataSourceScrollVC {
     func scrollVC(data: ScrollVCData) {
+        print("Data Got From ScrollVC:\(data)")
         guard let _ = selectedIndex else {return}
         switch state {
         case .student:

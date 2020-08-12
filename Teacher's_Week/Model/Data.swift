@@ -10,7 +10,20 @@ import Foundation
 
 
 //First Prototype for DataManager-Checking Stage
+struct ScrollVCData {
+    let numberOfLessonsNeed:Int
+    let durationOfEachLessonMin:Int
+    let needBreaks:Bool
+    let maxNumOfLessonsWithoutBreaks:Int
+    let paymentPerLesson:Int
+    let avaiablesAt:[AvaiableAt]
+}
 
+struct AvaiableAt {
+    let day:Days
+    let from:Date
+    let to:Date
+}
 
 struct Student {
     

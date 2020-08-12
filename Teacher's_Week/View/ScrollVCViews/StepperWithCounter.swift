@@ -14,7 +14,7 @@ class StepperWithCounter:CustomView {
     //MARK: - Computed Properties
     var currentValue:Int {
         get {
-            Int(stepper.value)
+            stepper.isEnabled ? Int(stepper.value) : 0
         }
     }
     

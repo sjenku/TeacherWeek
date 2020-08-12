@@ -16,3 +16,4 @@ import Foundation
 //for later
 //1.add right bar button with style .add to GroupInfo for adding students
 //2.make listVC as listener/observer for everyChange in DataManager
+//3.change the way of insert input of lesson's price
