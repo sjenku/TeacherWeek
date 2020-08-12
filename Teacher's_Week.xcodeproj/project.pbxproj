@@ -60,6 +60,7 @@
 		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
 		BE6A238E24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */; };
 		BE6A239024E2CF8C001CE76B /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238F24E2CF8C001CE76B /* ScheduleManager.swift */; };
+		BE6A239224E2D405001CE76B /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A239124E2D405001CE76B /* NotificationKeys.swift */; };
 		BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870EC924AB9005005E8B23 /* Configurations.swift */; };
 		BE870ECC24AC7414005E8B23 /* NewGroupStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */; };
 		BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */; };
@@ -131,6 +132,7 @@
 		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroupListCollectionVC.swift; sourceTree = "<group>"; };
 		BE6A238F24E2CF8C001CE76B /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
+		BE6A239124E2D405001CE76B /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		BE870EC924AB9005005E8B23 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		BE870ECB24AC7414005E8B23 /* NewGroupStudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupStudentCell.swift; sourceTree = "<group>"; };
 		BE870ECD24AC7A1F005E8B23 /* NewGroupCharHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupCharHeader.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				BE870EC924AB9005005E8B23 /* Configurations.swift */,
 				BE01B80B24CCC93C00F69D3A /* Data.swift */,
 				BE6A238F24E2CF8C001CE76B /* ScheduleManager.swift */,
+				BE6A239124E2D405001CE76B /* NotificationKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
 				BE17D9BC24B1ED4800F20AEF /* GenerateSOTitleBTView.swift in Sources */,
 				BE01B80C24CCC93C00F69D3A /* Data.swift in Sources */,
+				BE6A239224E2D405001CE76B /* NotificationKeys.swift in Sources */,
 				BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */,
 				BE125254249F873B006F264B /* ListCollectionView.swift in Sources */,
 				BE12529224A3BEBF006F264B /* NewGroupLowerContrainerView.swift in Sources */,

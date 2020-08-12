@@ -11,7 +11,19 @@ import Foundation
 
 class ScheduleManager {
     
-    static var students:[Student] = []
-    static var groups:[Group] = []
+    static var students:[Student] = [] {
+        didSet {
+            //send notification
+            let notificationName = NotificationKeys.keyName(key: .updateStudentSchedule)
+            NotificationCenter.default.post(name: notificationName , object: nil)
+        }
+    }
+    static var groups:[Group] = [] {
+        didSet {
+            //send notification
+            let notificationName = NotificationKeys.keyName(key: .updateGroupSchedule)
+            NotificationCenter.default.post(name: notificationName , object: nil)
+        }
+    }
     
 }
