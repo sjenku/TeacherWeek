@@ -47,6 +47,8 @@ class GenerateScheduleStepTwoVC:UIViewController {
         return view
     }()
     
+    var state:StudentOrGroup?
+    
     //MARK: - Overrides
     
     override func viewDidLoad() {
@@ -67,7 +69,8 @@ class GenerateScheduleStepTwoVC:UIViewController {
     //MARK: - Private Methods
     
     private func setInfoDependingOnSegmentIndex() {
-        let sectionsInfo:[SectionInfo] = segmentView.selectedSegmentIndex == 0 ? ScheduleManager.sectionInfoFor(.student) : ScheduleManager.sectionInfoFor(.group)
+        state = segmentView.selectedSegmentIndex == 0 ? .student : .group
+        let sectionsInfo:[SectionInfo] =  ScheduleManager.sectionInfoFor(state!)
         listView.updateInfo(sectionsInfo)
     }
     
@@ -108,8 +111,8 @@ class GenerateScheduleStepTwoVC:UIViewController {
 
 
 extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
-    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
-        print("Selected:\(sectionIndex),rowIndex:\(rowIndex)")
+    func performSelectionOfCellAction(indexPath:IndexPath) {
+        print("Selected:\(indexPath.section),rowIndex:\(indexPath.row),state:\(state == .student ? "student" : "group")")
     }
     
     

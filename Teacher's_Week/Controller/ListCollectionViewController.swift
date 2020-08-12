@@ -130,32 +130,32 @@ class ListCollectionViewController:UIViewController {
 
 //MARK: - Extension SelectableCellActionDelegate
 extension ListCollectionViewController:SelectableCellActionDelegate {
-    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
+    func performSelectionOfCellAction(indexPath:IndexPath) {
         
         guard let _ = info else {return}
-        guard let beforeTappedStatus = info?[sectionIndex].cellsInfo[rowIndex].isAccessory else {return}
+        guard let beforeTappedStatus = info?[indexPath.section].cellsInfo[indexPath.row].isAccessory else {return}
         
         if cellStyle == .detailTitle || cellStyle == .detailSubtitle {
             
             if searchTo == .students {
-                guard let studentInfo = info![sectionIndex].cellsInfo[rowIndex].relatedTo as? Student else {return}
+                guard let studentInfo = info![indexPath.section].cellsInfo[indexPath.row].relatedTo as? Student else {return}
                 let vc = StudentInfoVC(firstName: studentInfo.firstName, lastName: studentInfo.lastName, phoneNumber: studentInfo.phoneNumber, eMail: studentInfo.eMail)
                 navigationController?.pushViewController(vc, animated: true)
                 
             } else if searchTo == .groups {
                 let vc = GroupInfoVC()
-                let chosenGroup:Group = DataManager.groups[rowIndex]
+                let chosenGroup:Group = DataManager.groups[indexPath.row]
                 vc.group = chosenGroup
                 navigationController?.pushViewController(vc, animated: true)
             }
             
         } else {  //else handle cases of cellStyle that not detail
                //Update For View
-               info![sectionIndex].cellsInfo[rowIndex].isAccessory = !info![sectionIndex].cellsInfo[rowIndex].isAccessory!
+            info![indexPath.section].cellsInfo[indexPath.row].isAccessory = !info![indexPath.section].cellsInfo[indexPath.row].isAccessory!
                
                //Update In Background
                let checked = !beforeTappedStatus
-               let studentName = (info![sectionIndex].cellsInfo[rowIndex].title ?? "").SpliteToTwoStrings()
+               let studentName = (info![indexPath.section].cellsInfo[indexPath.row].title ?? "").SpliteToTwoStrings()
                
                
                if searchTo == .students {

@@ -10,7 +10,7 @@ import UIKit
 import SwipeCellKit
 
 protocol SelectableCellActionDelegate {
-    func performSelectionOfCellAction(sectionIndex:Int,rowIndex:Int)
+    func performSelectionOfCellAction(indexPath:IndexPath)
 }
 
 protocol DeletionCellActionDelegate {
@@ -201,7 +201,7 @@ extension CustomListView:UICollectionViewDelegate {
         //If List Propertie Selectable
         guard isSelectable == true else {return}
         
-        selectionActionDelegate?.performSelectionOfCellAction(sectionIndex: indexPath.section, rowIndex: indexPath.row)
+        selectionActionDelegate?.performSelectionOfCellAction(indexPath: indexPath)
         
     }
     

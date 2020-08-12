@@ -139,18 +139,17 @@ class ChoosableListController:UIViewController{
 }
 
 extension ChoosableListController:SelectableCellActionDelegate {
-    func performSelectionOfCellAction(sectionIndex: Int, rowIndex: Int) {
-        print("Selected In ChooseableView position:\(sectionIndex),\(rowIndex)")
+    func performSelectionOfCellAction(indexPath:IndexPath) {
         
         //      Check if cell have accessory at all
-        guard let beforeTappedStatus = info[sectionIndex].cellsInfo[rowIndex].isAccessory else {return}
+        guard let beforeTappedStatus = info[indexPath.section].cellsInfo[indexPath.row].isAccessory else {return}
         
         //Update For View
-        info[sectionIndex].cellsInfo[rowIndex].isAccessory = !info[sectionIndex].cellsInfo[rowIndex].isAccessory!
+        info[indexPath.section].cellsInfo[indexPath.row].isAccessory = !info[indexPath.section].cellsInfo[indexPath.row].isAccessory!
         
         //Update In Background
         let checked = !beforeTappedStatus
-        let studentName = (info[sectionIndex].cellsInfo[rowIndex].title ?? "").SpliteToTwoStrings()
+        let studentName = (info[indexPath.section].cellsInfo[indexPath.row].title ?? "").SpliteToTwoStrings()
         
         if searchTo == .students {
             DataManager.updateStudentCheckedStatus(firstName: studentName.0, lastName: studentName.1, checked: checked)
