@@ -14,6 +14,9 @@ enum StudentOrGroup:String {
     case group = "Groups"
 }
 
+enum Days {
+    case sunday,monday,tuesday,wednesday,thursday,friday,saturday
+}
 
 enum CellStyle {
     case title

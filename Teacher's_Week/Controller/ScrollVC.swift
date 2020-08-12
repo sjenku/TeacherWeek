@@ -8,10 +8,30 @@
 
 import UIKit
 
+struct ScrollVCData {
+    let numberOfLessonsNeed:Int
+    let durationOfEachLessonMin:Int
+    let needBreaks:Bool
+    let maxNumOfLessonsWithoutBreaks:Int
+    let paymentPerLesson:Int
+    let avaiablesAt:[AvaiableAt]
+}
+
+struct AvaiableAt {
+    let day:Days
+    let from:Date
+    let to:Date
+}
+
+protocol DataSourceScrollVC:class {
+    func scrollVC(data:ScrollVCData)
+}
 
 class ScrollVC:UIViewController {
     
     //MARK: - Properties
+   
+   weak var delegate:DataSourceScrollVC?
     
    private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
     
@@ -104,13 +124,22 @@ class ScrollVC:UIViewController {
     
     private lazy var manageListLessonsView:ManageListLessonsView = {
         let view = ManageListLessonsView()
-        view.addButton.button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside) //TODO:Fix so many dependicies                                                                                                      // addbutton->button and so on
+        view.addButton.button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        view.doneButton.button.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+        //TODO:Fix so many dependicies                                                                                                      // addbutton->button and so on
         return view
     }()
+    
+    //MARK: - OBJC Methods
     
     @objc func addButtonPressed() {
         let vc = TimePickerVC(style: .hourAndMinutesStyle)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func doneButtonPressed() {
+        print("Done Button Pressed ScrollVC")
+        delegate?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: 0, durationOfEachLessonMin: 0, needBreaks: false, maxNumOfLessonsWithoutBreaks: 0, paymentPerLesson: 0, avaiablesAt: []))
     }
     
     //MARK: - Override Methods

@@ -25,7 +25,7 @@ class ManageListLessonsView:CustomView {
        return list
     }()
     
-    private let doneButton:GenerateSOTitleBTView = {
+     let doneButton:GenerateSOTitleBTView = {
         let button = GenerateSOTitleBTView(title: "Done", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
