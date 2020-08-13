@@ -21,7 +21,16 @@ class ScrollVC:UIViewController {
     //MARK: - Properties
    
    weak var delegateDataSource:DataSourceScrollVC?
-    
+    private var avaiableAt:[AvaiableAt] = [] {
+        willSet {
+            let cellsInfo = newValue.map { (avaiableAt) -> CellInfo in
+                let subtitle = avaiableAt.from.toString + " - " + avaiableAt.to.toString
+               return CellInfo(title: Days[avaiableAt.day.rawValue - 1], subtitle: subtitle, isAccessory: nil, relatedTo: avaiableAt)
+            }
+            let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
+            manageListLessonsView.listOfLessons.updateInfo([sectionInfo])
+        }
+    }
    private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
     
    private lazy var scrollView:UIScrollView = {
@@ -130,7 +139,7 @@ class ScrollVC:UIViewController {
     }
     
     @objc func doneButtonPressed() {
-        delegateDataSource?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: maxNumOfLessonsWithoutBreaksStepper.currentValue, paymentPerLesson: paymentPerLessonView.currentValue, avaiablesAt: []))
+        delegateDataSource?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: maxNumOfLessonsWithoutBreaksStepper.currentValue, paymentPerLesson: paymentPerLessonView.currentValue, avaiablesAt: avaiableAt))
         navigationController?.popViewController(animated: true)
     }
     
@@ -234,6 +243,6 @@ extension ScrollVC:SwitchControllerDelegate {
 //MARK: - TimePickerVCDelgate
 extension ScrollVC:TimePickerVCDelegate {
     func timePicker(data: AvaiableAt) {
-        print("Date:\(data)")
+        avaiableAt.append(data)
     }
 }

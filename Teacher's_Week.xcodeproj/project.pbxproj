@@ -55,6 +55,7 @@
 		BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91C24ADDBDB00664510 /* CustomTextField.swift */; };
 		BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */; };
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
+		BE56A25C24E5619E0022613B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25B24E5619E0022613B /* ExtensionDate.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
 		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
@@ -129,6 +130,7 @@
 		BE26F91C24ADDBDB00664510 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
+		BE56A25B24E5619E0022613B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		BE6A238624DF0CFC001CE76B /* ListOfBags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBags.swift; sourceTree = "<group>"; };
 		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroupListCollectionVC.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */,
 				BEC024E724DD811900FEF23A /* ExtensionString.swift */,
 				BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */,
+				BE56A25B24E5619E0022613B /* ExtensionDate.swift */,
 			);
 			path = CustomControllers;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE125259249F8D6D006F264B /* CellSectionInfo.swift in Sources */,
+				BE56A25C24E5619E0022613B /* ExtensionDate.swift in Sources */,
 				BE6A238E24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift in Sources */,
 				BE6A239024E2CF8C001CE76B /* ScheduleManager.swift in Sources */,
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
