@@ -20,6 +20,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
    private lazy var listView:ListCollectionView = {
         let view = ListCollectionView(frame:.zero,info:nil,style: .title)
         view.selectionActionDelegate = self
+        view.isSelectable = true
         return view
     }()
     
@@ -59,6 +60,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
         setInfoDependingOnSegmentIndex()
         setSubviews()
         setConstraints()
+        setObservers()
         
     }
     
@@ -108,6 +110,10 @@ class GenerateScheduleStepTwoVC:UIViewController {
             constraint.isActive = true
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
@@ -122,6 +128,7 @@ extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
     
 }
 
+//MARK: - DataSourceScrollVC
 extension GenerateScheduleStepTwoVC:DataSourceScrollVC {
     func scrollVC(data: ScrollVCData) {
         print("Data Got From ScrollVC:\(data)")
@@ -129,11 +136,35 @@ extension GenerateScheduleStepTwoVC:DataSourceScrollVC {
         switch state {
         case .student:
             ScheduleManager.students[selectedIndex!.row].scheduleRequements = data
+            ScheduleManager.students[selectedIndex!.row].checked = true
         case .group:
             ScheduleManager.groups[selectedIndex!.row].scheduleRequements = data
+            ScheduleManager.groups[selectedIndex!.row].checked = true
         case .none:
             print("None state in GenerateScheduleStepTwoVC")
         }
         selectedIndex = nil
+    }
+}
+
+//MARK: - Notification Observers
+extension GenerateScheduleStepTwoVC {
+    private func setObservers() {
+        print("Create Observers")
+        let studentKeyNotificationName = NotificationKeys.keyName(key: .updateStudentSchedule)
+        let groupKeyNotificationName = NotificationKeys.keyName(key: .updateGroupSchedule)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationUpdateStudentSchedule), name: studentKeyNotificationName, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationUpdateGroupSchedule), name: groupKeyNotificationName, object: nil)
+        
+    }
+    
+    @objc private func handleNotificationUpdateStudentSchedule() {
+        setInfoDependingOnSegmentIndex()
+    }
+    
+    @objc private func handleNotificationUpdateGroupSchedule() {
+        setInfoDependingOnSegmentIndex()
     }
 }

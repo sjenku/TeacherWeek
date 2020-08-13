@@ -48,6 +48,7 @@ struct Group {
     var groupName:String = ""
     var students:[Student] = []
     var scheduleRequements:ScrollVCData? = nil
+    var checked:Bool? = nil
 }
 
 
