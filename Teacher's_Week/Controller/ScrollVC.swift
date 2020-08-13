@@ -123,7 +123,8 @@ class ScrollVC:UIViewController {
     //MARK: - OBJC Methods
     
     @objc func addButtonPressed() {
-        let vc = TimePickerVC(style: .hourAndMinutesStyle)
+        let vc = TimePickerVC(style: .dayStyle)
+        vc.senderViewController = self
         navigationController?.pushViewController(vc, animated: true)
     }
     

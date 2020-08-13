@@ -10,16 +10,18 @@ import UIKit
 
 
 enum TimePickerVCStyle {
-    case dayStyle,hourAndMinutesStyle
+    case dayStyle,timeFromStyle,timeToStyle
 }
+
 
 class TimePickerVC:UIViewController {
     
     //MARK: - Initialization
     init(style:TimePickerVCStyle) {
         super.init(nibName: nil, bundle: nil)
-
-        setPickerViewWithStyle(style)
+        
+        self.style = style
+        setPickerViewWithStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -28,15 +30,19 @@ class TimePickerVC:UIViewController {
     
     
     //MARK: - Properties
-
-    private let daysArray = [
-    "Sunday","Monday","Thuersday","Wednsday","Thuesday","Friday","Suaterday"
-    ]
+    var time:AvaiableAt?
+    var senderViewController:UIViewController?
+    private var style:TimePickerVCStyle?
     
-
-    private let header:UILabel = {
+    
+    private let headerTitles:[TimePickerVCStyle:String] = [
+        TimePickerVCStyle.dayStyle : "Day For The\nLesson?" ,
+        TimePickerVCStyle.timeFromStyle : "Start Time?" ,
+        TimePickerVCStyle.timeToStyle : "End Time?"
+    ]
+    private lazy var header:UILabel = {
         let label = UILabel()
-        label.text = "Day For The\nLesson?"
+        label.text = self.headerTitles[self.style ?? TimePickerVCStyle.dayStyle]
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.textAlignment = .center
@@ -45,11 +51,13 @@ class TimePickerVC:UIViewController {
         return label
     }()
     
-    private let nextButton:GenerateSOTitleBTView = {
-           let button = GenerateSOTitleBTView(title: "Next", backgroundColor: UIColor.MyTheme.darkBlue, tintColor: UIColor.MyTheme.titleBlue)
-           button.translatesAutoresizingMaskIntoConstraints = false
-           return button
+    private lazy var nextButton:GenerateSOTitleBTView = {
+           let view = GenerateSOTitleBTView(title: "Next", backgroundColor: UIColor.MyTheme.darkBlue, tintColor: UIColor.MyTheme.titleBlue)
+           view.translatesAutoresizingMaskIntoConstraints = false
+           view.button.addTarget(self, action: #selector(handleNextBT), for: .touchUpInside)
+           return view
        }()
+    
 
     private let arrowPointingRight:UIImageView = {
         let iv = UIImageView(image: UIImage(named: "arrow.right")?.withRenderingMode(.alwaysOriginal))
@@ -89,6 +97,32 @@ class TimePickerVC:UIViewController {
         return picker
     }()
     
+    //MARK: - OBJC Methods
+    @objc private func handleNextBT() {
+        var vc:TimePickerVC?
+        
+        switch style {
+        case .dayStyle:
+            vc = TimePickerVC(style: .timeFromStyle)
+            vc?.senderViewController = senderViewController
+        case .timeFromStyle:
+            vc = TimePickerVC(style: .timeToStyle)
+            vc?.senderViewController = senderViewController
+        case .timeToStyle:
+            if let popToVC = senderViewController {
+                navigationController?.popToViewController(popToVC, animated: true)
+            } else {
+                navigationController?.popToRootViewController(animated: true)
+            }
+            return
+        case .none:
+            print("None")
+        }
+        print("Goes Next")
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
     //MARK: - Overrides Methods
     
     override func viewDidLoad() {
@@ -104,7 +138,7 @@ class TimePickerVC:UIViewController {
     
     //MARK: - Private Functions
     
-    private func setPickerViewWithStyle(_ style:TimePickerVCStyle) {
+    private func setPickerViewWithStyle() {
         pickerView = style == .dayStyle ? dayPickerView : datePickerView
     }
     
@@ -155,7 +189,9 @@ class TimePickerVC:UIViewController {
         additionalConstraints.forEach {$0.isActive = true}
     }
     
-    
+    deinit {
+        print("Deinit TimePickerVC")
+    }
     
 }
 
@@ -176,13 +212,13 @@ extension TimePickerVC:UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return daysArray.count
+        return 7
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         let label = UILabel()
-        label.text = daysArray[row]
+        label.text = Days[row]
         label.textColor = UIColor.MyTheme.extraLightGray
         label.font = UIFont.systemFont(ofSize: DeviceConfigurations.windowHeight / 25, weight: .bold)
         label.textAlignment = .center

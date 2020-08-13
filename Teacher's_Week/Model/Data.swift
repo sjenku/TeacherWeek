@@ -20,7 +20,7 @@ struct ScrollVCData {
 }
 
 struct AvaiableAt {
-    let day:Days
+    let day:Day
     let from:Date
     let to:Date
 }
