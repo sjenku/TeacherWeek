@@ -125,6 +125,7 @@ class ScrollVC:UIViewController {
     @objc func addButtonPressed() {
         let vc = TimePickerVC(style: .dayStyle)
         vc.senderViewController = self
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -227,5 +228,12 @@ class ScrollVC:UIViewController {
 extension ScrollVC:SwitchControllerDelegate {
     func switchController(isOn: Bool) {
         maxNumOfLessonsWithoutBreaksStepper.setSubviewsEnable(isOn)
+    }
+}
+
+//MARK: - TimePickerVCDelgate
+extension ScrollVC:TimePickerVCDelegate {
+    func timePicker(data: AvaiableAt) {
+        print("Date:\(data)")
     }
 }

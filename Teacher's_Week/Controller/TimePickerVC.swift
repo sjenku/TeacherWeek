@@ -13,6 +13,9 @@ enum TimePickerVCStyle {
     case dayStyle,timeFromStyle,timeToStyle
 }
 
+protocol TimePickerVCDelegate:class {
+    func timePicker(data:AvaiableAt)
+}
 
 class TimePickerVC:UIViewController {
     
@@ -31,7 +34,8 @@ class TimePickerVC:UIViewController {
     
     //MARK: - Properties
     var time:AvaiableAt?
-    var senderViewController:UIViewController?
+    weak var senderViewController:UIViewController?
+    weak var delegate:TimePickerVCDelegate?
     private var style:TimePickerVCStyle?
     
     
@@ -92,6 +96,7 @@ class TimePickerVC:UIViewController {
         let picker = UIDatePicker()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.datePickerMode = .time
+        picker.timeZone = .current
         picker.setValue(UIColor.white, forKey: "textColor")
         
         return picker
@@ -105,10 +110,17 @@ class TimePickerVC:UIViewController {
         case .dayStyle:
             vc = TimePickerVC(style: .timeFromStyle)
             vc?.senderViewController = senderViewController
+            vc?.delegate = delegate
+            guard let day = Day(rawValue:dayPickerView.selectedRow(inComponent: 0) + 1) else {return}
+            vc?.time = AvaiableAt(day: day, from: Date(), to: Date())
         case .timeFromStyle:
             vc = TimePickerVC(style: .timeToStyle)
             vc?.senderViewController = senderViewController
+            vc?.delegate = delegate
+            let date = datePickerView.date
+            vc?.time = AvaiableAt(day: time?.day ?? .none, from: date, to: Date())
         case .timeToStyle:
+            delegate?.timePicker(data: AvaiableAt(day: time?.day ?? .none, from: time?.from ?? Date(), to: datePickerView.date))
             if let popToVC = senderViewController {
                 navigationController?.popToViewController(popToVC, animated: true)
             } else {
