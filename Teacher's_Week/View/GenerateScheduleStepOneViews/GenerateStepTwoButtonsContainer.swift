@@ -49,7 +49,7 @@ class GenerateStepTwoButtonsContainer:CustomView {
         return button
     }()
 
-    private let generateButton:GenerateSOTitleBTView = {
+     let generateButton:GenerateSOTitleBTView = {
         let button = GenerateSOTitleBTView(title: "Generate", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
         return button
     }()

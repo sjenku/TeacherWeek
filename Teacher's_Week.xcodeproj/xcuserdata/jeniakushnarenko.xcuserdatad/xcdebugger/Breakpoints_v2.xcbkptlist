@@ -350,10 +350,10 @@
             filePath = "Teacher&apos;s_Week/Controller/GenerateScheduleStepTwoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "setInfoDependingOnSegmentIndex()"
-            landmarkType = "7">
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "GenerateScheduleStepTwoVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -366,9 +366,9 @@
             filePath = "Teacher&apos;s_Week/Controller/GenerateScheduleStepTwoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "handleNotificationUpdateStudentSchedule()"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "setObservers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

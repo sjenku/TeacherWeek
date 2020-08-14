@@ -11,9 +11,11 @@ import UIKit
 
 class GenerateScheduleStepTwoVC:UIViewController {
 
+    //MARK: - Properties
    private let buttonsContainer:GenerateStepTwoButtonsContainer = {
         let container = GenerateStepTwoButtonsContainer()
         container.translatesAutoresizingMaskIntoConstraints = false
+        container.generateButton.button.addTarget(self, action: #selector(handleGenerateButton), for: .touchUpInside)
         return container
     }()
     
@@ -68,6 +70,11 @@ class GenerateScheduleStepTwoVC:UIViewController {
     //MARK: - OBJC Methods
     @objc private func handleSegmentValueChanged() {
         setInfoDependingOnSegmentIndex()
+    }
+    
+    @objc private func handleGenerateButton() {
+        let vc = ScheduleResultsVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - Private Methods
