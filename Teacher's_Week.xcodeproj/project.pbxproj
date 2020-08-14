@@ -57,6 +57,8 @@
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
 		BE56A25C24E5619E0022613B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25B24E5619E0022613B /* ExtensionDate.swift */; };
 		BE56A25E24E694CF0022613B /* ScheduleResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */; };
+		BE56A26024E6CDBA0022613B /* ScheduleResultsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */; };
+		BE56A26324E6D15E0022613B /* ScheduleResultsUpperHalfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
 		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
@@ -133,6 +135,8 @@
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
 		BE56A25B24E5619E0022613B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsVC.swift; sourceTree = "<group>"; };
+		BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsInfoView.swift; sourceTree = "<group>"; };
+		BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsUpperHalfView.swift; sourceTree = "<group>"; };
 		BE6A238624DF0CFC001CE76B /* ListOfBags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBags.swift; sourceTree = "<group>"; };
 		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroupListCollectionVC.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 		BE1251FA24969D9C006F264B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE56A26124E6CDBE0022613B /* ScheduleResultsVCViews */,
 				BE17D9C824BF62E700F20AEF /* ScrollVCViews */,
 				BE17D9C324B4C0F900F20AEF /* GenerateScheudleStepTwoViews */,
 				BE17D9B624B1E7DF00F20AEF /* GenerateScheduleStepOneViews */,
@@ -388,6 +393,15 @@
 			path = NewStudentViews;
 			sourceTree = "<group>";
 		};
+		BE56A26124E6CDBE0022613B /* ScheduleResultsVCViews */ = {
+			isa = PBXGroup;
+			children = (
+				BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */,
+				BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */,
+			);
+			path = ScheduleResultsVCViews;
+			sourceTree = "<group>";
+		};
 		BE956C1324B0B68B0028C69A /* StudentInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +495,7 @@
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
 				BE26F91B24ADC57700664510 /* TitleAndTextFieldView.swift in Sources */,
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
+				BE56A26024E6CDBA0022613B /* ScheduleResultsInfoView.swift in Sources */,
 				BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */,
 				BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */,
 				BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */,
@@ -519,6 +534,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
+				BE56A26324E6D15E0022613B /* ScheduleResultsUpperHalfView.swift in Sources */,
 				BE56A25E24E694CF0022613B /* ScheduleResultsVC.swift in Sources */,
 				BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */,
 				BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */,

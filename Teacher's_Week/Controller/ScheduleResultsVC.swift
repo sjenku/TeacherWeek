@@ -9,28 +9,20 @@
 import UIKit
 
 
-
-
 class ScheduleResultsVC:UIViewController {
     
     //MARK: - Properties
-   private let upperHalf:UIView = {
-        let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .green
-        return view
-    }()
+   private let upperHalf = ScheduleResultsUpperHalfView()
     
-   private let lowerHalf:UIView = {
-        let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .yellow
-        return view
-    }()
     
+    private let listView:ListCollectionView = {
+        let info:[SectionInfo]? = DataManager.getStudentsInFormatSectionsInfo()
+        let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
+        return list
+    }()
     
     private lazy var stackViewContent:UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.upperHalf,self.lowerHalf])
+        let sv = UIStackView(arrangedSubviews: [self.upperHalf,self.listView])
         sv.translatesAutoresizingMaskIntoConstraints = true
         sv.axis = .vertical
         sv.distribution = .fillEqually
