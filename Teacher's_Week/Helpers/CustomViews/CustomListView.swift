@@ -29,6 +29,7 @@ class CustomListView: UIView {
 //MARK: - Public Properties
     var isSelectable:Bool = true
     var isSwipeble:Bool = true
+    var accessoryImage:UIImage? = nil
     var selectionActionDelegate:SelectableCellActionDelegate?
     var deletionCompletionActionDelegate:DeletionCellActionDelegate?
     var searchTo:CustomSearchController.SearchTo?
@@ -157,6 +158,9 @@ extension CustomListView:UICollectionViewDataSource {
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.delegate = self
             cell.title.text = cellInfo?.title
+            if let image = accessoryImage {  //in case not default image for accessory passed
+                cell.accessory.image = image
+            }
             if isSelectable {
                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }

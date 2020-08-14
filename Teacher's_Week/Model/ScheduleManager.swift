@@ -35,7 +35,7 @@ class ScheduleManager {
             })
         case .group:
             cellsInfo = groups.map({ (group) -> CellInfo in
-                CellInfo(title: group.groupName, subtitle: String(group.students.count), isAccessory: false, relatedTo: group)
+                CellInfo(title: group.groupName, subtitle: String(group.students.count), isAccessory: group.checked, relatedTo: group)
             })
         }
         

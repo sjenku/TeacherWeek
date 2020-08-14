@@ -20,6 +20,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
    private lazy var listView:ListCollectionView = {
         let view = ListCollectionView(frame:.zero,info:nil,style: .title)
         view.selectionActionDelegate = self
+        view.accessoryImage = UIImage(named: "checkmark.seal")
         view.isSelectable = true
         return view
     }()
