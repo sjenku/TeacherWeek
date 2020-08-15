@@ -16,6 +16,13 @@ class ListViewCellDetail:ListViewCell {
     }
 }
 
+class ListViewSettedCell:ListViewCell {
+    override func setupView() {
+        super.setupView()
+        accessory.image = UIImage(named: "sealCheckmark")?.withRenderingMode(.alwaysOriginal)
+    }
+}
+
 class ListViewCell: CustomCollectionViewCell {
     
     //MARK: - Views

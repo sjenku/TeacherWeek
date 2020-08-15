@@ -17,6 +17,7 @@ class GenerateStepOneInfoContainer : CustomView {
     
     let studentsInfoView:GenerateStepOneInfoView = {
         let v = GenerateStepOneInfoView()
+        v.textLabel.text = "Students"
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -30,6 +31,7 @@ class GenerateStepOneInfoContainer : CustomView {
     
     let groupsInfoView:GenerateStepOneInfoView = {
            let v = GenerateStepOneInfoView()
+        v.textLabel.text = "Groups"
            return v
        }()
     

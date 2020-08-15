@@ -20,6 +20,7 @@ enum CellStyle {
     case subtitle
     case detailTitle
     case detailSubtitle
+    case setted
 }
 
 

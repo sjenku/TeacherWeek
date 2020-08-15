@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "checkmark.seal-1.pdf",
+      "filename" : "checkmark.seal.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "checkmark.seal.pdf",
+      "filename" : "checkmark.seal-1.pdf",
       "scale" : "2x"
     },
     {

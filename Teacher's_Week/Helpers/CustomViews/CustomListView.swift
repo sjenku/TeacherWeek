@@ -29,7 +29,6 @@ class CustomListView: UIView {
 //MARK: - Public Properties
     var isSelectable:Bool = true
     var isSwipeble:Bool = true
-    var accessoryImage:UIImage? = nil
     var selectionActionDelegate:SelectableCellActionDelegate?
     var deletionCompletionActionDelegate:DeletionCellActionDelegate?
     var searchTo:CustomSearchController.SearchTo?
@@ -55,6 +54,8 @@ class CustomListView: UIView {
             collectionView.register(ListViewCellDetail.self, forCellWithReuseIdentifier: cellId)
         case .detailSubtitle:
             collectionView.register(ListViewCellSubtitleDetail.self, forCellWithReuseIdentifier: cellId)
+        case .setted:
+            collectionView.register(ListViewSettedCell.self, forCellWithReuseIdentifier: cellId)
         }
         collectionView.register(ListHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
@@ -102,7 +103,7 @@ class CustomListView: UIView {
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
         //cellHeight
-        cellHeight = style == .title || style == .detailTitle ? 45 : 60
+        cellHeight = style == .title || style == .detailTitle || style == .setted ? 45 : 60
         
         
     }
@@ -153,18 +154,17 @@ extension CustomListView:UICollectionViewDataSource {
                 cell.isAccessoryShown = true
             }
             return cell
-        default:
+        case .title,.setted:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCell
             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
             cell.delegate = self
             cell.title.text = cellInfo?.title
-            if let image = accessoryImage {  //in case not default image for accessory passed
-                cell.accessory.image = image
-            }
             if isSelectable {
                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
             }
             return cell
+        default:
+            return UICollectionViewCell()
         }
     }
     
