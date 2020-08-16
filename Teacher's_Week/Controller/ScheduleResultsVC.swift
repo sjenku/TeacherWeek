@@ -49,7 +49,7 @@ class ScheduleResultsVC:UIViewController {
         upperContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
         upperContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5 - (0.5 * 0.3)),
         
-        listView.topAnchor.constraint(equalTo: upperContainer.bottomAnchor),
+        listView.topAnchor.constraint(equalTo: upperContainer.bottomAnchor,constant: 20),
         listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
         

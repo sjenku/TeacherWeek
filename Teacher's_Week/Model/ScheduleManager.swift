@@ -22,6 +22,21 @@ class ScheduleManager {
         return [schedule]
     }()
     
+    static var schedulesFromStudents:[ScheduleResultTable] {
+        get {
+            var scheduleLessons:[ScheduleLesson] = []
+            for student in students {
+                if let studentRequients = student.scheduleRequements {
+                    for avaiableAt in studentRequients.avaiablesAt {
+                        scheduleLessons.append(ScheduleLesson(lessonHolder: student.firstName + " " + student.lastName, avaiableAt: avaiableAt))
+                    }
+                }
+            }
+            
+           return [ScheduleResultTable(lessons: scheduleLessons)]
+        }
+    }
+    
     static var students:[Student] = [] {
         didSet {
             //send notification
@@ -55,7 +70,7 @@ class ScheduleManager {
     }
     
     static func sectionInfoForScheduleResults()->[SectionInfo] {
-        guard let scheudle = ScheduleManager.schedules.first else {return []}
+        guard let scheudle = ScheduleManager.schedulesFromStudents.first else {return []}
         var sectionsInfo:[SectionInfo] = []
         var cellInfoRelatedToDayDict:[Day:[CellInfo]] = [:]
          scheudle.lessons.forEach { (lesson)  in
