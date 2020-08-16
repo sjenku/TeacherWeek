@@ -25,5 +25,5 @@ enum CellStyle {
 
 
 enum Day:Int {
-    case sunday = 1,monday,tuesday,wednesday,thursday,friday,saturday,none
+    case sunday = 0,monday,tuesday,wednesday,thursday,friday,saturday,none
 }

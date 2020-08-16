@@ -20,7 +20,7 @@ class ScheduleResultsVC:UIViewController {
     
     
     private let listView:ListCollectionView = {
-        let info:[SectionInfo]? = DataManager.getStudentsInFormatSectionsInfo()
+        let info:[SectionInfo]? = ScheduleManager.sectionInfoForScheduleResults()
         let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
         list.translatesAutoresizingMaskIntoConstraints = false
         return list

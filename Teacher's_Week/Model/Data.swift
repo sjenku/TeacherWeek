@@ -19,6 +19,15 @@ struct ScrollVCData {
     let avaiablesAt:[AvaiableAt]
 }
 
+struct ScheduleLesson {
+    let lessonHolder:String
+    let avaiableAt:AvaiableAt
+}
+
+struct ScheduleResultTable {
+    let lessons:[ScheduleLesson]
+}
+
 struct AvaiableAt {
     let day:Day
     let from:Date
