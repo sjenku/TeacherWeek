@@ -58,7 +58,7 @@
 		BE56A25C24E5619E0022613B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25B24E5619E0022613B /* ExtensionDate.swift */; };
 		BE56A25E24E694CF0022613B /* ScheduleResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */; };
 		BE56A26024E6CDBA0022613B /* ScheduleResultsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */; };
-		BE56A26324E6D15E0022613B /* ScheduleResultsUpperHalfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */; };
+		BE56A26324E6D15E0022613B /* ScheduleResultsUpperContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A26224E6D15E0022613B /* ScheduleResultsUpperContainerView.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
 		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
@@ -136,7 +136,7 @@
 		BE56A25B24E5619E0022613B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsVC.swift; sourceTree = "<group>"; };
 		BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsInfoView.swift; sourceTree = "<group>"; };
-		BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsUpperHalfView.swift; sourceTree = "<group>"; };
+		BE56A26224E6D15E0022613B /* ScheduleResultsUpperContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsUpperContainerView.swift; sourceTree = "<group>"; };
 		BE6A238624DF0CFC001CE76B /* ListOfBags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBags.swift; sourceTree = "<group>"; };
 		BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOrGroupListCollectionVC.swift; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */,
-				BE56A26224E6D15E0022613B /* ScheduleResultsUpperHalfView.swift */,
+				BE56A26224E6D15E0022613B /* ScheduleResultsUpperContainerView.swift */,
 			);
 			path = ScheduleResultsVCViews;
 			sourceTree = "<group>";
@@ -534,7 +534,7 @@
 				BE125227249A5E3F006F264B /* ChooseLabelView.swift in Sources */,
 				BE12526C24A104C8006F264B /* NewGroupUpperCell.swift in Sources */,
 				BE12520B2497BF79006F264B /* HomeViewController.swift in Sources */,
-				BE56A26324E6D15E0022613B /* ScheduleResultsUpperHalfView.swift in Sources */,
+				BE56A26324E6D15E0022613B /* ScheduleResultsUpperContainerView.swift in Sources */,
 				BE56A25E24E694CF0022613B /* ScheduleResultsVC.swift in Sources */,
 				BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */,
 				BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */,

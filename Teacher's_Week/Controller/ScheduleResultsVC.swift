@@ -12,42 +12,48 @@ import UIKit
 class ScheduleResultsVC:UIViewController {
     
     //MARK: - Properties
-   private let upperHalf = ScheduleResultsUpperHalfView()
+    private let upperContainer:ScheduleResultsUpperContainerView = {
+        let view = ScheduleResultsUpperContainerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     
     private let listView:ListCollectionView = {
         let info:[SectionInfo]? = DataManager.getStudentsInFormatSectionsInfo()
         let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
+        list.translatesAutoresizingMaskIntoConstraints = false
         return list
     }()
     
-    private lazy var stackViewContent:UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.upperHalf,self.listView])
-        sv.translatesAutoresizingMaskIntoConstraints = true
-        sv.axis = .vertical
-        sv.distribution = .fillEqually
-        return sv
-    }()
-    
+
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstraints()
     }
     
     private func setSubviews() {
-        view.addSubview(stackViewContent)
+        view.addSubview(upperContainer)
+        view.addSubview(listView)
     }
     
     private func setConstraints() {
         
-        view.addConstraintsWithFormat(format: "H:|-[v0]-|", views: stackViewContent)
+        view.addConstraintsWithFormat(format: "H:|-[v0]-|", views: upperContainer)
+        view.addConstraintsWithFormat(format: "H:|-[v0]-|", views: listView)
         
-        stackViewContent.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        stackViewContent.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+       let additionalConstraints = [
+        upperContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        upperContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5 - (0.5 * 0.3)),
         
+        listView.topAnchor.constraint(equalTo: upperContainer.bottomAnchor),
+        listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ]
+        
+        additionalConstraints.forEach {$0.isActive = true}
     }
    
     

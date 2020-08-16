@@ -91,7 +91,7 @@ class ScheduleResultsInfoView : CustomView {
         addConstraintsWithFormat(format: "H:|-[v0]-|", views: shadowView)
         
         let additionalConstraints = [
-            shadowView.heightAnchor.constraint(equalTo:self.heightAnchor ,multiplier: 1/2),
+            shadowView.heightAnchor.constraint(equalTo:self.heightAnchor ,multiplier: 1),
             shadowView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
             infoStack.topAnchor.constraint(equalTo: shadowView.topAnchor),
