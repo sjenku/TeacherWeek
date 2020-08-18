@@ -14,8 +14,8 @@
             filePath = "Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "setConstraints()"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "setConstraints()"
             landmarkType = "7">
          </BreakpointContent>

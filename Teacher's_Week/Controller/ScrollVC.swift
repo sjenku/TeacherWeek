@@ -31,7 +31,7 @@ class ScrollVC:UIViewController {
             manageListLessonsView.listOfLessons.updateInfo([sectionInfo])
         }
     }
-   private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1450)
+   private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1510)
     
    private lazy var scrollView:UIScrollView = {
         [unowned self] in
@@ -81,8 +81,8 @@ class ScrollVC:UIViewController {
     private let lessonDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration of each lesson")
  
     
-    private let lessonDurationView:DurationSliderView = {
-        let view = DurationSliderView()
+    private let lessonDurationView:SliderView = {
+        let view = SliderView(startValue: 45, maxValue: 180, sign: "min")
         return view
     }()
     
@@ -106,16 +106,16 @@ class ScrollVC:UIViewController {
     
     private let paymentPerLessonTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text: "Payment per lesson")
     
-    private let paymentPerLessonView:StepperWithCounter = {
-        let stepperView = StepperWithCounter()
-        stepperView.showDollarSign(true)
-        return stepperView
-    }()
+//    private let paymentPerLessonView:StepperWithCounter = {
+//        let stepperView = StepperWithCounter()
+//        stepperView.showDollarSign(true)
+//        return stepperView
+//    }()
     
-//    private let paymentPerLessonView:PaymentSliderView = {
-//          let stepperView = PaymentSliderView()
-//          return stepperView
-//      }()
+    private let paymentPerLessonView:SliderView = {
+          let stepperView = SliderView(startValue: 50, maxValue: 500, sign: "$")
+          return stepperView
+      }()
     
     private let availableAtTitle:UILabel = {
         let label = UILabel()
@@ -216,7 +216,7 @@ class ScrollVC:UIViewController {
             paymentPerLessonTitle.topAnchor.constraint(equalTo: maxNumOfLessonsWithoutBreaksStepper.bottomAnchor,constant: 12),
             
             paymentPerLessonView.topAnchor.constraint(equalTo: paymentPerLessonTitle.bottomAnchor,constant: 6),
-            paymentPerLessonView.heightAnchor.constraint(equalToConstant: 125),
+            paymentPerLessonView.heightAnchor.constraint(equalToConstant: 185),
             
             availableAtTitle.topAnchor.constraint(equalTo: paymentPerLessonView.bottomAnchor,constant: 12),
             
