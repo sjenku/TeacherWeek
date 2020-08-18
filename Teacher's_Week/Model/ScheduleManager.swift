@@ -12,7 +12,27 @@ import Foundation
 class ScheduleManager {
     
     //MARK: - Properties
-
+    static var students:[Student] = [] {
+         didSet {
+             //send notification
+             let notificationName = NotificationKeys.keyName(key: .updateStudentSchedule)
+             NotificationCenter.default.post(name: notificationName , object: nil)
+         }
+     }
+     static var groups:[Group] = [] {
+         didSet {
+             //send notification
+             let notificationName = NotificationKeys.keyName(key: .updateGroupSchedule)
+             NotificationCenter.default.post(name: notificationName , object: nil)
+         }
+     }
+    
+    
+    //This Propertie is helper propertie and not for use except 'scheduleFromStudents' propertie
+    fileprivate static var findSolutionResult:[ScheduleLesson] = []
+    
+    
+    //Main Calculation For Maximum Profit Schedule From Student Lessons
     static var schedulesFromStudents:[ScheduleResultTable] {
         get {
             
@@ -42,13 +62,32 @@ class ScheduleManager {
             print("Optimal Profit=>\(optVal)$")
             
             //4.create function that find-solution with help of 'optimal' function
-            //5.create another iterative apporach for finding optimal profit
+            findSolution(&scheduleLessons, &notConflictingIndexes, scheduleLessons.count - 1)
+            let tableLessons:[ScheduleLesson] = ScheduleManager.findSolutionResult
+            ScheduleManager.findSolutionResult = [] //reset for not adding future lessons
+            
+            //TODO: create another iterative apporach for finding optimal profit
             
             
-           return [ScheduleResultTable(lessons: scheduleLessons)]
+           return [ScheduleResultTable(lessons: tableLessons)]
         }
     }
 
+    
+    //MARK: - Helper Methods For Calculate Optimal Schedule
+    //MARK: Using Algorithm: 'Weighted Interval Scheudle'
+    fileprivate static func findSolution(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int) { //O(2^n) bad time complexity
+        if j != -1 {
+            if(lessons[j].price + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
+                ScheduleManager.findSolutionResult.append(lessons[j])
+                print("Lesson: \(lessons[j])")
+                findSolution(&lessons,&p,p[j])
+            } else {
+                findSolution(&lessons,&p,j-1)
+            }
+        }
+    }
+    
     fileprivate static func optimal(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int)->Int { //O(2^n) bad time complexity
         if j == -1 {
             return 0
@@ -70,23 +109,7 @@ class ScheduleManager {
         return p
     }
     
-    static var students:[Student] = [] {
-        didSet {
-            //send notification
-            let notificationName = NotificationKeys.keyName(key: .updateStudentSchedule)
-            NotificationCenter.default.post(name: notificationName , object: nil)
-        }
-    }
-    static var groups:[Group] = [] {
-        didSet {
-            //send notification
-            let notificationName = NotificationKeys.keyName(key: .updateGroupSchedule)
-            NotificationCenter.default.post(name: notificationName , object: nil)
-        }
-    }
-    
-    //MARK: - Static Methods
-    
+    //MARK: - Retrive Lessons in model that fit view representation
     static func sectionInfoFor(_ value:StudentOrGroup)->[SectionInfo] {
         var cellsInfo:[CellInfo] = []
         switch value {
@@ -104,6 +127,7 @@ class ScheduleManager {
         return [sectionInfo]
     }
     
+    //Function For Represent ScheduleLessons In View
     static func sectionInfoForScheduleResults()->[SectionInfo] {
          guard let scheudle = ScheduleManager.schedulesFromStudents.first else {return []}
          var sectionsInfo:[SectionInfo] = []
@@ -127,63 +151,3 @@ class ScheduleManager {
     
 
 }
-
-
-
-//    static func sectionInfoForScheduleResults()->[SectionInfo] {
-//        guard let scheudle = ScheduleManager.schedulesFromStudents.first else {return []}
-//        var sectionsInfo:[SectionInfo] = []
-//        var cellInfoRelatedToDayDict:[Day:[CellInfo]] = [:]
-//         scheudle.lessons.forEach { (lesson)  in
-//           let cellInfo = CellInfo(title: lesson.lessonHolder, subtitle: lesson.avaiableAt.from.toString + " - " + lesson.avaiableAt.to.toString, isAccessory: nil, relatedTo: lesson)
-//            if let _ = cellInfoRelatedToDayDict[lesson.avaiableAt.day] {
-//                cellInfoRelatedToDayDict[lesson.avaiableAt.day]?.append(cellInfo)
-//            } else {
-//                cellInfoRelatedToDayDict[lesson.avaiableAt.day] = [cellInfo]
-//            }
-//        }
-//
-//      let sortedByDayCellsInfo = cellInfoRelatedToDayDict.sorted { $0.key.rawValue < $1.key.rawValue }
-//
-//        for (day,cellsInfo) in sortedByDayCellsInfo {
-//            //Sort By time
-//            let sortedCellInfo = cellsInfo.sorted { (firstCell, secondCell) -> Bool in
-//                guard let lessonOne = firstCell.relatedTo as? ScheduleLesson else {return false}
-//                guard let lessonSecond = secondCell.relatedTo as? ScheduleLesson  else {return false}
-//                return lessonOne.avaiableAt.from < lessonSecond.avaiableAt.from
-//            }
-//
-//            sectionsInfo.append(SectionInfo(headerTitle: Days[day.rawValue], cellsInfo: sortedCellInfo))
-//        }
-//
-//        return sectionsInfo
-//    }
-    
-
-
-//    static var schedules:[ScheduleResultTable] = {
-//        let lessons:[ScheduleLesson] = [
-//            ScheduleLesson(lessonHolder: "Ivanov Petrov", avaiableAt: AvaiableAt(day: .sunday,from:Date(),to:Date())),
-//            ScheduleLesson(lessonHolder: "Genadi Pupkin", avaiableAt: AvaiableAt(day: .sunday,from:Date()-100,to:Date())),
-//            ScheduleLesson(lessonHolder: "Salvator Famin", avaiableAt: AvaiableAt(day: .friday,from:Date(),to:Date()))
-//        ]
-//        let schedule = ScheduleResultTable(lessons: lessons)
-//
-//        return [schedule]
-//    }()
-
-
-//static var schedulesFromStudents:[ScheduleResultTable] {
-//       get {
-//           var scheduleLessons:[ScheduleLesson] = []
-//           for student in students {
-//               if let studentRequients = student.scheduleRequements {
-//                   for avaiableAt in studentRequients.avaiablesAt {
-//                       scheduleLessons.append(ScheduleLesson(lessonHolder: student.firstName + " " + student.lastName, avaiableAt: avaiableAt))
-//                   }
-//               }
-//           }
-//
-//          return [ScheduleResultTable(lessons: scheduleLessons)]
-//       }
-//   }
