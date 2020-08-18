@@ -3,4 +3,86 @@
    uuid = "E1CFEB4F-507C-45C8-BFCA-7D35BA3B9CDF"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DCA855B-B9EF-4315-940A-886AD1C30E18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "setConstraints()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6DCA855B-B9EF-4315-940A-886AD1C30E18 - 45bc4f432ccc5934"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Teacher_s_Week.SliderView.(setConstraints in _AC00857ED60FA639CE84936FAB37108E)() -&gt; ()"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "3490">
+               </Location>
+               <Location
+                  uuid = "6DCA855B-B9EF-4315-940A-886AD1C30E18 - f971d7115cc804b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSLayoutConstraint) -&gt; () in Teacher_s_Week.SliderView.(setConstraints in _AC00857ED60FA639CE84936FAB37108E)() -&gt; ()"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "694CE281-C978-4AD5-B4B6-AD4FD5096C40"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/View/ScrollVCViews/LessonDurationView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "setConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "765C1B7B-CBE2-415A-95DD-556F1D922CAA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Controller/ScrollVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "setConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

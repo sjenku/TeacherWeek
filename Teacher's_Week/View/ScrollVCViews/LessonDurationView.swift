@@ -9,11 +9,48 @@
 import UIKit
 
 
-class LessonDurationView:CustomView {
+class PaymentSliderView:SliderView {
+    override func setupView() {
+        super.setupView()
+        
+        maxValue = 500
+        startValue = 50
+        label.text = "\(Int(startValue)) $"
+        minLabel.text = "0 $"
+        maxLabel.text = "\(Int(maxValue)) $"
+        slider.setValue(self.startValue/self.maxValue, animated: true)
+    }
+    
+    override func handleSliderValueChanges() {
+        label.text = String(Int(slider.value * maxValue)) + " $"
+    }
+}
+
+class DurationSliderView:SliderView {
+    override func setupView() {
+        super.setupView()
+        
+        maxValue = 180
+        startValue = 45
+        label.text = "\(Int(startValue)) Minutes"
+        minLabel.text = "0 min"
+        maxLabel.text = "\(Int(maxValue)) min"
+        slider.setValue(self.startValue/self.maxValue, animated: true)
+    }
+    
+    override func handleSliderValueChanges() {
+        label.text = String(Int(slider.value * maxValue)) + " Minutes"
+    }
+}
+
+class SliderView:CustomView {
+    
+    var maxValue:Float = 0
+    var startValue:Float = 0
     
     var currentValue:Int {
         get {
-            return Int(slider.value * 180)
+            return Int(slider.value * maxValue)
         }
     }
     
@@ -30,42 +67,39 @@ class LessonDurationView:CustomView {
           return view
       }()
     
-       private let minutesLabel:UILabel = {
+       fileprivate let label:UILabel = {
          let label = UILabel()
          label.font = UIFont.systemFont(ofSize: 36, weight: .semibold)
          label.textColor = .white
          label.textAlignment = .center
-         label.text = "45 minutes"
          label.translatesAutoresizingMaskIntoConstraints = false
          return label
      }()
     
     
-    private let minMinutesLabel:UILabel = {
+    fileprivate let minLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .lightGray
         label.textAlignment = .left
-        label.text = "0 min"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let maxMinutesLabel:UILabel = {
+    fileprivate let maxLabel:UILabel = {
            let label = UILabel()
            label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
            label.textColor = .lightGray
            label.textAlignment = .right
-           label.text = "180 min"
            label.translatesAutoresizingMaskIntoConstraints = false
            return label
        }()
     
-    private lazy var slider:UISlider = {
+    fileprivate lazy var slider:UISlider = {
+        [unowned self] in
         let view = UISlider()
         view.addTarget(self, action: #selector(handleSliderValueChanges), for: .valueChanged)
         view.backgroundColor = UIColor.MyTheme.extraDarkBG
-        view.setValue(45/180, animated: true)
         view.tintColor = UIColor.MyTheme.lightGreen
         view.thumbTintColor = UIColor.MyTheme.lightGreen
         setNeedsLayout()
@@ -80,8 +114,7 @@ class LessonDurationView:CustomView {
     }
 
     
-    @objc private func handleSliderValueChanges() {
-        minutesLabel.text = String(Int(slider.value * 180)) + " Minutes"
+    @objc fileprivate func handleSliderValueChanges() {
     }
     
     private func setSubviews() {
@@ -89,9 +122,9 @@ class LessonDurationView:CustomView {
         addSubview(line)
         addSubview(squareContainer)
         addSubview(slider)
-        addSubview(minMinutesLabel)
-        addSubview(maxMinutesLabel)
-        squareContainer.addSubview(minutesLabel)
+        addSubview(minLabel)
+        addSubview(maxLabel)
+        squareContainer.addSubview(label)
         
     }
     
@@ -99,8 +132,8 @@ class LessonDurationView:CustomView {
         addConstraintsWithFormat(format: "H:|-36-[v0]-36-|", views: squareContainer)
         addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: line)
         addConstraintsWithFormat(format: "H:|-24-[v0]-24-|", views: slider)
-        addConstraintsWithFormat(format: "H:|-24-[v0(50)]", views:  minMinutesLabel)
-        addConstraintsWithFormat(format: "H:[v0(100)]-24-|", views: maxMinutesLabel)
+        addConstraintsWithFormat(format: "H:|-24-[v0(50)]", views:  minLabel)
+        addConstraintsWithFormat(format: "H:[v0(100)]-24-|", views: maxLabel)
         
         let constraints = [
             line.topAnchor.constraint(equalTo: self.topAnchor),
@@ -109,15 +142,15 @@ class LessonDurationView:CustomView {
             squareContainer.topAnchor.constraint(equalTo: line.bottomAnchor,constant: 20),
             squareContainer.heightAnchor.constraint(equalToConstant: 65),
             
-            minutesLabel.centerYAnchor.constraint(equalTo: squareContainer.centerYAnchor),
-            minutesLabel.centerXAnchor.constraint(equalTo: squareContainer.centerXAnchor),
-            minutesLabel.widthAnchor.constraint(equalTo: squareContainer.widthAnchor),
+            label.centerYAnchor.constraint(equalTo: squareContainer.centerYAnchor),
+            label.centerXAnchor.constraint(equalTo: squareContainer.centerXAnchor),
+            label.widthAnchor.constraint(equalTo: squareContainer.widthAnchor),
             
             slider.topAnchor.constraint(equalTo: squareContainer.bottomAnchor,constant: 24),
             
-            minMinutesLabel.topAnchor.constraint(equalTo: slider.bottomAnchor,constant: 2),
+            minLabel.topAnchor.constraint(equalTo: slider.bottomAnchor,constant: 2),
             
-            maxMinutesLabel.topAnchor.constraint(equalTo: slider.bottomAnchor,constant: 2)
+            maxLabel.topAnchor.constraint(equalTo: slider.bottomAnchor,constant: 2)
             
         ]
         

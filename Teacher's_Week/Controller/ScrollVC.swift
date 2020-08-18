@@ -81,8 +81,8 @@ class ScrollVC:UIViewController {
     private let lessonDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration of each lesson")
  
     
-    private let lessonDurationView:LessonDurationView = {
-        let view = LessonDurationView()
+    private let lessonDurationView:DurationSliderView = {
+        let view = DurationSliderView()
         return view
     }()
     
@@ -111,6 +111,11 @@ class ScrollVC:UIViewController {
         stepperView.showDollarSign(true)
         return stepperView
     }()
+    
+//    private let paymentPerLessonView:PaymentSliderView = {
+//          let stepperView = PaymentSliderView()
+//          return stepperView
+//      }()
     
     private let availableAtTitle:UILabel = {
         let label = UILabel()
