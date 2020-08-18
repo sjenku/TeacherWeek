@@ -25,7 +25,7 @@ class ScrollVC:UIViewController {
         willSet {
             let cellsInfo = newValue.map { (avaiableAt) -> CellInfo in
                 let subtitle = avaiableAt.from.toString + " - " + avaiableAt.to.toString
-               return CellInfo(title: Days[avaiableAt.day.rawValue - 1], subtitle: subtitle, isAccessory: nil, relatedTo: avaiableAt)
+               return CellInfo(title: Days[avaiableAt.day.rawValue], subtitle: subtitle, isAccessory: nil, relatedTo: avaiableAt)
             }
             let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
             manageListLessonsView.listOfLessons.updateInfo([sectionInfo])

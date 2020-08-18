@@ -21,6 +21,7 @@ struct ScrollVCData {
 
 struct ScheduleLesson {
     let lessonHolder:String
+    let price:Int
     let avaiableAt:AvaiableAt
 }
 
@@ -32,6 +33,18 @@ struct AvaiableAt {
     let day:Day
     let from:Date
     let to:Date
+    
+    var fullDateFrom:Date {
+        get {
+            return from.addingTimeInterval(TimeInterval(60*60*24*(day.rawValue + 1)))
+        }
+    }
+    
+    var fullDateTo:Date {
+        get {
+            return to.addingTimeInterval(TimeInterval(60*60*24*(day.rawValue + 1)))
+        }
+    }
 }
 
 struct Student {

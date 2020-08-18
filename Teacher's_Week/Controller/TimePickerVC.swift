@@ -111,7 +111,7 @@ class TimePickerVC:UIViewController {
             vc = TimePickerVC(style: .timeFromStyle)
             vc?.senderViewController = senderViewController
             vc?.delegate = delegate
-            guard let day = Day(rawValue:dayPickerView.selectedRow(inComponent: 0) + 1) else {return}
+            guard let day = Day(rawValue:dayPickerView.selectedRow(inComponent: 0)) else {return}
             vc?.time = AvaiableAt(day: day, from: Date(), to: Date())
         case .timeFromStyle:
             vc = TimePickerVC(style: .timeToStyle)
