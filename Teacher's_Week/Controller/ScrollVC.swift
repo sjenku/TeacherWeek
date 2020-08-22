@@ -21,6 +21,8 @@ class ScrollVC:UIViewController {
     //MARK: - Properties
    
    weak var delegateDataSource:DataSourceScrollVC?
+   var data:ScrollVCData?
+    
     private var avaiableAt:[AvaiableAt] = [] {
         willSet {
             let cellsInfo = newValue.map { (avaiableAt) -> CellInfo in
@@ -50,7 +52,7 @@ class ScrollVC:UIViewController {
     
    private let headTitle:UILabel = {
         let l = UILabel()
-        l.text = "Adam Ambroson"
+        l.text = ""
         l.textColor = .white
         l.font = UIFont.systemFont(ofSize: 24, weight: .regular)
         l.textAlignment = .center
@@ -106,12 +108,6 @@ class ScrollVC:UIViewController {
     
     private let paymentPerLessonTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text: "Payment per lesson")
     
-//    private let paymentPerLessonView:StepperWithCounter = {
-//        let stepperView = StepperWithCounter()
-//        stepperView.showDollarSign(true)
-//        return stepperView
-//    }()
-    
     private let paymentPerLessonView:SliderView = {
           let stepperView = SliderView(startValue: 50, maxValue: 500, sign: "$")
           return stepperView
@@ -148,18 +144,50 @@ class ScrollVC:UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK: - Init & Deinit
+    init(title:String,data:ScrollVCData?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        headTitle.text = title
+        self.data = data
+        print("Init")
+        
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    deinit {
+           print("Deinit ScrollVC")
+       }
+    
     //MARK: - Override Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("View Did Load")
         view.backgroundColor = UIColor.MyTheme.darkBG
         
         setSubviews()
         setConstraints()
+        setDataForScrollVC()
     }
     
     //MARK: - Private Methods
+    private func setDataForScrollVC() {
+        if let safeData = data {
+            numberOfLessonsStepper.currentValue = safeData.numberOfLessonsNeed
+            lessonDurationView.currentValue = safeData.durationOfEachLessonMin
+            needBreaksSwitcher.currentValue = safeData.needBreaks
+            maxNumOfLessonsWithoutBreaksStepper.currentValue = safeData.maxNumOfLessonsWithoutBreaks
+            maxNumOfLessonsWithoutBreaksStepper.setSubviewsEnable(safeData.needBreaks)
+            paymentPerLessonView.currentValue = safeData.paymentPerLesson
+            avaiableAt = safeData.avaiablesAt
+        }
+    }
+    
     private func setSubviews() {
         scrollView.addSubview(contentView)
         
@@ -229,11 +257,6 @@ class ScrollVC:UIViewController {
             constraint.isActive = true
         }
         
-    }
-    
-    
-    deinit {
-        print("Deinit ScrollVC")
     }
     
 }

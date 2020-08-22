@@ -12,7 +12,12 @@ import UIKit
 class TitleAndSwitchView:CustomView {
     
     var currentValue:Bool {
-        return switchController.isOn ? true : false
+        get {
+            return switchController.isOn
+        }
+        set {
+            switchController.isOn = newValue
+        }
     }
     
     weak var delegate:SwitchControllerDelegate?

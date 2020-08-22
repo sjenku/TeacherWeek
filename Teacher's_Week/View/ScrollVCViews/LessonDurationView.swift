@@ -9,40 +9,6 @@
 import UIKit
 
 
-//class PaymentSliderView:SliderView {
-//    override func setupView() {
-//        super.setupView()
-//        
-//        maxValue = 500
-//        startValue = 50
-//        label.text = "\(Int(startValue)) $"
-//        minLabel.text = "0 $"
-//        maxLabel.text = "\(Int(maxValue)) $"
-//    }
-//    
-//    override func handleSliderValueChanges() {
-//        label.text = String(Int(slider.value * maxValue)) + " $"
-//    }
-//}
-//
-//class DurationSliderView:SliderView {
-//    override func setupView() {
-//        super.setupView()
-//        
-//        maxValue = 180
-//        startValue = 45
-//        label.text = "\(Int(startValue)) Minutes"
-//        minLabel.text = "0 min"
-//        maxLabel.text = "\(Int(maxValue)) min"
-//    }
-//    
-//    
-//    
-//    override func handleSliderValueChanges() {
-//        label.text = String(Int(slider.value * maxValue)) + " Minutes"
-//    }
-//}
-
 class SliderView:CustomView {
     
     var maxValue:Float
@@ -52,6 +18,10 @@ class SliderView:CustomView {
     var currentValue:Int {
         get {
             return Int(slider.value * maxValue)
+        }
+        set {
+            slider.value = Float(newValue)/maxValue
+            label.text = "\(newValue) " + sign
         }
     }
     

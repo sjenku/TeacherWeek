@@ -16,7 +16,12 @@ class StepperWithCounter:CustomView {
         get {
             stepper.isEnabled ? Int(stepper.value) : 0
         }
+        set {
+            stepper.value = Double(newValue)
+            counter.text = String(newValue)
+        }
     }
+    
     
     //MARK: - Properties
     
@@ -57,6 +62,8 @@ class StepperWithCounter:CustomView {
         [unowned self] in
         let stepper = UIStepper()
         stepper.translatesAutoresizingMaskIntoConstraints = false
+        stepper.minimumValue = 0
+        stepper.maximumValue = 100
         stepper.setDecrementImage(stepper.decrementImage(for: .normal), for: .normal)
         stepper.setIncrementImage(stepper.incrementImage(for: .normal), for: .normal)
         stepper.addTarget(self, action: #selector(handleStepperValueChanged), for: .valueChanged)
@@ -86,7 +93,6 @@ class StepperWithCounter:CustomView {
     func showDollarSign(_ show:Bool) {
         dollarSign.text = show ? "$" : ""
     }
-    
     //MARK: - Overrides
     
     override func setupView() {

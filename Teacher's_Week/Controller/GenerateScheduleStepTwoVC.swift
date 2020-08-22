@@ -127,7 +127,21 @@ class GenerateScheduleStepTwoVC:UIViewController {
 extension GenerateScheduleStepTwoVC:SelectableCellActionDelegate {
     func performSelectionOfCellAction(indexPath:IndexPath) {
         selectedIndex = indexPath
-       let vc = ScrollVC()
+        var title:String = ""
+        var data:ScrollVCData?
+        switch state {
+          case .student:
+            let currentStudent = ScheduleManager.students[indexPath.row]
+            title = currentStudent.firstName + " " + currentStudent.lastName
+            data = currentStudent.scheduleRequements
+          case .group:
+            let currentGroup = ScheduleManager.groups[indexPath.row]
+            title = currentGroup.groupName
+            data = currentGroup.scheduleRequements
+          case .none:
+            title = ""
+        }
+        let vc = ScrollVC(title: title,data: data)
         vc.delegateDataSource = self
         navigationController?.pushViewController(vc, animated: true)
     }
