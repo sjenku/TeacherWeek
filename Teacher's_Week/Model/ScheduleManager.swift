@@ -40,9 +40,7 @@ class ScheduleManager {
             var scheduleLessons:[ScheduleLesson] = []
             for student in students {
                 if let studentRequients = student.scheduleRequements {
-                    for avaiableAt in studentRequients.avaiablesAt {
-                        scheduleLessons.append(ScheduleLesson(lessonHolder: student.firstName + " " + student.lastName, price: studentRequients.paymentPerLesson, avaiableAt: avaiableAt))
-                    }
+                    scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student.firstName + " " + student.lastName, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
                 }
             }
             
@@ -56,23 +54,41 @@ class ScheduleManager {
             //2.create array holding index of lesson that not overrlaping with current lesson
             var notConflictingIndexes:[Int] = lastNotConflictingLessons(scheduleLessons)
             print(notConflictingIndexes)
-            
+
             //3.create recursive function 'optimal' that calculate optimal profit from lessons
             let optVal = ScheduleManager.optimal(&scheduleLessons,&notConflictingIndexes,scheduleLessons.count - 1)
             print("Optimal Profit=>\(optVal)$")
-            
+
             //4.create function that find-solution with help of 'optimal' function
             findSolution(&scheduleLessons, &notConflictingIndexes, scheduleLessons.count - 1)
             let tableLessons:[ScheduleLesson] = ScheduleManager.findSolutionResult
             ScheduleManager.findSolutionResult = [] //reset for not adding future lessons
-            
+
             //TODO: create another iterative apporach for finding optimal profit
             
             
            return [ScheduleResultTable(lessons: tableLessons)]
+//            return [ScheduleResultTable(lessons: scheduleLessons)]
         }
     }
 
+    
+    fileprivate static func appendAllLessonsFromAvaibleAtRange(lessonsHolder:String,price:Int,avaiblesAt:[AvaiableAt],lessonDurationMin:Int,intervalMin:Int)->[ScheduleLesson] {
+        var allLessons:[ScheduleLesson] = []
+        for avaibleAt in avaiblesAt {
+            
+            var lessonStartTime = avaibleAt.from
+            var lessonEndTime = avaibleAt.from.addingTimeInterval(TimeInterval(lessonDurationMin*60))
+            
+            while lessonEndTime <= avaibleAt.to {
+                let scheudleLesson:ScheduleLesson = ScheduleLesson(lessonHolder: lessonsHolder, price: price, avaiableAt: AvaiableAt(day: avaibleAt.day, from: lessonStartTime, to: lessonEndTime))
+                allLessons.append(scheudleLesson)
+                lessonStartTime = lessonStartTime.addingTimeInterval(TimeInterval(intervalMin*60))
+                lessonEndTime = lessonStartTime.addingTimeInterval(TimeInterval(lessonDurationMin*60))
+            }
+          }
+         return allLessons
+        }
     
     //MARK: - Helper Methods For Calculate Optimal Schedule
     //MARK: Using Algorithm: 'Weighted Interval Scheudle'
