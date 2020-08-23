@@ -15,12 +15,16 @@ extension Date {
     var toString:String {
         get {
           let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "HH:MM a"
-//            dateFormatter.timeZone = .current
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             return dateFormatter.string(from: self)
         }
     }
+    
+   var zeroSeconds: Date? {
+           let calendar = Calendar.current
+           let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+           return calendar.date(from: dateComponents)
+       }
     
 }

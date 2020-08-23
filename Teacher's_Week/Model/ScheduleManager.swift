@@ -43,6 +43,12 @@ class ScheduleManager {
                     scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student.firstName + " " + student.lastName, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
                 }
             }
+            //Collect all groups avaiableTimes
+            for group in groups {
+                if let groupRequiments = group.scheduleRequements {
+                    scheduleLessons.append(contentsOf: appendAllLessonsFromAvaibleAtRange(lessonsHolder: group.groupName, price: groupRequiments.paymentPerLesson, avaiblesAt: groupRequiments.avaiablesAt, lessonDurationMin: groupRequiments.durationOfEachLessonMin, intervalMin: 5))
+                }
+            }
             
             //1.sort all lessons by finish time
             scheduleLessons.sort { (firstLesson, secondLesson) -> Bool in

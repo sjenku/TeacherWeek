@@ -117,10 +117,13 @@ class TimePickerVC:UIViewController {
             vc = TimePickerVC(style: .timeToStyle)
             vc?.senderViewController = senderViewController
             vc?.delegate = delegate
-            let date = datePickerView.date
+            if let date = datePickerView.date.zeroSeconds {
             vc?.time = AvaiableAt(day: time?.day ?? .none, from: date, to: Date())
+            }
         case .timeToStyle:
-            delegate?.timePicker(data: AvaiableAt(day: time?.day ?? .none, from: time?.from ?? Date(), to: datePickerView.date))
+            if let date = datePickerView.date.zeroSeconds {
+                delegate?.timePicker(data: AvaiableAt(day: time?.day ?? .none, from: time?.from ?? Date(), to: date))
+            }
             if let popToVC = senderViewController {
                 navigationController?.popToViewController(popToVC, animated: true)
             } else {
