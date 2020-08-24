@@ -18,6 +18,7 @@ class GenerateScheduleStepOneVC:UIViewController {
         let view = GenerateStepOneButtonsContainer()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.nextButton.button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
+        view.resetButton.button.addTarget(self, action: #selector(handleResetButton), for: .touchUpInside)
         view.addButtonStudent.addTarget(self, action: #selector(handleAddStudentBT), for: .touchUpInside)
         view.addButtonGroup.addTarget(self, action: #selector(handleAddGroupBT), for: .touchUpInside)
         view.backgroundColor = UIColor.MyTheme.lightBG
@@ -36,6 +37,12 @@ class GenerateScheduleStepOneVC:UIViewController {
         let vc = GenerateScheduleStepTwoVC()
         vc.title = "Step 2/2"
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func handleResetButton() {
+        ScheduleManager.students.removeAll()
+        ScheduleManager.groups.removeAll()
+        setInfo()
     }
     
     @objc private func handleAddStudentBT() {
