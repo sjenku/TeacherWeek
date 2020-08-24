@@ -121,7 +121,8 @@ class ScheduleManager {
         var p:Array<Int> = Array(repeating: -1, count: lessons.count)
         for (indexLesson,lesson) in lessons.enumerated() {
             for index in stride(from: indexLesson, to: -1, by: -1) {
-                if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
+                if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo && ScheduleManager.additionalLimits()) {
+                    //1.check all limits...if ok put index else just dont
                     p[indexLesson] = index
                    break
                 }
@@ -129,6 +130,24 @@ class ScheduleManager {
         }
         return p
     }
+    
+    private static func additionalLimits()->Bool {
+        return true
+    }
+//    int setLastNotConflictingTo(const std::vector<Lesson>& lessons,int index,std::vector<int>& p) {
+//        for(int j = index - 1;j>=0;j--) {
+//            if (lessons[index].startTime >= lessons[j].endTime) {
+//                p.push_back(j);
+//                if (AllowedLimits(index, lessons, p)) {
+//                    return j;
+//                } else {
+//                    p.erase(p.end() - 1);
+//                }
+//            }
+//        }
+//        p.push_back(0);
+//        return 0;
+//    }
     
     //MARK: - Retrive Lessons in model that fit view representation
     static func sectionInfoFor(_ value:StudentOrGroup)->[SectionInfo] {
