@@ -33,7 +33,7 @@ class ScheduleManager {
     
     
     //Main Calculation For Maximum Profit Schedule From Student Lessons
-    static var schedulesFromStudents:[ScheduleResultTable] {
+    static var schedulesFromStudentsAndGroups:[ScheduleResultTable] {
         get {
             
             //Collect all students avaiableTimes
@@ -73,8 +73,7 @@ class ScheduleManager {
             //TODO: create another iterative apporach for finding optimal profit
             
             
-           return [ScheduleResultTable(lessons: tableLessons)]
-//            return [ScheduleResultTable(lessons: scheduleLessons)]
+            return [ScheduleResultTable(lessons: tableLessons, profit: optVal)]
         }
     }
 
@@ -151,7 +150,7 @@ class ScheduleManager {
     
     //Function For Represent ScheduleLessons In View
     static func sectionInfoForScheduleResults()->[SectionInfo] {
-         guard let scheudle = ScheduleManager.schedulesFromStudents.first else {return []}
+         guard let scheudle = ScheduleManager.schedulesFromStudentsAndGroups.first else {return []}
          var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         var daysCellsArr:Array<Array<CellInfo>> = Array(repeating: [], count: 7)

@@ -12,14 +12,21 @@ import UIKit
 class ScheduleResultsVC:UIViewController {
     
     //MARK: - Properties
-    private let upperContainer:ScheduleResultsUpperContainerView = {
+    
+    private var schedule:ScheduleResultTable = ScheduleManager.schedulesFromStudentsAndGroups.first ?? ScheduleResultTable(lessons: [], profit: 0)
+    
+    
+    private lazy var upperContainer:ScheduleResultsUpperContainerView = {
         let view = ScheduleResultsUpperContainerView()
+        view.infoView.profit = self.schedule.profit
+        view.infoView.lessons = self.schedule.lessons.count
+        view.infoView.successProcentege = 100
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    
-    private let listView:ListCollectionView = {
+    private lazy var listView:ListCollectionView = {
+        [unowned self] in
         let info:[SectionInfo]? = ScheduleManager.sectionInfoForScheduleResults()
         let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
         list.translatesAutoresizingMaskIntoConstraints = false

@@ -27,6 +27,7 @@ struct ScheduleLesson {
 
 struct ScheduleResultTable {
     let lessons:[ScheduleLesson]
+    let profit:Int
 }
 
 struct AvaiableAt {

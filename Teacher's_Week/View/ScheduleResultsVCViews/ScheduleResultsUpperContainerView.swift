@@ -13,7 +13,7 @@ import UIKit
 class ScheduleResultsUpperContainerView:CustomView {
     
     
-    private let infoView:ScheduleResultsInfoView = {
+    let infoView:ScheduleResultsInfoView = {
         let view = ScheduleResultsInfoView()
         return view
     }()

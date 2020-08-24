@@ -13,39 +13,60 @@ import UIKit
 
 class ScheduleResultsInfoView : CustomView {
     
+    var profit:Int = 0 {
+        willSet {
+            profitInfoView.numberLabel.text = String(newValue) + "$"
+        }
+    }
     
+    var lessons:Int = 0 {
+        willSet {
+            lessonsInfoView.numberLabel.text = String(newValue)
+        }
+    }
     
-    let profitInfoView:GenerateStepOneInfoView = {
+    var successProcentege:Int = 0 {
+        willSet {
+            successInfoView.numberLabel.text = String(newValue) + "%"
+        }
+    }
+    
+    private let profitInfoView:GenerateStepOneInfoView = {
         let v = GenerateStepOneInfoView()
+        v.textLabel.text = "Profit"
+        v.numberLabel.text = "0"
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let leftLine:UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray
-        return view
-    }()
-    
-     let rightLine:UIView = {
-           let view = UIView()
-           view.translatesAutoresizingMaskIntoConstraints = false
-           view.backgroundColor = .lightGray
-           return view
-       }()
-    
-    
-    let lessonsInfoView:GenerateStepOneInfoView = {
-           let v = GenerateStepOneInfoView()
-           return v
-       }()
-    
-    let successInfoView:GenerateStepOneInfoView = {
+    private let lessonsInfoView:GenerateStepOneInfoView = {
         let v = GenerateStepOneInfoView()
+        v.textLabel.text = "Lessons"
+        v.numberLabel.text = "0"
         return v
     }()
     
+    private let successInfoView:GenerateStepOneInfoView = {
+        let v = GenerateStepOneInfoView()
+        v.textLabel.text = "Success"
+        v.numberLabel.text = "0"
+        return v
+    }()
+    
+    
+    private let leftLine:UIView = {
+         let view = UIView()
+         view.translatesAutoresizingMaskIntoConstraints = false
+         view.backgroundColor = .lightGray
+         return view
+     }()
+     
+     private let rightLine:UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .lightGray
+            return view
+        }()
     
     let shadowView:UIView = {
         let view = UIView()
