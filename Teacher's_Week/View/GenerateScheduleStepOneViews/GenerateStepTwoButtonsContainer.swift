@@ -44,24 +44,10 @@ class GenerateStepTwoButtonsContainer:CustomView {
         return view
     }()
     
-    private let previousButton:GenerateSOTitleBTView = {
-        let button = GenerateSOTitleBTView(title: "Previous", backgroundColor: UIColor.MyTheme.darkBlue, tintColor: UIColor.MyTheme.titleBlue)
-        return button
-    }()
 
      let generateButton:GenerateSOTitleBTView = {
         let button = GenerateSOTitleBTView(title: "Generate", backgroundColor: UIColor.MyTheme.darkGreen, tintColor: UIColor.MyTheme.titleGreen)
         return button
-    }()
-
-    private lazy var previousGenerateButtonsSV:UIStackView = {
-        [unowned self] in
-        let stackView = UIStackView(arrangedSubviews: [self.previousButton,self.generateButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillEqually
-        stackView.spacing = 16
-        stackView.axis = .horizontal
-        return stackView
     }()
 
     
@@ -77,19 +63,19 @@ class GenerateStepTwoButtonsContainer:CustomView {
         switchContainer.addSubview(switchController)
         addSubview(switchContainer)
         addSubview(line)
-        addSubview(previousGenerateButtonsSV)
+        addSubview(generateButton)
         
     }
     
     private func setConstraints() {
         
-        addConstraintsWithFormat(format: "H:|[v0]|", views: previousGenerateButtonsSV)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: generateButton)
         addConstraintsWithFormat(format: "H:|[v0]|", views: line)
         addConstraintsWithFormat(format: "H:|[v0]|", views: switchContainer)
-        addConstraintsWithFormat(format: "V:|[v0][v1(0.5)][v2]|", views: switchContainer,line,previousGenerateButtonsSV)
+        addConstraintsWithFormat(format: "V:|[v0][v1(0.5)][v2]|", views: switchContainer,line,generateButton)
         
         let additionalConstraints = [
-            previousGenerateButtonsSV.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
+            generateButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
             
             switchController.trailingAnchor.constraint(equalTo: switchContainer.trailingAnchor,constant: -8),
             switchController.centerYAnchor.constraint(equalTo: switchContainer.centerYAnchor),
