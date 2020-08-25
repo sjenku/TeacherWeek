@@ -121,7 +121,7 @@ class ScheduleManager {
         var p:Array<Int> = Array(repeating: -1, count: lessons.count)
         for (indexLesson,lesson) in lessons.enumerated() {
             for index in stride(from: indexLesson, to: -1, by: -1) {
-                if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo && ScheduleManager.additionalLimits()) {
+                if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
                     //1.check all limits...if ok put index else just dont
                     p[indexLesson] = index
                    break
@@ -131,6 +131,14 @@ class ScheduleManager {
         return p
     }
     
+    
+    private static func subSetThatStartAtIndex(p:[Int],index:Int)->Int { //num of lessons in subset
+        //next thing is to check if it's not passed the limit of lessons for student
+        if index == -1 {
+            return 0
+        }
+        return subSetThatStartAtIndex(p: p, index: p[index]) + 1
+    }
     private static func additionalLimits()->Bool {
         return true
     }

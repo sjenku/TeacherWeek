@@ -48,7 +48,12 @@ struct AvaiableAt {
     }
 }
 
-struct Student {
+protocol ScheduleRequimenets {
+    var scheduleRequements:ScrollVCData? { get set }
+}
+
+struct Student:ScheduleRequimenets {
+    
     
     init(firstName:String = "",lastName:String = "" ,phoneNumber:String = "",eMail:String = "",checked:Bool = false) {
         self.firstName = firstName
@@ -63,14 +68,14 @@ struct Student {
     var eMail:String = ""
     var phoneNumber:String = ""
     var checked:Bool = false
-    var scheduleRequements:ScrollVCData? = nil
+    var scheduleRequements: ScrollVCData? = nil
 }
 
 
-struct Group {
+struct Group:ScheduleRequimenets {
     var groupName:String = ""
     var students:[Student] = []
-    var scheduleRequements:ScrollVCData? = nil
+    var scheduleRequements: ScrollVCData? = nil
     var checked:Bool? = nil
 }
 
