@@ -20,8 +20,7 @@ struct ScrollVCData {
 }
 
 struct ScheduleLesson {
-    let lessonHolder:String
-    let price:Int
+    let lessonHolder:ScheduleRequimenets
     let avaiableAt:AvaiableAt
 }
 
@@ -50,6 +49,7 @@ struct AvaiableAt {
 
 protocol ScheduleRequimenets {
     var scheduleRequements:ScrollVCData? { get set }
+    var name:String { get }
 }
 
 struct Student:ScheduleRequimenets {
@@ -69,7 +69,13 @@ struct Student:ScheduleRequimenets {
     var phoneNumber:String = ""
     var checked:Bool = false
     var scheduleRequements: ScrollVCData? = nil
+    var name: String {
+        get {
+           return firstName + " " + lastName
+        }
+    }
 }
+
 
 
 struct Group:ScheduleRequimenets {
@@ -77,6 +83,11 @@ struct Group:ScheduleRequimenets {
     var students:[Student] = []
     var scheduleRequements: ScrollVCData? = nil
     var checked:Bool? = nil
+    var name: String {
+        get {
+            return groupName
+        }
+    }
 }
 
 

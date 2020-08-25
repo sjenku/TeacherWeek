@@ -40,13 +40,13 @@ class ScheduleManager {
             var scheduleLessons:[ScheduleLesson] = []
             for student in students {
                 if let studentRequients = student.scheduleRequements {
-                    scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student.firstName + " " + student.lastName, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
+                    scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
                 }
             }
             //Collect all groups avaiableTimes
             for group in groups {
                 if let groupRequiments = group.scheduleRequements {
-                    scheduleLessons.append(contentsOf: appendAllLessonsFromAvaibleAtRange(lessonsHolder: group.groupName, price: groupRequiments.paymentPerLesson, avaiblesAt: groupRequiments.avaiablesAt, lessonDurationMin: groupRequiments.durationOfEachLessonMin, intervalMin: 5))
+                    scheduleLessons.append(contentsOf: appendAllLessonsFromAvaibleAtRange(lessonsHolder: group, price: groupRequiments.paymentPerLesson, avaiblesAt: groupRequiments.avaiablesAt, lessonDurationMin: groupRequiments.durationOfEachLessonMin, intervalMin: 5))
                 }
             }
             
@@ -78,7 +78,7 @@ class ScheduleManager {
     }
 
     
-    fileprivate static func appendAllLessonsFromAvaibleAtRange(lessonsHolder:String,price:Int,avaiblesAt:[AvaiableAt],lessonDurationMin:Int,intervalMin:Int)->[ScheduleLesson] {
+    fileprivate static func appendAllLessonsFromAvaibleAtRange(lessonsHolder:ScheduleRequimenets,price:Int,avaiblesAt:[AvaiableAt],lessonDurationMin:Int,intervalMin:Int)->[ScheduleLesson] {
         var allLessons:[ScheduleLesson] = []
         for avaibleAt in avaiblesAt {
             
@@ -86,7 +86,7 @@ class ScheduleManager {
             var lessonEndTime = avaibleAt.from.addingTimeInterval(TimeInterval(lessonDurationMin*60))
             
             while lessonEndTime <= avaibleAt.to {
-                let scheudleLesson:ScheduleLesson = ScheduleLesson(lessonHolder: lessonsHolder, price: price, avaiableAt: AvaiableAt(day: avaibleAt.day, from: lessonStartTime, to: lessonEndTime))
+                let scheudleLesson:ScheduleLesson = ScheduleLesson(lessonHolder: lessonsHolder, avaiableAt: AvaiableAt(day: avaibleAt.day, from: lessonStartTime, to: lessonEndTime))
                 allLessons.append(scheudleLesson)
                 lessonStartTime = lessonStartTime.addingTimeInterval(TimeInterval(intervalMin*60))
                 lessonEndTime = lessonStartTime.addingTimeInterval(TimeInterval(lessonDurationMin*60))
@@ -99,9 +99,8 @@ class ScheduleManager {
     //MARK: Using Algorithm: 'Weighted Interval Scheudle'
     fileprivate static func findSolution(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int) { //O(2^n) bad time complexity
         if j != -1 {
-            if(lessons[j].price + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
+            if(lessons[j].lessonHolder.scheduleRequements!.paymentPerLesson  + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
                 ScheduleManager.findSolutionResult.append(lessons[j])
-                print("Lesson: \(lessons[j])")
                 findSolution(&lessons,&p,p[j])
             } else {
                 findSolution(&lessons,&p,j-1)
@@ -113,7 +112,7 @@ class ScheduleManager {
         if j == -1 {
             return 0
         } else {
-            return max(lessons[j].price + optimal(&lessons,&p,p[j]),optimal(&lessons,&p,j-1))
+            return max(lessons[j].lessonHolder.scheduleRequements!.paymentPerLesson + optimal(&lessons,&p,p[j]),optimal(&lessons,&p,j-1))
         }
     }
     
@@ -182,7 +181,7 @@ class ScheduleManager {
         var cellsInfo:[CellInfo] = []
         var daysCellsArr:Array<Array<CellInfo>> = Array(repeating: [], count: 7)
         scheudle.lessons.forEach { (lesson) in
-            let cellInfo = CellInfo(title: lesson.lessonHolder, subtitle: lesson.avaiableAt.from.toString + " - " + lesson.avaiableAt.to.toString, isAccessory: nil, relatedTo: lesson)
+            let cellInfo = CellInfo(title: lesson.lessonHolder.name, subtitle: lesson.avaiableAt.from.toString + " - " + lesson.avaiableAt.to.toString, isAccessory: nil, relatedTo: lesson)
             cellsInfo.append(cellInfo)
             daysCellsArr[lesson.avaiableAt.day.rawValue].append(cellInfo)
         }
