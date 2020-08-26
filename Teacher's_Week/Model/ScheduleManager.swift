@@ -120,9 +120,13 @@ class ScheduleManager {
         var p:Array<Int> = Array(repeating: -1, count: lessons.count)
         for (indexLesson,lesson) in lessons.enumerated() {
             for index in stride(from: indexLesson, to: -1, by: -1) {
+                //check if times not collapsing between the lessons
                 if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
                     //1.check all limits...if ok put index else just dont
-                    p[indexLesson] = index
+                     p[indexLesson] = index
+                    if subSetThatStartAtIndex(p: p, index: indexLesson) > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed {
+                        p[indexLesson] = -1
+                    }
                    break
                 }
             }
@@ -138,7 +142,7 @@ class ScheduleManager {
         }
         return subSetThatStartAtIndex(p: p, index: p[index]) + 1
     }
-    private static func additionalLimits()->Bool {
+    private static func avaiable()->Bool {
         return true
     }
 //    int setLastNotConflictingTo(const std::vector<Lesson>& lessons,int index,std::vector<int>& p) {
