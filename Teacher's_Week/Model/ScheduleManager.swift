@@ -8,6 +8,15 @@
 
 import Foundation
 
+struct ResultTuple {
+    let value:(Int,Int)
+    init (_ fVal:Int,_ sVal:Int) {
+        value = (fVal,sVal)
+    }
+    static func +(lhs:ResultTuple,rhs:ResultTuple)->ResultTuple {
+        return ResultTuple(lhs.value.0 + rhs.value.0,lhs.value.1 + rhs.value.1)
+    }
+}
 
 class ScheduleManager {
     
@@ -26,6 +35,7 @@ class ScheduleManager {
              NotificationCenter.default.post(name: notificationName , object: nil)
          }
      }
+    
     
     
     //This Propertie is helper propertie and not for use except 'scheduleFromStudents' propertie
@@ -99,16 +109,6 @@ class ScheduleManager {
     
     //MARK: - Helper Methods For Calculate Optimal Schedule
     //MARK: Using Algorithm: 'Weighted Interval Scheudle'
-//    fileprivate static func findSolution(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int) { //O(2^n) bad time complexity
-//        if j != -1 {
-//            if(lessons[j].lessonHolder.scheduleRequements!.paymentPerLesson  + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
-//                ScheduleManager.findSolutionResult.append(lessons[j])
-//                findSolution(&lessons,&p,p[j])
-//            } else {
-//                findSolution(&lessons,&p,j-1)
-//            }
-//        }
-//    }
     
     
     static fileprivate func calculateResultSubsetWithMaxProfit(lessons:[ScheduleLesson],p:[Int]) {
@@ -138,22 +138,6 @@ class ScheduleManager {
         }
     }
     
-//    int MaximumProfitCalculation2(const std::vector<Lesson>& lessons,const std::vector<int>& p) {
-//        int max = 0;
-//        int maxI = 1;
-//        for(int i = 1;i< lessons.size();i++) {
-//    //        max = std::max(max, SumSetOfLessons(i, lessons, p));
-//            int result = SumSetOfLessons(i, lessons, p);
-//            if (result > max) {
-//                maxI = i;
-//                max = result;
-//            }
-//        }
-//        PrintSetFromIndex(maxI, lessons, p);
-//        return max;
-//    }
-    
-   
     
     fileprivate static func optimal(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int)->Int { //O(2^n) bad time complexity
         if j == -1 {
@@ -171,9 +155,10 @@ class ScheduleManager {
                 if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
                     //1.check all limits...if ok put index else just dont
                      p[indexLesson] = index
-                    let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson)
+                    let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson,lessonsStartTime: lessons[indexLesson].avaiableAt.fullDateFrom)
                     print("Holder:\(lessons[indexLesson].lessonHolder.name) , lessons:\(subResult)")
-                    if subResult > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed {
+                    if subResult.value.0 > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed ||
+                        (lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks != 0 && subResult.value.1 > lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks){
                         p[indexLesson] = -1
                     } else {
                        break
@@ -185,19 +170,17 @@ class ScheduleManager {
     }
     
     
-//    private static func amountOfLessonsForStudentInSubSet(lessons:[ScheduleLesson],p:[Int],index:Int)->Int {
-//        if index == -1 {
-//            return 0
-//        }
-//        return amountOfLessonsForStudentInSubSet(lessons: lessons, p: p, index: p[index]) +
-//    }
-    
-    private static func subSetThatStartAtIndex(lessons: [ScheduleLesson],lessonHolderName:String,p:[Int],index:Int)->Int { //num of lessons in subset
+    private static func subSetThatStartAtIndex(lessons: [ScheduleLesson],lessonHolderName:String,p:[Int],index:Int,lessonsStartTime:Date)->ResultTuple { //num of lessons in subset
         //next thing is to check if it's not passed the limit of lessons for student
         if index == -1 {
-            return 0
+            return ResultTuple(0,1)
         }
-        return subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessonHolderName,p: p, index: p[index]) + (lessons[index].lessonHolder.name == lessonHolderName ? 1 : 0)
+        let resultSubSet = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessonHolderName,p: p, index: p[index],lessonsStartTime: lessons[index].avaiableAt.fullDateFrom)
+        let lessonCounter =  lessons[index].lessonHolder.name == lessonHolderName ? 1 : 0
+        let lessonsBreakCounter = lessons[index].avaiableAt.fullDateTo == lessonsStartTime ? 1 : 0
+        let result = resultSubSet + ResultTuple(lessonCounter,lessonsBreakCounter)
+        
+        return result
     }
     
     //MARK: - Retrive Lessons in model that fit view representation

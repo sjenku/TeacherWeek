@@ -14,8 +14,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "optimal(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "optimal(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,9 +46,9 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "subSetThatStartAtIndex(lessons:lessonHolderName:p:index:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "subSetThatStartAtIndex(lessons:lessonHolderName:p:index:lessonsStartTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,8 +62,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "lastNotConflictingLessons(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "lastNotConflictingLessons(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,9 +94,9 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "subSetThatStartAtIndex(lessons:lessonHolderName:p:index:)"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "subSetThatStartAtIndex(lessons:lessonHolderName:p:index:lessonsStartTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -110,8 +110,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "lastNotConflictingLessons(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "lastNotConflictingLessons(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,58 +142,10 @@
             filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "lastNotConflictingLessons(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "10569099-9FF4-4D79-9568-F8B1288FFC01"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "ScheduleManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "135CD6F9-B264-4533-BB51-F929EF8BA6D4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "ScheduleManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5D4724C8-F38B-43D4-9E14-2C9B35AB3610"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "ScheduleManager"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -225,6 +177,22 @@
             startingLineNumber = "131"
             endingLineNumber = "131"
             landmarkName = "profitSumOfSubset(lessons:p:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DE00BCF-487E-49EA-8EEC-B8C2230334E8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Model/ScheduleManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "subSetThatStartAtIndex(lessons:lessonHolderName:p:index:lessonsStartTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
