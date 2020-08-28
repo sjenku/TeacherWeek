@@ -66,7 +66,9 @@ class ScheduleManager {
             print("Optimal Profit=>\(optVal)$")
 
             //4.create function that find-solution with help of 'optimal' function
-            findSolution(&scheduleLessons, &notConflictingIndexes, scheduleLessons.count - 1)
+//            findSolution(&scheduleLessons, &notConflictingIndexes, scheduleLessons.count - 1)
+            calculateResultSubsetWithMaxProfit(lessons: scheduleLessons, p: notConflictingIndexes)
+            
             let tableLessons:[ScheduleLesson] = ScheduleManager.findSolutionResult
             ScheduleManager.findSolutionResult = [] //reset for not adding future lessons
 
@@ -97,16 +99,61 @@ class ScheduleManager {
     
     //MARK: - Helper Methods For Calculate Optimal Schedule
     //MARK: Using Algorithm: 'Weighted Interval Scheudle'
-    fileprivate static func findSolution(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int) { //O(2^n) bad time complexity
-        if j != -1 {
-            if(lessons[j].lessonHolder.scheduleRequements!.paymentPerLesson  + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
-                ScheduleManager.findSolutionResult.append(lessons[j])
-                findSolution(&lessons,&p,p[j])
-            } else {
-                findSolution(&lessons,&p,j-1)
+//    fileprivate static func findSolution(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int) { //O(2^n) bad time complexity
+//        if j != -1 {
+//            if(lessons[j].lessonHolder.scheduleRequements!.paymentPerLesson  + ScheduleManager.optimal(&lessons,&p,p[j])>ScheduleManager.optimal(&lessons,&p,j-1)) {
+//                ScheduleManager.findSolutionResult.append(lessons[j])
+//                findSolution(&lessons,&p,p[j])
+//            } else {
+//                findSolution(&lessons,&p,j-1)
+//            }
+//        }
+//    }
+    
+    
+    static fileprivate func calculateResultSubsetWithMaxProfit(lessons:[ScheduleLesson],p:[Int]) {
+        var maxProfit:Int = 0
+        var maxIndex:Int = 0
+        for (index,_) in lessons.enumerated() {
+            let newMaxProfit = max(maxProfit, profitSumOfSubset(lessons: lessons, p: p, index: index))
+            if newMaxProfit > maxProfit {
+                maxProfit = newMaxProfit
+                maxIndex = index
             }
         }
+        appendSubSetStartAtIndex(fromLessons: lessons, p: p, index: maxIndex)
     }
+    
+    static fileprivate func profitSumOfSubset(lessons:[ScheduleLesson],p:[Int],index:Int)->Int {
+          if index == -1 {
+              return 0
+          }
+          return lessons[index].lessonHolder.scheduleRequements!.paymentPerLesson + profitSumOfSubset(lessons: lessons, p: p, index: p[index])
+      }
+    
+    static fileprivate func appendSubSetStartAtIndex(fromLessons:[ScheduleLesson],p:[Int],index:Int) {
+        if index != -1 {
+            ScheduleManager.findSolutionResult.append(fromLessons[index])
+            appendSubSetStartAtIndex(fromLessons: fromLessons,p: p, index:p[index])
+        }
+    }
+    
+//    int MaximumProfitCalculation2(const std::vector<Lesson>& lessons,const std::vector<int>& p) {
+//        int max = 0;
+//        int maxI = 1;
+//        for(int i = 1;i< lessons.size();i++) {
+//    //        max = std::max(max, SumSetOfLessons(i, lessons, p));
+//            int result = SumSetOfLessons(i, lessons, p);
+//            if (result > max) {
+//                maxI = i;
+//                max = result;
+//            }
+//        }
+//        PrintSetFromIndex(maxI, lessons, p);
+//        return max;
+//    }
+    
+   
     
     fileprivate static func optimal(_ lessons:inout [ScheduleLesson],_ p:inout [Int],_ j:Int)->Int { //O(2^n) bad time complexity
         if j == -1 {
@@ -124,10 +171,13 @@ class ScheduleManager {
                 if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
                     //1.check all limits...if ok put index else just dont
                      p[indexLesson] = index
-                    if subSetThatStartAtIndex(p: p, index: indexLesson) > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed {
+                    let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson)
+                    print("Holder:\(lessons[indexLesson].lessonHolder.name) , lessons:\(subResult)")
+                    if subResult > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed {
                         p[indexLesson] = -1
+                    } else {
+                       break
                     }
-                   break
                 }
             }
         }
@@ -135,30 +185,20 @@ class ScheduleManager {
     }
     
     
-    private static func subSetThatStartAtIndex(p:[Int],index:Int)->Int { //num of lessons in subset
+//    private static func amountOfLessonsForStudentInSubSet(lessons:[ScheduleLesson],p:[Int],index:Int)->Int {
+//        if index == -1 {
+//            return 0
+//        }
+//        return amountOfLessonsForStudentInSubSet(lessons: lessons, p: p, index: p[index]) +
+//    }
+    
+    private static func subSetThatStartAtIndex(lessons: [ScheduleLesson],lessonHolderName:String,p:[Int],index:Int)->Int { //num of lessons in subset
         //next thing is to check if it's not passed the limit of lessons for student
         if index == -1 {
             return 0
         }
-        return subSetThatStartAtIndex(p: p, index: p[index]) + 1
+        return subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessonHolderName,p: p, index: p[index]) + (lessons[index].lessonHolder.name == lessonHolderName ? 1 : 0)
     }
-    private static func avaiable()->Bool {
-        return true
-    }
-//    int setLastNotConflictingTo(const std::vector<Lesson>& lessons,int index,std::vector<int>& p) {
-//        for(int j = index - 1;j>=0;j--) {
-//            if (lessons[index].startTime >= lessons[j].endTime) {
-//                p.push_back(j);
-//                if (AllowedLimits(index, lessons, p)) {
-//                    return j;
-//                } else {
-//                    p.erase(p.end() - 1);
-//                }
-//            }
-//        }
-//        p.push_back(0);
-//        return 0;
-//    }
     
     //MARK: - Retrive Lessons in model that fit view representation
     static func sectionInfoFor(_ value:StudentOrGroup)->[SectionInfo] {

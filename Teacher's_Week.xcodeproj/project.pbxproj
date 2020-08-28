@@ -61,7 +61,6 @@
 		BE56A26324E6D15E0022613B /* ScheduleResultsUpperContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A26224E6D15E0022613B /* ScheduleResultsUpperContainerView.swift */; };
 		BE6A238724DF0CFC001CE76B /* ListOfBags.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238624DF0CFC001CE76B /* ListOfBags.swift */; };
 		BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238824E03828001CE76B /* ExtensionUIViewController.swift */; };
-		BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A238B24E10374001CE76B /* SwipeCellKit */; };
 		BE6A238E24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */; };
 		BE6A239024E2CF8C001CE76B /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A238F24E2CF8C001CE76B /* ScheduleManager.swift */; };
 		BE6A239224E2D405001CE76B /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A239124E2D405001CE76B /* NotificationKeys.swift */; };
@@ -72,9 +71,10 @@
 		BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1124B0B0E10028C69A /* StudentInfoVC.swift */; };
 		BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1424B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift */; };
 		BE956C1724B0ECE60028C69A /* GroupInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE956C1624B0ECE60028C69A /* GroupInfoVC.swift */; };
-		BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */; };
 		BEC024E824DD811900FEF23A /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC024E724DD811900FEF23A /* ExtensionString.swift */; };
 		BEDF8ADA24CF6A7A004CF0E4 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDF8AD924CF6A7A004CF0E4 /* CustomSearchController.swift */; };
+		BEE5744B24F6B8EB00BE5509 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEE5744A24F6B8EB00BE5509 /* SwipeCellKit */; };
+		BEE5744E24F6B98900BE5509 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEE5744D24F6B98900BE5509 /* IQKeyboardManagerSwift */; };
 		BEF8448424C05660001FABCC /* LessonDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448324C05660001FABCC /* LessonDurationView.swift */; };
 		BEF8448624C057B2001FABCC /* ScrollVCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448524C057B2001FABCC /* ScrollVCTitleLabel.swift */; };
 		BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8448724C0C8C2001FABCC /* TitleAndSwitchView.swift */; };
@@ -163,8 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6A238C24E10374001CE76B /* SwipeCellKit in Frameworks */,
-				BEB323C524B06A1E00DD288B /* IQKeyboardManagerSwift in Frameworks */,
+				BEE5744B24F6B8EB00BE5509 /* SwipeCellKit in Frameworks */,
+				BEE5744E24F6B98900BE5509 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,8 +427,8 @@
 			);
 			name = "Teacher's_Week";
 			packageProductDependencies = (
-				BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */,
-				BE6A238B24E10374001CE76B /* SwipeCellKit */,
+				BEE5744A24F6B8EB00BE5509 /* SwipeCellKit */,
+				BEE5744D24F6B98900BE5509 /* IQKeyboardManagerSwift */,
 			);
 			productName = "Teacher's_Week";
 			productReference = BE1251E324969745006F264B /* Teacher's_Week.app */;
@@ -459,8 +459,8 @@
 			);
 			mainGroup = BE1251DA24969745006F264B;
 			packageReferences = (
-				BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				BEE5744924F6B8EB00BE5509 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				BEE5744C24F6B98900BE5509 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = BE1251E424969745006F264B /* Products */;
 			projectDirPath = "";
@@ -750,7 +750,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+		BEE5744924F6B8EB00BE5509 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
 			requirement = {
@@ -758,25 +758,25 @@
 				minimumVersion = 2.7.1;
 			};
 		};
-		BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		BEE5744C24F6B98900BE5509 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.5.5;
+				minimumVersion = 6.5.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE6A238B24E10374001CE76B /* SwipeCellKit */ = {
+		BEE5744A24F6B8EB00BE5509 /* SwipeCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE6A238A24E10373001CE76B /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			package = BEE5744924F6B8EB00BE5509 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
 		};
-		BEB323C424B06A1E00DD288B /* IQKeyboardManagerSwift */ = {
+		BEE5744D24F6B98900BE5509 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BEB323C324B06A1E00DD288B /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = BEE5744C24F6B98900BE5509 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
