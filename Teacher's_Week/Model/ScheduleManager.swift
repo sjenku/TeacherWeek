@@ -41,32 +41,36 @@ class ScheduleManager {
     //This Propertie is helper propertie and not for use except 'scheduleFromStudents' propertie
     fileprivate static var findSolutionResult:[ScheduleLesson] = []
     
+    static fileprivate func retriveAllPossiableLessonsTimesInSortedWay()->[ScheduleLesson] {
+        var scheduleLessons:[ScheduleLesson] = []
+              for student in students {
+                  if let studentRequients = student.scheduleRequements {
+                      scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
+                  }
+              }
+              //Collect all groups avaiableTimes
+              for group in groups {
+                  if let groupRequiments = group.scheduleRequements {
+                      scheduleLessons.append(contentsOf: appendAllLessonsFromAvaibleAtRange(lessonsHolder: group, price: groupRequiments.paymentPerLesson, avaiblesAt: groupRequiments.avaiablesAt, lessonDurationMin: groupRequiments.durationOfEachLessonMin, intervalMin: 5))
+                  }
+              }
+              
+              //1.sort all lessons by finish time
+              scheduleLessons.sort { (firstLesson, secondLesson) -> Bool in
+                  let dayTimeInterval = 60*60*24
+                  let firstLessonFullTimeTo = firstLesson.avaiableAt.to.addingTimeInterval(TimeInterval(dayTimeInterval * (firstLesson.avaiableAt.day.rawValue + 1)))
+                  let secondLessonFullTimeTo = secondLesson.avaiableAt.to.addingTimeInterval(TimeInterval(dayTimeInterval * (secondLesson.avaiableAt.day.rawValue + 1)))
+                  return firstLessonFullTimeTo < secondLessonFullTimeTo
+              }
+        return scheduleLessons
+    }
     
     //Main Calculation For Maximum Profit Schedule From Student Lessons
-    static var schedulesFromStudentsAndGroups:[ScheduleResultTable] {
+    static var maxProfitSchedules:[ScheduleResultTable] {
         get {
             
-            //Collect all students avaiableTimes
-            var scheduleLessons:[ScheduleLesson] = []
-            for student in students {
-                if let studentRequients = student.scheduleRequements {
-                    scheduleLessons.append(contentsOf:appendAllLessonsFromAvaibleAtRange(lessonsHolder: student, price: studentRequients.paymentPerLesson, avaiblesAt: studentRequients.avaiablesAt, lessonDurationMin: studentRequients.durationOfEachLessonMin,intervalMin: 5))
-                }
-            }
-            //Collect all groups avaiableTimes
-            for group in groups {
-                if let groupRequiments = group.scheduleRequements {
-                    scheduleLessons.append(contentsOf: appendAllLessonsFromAvaibleAtRange(lessonsHolder: group, price: groupRequiments.paymentPerLesson, avaiblesAt: groupRequiments.avaiablesAt, lessonDurationMin: groupRequiments.durationOfEachLessonMin, intervalMin: 5))
-                }
-            }
-            
             //1.sort all lessons by finish time
-            scheduleLessons.sort { (firstLesson, secondLesson) -> Bool in
-                let dayTimeInterval = 60*60*24
-                let firstLessonFullTimeTo = firstLesson.avaiableAt.to.addingTimeInterval(TimeInterval(dayTimeInterval * (firstLesson.avaiableAt.day.rawValue + 1)))
-                let secondLessonFullTimeTo = secondLesson.avaiableAt.to.addingTimeInterval(TimeInterval(dayTimeInterval * (secondLesson.avaiableAt.day.rawValue + 1)))
-                return firstLessonFullTimeTo < secondLessonFullTimeTo
-            }
+            var scheduleLessons:[ScheduleLesson] = retriveAllPossiableLessonsTimesInSortedWay()
             //2.create array holding index of lesson that not overrlaping with current lesson
             var notConflictingIndexes:[Int] = lastNotConflictingLessons(scheduleLessons)
             print(notConflictingIndexes)
@@ -76,15 +80,12 @@ class ScheduleManager {
             print("Optimal Profit=>\(optVal)$")
 
             //4.create function that find-solution with help of 'optimal' function
-//            findSolution(&scheduleLessons, &notConflictingIndexes, scheduleLessons.count - 1)
             calculateResultSubsetWithMaxProfit(lessons: scheduleLessons, p: notConflictingIndexes)
             
             let tableLessons:[ScheduleLesson] = ScheduleManager.findSolutionResult
             ScheduleManager.findSolutionResult = [] //reset for not adding future lessons
 
             //TODO: create another iterative apporach for finding optimal profit
-            
-            
             return [ScheduleResultTable(lessons: tableLessons, profit: optVal)]
         }
     }
@@ -132,7 +133,7 @@ class ScheduleManager {
       }
     
     static fileprivate func appendSubSetStartAtIndex(fromLessons:[ScheduleLesson],p:[Int],index:Int) {
-        if index != -1 {
+        if index != -1 && fromLessons.count != 0 {
             ScheduleManager.findSolutionResult.append(fromLessons[index])
             appendSubSetStartAtIndex(fromLessons: fromLessons,p: p, index:p[index])
         }
@@ -203,7 +204,7 @@ class ScheduleManager {
     
     //Function For Represent ScheduleLessons In View
     static func sectionInfoForScheduleResults()->[SectionInfo] {
-         guard let scheudle = ScheduleManager.schedulesFromStudentsAndGroups.first else {return []}
+         guard let scheudle = ScheduleManager.maxProfitSchedules.first else {return []}
          var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         var daysCellsArr:Array<Array<CellInfo>> = Array(repeating: [], count: 7)

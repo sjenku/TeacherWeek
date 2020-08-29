@@ -8,13 +8,28 @@
 
 import UIKit
 
+enum ScheduleAlgo {
+    case maxProfit,maxLessons,bruteForce
+}
 
 class ScheduleResultsVC:UIViewController {
     
     //MARK: - Properties
     
-    private var schedule:ScheduleResultTable = ScheduleManager.schedulesFromStudentsAndGroups.first ?? ScheduleResultTable(lessons: [], profit: 0)
+    var scheduleAlgo:ScheduleAlgo = .maxProfit //.maxProfit is Default Case
     
+    private lazy var schedule:ScheduleResultTable = {
+        var sched:ScheduleResultTable?
+        switch (self.scheduleAlgo) {
+            case .bruteForce:
+                print("BruteForce")
+            case .maxLessons:
+                print("MaxLessons")
+            case .maxProfit:
+                sched = ScheduleManager.maxProfitSchedules.first
+        }
+        return sched ?? ScheduleResultTable(lessons: [], profit: 0)
+    }()
     
     private lazy var upperContainer:ScheduleResultsUpperContainerView = {
         let view = ScheduleResultsUpperContainerView()
