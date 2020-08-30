@@ -40,22 +40,24 @@ class ScheduleResultsUpperContainerView:CustomView {
         return sv
     }()
     
-    private let tmpButton:UIButton = {
-        let bt = UIButton()
-        bt.backgroundColor = UIColor.MyTheme.darkBG
-        return bt
-    }()
+//    private let tmpButton:UIButton = {
+//        let bt = UIButton()
+//        bt.backgroundColor = UIColor.MyTheme.darkBG
+//        return bt
+//    }()
     
-    private let backArrowBT:UIButton = {
+     let backArrowBT:UIButton = {
         let bt = UIButton()
-        bt.setImage(UIImage(named: "openArrowLeft"), for: .normal)
+        bt.setImage(UIImage(named: "openArrowLeft")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        bt.tintColor = .purple
         bt.translatesAutoresizingMaskIntoConstraints = false
         return bt
     }()
     
-    private let forwardArrowBT:UIButton = {
+     let forwardArrowBT:UIButton = {
         let bt = UIButton()
-        bt.setImage(UIImage(named: "openArrowRight"), for: .normal)
+        bt.setImage(UIImage(named: "openArrowRight")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        bt.tintColor = .green
         bt.translatesAutoresizingMaskIntoConstraints = false
         return bt
     }()

@@ -65,6 +65,20 @@ class ScheduleManager {
         return scheduleLessons
     }
     
+    static var allCombinationSchedules:[ScheduleResultTable] {
+        get {
+             //1.sort all lessons by finish time
+            let scheduleLessons:[ScheduleLesson] = retriveAllPossiableLessonsTimesInSortedWay()
+             //2.create array holding index of lesson that not overrlaping with current lesson
+            let notConflictingIndexs:[Int] = lastNotConflictingLessons(scheduleLessons)
+             //3.for each subset create schedule
+            let schedules = retriveAllSchedulesFromAllSets(lessons: scheduleLessons, pairIndexs: notConflictingIndexs)
+             //4.sort schedules by success
+            return schedules
+        }
+    }
+    
+    
     //Main Calculation For Maximum Profit Schedule From Student Lessons
     static var maxProfitSchedules:[ScheduleResultTable] {
         get {
@@ -73,11 +87,9 @@ class ScheduleManager {
             var scheduleLessons:[ScheduleLesson] = retriveAllPossiableLessonsTimesInSortedWay()
             //2.create array holding index of lesson that not overrlaping with current lesson
             var notConflictingIndexes:[Int] = lastNotConflictingLessons(scheduleLessons)
-            print(notConflictingIndexes)
 
             //3.create recursive function 'optimal' that calculate optimal profit from lessons
             let optVal = ScheduleManager.optimal(&scheduleLessons,&notConflictingIndexes,scheduleLessons.count - 1)
-            print("Optimal Profit=>\(optVal)$")
 
             //4.create function that find-solution with help of 'optimal' function
             calculateResultSubsetWithMaxProfit(lessons: scheduleLessons, p: notConflictingIndexes)
@@ -90,6 +102,28 @@ class ScheduleManager {
         }
     }
 
+    
+    
+    //MARK: - Helper Methods For Calculating Scheudles
+    fileprivate static func retriveAllSchedulesFromAllSets(lessons:[ScheduleLesson],pairIndexs:[Int])->[ScheduleResultTable] {
+        var schedules:[ScheduleResultTable] = []
+        for (index,_) in lessons.enumerated() {
+            let scheduleLessonsSet = lessonsSet(lessons: lessons, pairIndex: pairIndexs, index: index)
+            let profit = profitSumOfSubset(lessons: lessons, p: pairIndexs, index: index)
+            let schedule = ScheduleResultTable(lessons: scheduleLessonsSet, profit: profit)
+            schedules.append(schedule)
+        }
+        return schedules
+    }
+    
+    fileprivate static func lessonsSet(lessons:[ScheduleLesson],pairIndex:[Int],index:Int)->[ScheduleLesson] {
+        var scheudleLessons:[ScheduleLesson] = []
+        if index != -1 {
+            scheudleLessons.append(ScheduleLesson(lessonHolder: lessons[index].lessonHolder, avaiableAt: lessons[index].avaiableAt))
+            scheudleLessons.append(contentsOf: lessonsSet(lessons: lessons, pairIndex: pairIndex, index: pairIndex[index]))
+        }
+        return scheudleLessons
+    }
     
     fileprivate static func appendAllLessonsFromAvaibleAtRange(lessonsHolder:ScheduleRequimenets,price:Int,avaiblesAt:[AvaiableAt],lessonDurationMin:Int,intervalMin:Int)->[ScheduleLesson] {
         var allLessons:[ScheduleLesson] = []
@@ -157,7 +191,7 @@ class ScheduleManager {
                     //1.check all limits...if ok put index else just dont
                      p[indexLesson] = index
                     let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson,lessonsStartTime: lessons[indexLesson].avaiableAt.fullDateFrom)
-                    print("Holder:\(lessons[indexLesson].lessonHolder.name) , lessons:\(subResult)")
+                    //if more then numberOfLessons needed or more then lessons without break then disable this subset
                     if subResult.value.0 > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed ||
                         (lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks != 0 && subResult.value.1 > lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks){
                         p[indexLesson] = -1
@@ -203,12 +237,12 @@ class ScheduleManager {
     }
     
     //Function For Represent ScheduleLessons In View
-    static func sectionInfoForScheduleResults()->[SectionInfo] {
-         guard let scheudle = ScheduleManager.maxProfitSchedules.first else {return []}
+    static func sectionInfoForScheduleResults(schedule:ScheduleResultTable)->[SectionInfo] {
+//         guard let scheudle = ScheduleManager.maxProfitSchedules.first else {return []}
          var sectionsInfo:[SectionInfo] = []
         var cellsInfo:[CellInfo] = []
         var daysCellsArr:Array<Array<CellInfo>> = Array(repeating: [], count: 7)
-        scheudle.lessons.forEach { (lesson) in
+        schedule.lessons.forEach { (lesson) in
             let cellInfo = CellInfo(title: lesson.lessonHolder.name, subtitle: lesson.avaiableAt.from.toString + " - " + lesson.avaiableAt.to.toString, isAccessory: nil, relatedTo: lesson)
             cellsInfo.append(cellInfo)
             daysCellsArr[lesson.avaiableAt.day.rawValue].append(cellInfo)

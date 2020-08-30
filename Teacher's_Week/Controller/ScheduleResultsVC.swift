@@ -9,45 +9,103 @@
 import UIKit
 
 enum ScheduleAlgo {
-    case maxProfit,maxLessons,bruteForce
+    case maxProfit,bruteForce
 }
 
 class ScheduleResultsVC:UIViewController {
     
     //MARK: - Properties
     
-    var scheduleAlgo:ScheduleAlgo = .maxProfit //.maxProfit is Default Case
+    var scheduleAlgo:ScheduleAlgo = .bruteForce //.maxProfit is Default Case
     
-    private lazy var schedule:ScheduleResultTable = {
-        var sched:ScheduleResultTable?
+    private lazy var schedules:[ScheduleResultTable] = {
+        var sched:[ScheduleResultTable] = []
         switch (self.scheduleAlgo) {
-            case .bruteForce:
-                print("BruteForce")
-            case .maxLessons:
-                print("MaxLessons")
-            case .maxProfit:
-                sched = ScheduleManager.maxProfitSchedules.first
-        }
-        return sched ?? ScheduleResultTable(lessons: [], profit: 0)
+                case .bruteForce:
+                    print("BruteForce")
+                    sched.append(contentsOf:ScheduleManager.allCombinationSchedules)
+                case .maxProfit:
+                    sched.append(contentsOf: ScheduleManager.maxProfitSchedules)
+            }
+        maxPage = sched.count - 1
+        return sched
     }()
+    
+    private var currentPage:Int = 0 {
+        willSet {
+            setArrowButtons(page: newValue)
+        }
+        didSet {
+            listView.updateInfo(ScheduleManager.sectionInfoForScheduleResults(schedule: schedule))
+            upperContainer.infoView.profit = schedule.profit
+            upperContainer.infoView.lessons = schedule.lessons.count
+            upperContainer.infoView.successProcentege = 100
+        }
+    }
+    private var maxPage:Int = 0
+    
+    private var schedule:ScheduleResultTable {
+        get {
+            guard schedules.count != 0 else {return ScheduleResultTable(lessons: [], profit: 0)}
+            print("Schedule Page:\(currentPage)")
+            return schedules[currentPage]
+        }
+    }
     
     private lazy var upperContainer:ScheduleResultsUpperContainerView = {
         let view = ScheduleResultsUpperContainerView()
         view.infoView.profit = self.schedule.profit
         view.infoView.lessons = self.schedule.lessons.count
         view.infoView.successProcentege = 100
+        view.forwardArrowBT.addTarget(self, action: #selector(handleForwardBT), for: .touchUpInside)
+        view.backArrowBT.addTarget(self, action: #selector(handleBackwardBT), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var listView:ListCollectionView = {
         [unowned self] in
-        let info:[SectionInfo]? = ScheduleManager.sectionInfoForScheduleResults()
+        let info:[SectionInfo]? = ScheduleManager.sectionInfoForScheduleResults(schedule: self.schedule)
         let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
         list.translatesAutoresizingMaskIntoConstraints = false
         return list
     }()
     
+    
+    //MARK: - Private Functions
+    private func setArrowButtons(page:Int) {
+        if page == 0 {
+            enableBT(bt: upperContainer.backArrowBT, enable: false)
+        }
+        if page == maxPage {
+            enableBT(bt: upperContainer.forwardArrowBT, enable: false)
+        }
+        if page > 0 {
+            enableBT(bt: upperContainer.backArrowBT, enable: true)
+        }
+        if page < maxPage {
+            enableBT(bt: upperContainer.forwardArrowBT, enable: true)
+        }
+    }
+    
+    private func enableBT(bt:UIButton,enable:Bool) {
+        if enable {
+            bt.tintColor = UIColor.MyTheme.lightBlue
+            bt.isEnabled = true
+        } else {
+            bt.tintColor = .gray
+            bt.isEnabled = false
+        }
+    }
+    
+    //MARK: - OBJC
+    @objc private func handleForwardBT(button:UIButton) {
+        currentPage += 1
+    }
+    
+    @objc private func handleBackwardBT(button:UIButton) {
+        currentPage -= 1
+    }
 
     //MARK: - Overrides
     override func viewDidLoad() {
@@ -55,6 +113,13 @@ class ScheduleResultsVC:UIViewController {
         view.backgroundColor = UIColor.MyTheme.darkBG
         setSubviews()
         setConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("MaxPage:\(maxPage)")
+        setArrowButtons(page: currentPage)
+        
     }
     
     private func setSubviews() {
