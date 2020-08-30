@@ -24,6 +24,7 @@ class ScheduleResultsVC:UIViewController {
                 case .bruteForce:
                     print("BruteForce")
                     sched.append(contentsOf:ScheduleManager.allCombinationSchedules)
+                    sched.sort {$0.lessons.count > $1.lessons.count}
                 case .maxProfit:
                     sched.append(contentsOf: ScheduleManager.maxProfitSchedules)
             }
@@ -47,7 +48,6 @@ class ScheduleResultsVC:UIViewController {
     private var schedule:ScheduleResultTable {
         get {
             guard schedules.count != 0 else {return ScheduleResultTable(lessons: [], profit: 0)}
-            print("Schedule Page:\(currentPage)")
             return schedules[currentPage]
         }
     }
