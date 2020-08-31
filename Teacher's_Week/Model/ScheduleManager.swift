@@ -190,7 +190,7 @@ class ScheduleManager {
                 if(lesson.avaiableAt.fullDateFrom >= lessons[index].avaiableAt.fullDateTo) {
                     //1.check all limits...if ok put index else just dont
                      p[indexLesson] = index
-                    let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson,lessonsStartTime: lessons[indexLesson].avaiableAt.fullDateFrom)
+                    let subResult = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessons[indexLesson].lessonHolder.name,p: p, index: indexLesson,prevLessonAvaiableAtToCompare: lessons[indexLesson].avaiableAt)
                     //if more then numberOfLessons needed or more then lessons without break then disable this subset
                     if subResult.value.0 > lesson.lessonHolder.scheduleRequements!.numberOfLessonsNeed ||
                         (lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks != 0 && subResult.value.1 > lesson.lessonHolder.scheduleRequements!.maxNumOfLessonsWithoutBreaks){
@@ -205,14 +205,23 @@ class ScheduleManager {
     }
     
     
-    private static func subSetThatStartAtIndex(lessons: [ScheduleLesson],lessonHolderName:String,p:[Int],index:Int,lessonsStartTime:Date)->ResultTuple { //num of lessons in subset
+    private static func subSetThatStartAtIndex(lessons: [ScheduleLesson],lessonHolderName:String,p:[Int],index:Int,prevLessonAvaiableAtToCompare:AvaiableAt)->ResultTuple { //num of lessons in subset
         //next thing is to check if it's not passed the limit of lessons for student
         if index == -1 {
-            return ResultTuple(0,1)
+            return ResultTuple(0,0)
         }
-        let resultSubSet = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessonHolderName,p: p, index: p[index],lessonsStartTime: lessons[index].avaiableAt.fullDateFrom)
-        let lessonCounter =  lessons[index].lessonHolder.name == lessonHolderName ? 1 : 0
-        let lessonsBreakCounter = lessons[index].avaiableAt.fullDateTo == lessonsStartTime ? 1 : 0
+         let lessonCounter =  lessons[index].lessonHolder.name == lessonHolderName ? 1 : 0
+        let nextStartTime = lessonCounter == 1 ? lessons[index].avaiableAt : prevLessonAvaiableAtToCompare
+        let resultSubSet = subSetThatStartAtIndex(lessons:lessons,lessonHolderName: lessonHolderName,p: p, index: p[index],prevLessonAvaiableAtToCompare: nextStartTime)
+        
+        var lessonsBreakCounter = 0
+        if lessonCounter == 1 { //if same lesson holder check if lesson without a break from prev lesson
+           let timeBreakSec = (lessons[index].lessonHolder.scheduleRequements?.timeBreak ?? 0) * 60 //TimeBreak Min Converted to Sec
+            //if same day check break
+            if lessons[index].avaiableAt.day == prevLessonAvaiableAtToCompare.day {
+                lessonsBreakCounter = lessons[index].avaiableAt.fullDateTo.addingTimeInterval(TimeInterval(timeBreakSec)) > prevLessonAvaiableAtToCompare.fullDateFrom ? 1 : 0
+            }
+        }
         let result = resultSubSet + ResultTuple(lessonCounter,lessonsBreakCounter)
         
         return result
