@@ -17,7 +17,13 @@ class AppTabBarController: UITabBarController {
         return navVC
     }()
     
-    private let chooseFromListController = UINavigationController(rootViewController: ChoosableListController(),isSetConfigurations: true)
+    private let chooseFromListController:UINavigationController = {
+        let vc = ListCollectionViewController(info: DataManager.getScheudlesInFormatSectionInfo(), cellStyle: .detailSubtitle, navStyle: .large, navigationProperties: nil)
+        vc.searchTo = .schedules
+        vc.title = "Saved Schedules"
+        let nav = UINavigationController(rootViewController: vc, isSetConfigurations:true)
+        return nav
+    }()
     
     private let studentListVC:UINavigationController = {
        let vc = StudentOrGroupListCollectionVC(kind: .student)

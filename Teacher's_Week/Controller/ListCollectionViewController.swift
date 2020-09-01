@@ -78,7 +78,7 @@ class ListCollectionViewController:UIViewController {
         super.viewWillAppear(animated)
         
         IQKeyboardManager.shared.enable = false
-        info = searchTo == .students ? DataManager.getStudentsInFormatSectionsInfo() : DataManager.getGroupsInFormatSectionInfo()
+        setInfoWhenAppear()
         navigationController?.navigationBar.isHidden = false
         guard let unwrappedNavProperties = navProperties else {return}
         navigationController?.setupNavigationWithStyle(navProperties: unwrappedNavProperties, forController: self)
@@ -92,6 +92,21 @@ class ListCollectionViewController:UIViewController {
        }
     
     //MARK: - Private Methods
+    
+    private func setInfoWhenAppear() {
+        switch searchTo {
+        case .students:
+            info = DataManager.getStudentsInFormatSectionsInfo()
+        case .groups:
+            info = DataManager.getGroupsInFormatSectionInfo()
+        case .schedules:
+            info = DataManager.getScheudlesInFormatSectionInfo()
+        case .contacts:
+            info = ContactsManager.shared.getSectionsInfo()
+        case .none:
+            print("Nothing")
+        }
+    }
     
     private func setNavigationItem() {
         guard let style = self.navStyle else {return}
@@ -147,6 +162,9 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
                 let chosenGroup:Group = DataManager.groups[indexPath.row]
                 vc.group = chosenGroup
                 navigationController?.pushViewController(vc, animated: true)
+           
+            } else if searchTo == .schedules {
+                print("Tapped Scheudle Cell")
             }
             
         } else {  //else handle cases of cellStyle that not detail

@@ -106,11 +106,23 @@ struct DataManager {
     static var schedules:[ScheduleResultTable] = []
 }
 
+//MARK: - SchedulesManagment
+extension DataManager {
+    
+    static func getScheudlesInFormatSectionInfo() -> [SectionInfo] {
+        let cellsInfo:[CellInfo] = schedules.map { (scheduleTable) -> CellInfo in
+            return CellInfo(title: scheduleTable.name, subtitle: "Blabla", isAccessory: false, relatedTo: scheduleTable)
+        }
+        let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
+        return [sectionInfo]
+    }
+    
+}
+
 //MARK: - GroupManagment
 extension DataManager {
     
     static func getGroupsInFormatSectionInfo() -> [SectionInfo] {
-        //TODO:Complete and then in HomeVC set info to ListCollectionVC
         let cellsInfo:[CellInfo] = groups.map { (group) -> CellInfo in
             let numOfStudentsInGroup = group.students.count
             let subTitle = numOfStudentsInGroup > 1 ? "\(numOfStudentsInGroup) Students" : numOfStudentsInGroup == 0 ? "No Students" : "1 Student"
