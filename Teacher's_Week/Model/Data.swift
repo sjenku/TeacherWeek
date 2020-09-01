@@ -28,6 +28,7 @@ struct ScheduleLesson {
 struct ScheduleResultTable {
     let lessons:[ScheduleLesson]
     let profit:Int
+    var name:String = ""
 }
 
 struct AvaiableAt {
@@ -102,6 +103,7 @@ struct DataManager {
         Group(groupName: "Eagles", students: DataManager.students)
     ]
     
+    static var schedules:[ScheduleResultTable] = []
 }
 
 //MARK: - GroupManagment

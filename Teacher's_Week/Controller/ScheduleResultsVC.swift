@@ -59,6 +59,8 @@ class ScheduleResultsVC:UIViewController {
         view.infoView.successProcentege = 100
         view.forwardArrowBT.addTarget(self, action: #selector(handleForwardBT), for: .touchUpInside)
         view.backArrowBT.addTarget(self, action: #selector(handleBackwardBT), for: .touchUpInside)
+        view.greenButton.addTarget(self, action: #selector(handleGreenBT), for: .touchUpInside)
+        view.redButton.addTarget(self, action: #selector(handleRedBT), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -107,6 +109,23 @@ class ScheduleResultsVC:UIViewController {
         currentPage -= 1
     }
 
+    @objc private func handleGreenBT() {
+        DataManager.schedules.append(schedule)
+    }
+    
+    @objc private func handleRedBT() {
+        if currentPage == 0 && maxPage == 0{
+            navigationController?.popViewController(animated: true)
+        } else if currentPage == 0 {
+            schedules.remove(at: currentPage)
+            maxPage -= 1
+            currentPage = 0
+        } else {
+            schedules.remove(at: currentPage)
+            maxPage -= 1
+            currentPage -= 1
+        }
+    }
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +136,6 @@ class ScheduleResultsVC:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("MaxPage:\(maxPage)")
         setArrowButtons(page: currentPage)
         
     }

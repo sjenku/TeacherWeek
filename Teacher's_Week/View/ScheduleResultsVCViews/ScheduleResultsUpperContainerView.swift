@@ -19,14 +19,14 @@ class ScheduleResultsUpperContainerView:CustomView {
         return view
     }()
     
-    private let greenButton:UIButton = {
+    let greenButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "acceptButton"), for: .normal)
         return button
     }()
     
     
-    private let redButton:UIButton = {
+    let redButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "x.button"), for: .normal)
         return button
