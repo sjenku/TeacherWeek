@@ -15,6 +15,7 @@ class ScheduleResultsUpperContainerView:CustomView {
     
     let infoView:ScheduleResultsInfoView = {
         let view = ScheduleResultsInfoView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -34,17 +35,12 @@ class ScheduleResultsUpperContainerView:CustomView {
     private lazy var buttonsStackContrainer:UIStackView = {
         [unowned self] in
         let sv = UIStackView(arrangedSubviews: [self.greenButton,self.redButton])
+        sv.translatesAutoresizingMaskIntoConstraints = false
         sv.distribution = .fillEqually
         sv.axis = .horizontal
-        sv.spacing = -50
+        sv.spacing = 0
         return sv
     }()
-    
-//    private let tmpButton:UIButton = {
-//        let bt = UIButton()
-//        bt.backgroundColor = UIColor.MyTheme.darkBG
-//        return bt
-//    }()
     
      let backArrowBT:UIButton = {
         let bt = UIButton()
@@ -60,15 +56,6 @@ class ScheduleResultsUpperContainerView:CustomView {
         bt.tintColor = .green
         bt.translatesAutoresizingMaskIntoConstraints = false
         return bt
-    }()
-    
-    private lazy var verticalContainerStack:UIStackView = {
-        [unowned self ] in
-        let sv = UIStackView(arrangedSubviews: [self.infoView,self.buttonsStackContrainer])
-        sv.distribution = .fillEqually
-        sv.spacing = 16
-        sv.axis = .vertical
-        return sv
     }()
     
     override func setupView() {
@@ -87,25 +74,32 @@ class ScheduleResultsUpperContainerView:CustomView {
     }
     
     private func setSubviews() {
-        addSubview(verticalContainerStack)
+        addSubview(infoView)
+        addSubview(buttonsStackContrainer)
         addSubview(backArrowBT)
         addSubview(forwardArrowBT)
     }
     
     private func setConstriants() {
-//        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: infoView)
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: verticalContainerStack)
-        
+  
         let additionalConstraints = [
-            verticalContainerStack.topAnchor.constraint(equalTo: self.topAnchor,constant: 0),
-            verticalContainerStack.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+
+            infoView.topAnchor.constraint(equalTo: self.topAnchor),
+            infoView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 16),
+            infoView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -16),
+            infoView.heightAnchor.constraint(equalTo: self.heightAnchor,multiplier: 0.5),
             
-            backArrowBT.leadingAnchor.constraint(equalTo: buttonsStackContrainer.leadingAnchor),
+            buttonsStackContrainer.topAnchor.constraint(equalTo: infoView.bottomAnchor,constant: 8),
+            buttonsStackContrainer.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 42),
+            buttonsStackContrainer.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -42),
+            buttonsStackContrainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            backArrowBT.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 16),
             backArrowBT.centerYAnchor.constraint(equalTo: buttonsStackContrainer.centerYAnchor),
             backArrowBT.heightAnchor.constraint(equalTo: buttonsStackContrainer.heightAnchor,multiplier: 1),
             backArrowBT.widthAnchor.constraint(equalTo: buttonsStackContrainer.widthAnchor,multiplier: 0.055),
             
-            forwardArrowBT.rightAnchor.constraint(equalTo: buttonsStackContrainer.rightAnchor),
+            forwardArrowBT.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16),
             forwardArrowBT.centerYAnchor.constraint(equalTo: buttonsStackContrainer.centerYAnchor),
             forwardArrowBT.heightAnchor.constraint(equalTo: buttonsStackContrainer.heightAnchor,multiplier: 1),
             forwardArrowBT.widthAnchor.constraint(equalTo: buttonsStackContrainer.widthAnchor,multiplier: 0.055)
