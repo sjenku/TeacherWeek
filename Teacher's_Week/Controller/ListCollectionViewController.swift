@@ -23,6 +23,7 @@ class ListCollectionViewController:UIViewController {
     private var cellStyle:CellStyle?
     private var navProperties:NavProperties?
     private var navStyle:NavigationControllerStyle? = .small
+    private var activeSearch:Bool = true
     
     private lazy var searchController:CustomSearchController = {
         [weak self] in
@@ -49,12 +50,12 @@ class ListCollectionViewController:UIViewController {
      
     //MARK: - Initialazation
     
-    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle,navigationProperties:NavProperties?) {
+    init(info:[SectionInfo]?,cellStyle:CellStyle?,navStyle:NavigationControllerStyle,navigationProperties:NavProperties?,searchC:Bool = true) {
         super.init(nibName: nil, bundle: nil)
         self.info = info
         self.cellStyle = cellStyle
         self.navProperties = navigationProperties
-       
+        self.activeSearch = searchC
         
     }
     
@@ -66,8 +67,10 @@ class ListCollectionViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if activeSearch {
+           setupSearchView()
+        }
         
-        setupSearchView()
         setSubviews()
         setConstraints()
         setNavigationItem()
@@ -115,9 +118,9 @@ class ListCollectionViewController:UIViewController {
     
     private func setupSearchView() {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.topViewController?.navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
+            navigationController?.topViewController?.navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+            definesPresentationContext = true
     }
     
     private func unSetupSearchView() {
@@ -164,7 +167,11 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
                 navigationController?.pushViewController(vc, animated: true)
            
             } else if searchTo == .schedules {
-                print("Tapped Scheudle Cell")
+                print("Tapped Scheudle Cell:\(DataManager.schedules[indexPath.row])")
+                let schedule = DataManager.schedules[indexPath.row]
+                let vc = ListCollectionViewController(info: ScheduleManager.sectionInfoForScheduleResults(schedule: schedule), cellStyle: .subtitle, navStyle: .large, navigationProperties: nil,searchC: false)
+                vc.title = schedule.name
+                navigationController?.pushViewController(vc,animated: true)
             }
             
         } else {  //else handle cases of cellStyle that not detail

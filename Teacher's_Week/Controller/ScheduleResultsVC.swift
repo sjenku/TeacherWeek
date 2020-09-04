@@ -117,7 +117,7 @@ class ScheduleResultsVC:UIViewController {
     
     private func createUIAlertAction()->UIAlertController {
         print("Save Action")
-        let ac = UIAlertController(title: "title", message: "msg", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Schedule Name", message: "", preferredStyle: .alert)
           ac.addTextField()
           ac.textFields![0].placeholder = "Schedule Name"
          let actionSave = UIAlertAction(title: "Save", style: .default) {[unowned self] (action) in
