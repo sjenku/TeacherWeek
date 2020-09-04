@@ -110,8 +110,27 @@ class ScheduleResultsVC:UIViewController {
     }
 
     @objc private func handleGreenBT() {
-        DataManager.schedules.append(schedule)
+        let ac = createUIAlertAction()
+        present(ac, animated: true, completion: nil)
     }
+    
+    
+    private func createUIAlertAction()->UIAlertController {
+        print("Save Action")
+        let ac = UIAlertController(title: "title", message: "msg", preferredStyle: .alert)
+          ac.addTextField()
+          ac.textFields![0].placeholder = "Schedule Name"
+         let actionSave = UIAlertAction(title: "Save", style: .default) {[unowned self] (action) in
+            guard self.schedules.count > 0 else {return}
+            self.schedules[self.currentPage].name = ac.textFields![0].text!
+            DataManager.schedules.append(self.schedule)
+        }
+          let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+          ac.addAction(actionSave)
+          ac.addAction(actionCancel)
+        return ac
+    }
+    
     
     @objc private func handleRedBT() {
         if currentPage == 0 && maxPage == 0{
