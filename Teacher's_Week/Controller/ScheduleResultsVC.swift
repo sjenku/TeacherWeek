@@ -123,6 +123,7 @@ class ScheduleResultsVC:UIViewController {
          let actionSave = UIAlertAction(title: "Save", style: .default) {[unowned self] (action) in
             guard self.schedules.count > 0 else {return}
             self.schedules[self.currentPage].name = ac.textFields![0].text!
+            self.schedules[self.currentPage].createdAt = Date()
             DataManager.schedules.append(self.schedule)
         }
           let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

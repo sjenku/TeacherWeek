@@ -29,6 +29,7 @@ struct ScheduleResultTable {
     let lessons:[ScheduleLesson]
     let profit:Int
     var name:String = ""
+    var createdAt:Date? = nil
 }
 
 struct AvaiableAt {
@@ -111,7 +112,7 @@ extension DataManager {
     
     static func getScheudlesInFormatSectionInfo() -> [SectionInfo] {
         let cellsInfo:[CellInfo] = schedules.map { (scheduleTable) -> CellInfo in
-            return CellInfo(title: scheduleTable.name, subtitle: "Blabla", isAccessory: false, relatedTo: scheduleTable)
+            return CellInfo(title: scheduleTable.name, subtitle: scheduleTable.createdAt?.toStringDMYT ?? "", isAccessory: false, relatedTo: scheduleTable)
         }
         let sectionInfo = SectionInfo(headerTitle: "", cellsInfo: cellsInfo)
         return [sectionInfo]

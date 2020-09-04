@@ -21,6 +21,14 @@ extension Date {
         }
     }
     
+    var toStringDMYT:String {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+            return dateFormatter.string(from: self)
+        }
+    }
+    
    var zeroSeconds: Date? {
            let calendar = Calendar.current
            let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)

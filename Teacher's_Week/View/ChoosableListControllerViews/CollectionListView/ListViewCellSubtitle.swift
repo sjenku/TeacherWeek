@@ -20,7 +20,6 @@ class ListViewCellSubtitle:ListViewCell {
     
     let subTitle:UILabel = {
         let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
         label.textColor = .lightGray
         label.text = "10:00am-11:00am"
         return label
@@ -36,7 +35,7 @@ class ListViewCellSubtitle:ListViewCell {
         //Horizontal Title & Accessory
         addConstraintsWithFormat(format: "H:|-16-[v0][v1]-16-|", views: title,accessory)
         addConstraintsWithFormat(format: "H:|-16-[v0]", views: subTitle)
-        addConstraintsWithFormat(format: "V:|[v0][v1]-8-|", views: title,subTitle)
+        addConstraintsWithFormat(format: "V:|[v0][v1]-12-|", views: title,subTitle)
         addConstraintsWithFormat(format: "V:|-19.5-[v0]-19.5-|", views: accessory)
         
         //Width Accessory
