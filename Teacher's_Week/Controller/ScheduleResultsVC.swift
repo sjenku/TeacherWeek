@@ -69,6 +69,7 @@ class ScheduleResultsVC:UIViewController {
         [unowned self] in
         let info:[SectionInfo]? = ScheduleManager.sectionInfoForScheduleResults(schedule: self.schedule)
         let list = ListCollectionView(frame: .zero, info: info, style: .subtitle)
+        list.isSwipeble = false
         list.translatesAutoresizingMaskIntoConstraints = false
         return list
     }()
