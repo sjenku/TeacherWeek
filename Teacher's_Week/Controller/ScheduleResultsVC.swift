@@ -40,7 +40,7 @@ class ScheduleResultsVC:UIViewController {
             listView.updateInfo(ScheduleManager.sectionInfoForScheduleResults(schedule: schedule))
             upperContainer.infoView.profit = schedule.profit
             upperContainer.infoView.lessons = schedule.lessons.count
-            upperContainer.infoView.successProcentege = 100
+            upperContainer.infoView.successProcentege = Int((Float(schedule.lessons.count)/Float(ScheduleManager.totalLessonsAsked))*100)
         }
     }
     private var maxPage:Int = 0
@@ -56,7 +56,7 @@ class ScheduleResultsVC:UIViewController {
         let view = ScheduleResultsUpperContainerView()
         view.infoView.profit = self.schedule.profit
         view.infoView.lessons = self.schedule.lessons.count
-        view.infoView.successProcentege = 100
+        view.infoView.successProcentege = Int((Float(schedule.lessons.count)/Float(ScheduleManager.totalLessonsAsked))*100)
         view.forwardArrowBT.addTarget(self, action: #selector(handleForwardBT), for: .touchUpInside)
         view.backArrowBT.addTarget(self, action: #selector(handleBackwardBT), for: .touchUpInside)
         view.greenButton.addTarget(self, action: #selector(handleGreenBT), for: .touchUpInside)

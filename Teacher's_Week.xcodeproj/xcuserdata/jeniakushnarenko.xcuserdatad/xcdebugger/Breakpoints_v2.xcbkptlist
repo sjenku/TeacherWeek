@@ -14,10 +14,90 @@
             filePath = "Teacher&apos;s_Week/Controller/ListCollectionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "performDeletionCompletionCellAction(indexPath:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "414C596B-87F8-414F-A688-127E94EC389A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Controller/ScheduleResultsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "upperContainer"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "414C596B-87F8-414F-A688-127E94EC389A - 1d5662749a192899"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Teacher_s_Week.ScheduleResultsUpperContainerView in Teacher_s_Week.ScheduleResultsVC.(upperContainer in _02515CCF1CA9F186866E99144765ED86).getter : Teacher_s_Week.ScheduleResultsUpperContainerView"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Controller/ScheduleResultsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "475">
+               </Location>
+               <Location
+                  uuid = "414C596B-87F8-414F-A688-127E94EC389A - 1d5662749a192899"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Teacher_s_Week.ScheduleResultsUpperContainerView in Teacher_s_Week.ScheduleResultsVC.(upperContainer in _02515CCF1CA9F186866E99144765ED86).getter : Teacher_s_Week.ScheduleResultsUpperContainerView"
+                  moduleName = "Teacher&apos;s_Week"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jeniakushnarenko/dev/SchedulePoweriOS/application/Teacher&apos;s_Week/Teacher&apos;s_Week/Controller/ScheduleResultsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "684">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "560DB375-8EE1-42BC-9966-3C15D44CE52D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Controller/ScheduleResultsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "currentPage"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BAEECCB1-CA8F-4AF2-A95C-8198C1C0E416"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Teacher&apos;s_Week/Controller/ScheduleResultsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "currentPage"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

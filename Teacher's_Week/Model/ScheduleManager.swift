@@ -36,7 +36,14 @@ class ScheduleManager {
          }
      }
     
-    
+    static var totalLessonsAsked: Int {
+        get {
+            var total:Int = 0
+            students.forEach {total += $0.scheduleRequements?.numberOfLessonsNeed ?? 0}
+            groups.forEach {total += $0.scheduleRequements?.numberOfLessonsNeed ?? 0}
+            return total
+        }
+    }
     
     //This Propertie is helper propertie and not for use except 'scheduleFromStudents' propertie
     fileprivate static var findSolutionResult:[ScheduleLesson] = []
