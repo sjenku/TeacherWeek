@@ -17,7 +17,7 @@ class AppTabBarController: UITabBarController {
         return navVC
     }()
     
-    private let chooseFromListController:UINavigationController = {
+    private let savedScheduleVC:UINavigationController = {
         let vc = ListCollectionViewController(info: DataManager.getScheudlesInFormatSectionInfo(), cellStyle: .detailSubtitle, navStyle: .large, navigationProperties: nil)
         vc.searchTo = .schedules
         vc.title = "Saved Schedules"
@@ -62,12 +62,12 @@ class AppTabBarController: UITabBarController {
 
         //TabBar-Items
         homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "house"), tag: 1)
-        chooseFromListController.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 2)
+        savedScheduleVC.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 2)
         studentListVC.tabBarItem = UITabBarItem(title: "Students", image: UIImage(named: "person"), tag: 3)
         groupListVC.tabBarItem = UITabBarItem(title: "Groups", image: UIImage(named: "personAndPerson"), tag: 4)
         
         
-        viewControllers = [homeViewController,chooseFromListController,studentListVC,groupListVC]
+        viewControllers = [homeViewController,savedScheduleVC,studentListVC,groupListVC]
         setViewControllers(viewControllers, animated: true)
         
         //Design

@@ -26,7 +26,7 @@ struct ScheduleLesson {
 }
 
 struct ScheduleResultTable {
-    let lessons:[ScheduleLesson]
+    var lessons:[ScheduleLesson]
     let profit:Int
     var name:String = ""
     var createdAt:Date? = nil

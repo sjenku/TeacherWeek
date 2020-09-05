@@ -13,7 +13,7 @@ import UIKit
 class CustomSearchController:UISearchController {
 
     enum SearchTo {
-        case students,contacts,groups,schedules
+        case students,contacts,groups,schedules,schedule
     }
     
     var listViewToUpdate:CustomListView?
@@ -49,6 +49,8 @@ extension CustomSearchController:UISearchResultsUpdating {
             info = DataManager.getGroupsInFormatSectionInfo()
         case .schedules:
             info = DataManager.getScheudlesInFormatSectionInfo()
+        case .schedule:
+            info = []
         case .none:
             info = []
         }

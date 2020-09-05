@@ -39,6 +39,8 @@ class ListCollectionViewController:UIViewController {
            }
        }
     
+    var prevIndex:IndexPath? //For deletion schedule lesson in schedules
+    
     lazy var listView:CustomListView = {
         [unowned self] in
          let view = CustomListView(frame: .zero, info: self.info, style: self.cellStyle)
@@ -106,6 +108,8 @@ class ListCollectionViewController:UIViewController {
             info = DataManager.getScheudlesInFormatSectionInfo()
         case .contacts:
             info = ContactsManager.shared.getSectionsInfo()
+        case .schedule:
+            print("Scheudle")
         case .none:
             print("Nothing")
         }
@@ -170,6 +174,8 @@ extension ListCollectionViewController:SelectableCellActionDelegate {
                 print("Tapped Scheudle Cell:\(DataManager.schedules[indexPath.row])")
                 let schedule = DataManager.schedules[indexPath.row]
                 let vc = ListCollectionViewController(info: ScheduleManager.sectionInfoForScheduleResults(schedule: schedule), cellStyle: .subtitle, navStyle: .large, navigationProperties: nil,searchC: false)
+                vc.searchTo = .schedule
+                vc.prevIndex = indexPath
                 vc.title = schedule.name
                 navigationController?.pushViewController(vc,animated: true)
             }
@@ -204,6 +210,15 @@ extension ListCollectionViewController:DeletionCellActionDelegate {
         case .groups:
            DataManager.groups.remove(at: indexPath.row)
            listView.updateInfo(DataManager.getGroupsInFormatSectionInfo())
+        case .schedules:
+            DataManager.schedules.remove(at: indexPath.row)
+            listView.updateInfo(DataManager.getScheudlesInFormatSectionInfo())
+        case .schedule:
+            guard let safeIndex = prevIndex else {break}
+            DataManager.schedules[safeIndex.row].lessons.remove(at: indexPath.row) //goes to scheudles and delete from there the lessons of safeIndex schedule.
+
+            listView.updateInfo(ScheduleManager.sectionInfoForScheduleResults(schedule: DataManager.schedules[safeIndex.row]))
+            
         default:
             break
         }
