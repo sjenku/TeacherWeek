@@ -154,25 +154,29 @@ class ListCollectionViewController:UIViewController {
 extension ListCollectionViewController:SelectableCellActionDelegate {
     func performSelectionOfCellAction(indexPath:IndexPath) {
         
-        guard let _ = info else {return}
+        guard var safeInfo = info else {return}
         guard let beforeTappedStatus = info?[indexPath.section].cellsInfo[indexPath.row].isAccessory else {return}
+        
+        if searchController.isActive {
+            safeInfo = searchController.listViewToUpdate!.getCurrentInfoInList()
+        }
         
         if cellStyle == .detailTitle || cellStyle == .detailSubtitle {
             
             if searchTo == .students {
-                guard let studentInfo = info![indexPath.section].cellsInfo[indexPath.row].relatedTo as? Student else {return}
+                guard let studentInfo = safeInfo[indexPath.section].cellsInfo[indexPath.row].relatedTo as? Student else {return}
                 let vc = StudentInfoVC(firstName: studentInfo.firstName, lastName: studentInfo.lastName, phoneNumber: studentInfo.phoneNumber, eMail: studentInfo.eMail)
                 navigationController?.pushViewController(vc, animated: true)
                 
             } else if searchTo == .groups {
+                guard let groupInfo = safeInfo[indexPath.section].cellsInfo[indexPath.row].relatedTo as? Group else {return}
                 let vc = GroupInfoVC()
-                let chosenGroup:Group = DataManager.groups[indexPath.row]
-                vc.group = chosenGroup
+                vc.group = groupInfo
                 navigationController?.pushViewController(vc, animated: true)
            
-            } else if searchTo == .schedules {
-                print("Tapped Scheudle Cell:\(DataManager.schedules[indexPath.row])")
-                let schedule = DataManager.schedules[indexPath.row]
+            } else if searchTo == .schedules { //TODO:Make Correct Choose If SearchBar is Active
+                print("Tapped Scheudle Cell")
+                guard let schedule = safeInfo[indexPath.section].cellsInfo[indexPath.row].relatedTo as? ScheduleResultTable else {return}
                 let vc = ListCollectionViewController(info: ScheduleManager.sectionInfoForScheduleResults(schedule: schedule), cellStyle: .subtitle, navStyle: .large, navigationProperties: nil,searchC: false)
                 vc.searchTo = .schedule
                 vc.prevIndex = indexPath
