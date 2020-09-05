@@ -22,6 +22,7 @@ class GenerateScheduleStepTwoVC:UIViewController {
    private lazy var listView:ListCollectionView = {
         let view = ListCollectionView(frame:.zero,info:nil,style: .setted)
         view.selectionActionDelegate = self
+        view.deletionCompletionActionDelegate = self
         view.isSelectable = true
         return view
     }()
@@ -187,5 +188,22 @@ extension GenerateScheduleStepTwoVC {
     
     @objc private func handleNotificationUpdateGroupSchedule() {
         setInfoDependingOnSegmentIndex()
+    }
+}
+
+//MARK: - Extension DeletionCell
+extension GenerateScheduleStepTwoVC:DeletionCellActionDelegate {
+    func performDeletionCompletionCellAction(indexPath: IndexPath) {
+        print("Deletion Cell In Index:\(indexPath.row)")
+        switch state {
+        case .group:
+            ScheduleManager.groups.remove(at: indexPath.row)
+            setInfoDependingOnSegmentIndex()
+        case .student:
+            ScheduleManager.students.remove(at: indexPath.row)
+            setInfoDependingOnSegmentIndex()
+        case .none:
+            print("none")
+        }
     }
 }
