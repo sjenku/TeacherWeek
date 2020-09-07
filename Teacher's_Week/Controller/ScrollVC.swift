@@ -149,7 +149,7 @@ class ScrollVC:UIViewController {
     }
     
     @objc func doneButtonPressed() {
-        delegateDataSource?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: maxNumOfLessonsWithoutBreaksStepper.currentValue, paymentPerLesson: paymentPerLessonView.currentValue, avaiablesAt: avaiableAt))
+        delegateDataSource?.scrollVC(data: ScrollVCData(numberOfLessonsNeed: numberOfLessonsStepper.currentValue, durationOfEachLessonMin: lessonDurationView.currentValue, needBreaks: needBreaksSwitcher.currentValue, maxNumOfLessonsWithoutBreaks: maxNumOfLessonsWithoutBreaksStepper.currentValue, paymentPerLesson: paymentPerLessonView.currentValue, timeBreak: breaksDurationView.currentValue, avaiablesAt: avaiableAt))
         navigationController?.popViewController(animated: true)
     }
     
@@ -192,6 +192,8 @@ class ScrollVC:UIViewController {
             needBreaksSwitcher.currentValue = safeData.needBreaks
             maxNumOfLessonsWithoutBreaksStepper.currentValue = safeData.maxNumOfLessonsWithoutBreaks
             maxNumOfLessonsWithoutBreaksStepper.setSubviewsEnable(safeData.needBreaks)
+            breaksDurationView.isEnable = safeData.needBreaks
+            breaksDurationView.currentValue = safeData.timeBreak
             paymentPerLessonView.currentValue = safeData.paymentPerLesson
             avaiableAt = safeData.avaiablesAt
         }

@@ -16,7 +16,7 @@ struct ScrollVCData {
     let needBreaks:Bool
     let maxNumOfLessonsWithoutBreaks:Int
     let paymentPerLesson:Int
-    let timeBreak:Int = 10
+    let timeBreak:Int
     let avaiablesAt:[AvaiableAt]
 }
 
