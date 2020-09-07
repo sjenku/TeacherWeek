@@ -14,6 +14,11 @@ class SliderView:CustomView {
     var maxValue:Float
     var startValue:Float
     var sign:String
+    var isEnable:Bool = true {
+        willSet {
+            setEnable(newValue)
+        }
+    }
     
     var currentValue:Int {
         get {
@@ -73,7 +78,6 @@ class SliderView:CustomView {
         view.backgroundColor = UIColor.MyTheme.extraDarkBG
         view.tintColor = UIColor.MyTheme.lightGreen
         view.thumbTintColor = UIColor.MyTheme.lightGreen
-        print("StartValue:\(self.startValue)")
         view.setValue(startValue/maxValue, animated: true)
         return view
     }()
@@ -108,6 +112,13 @@ class SliderView:CustomView {
     
     @objc fileprivate func handleSliderValueChanges() {
         label.text = String(Int(slider.value * maxValue)) + " " + sign
+    }
+    
+    private func setEnable(_ enableStatus:Bool) {
+        squareContainer.backgroundColor = enableStatus ? UIColor.MyTheme.extraDarkBG : UIColor.darkGray
+        label.textColor = enableStatus ? UIColor.white : UIColor.lightGray
+        slider.isEnabled = enableStatus
+        currentValue = Int(enableStatus ? startValue : 0)
     }
     
     private func setSubviews() {

@@ -33,7 +33,7 @@ class ScrollVC:UIViewController {
             manageListLessonsView.listOfLessons.updateInfo([sectionInfo])
         }
     }
-   private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1510)
+   private lazy var contentSize = CGSize(width: self.view.frame.width, height: 1710) //1510
     
    private lazy var scrollView:UIScrollView = {
         [unowned self] in
@@ -105,6 +105,15 @@ class ScrollVC:UIViewController {
         stepperView.setSubviewsEnable(false)
         return stepperView
     }()
+    
+       private let breaksDurationTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text:"Duration of each break")
+    
+       
+       private let breaksDurationView:SliderView = {
+        let view = SliderView(startValue: 10, maxValue: 180, sign: "min")
+        view.isEnable = false
+           return view
+       }()
     
     private let paymentPerLessonTitle:ScrollVCTitleLabel = ScrollVCTitleLabel(text: "Payment per lesson")
     
@@ -193,7 +202,7 @@ class ScrollVC:UIViewController {
         
         let contentViews = [
         headIcon,headTitle,numberOfLessonsTitle,numberOfLessonsStepper,lessonDurationTitle,lessonDurationView,
-        needBreaksSwitcher,maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
+        needBreaksSwitcher,maxNumberOfLessonsWithoutBreaksTitle,maxNumOfLessonsWithoutBreaksStepper,breaksDurationTitle,breaksDurationView,paymentPerLessonTitle,
         paymentPerLessonTitle,paymentPerLessonView,availableAtTitle,manageListLessonsView
         ]
         
@@ -209,7 +218,7 @@ class ScrollVC:UIViewController {
                     numberOfLessonsStepper,lessonDurationTitle,
                     lessonDurationView,needBreaksSwitcher,
                     maxNumberOfLessonsWithoutBreaksTitle,
-                    maxNumOfLessonsWithoutBreaksStepper,paymentPerLessonTitle,
+                    maxNumOfLessonsWithoutBreaksStepper,breaksDurationTitle,breaksDurationView,paymentPerLessonTitle,
                     paymentPerLessonView,availableAtTitle,manageListLessonsView]
         
         views.forEach {view.addConstraintsWithFormat(format: "H:|[v0]|", views: $0)}
@@ -241,7 +250,12 @@ class ScrollVC:UIViewController {
             maxNumOfLessonsWithoutBreaksStepper.topAnchor.constraint(equalTo: maxNumberOfLessonsWithoutBreaksTitle.bottomAnchor,constant: 12),
             maxNumOfLessonsWithoutBreaksStepper.heightAnchor.constraint(equalToConstant: 125),
             
-            paymentPerLessonTitle.topAnchor.constraint(equalTo: maxNumOfLessonsWithoutBreaksStepper.bottomAnchor,constant: 12),
+            breaksDurationTitle.topAnchor.constraint(equalTo: maxNumOfLessonsWithoutBreaksStepper.bottomAnchor,constant: 2),
+            
+            breaksDurationView.topAnchor.constraint(equalTo: breaksDurationTitle.bottomAnchor,constant: 6),
+            breaksDurationView.heightAnchor.constraint(equalToConstant: 185),
+            
+            paymentPerLessonTitle.topAnchor.constraint(equalTo: breaksDurationView.bottomAnchor,constant: 12),
             
             paymentPerLessonView.topAnchor.constraint(equalTo: paymentPerLessonTitle.bottomAnchor,constant: 6),
             paymentPerLessonView.heightAnchor.constraint(equalToConstant: 185),
@@ -265,6 +279,7 @@ class ScrollVC:UIViewController {
 extension ScrollVC:SwitchControllerDelegate {
     func switchController(isOn: Bool) {
         maxNumOfLessonsWithoutBreaksStepper.setSubviewsEnable(isOn)
+        breaksDurationView.isEnable = isOn
     }
 }
 
