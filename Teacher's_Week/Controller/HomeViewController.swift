@@ -14,14 +14,14 @@ import UIKit
 class HomeViewController:UIViewController{
     
     
-    var homeView:HomeView?
+    var homeView:HomeView!
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        homeView?.lowerContainer.updateAddStudentViewCounter(number: DataManager.students.count)
-        homeView?.lowerContainer.updateAddGroupViewCounter(number: DataManager.groups.count)
+        homeView.lowerContainer.updateAddStudentViewCounter(number: DataManager.students.count)
+        homeView.lowerContainer.updateAddGroupViewCounter(number: DataManager.groups.count)
     }
     
     override func viewDidLoad() {
@@ -38,17 +38,26 @@ class HomeViewController:UIViewController{
            homeView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(homeView!)
          [
-            homeView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            homeView?.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            homeView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            homeView?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            homeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             ].forEach {$0?.isActive = true}
          
-        homeView?.lowerContainer.delegate = self
+        homeView.lowerContainer.delegate = self
+        homeView.upperContainer.profileImage.addTarget(self, action: #selector(handleProfileImageTap), for: .touchUpInside)
+         
         
     }
 
+    //MARK: - OBJC
+   @objc private func handleProfileImageTap() {
+    let vc = ProfileVC()
+    navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
+
 
 //MARK: - Extension HomeLowerContainerViewDelegate
 

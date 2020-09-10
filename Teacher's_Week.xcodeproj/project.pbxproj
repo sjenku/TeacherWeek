@@ -55,6 +55,7 @@
 		BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26F91C24ADDBDB00664510 /* CustomTextField.swift */; };
 		BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */; };
 		BE40E99824B10C81009BC085 /* ListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */; };
+		BE560AD12509FDC900A92317 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE560AD02509FDC900A92317 /* ProfileVC.swift */; };
 		BE56A25C24E5619E0022613B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25B24E5619E0022613B /* ExtensionDate.swift */; };
 		BE56A25E24E694CF0022613B /* ScheduleResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */; };
 		BE56A26024E6CDBA0022613B /* ScheduleResultsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */; };
@@ -133,6 +134,7 @@
 		BE26F91C24ADDBDB00664510 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BE2CD9F224CB52F300E4A652 /* ExtensionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNavigationController.swift; sourceTree = "<group>"; };
 		BE40E99724B10C81009BC085 /* ListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewController.swift; sourceTree = "<group>"; };
+		BE560AD02509FDC900A92317 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		BE56A25B24E5619E0022613B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsVC.swift; sourceTree = "<group>"; };
 		BE56A25F24E6CDBA0022613B /* ScheduleResultsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultsInfoView.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				BEF8448B24C2067C001FABCC /* TimePickerVC.swift */,
 				BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */,
 				BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */,
+				BE560AD02509FDC900A92317 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				BE1251E724969745006F264B /* AppDelegate.swift in Sources */,
 				BE17D9B824B1E84E00F20AEF /* GenerateStepOneButtonsContainer.swift in Sources */,
 				BE956C1524B0B6AF0028C69A /* HeadTitleAndSubTitleView.swift in Sources */,
+				BE560AD12509FDC900A92317 /* ProfileVC.swift in Sources */,
 				BE12529424A3BED0006F264B /* NewGroupUpperContrainerView.swift in Sources */,
 				BEF8448A24C1D577001FABCC /* ManageListLessonsView.swift in Sources */,
 				BE1252132498BEB0006F264B /* RoundButtonWithIcon.swift in Sources */,
@@ -624,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -678,7 +682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

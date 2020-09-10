@@ -19,11 +19,11 @@ class HomeUpperConteinerView:CustomView {
         return view
     }()
     
-    private let profileImage:UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "profileImage")
-        return iv
+    let profileImage:UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "profileImage"), for: .normal)
+        button.contentMode = .scaleAspectFill
+        return button
     }()
     
     private let profileTitle:UILabel = {
