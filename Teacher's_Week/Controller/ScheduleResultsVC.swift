@@ -18,6 +18,13 @@ class ScheduleResultsVC:UIViewController {
     
     var scheduleAlgo:ScheduleAlgo = .bruteForce //.maxProfit is Default Case
     
+    private let savedImageView:UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "scheduleSaved"))
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
     private lazy var schedules:[ScheduleResultTable] = {
         var sched:[ScheduleResultTable] = []
         switch (self.scheduleAlgo) {
@@ -112,7 +119,7 @@ class ScheduleResultsVC:UIViewController {
 
     @objc private func handleGreenBT() {
         let ac = createUIAlertAction()
-        present(ac, animated: true, completion: nil)
+        present(ac, animated: true)
     }
     
     
@@ -126,6 +133,13 @@ class ScheduleResultsVC:UIViewController {
             self.schedules[self.currentPage].name = ac.textFields![0].text!
             self.schedules[self.currentPage].createdAt = Date()
             DataManager.schedules.append(self.schedule)
+            UIView.animate(withDuration: 1, animations: {
+                self.savedImageView.alpha = 1
+            }) { (_) in
+                UIView.animate(withDuration: 1, animations: {
+                    self.savedImageView.alpha = 0
+                }, completion: nil)
+            }
         }
           let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
           ac.addAction(actionSave)
@@ -151,6 +165,7 @@ class ScheduleResultsVC:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.MyTheme.darkBG
+        savedImageView.alpha = 0
         setSubviews()
         setConstraints()
     }
@@ -164,6 +179,7 @@ class ScheduleResultsVC:UIViewController {
     private func setSubviews() {
         view.addSubview(upperContainer)
         view.addSubview(listView)
+        view.addSubview(savedImageView)
     }
     
     private func setConstraints() {
@@ -176,7 +192,12 @@ class ScheduleResultsVC:UIViewController {
         upperContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5 - (0.5 * 0.3)),
         
         listView.topAnchor.constraint(equalTo: upperContainer.bottomAnchor,constant: 20),
-        listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        
+        savedImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        savedImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        savedImageView.widthAnchor.constraint(equalToConstant: 200),
+        savedImageView.heightAnchor.constraint(equalToConstant: 100)
         ]
         
         additionalConstraints.forEach {$0.isActive = true}
