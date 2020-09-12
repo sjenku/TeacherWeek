@@ -19,10 +19,48 @@ class ProfileVC:UIViewController {
          return collectionView
      }()
     
-    let profileImageNameContentView:UIView = {
+    let profileImageNameContainerView:UIView = {
         let view = UIView()
-        view.backgroundColor = .cyan
+        view.backgroundColor = UIColor.MyTheme.darkBG
         return view
+    }()
+    
+    let line:UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.white
+        return v
+    }()
+    
+    let profileImageNameContentainerHeight:CGFloat = DeviceConfigurations.windowHeight * 0.25
+    var profileImageHeight:CGFloat {
+        get {return profileImageNameContentainerHeight * 0.67}
+    }
+    
+    lazy var profileName:ScrollVCTitleLabel = {
+         let name = ScrollVCTitleLabel(text: "Jekppo Fami")
+         let fontSize = self.profileImageHeight * 0.3
+         name.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+         return name
+     }()
+     
+    
+    lazy var profileImage:UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleAspectFill
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "profileImage"), for: .normal)
+        button.layer.cornerRadius = self.profileImageHeight * 0.5
+        button.layer.masksToBounds = true
+        button.layer.borderWidth = 6
+        button.layer.borderColor = UIColor.MyTheme.lightBlue.cgColor
+        return button
+    }()
+    
+    let editSymbol:UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(named: "editPancil"), for: .normal)
+        return button
     }()
     
     let cellIdInfo = "cellIdInfo"
@@ -46,21 +84,41 @@ class ProfileVC:UIViewController {
     
     
     private func setSubviews() {
-        view.addSubview(profileImageNameContentView)
+        profileImageNameContainerView.addSubview(profileImage)
+        profileImageNameContainerView.addSubview(profileName)
+        profileImageNameContainerView.addSubview(editSymbol)
+        
+        view.addSubview(profileImageNameContainerView)
         view.addSubview(collectionView)
     }
     
     private func setConstraints() {
         
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: profileImageNameContentView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: profileImageNameContainerView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         
+        
+        profileImageNameContainerView.addConstraintsWithFormat(format: "H:|[v0]|", views: profileName)
+        
         let constraints:[NSLayoutConstraint] = [
-            profileImageNameContentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileImageNameContentView.heightAnchor.constraint(equalToConstant: DeviceConfigurations.windowHeight * 0.2),
+            profileImageNameContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileImageNameContainerView.heightAnchor.constraint(equalToConstant: profileImageNameContentainerHeight),
             
-            collectionView.topAnchor.constraint(equalTo: profileImageNameContentView.bottomAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: profileImageNameContainerView.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            profileImage.topAnchor.constraint(equalTo: profileImageNameContainerView.topAnchor,constant: profileImageNameContentainerHeight * 0.05),
+            profileImage.heightAnchor.constraint(equalToConstant: profileImageHeight),
+            profileImage.widthAnchor.constraint(equalTo: profileImage.heightAnchor),
+            profileImage.centerXAnchor.constraint(equalTo: profileImageNameContainerView.centerXAnchor),
+            
+            profileName.topAnchor.constraint(equalTo: profileImage.bottomAnchor),
+            profileName.bottomAnchor.constraint(equalTo: profileImageNameContainerView.bottomAnchor),
+            
+            editSymbol.topAnchor.constraint(equalTo: profileImageNameContainerView.topAnchor,constant: 8),
+            editSymbol.leadingAnchor.constraint(equalTo: profileImageNameContainerView.leadingAnchor,constant: 8),
+            editSymbol.heightAnchor.constraint(equalTo: profileImage.heightAnchor,multiplier: 0.35),
+            editSymbol.widthAnchor.constraint(equalTo: editSymbol.heightAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
        }
@@ -72,7 +130,7 @@ class ProfileVC:UIViewController {
 extension ProfileVC:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeight:CGFloat = indexPath.section == 0 ? 50 : 65
+        let cellHeight:CGFloat = indexPath.section == 0 ? 65 : 50
            return CGSize(width: collectionView.frame.width, height: cellHeight)
        }
        
@@ -97,8 +155,8 @@ extension ProfileVC:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ListHeaderView
-        headerCell.backgroundColor = .blue
-        headerCell.labelView.text = "hello"
+        headerCell.backgroundColor = UIColor.MyTheme.headerColor
+        headerCell.labelView.text = "Settings"
         return headerCell
     }
     

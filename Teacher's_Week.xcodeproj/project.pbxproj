@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE01B80C24CCC93C00F69D3A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE01B80B24CCC93C00F69D3A /* Data.swift */; };
+		BE059AC7250D4A3900C0C246 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE059AC6250D4A3900C0C246 /* ProfileModel.swift */; };
 		BE1251E724969745006F264B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1251E624969745006F264B /* AppDelegate.swift */; };
 		BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1251EA24969745006F264B /* AppTabBarController.swift */; };
 		BE1251F02496974E006F264B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1251EF2496974E006F264B /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		BE01B80B24CCC93C00F69D3A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BE059AC6250D4A3900C0C246 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		BE1251E324969745006F264B /* Teacher's_Week.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teacher's_Week.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1251E624969745006F264B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE1251EA24969745006F264B /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				BE01B80B24CCC93C00F69D3A /* Data.swift */,
 				BE6A238F24E2CF8C001CE76B /* ScheduleManager.swift */,
 				BE6A239124E2D405001CE76B /* NotificationKeys.swift */,
+				BE059AC6250D4A3900C0C246 /* ProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				BE17D9BA24B1EB2200F20AEF /* RectButtonWithTitle.swift in Sources */,
 				BE17D9C724BC61B700F20AEF /* ScrollVC.swift in Sources */,
 				BE17D9C524B4C1E400F20AEF /* GenerateStepTwoButtonsContainer.swift in Sources */,
+				BE059AC7250D4A3900C0C246 /* ProfileModel.swift in Sources */,
 				BEF8448824C0C8C2001FABCC /* TitleAndSwitchView.swift in Sources */,
 				BE2CD9F324CB52F300E4A652 /* ExtensionNavigationController.swift in Sources */,
 				BE956C1224B0B0E10028C69A /* StudentInfoVC.swift in Sources */,
