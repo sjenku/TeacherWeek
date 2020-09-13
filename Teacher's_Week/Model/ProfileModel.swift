@@ -11,7 +11,7 @@ import Foundation
 
 struct ProfileModel {
     
-    struct defaultSettings {
+    struct DefaultSettings {
           static var breaksBetweenLessons:Int = 10
           static var lessonDuration:Int = 45
           static var lessonPrice:Int = 100
@@ -38,6 +38,11 @@ struct ProfileModel {
             }
         }
     }
+    
+    static var info:[SectionInfo] = [
+        DefaultSettings.getInfo,
+        General.getInfo
+    ]
     
     
 }

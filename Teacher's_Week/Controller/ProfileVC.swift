@@ -11,6 +11,12 @@ import UIKit
 
 class ProfileVC:UIViewController {
     
+    private var profileInfo:[SectionInfo] {
+        get {
+            return ProfileModel.info
+        }
+    }
+    
      lazy var collectionView:UICollectionView = {
          let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
          collectionView.delegate = self
@@ -156,22 +162,30 @@ extension ProfileVC:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! ListHeaderView
         headerCell.backgroundColor = UIColor.MyTheme.headerColor
-        headerCell.labelView.text = "Settings"
+        headerCell.labelView.text = profileInfo[indexPath.section].headerTitle
         return headerCell
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdInfo, for: indexPath)
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell:ListViewCellSubtitleDetail
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdDetail, for: indexPath) as! ListViewCellSubtitleDetail
+            cell.title.text = profileInfo[indexPath.section].cellsInfo[indexPath.row].title
+            cell.subTitle.text = profileInfo[indexPath.section].cellsInfo[indexPath.row].subtitle
+            cell.isAccessoryShown = true
+            return cell
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ListViewCellSubtitle
-//             let cellInfo = sectionsInfo?[indexPath.section].cellsInfo[indexPath.item]
-//             cell.delegate = self
-//             cell.title.text = cellInfo?.title
-//             cell.subTitle.text = cellInfo?.subtitle
-//             if isSelectable {
-//                 cell.isAccessoryShown = cellInfo?.isAccessory ?? false
-//             }
+        case 1:
+            let cell:ListViewCellDetail
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdInfo, for: indexPath) as!
+               ListViewCellDetail
+            cell.title.text = profileInfo[indexPath.section].cellsInfo[indexPath.row].title
+            cell.isAccessoryShown = true
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
     }
     
     
