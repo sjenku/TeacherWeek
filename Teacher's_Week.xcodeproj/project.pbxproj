@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BE01B80C24CCC93C00F69D3A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE01B80B24CCC93C00F69D3A /* Data.swift */; };
 		BE059AC7250D4A3900C0C246 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE059AC6250D4A3900C0C246 /* ProfileModel.swift */; };
+		BE059AC92517948200C0C246 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE059AC82517948200C0C246 /* PopUpViewController.swift */; };
+		BE059ACB2517AAD400C0C246 /* ProfilePopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE059ACA2517AAD400C0C246 /* ProfilePopUpVC.swift */; };
 		BE1251E724969745006F264B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1251E624969745006F264B /* AppDelegate.swift */; };
 		BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1251EA24969745006F264B /* AppTabBarController.swift */; };
 		BE1251F02496974E006F264B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1251EF2496974E006F264B /* Assets.xcassets */; };
@@ -87,6 +89,8 @@
 /* Begin PBXFileReference section */
 		BE01B80B24CCC93C00F69D3A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		BE059AC6250D4A3900C0C246 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		BE059AC82517948200C0C246 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		BE059ACA2517AAD400C0C246 /* ProfilePopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePopUpVC.swift; sourceTree = "<group>"; };
 		BE1251E324969745006F264B /* Teacher's_Week.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teacher's_Week.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1251E624969745006F264B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE1251EA24969745006F264B /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				BE6A238D24E1A52C001CE76B /* StudentOrGroupListCollectionVC.swift */,
 				BE56A25D24E694CF0022613B /* ScheduleResultsVC.swift */,
 				BE560AD02509FDC900A92317 /* ProfileVC.swift */,
+				BE059AC82517948200C0C246 /* PopUpViewController.swift */,
+				BE059ACA2517AAD400C0C246 /* ProfilePopUpVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				BE1251EB24969745006F264B /* AppTabBarController.swift in Sources */,
 				BE26F91B24ADC57700664510 /* TitleAndTextFieldView.swift in Sources */,
 				BE12526324A0E5D4006F264B /* Enums.swift in Sources */,
+				BE059AC92517948200C0C246 /* PopUpViewController.swift in Sources */,
 				BE56A26024E6CDBA0022613B /* ScheduleResultsInfoView.swift in Sources */,
 				BE26F91D24ADDBDB00664510 /* CustomTextField.swift in Sources */,
 				BE6A238924E03828001CE76B /* ExtensionUIViewController.swift in Sources */,
@@ -508,6 +515,7 @@
 				BE1251FF24969DF4006F264B /* Colors.swift in Sources */,
 				BE870ECE24AC7A1F005E8B23 /* NewGroupCharHeader.swift in Sources */,
 				BE26F91524ADC1DD00664510 /* CustomView.swift in Sources */,
+				BE059ACB2517AAD400C0C246 /* ProfilePopUpVC.swift in Sources */,
 				BE870ECA24AB9005005E8B23 /* Configurations.swift in Sources */,
 				BE12529024A3739E006F264B /* RectButtonWithImgTitle.swift in Sources */,
 				BE12521C24995EA5006F264B /* HomeUpperConteinerView.swift in Sources */,

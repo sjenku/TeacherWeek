@@ -39,10 +39,14 @@ struct ProfileModel {
         }
     }
     
-    static var info:[SectionInfo] = [
-        DefaultSettings.getInfo,
-        General.getInfo
-    ]
+//    static var info:[SectionInfo] = [
+//        DefaultSettings.getInfo,
+//        General.getInfo
+//    ]
+    
+    static func getInfo()->[SectionInfo] {
+        return [DefaultSettings.getInfo,General.getInfo]
+    }
     
     
 }

@@ -9,11 +9,15 @@
 import UIKit
 
 
-class ProfileVC:UIViewController {
+protocol Reloader:NSObject {
+    func reload()
+}
+
+class ProfileVC:UIViewController,Reloader {
     
     private var profileInfo:[SectionInfo] {
         get {
-            return ProfileModel.info
+            return ProfileModel.getInfo()
         }
     }
     
@@ -88,6 +92,12 @@ class ProfileVC:UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("ProfileVC Present")
+    }
+    
     
     private func setSubviews() {
         profileImageNameContainerView.addSubview(profileImage)
@@ -96,6 +106,11 @@ class ProfileVC:UIViewController {
         
         view.addSubview(profileImageNameContainerView)
         view.addSubview(collectionView)
+    }
+    
+    internal func reload() {
+        collectionView.reloadData()
+        print("Reloaded")
     }
     
     private func setConstraints() {
@@ -188,5 +203,52 @@ extension ProfileVC:UICollectionViewDataSource {
         }
     }
     
+    
+}
+
+//MARK: - UICollectionViewDelegate
+extension ProfileVC:UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("Selected section:\(indexPath.section) , row:\(indexPath.row)")
+        doActionDependingOnSelectionWithIndexPath(indexPath)
+    }
+    
+    
+    private func doActionDependingOnSelectionWithIndexPath(_ indexPath:IndexPath) {
+        
+        switch indexPath.section {
+        case 0:
+            print("section 0")
+            switch indexPath.row {
+            case 0:
+                print("Row 0")
+                //TODO:Show PopOver for change minutes
+                let vc:PopUpViewController = ProfilePopUpVC(changerOf: .breaksDuration)
+                vc.delegate = self
+                present(vc, animated: true, completion: nil)
+            case 1:
+                print("Row 1")
+            case 2:
+                print("Row 2")
+            default:
+                fatalError("choice can't be default")
+            }
+        case 1:
+            print("Section 1")
+            switch indexPath.row {
+            case 0:
+                print("Row 0")
+            case 1:
+                print("Row 1")
+            case 2:
+                print("Row 2")
+            default:
+                fatalError("choice can't be default")
+            }
+        default:
+            fatalError()
+        }
+        
+    }
     
 }
