@@ -12,15 +12,6 @@ import UIKit
 class PopUpViewController:UIViewController {
     
     
-//    lazy var contentView:UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .gray
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-//        return view
-//    }()
-//
-    
     weak var delegate:Reloader?
     
     var contentView:SliderView! = nil

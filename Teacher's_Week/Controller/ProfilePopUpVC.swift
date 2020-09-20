@@ -31,9 +31,9 @@ class ProfilePopUpVC:PopUpViewController {
     private func setContentView() {
         switch changerOf {
         case .breaksDuration:
-            self.contentView = SliderView(startValue: 45, maxValue: 100, sign: "min")
+            self.contentView = SliderView(startValue: 45, maxValue: 120, sign: "min")
         case .lessonDuration:
-            self.contentView = SliderView(startValue: 45, maxValue: 100, sign: "min")
+            self.contentView = SliderView(startValue: 45, maxValue: 180, sign: "min")
         case .lessonPrice:
             self.contentView = SliderView(startValue: 0, maxValue: 500, sign: "$")
         case .none:

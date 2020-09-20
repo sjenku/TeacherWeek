@@ -21,7 +21,7 @@ struct ProfileModel {
                return SectionInfo(headerTitle: "Default Settings", cellsInfo: [
                 CellInfo(title: "Breaks Between Lessons", subtitle: "\(self.breaksBetweenLessons) Minutes", isAccessory: true, relatedTo: nil),
                 CellInfo(title: "Lesson Duration", subtitle: "\(self.lessonDuration) Minutes", isAccessory: true, relatedTo: nil),
-                CellInfo(title: "Lesson Price", subtitle: "\(self.lessonPrice) ", isAccessory: true, relatedTo: nil)
+                CellInfo(title: "Lesson Price", subtitle: "\(self.lessonPrice) $", isAccessory: true, relatedTo: nil)
                ])
             }
         }

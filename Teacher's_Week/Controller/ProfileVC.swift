@@ -215,24 +215,22 @@ extension ProfileVC:UICollectionViewDelegate {
     
     
     private func doActionDependingOnSelectionWithIndexPath(_ indexPath:IndexPath) {
-        
+        var vc:PopUpViewController!
         switch indexPath.section {
         case 0:
             print("section 0")
             switch indexPath.row {
             case 0:
-                print("Row 0")
-                //TODO:Show PopOver for change minutes
-                let vc:PopUpViewController = ProfilePopUpVC(changerOf: .breaksDuration)
-                vc.delegate = self
-                present(vc, animated: true, completion: nil)
+                vc = ProfilePopUpVC(changerOf: .breaksDuration)
             case 1:
-                print("Row 1")
+                vc = ProfilePopUpVC(changerOf: .lessonDuration)
             case 2:
-                print("Row 2")
+                vc = ProfilePopUpVC(changerOf: .lessonPrice)
             default:
                 fatalError("choice can't be default")
             }
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
         case 1:
             print("Section 1")
             switch indexPath.row {
