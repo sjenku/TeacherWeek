@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SafariServices
 
 protocol Reloader:NSObject {
     func reload()
@@ -214,6 +214,14 @@ extension ProfileVC:UICollectionViewDelegate {
     }
     
     
+    private func openSafariPage(url:URL?) {
+        guard let safeUrl = url else {return}
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = true
+        let safariVC = SFSafariViewController(url: safeUrl,configuration: config)
+        present(safariVC, animated: true, completion: nil)
+    }
+    
     private func doActionDependingOnSelectionWithIndexPath(_ indexPath:IndexPath) {
         var vc:PopUpViewController!
         switch indexPath.section {
@@ -234,11 +242,11 @@ extension ProfileVC:UICollectionViewDelegate {
         case 1:
             print("Section 1")
             switch indexPath.row {
-            case 0:
-                print("Row 0")
-            case 1:
-                print("Row 1")
-            case 2:
+            case 0: //Terms And Conditions
+               openSafariPage(url: URL(string: "https://www.websitepolicies.com/policies/view/lmtJRl1K"))
+            case 1: //Privacy Policy
+                openSafariPage(url: URL(string: "https://www.websitepolicies.com/policies/view/WdwqiGLW"))
+            case 2: //Credits
                 print("Row 2")
             default:
                 fatalError("choice can't be default")

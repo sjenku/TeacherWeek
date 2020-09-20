@@ -31,19 +31,14 @@ struct ProfileModel {
         static var getInfo:SectionInfo {
             get {
                 return SectionInfo(headerTitle: "General", cellsInfo: [
-                CellInfo(title: "Terms Of Use", subtitle: "", isAccessory: true, relatedTo: nil),
+                CellInfo(title: "Terms And Conditions", subtitle: "", isAccessory: true, relatedTo: nil),
                 CellInfo(title: "Privacy Policy", subtitle: "", isAccessory: true, relatedTo: nil),
                 CellInfo(title: "Credits", subtitle: "", isAccessory: true, relatedTo: nil)
                 ])
             }
         }
     }
-    
-//    static var info:[SectionInfo] = [
-//        DefaultSettings.getInfo,
-//        General.getInfo
-//    ]
-    
+
     static func getInfo()->[SectionInfo] {
         return [DefaultSettings.getInfo,General.getInfo]
     }
